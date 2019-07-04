@@ -12,19 +12,31 @@ const theme = createMuiTheme({
       light: `${getColor('PRIMARYLIGHT')}`,
       main: `${getColor('PRIMARY')}`,
       dark: `${getColor('PRIMARYDARK')}`,
-      contrastText: `${tinycolor.mostReadable(getColor('PRIMARY'),[],{includeFallbackColors:true})}`,
+      contrastText: `${tinycolor.mostReadable(
+        getColor('PRIMARY'),
+        [],
+        { includeFallbackColors:true }
+      )}`,
     },
     secondary: {
       light: `${getColor('SECONDARYLIGHT')}`,
       main: `${getColor('SECONDARY')}`,
       dark: `${getColor('SECONDARYDARK')}`,
-      contrastText: `${tinycolor.mostReadable(getColor('SECONDARY'),[],{includeFallbackColors:true})}`,
+      contrastText: `${tinycolor.mostReadable(
+        getColor('SECONDARY'),
+        [],
+        { includeFallbackColors:true }
+      )}`,
     },
     error: {
       //light: palette.error[300],
       main: `${getColor('RED')}`,
       //dark: palette.error[700],
-      contrastText: `${tinycolor.mostReadable(getColor('RED'),[],{includeFallbackColors:true})}`,
+      contrastText: `${tinycolor.mostReadable(
+        getColor('RED'),
+        [],
+        { includeFallbackColors:true }
+      )}`,
     },
     text: {
       primary: `${getColor('BLACK')}`,
