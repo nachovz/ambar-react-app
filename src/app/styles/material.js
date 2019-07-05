@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import getColor from './';
+import getColor from './palette';
 import tinycolor from 'tinycolor2';
 
 const theme = createMuiTheme({
