@@ -1,6 +1,6 @@
 import { configure, addDecorator } from '@storybook/react';
 import { muiTheme } from 'storybook-addon-material-ui';
-import theme from '../src/app/styles/material';
+import theme from 'app/styles/material';
 
 addDecorator( muiTheme([theme]));
 
