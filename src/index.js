@@ -5,6 +5,7 @@ import { Provider as StyletronProvider } from 'styletron-react';
 import { Client as Styletron } from 'styletron-engine-atomic';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from 'app/styles/material';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import * as serviceWorker from './serviceWorker';
 
 const engine = new Styletron();
@@ -12,6 +13,7 @@ const engine = new Styletron();
 ReactDOM.render(
   <StyletronProvider value={engine}>
     <MuiThemeProvider theme={theme}>
+      <CssBaseline />
       <Routes />
     </MuiThemeProvider>
   </StyletronProvider>,
