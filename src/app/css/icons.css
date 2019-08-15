@@ -1,0 +1,189 @@
+@font-face {
+  font-family: 'ambaricon-font';
+  src:  url('../fonts/ambaricon-font.eot?8pduir');
+  src:  url('../fonts/ambaricon-font.eot?8pduir#iefix') format('embedded-opentype'),
+    url('../fonts/ambaricon-font.ttf?8pduir') format('truetype'),
+    url('../fonts/ambaricon-font.woff?8pduir') format('woff'),
+    url('../fonts/ambaricon-font.svg?8pduir#ambaricon-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ambaricon-font' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: inherit;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-acciones:before {
+  content: "\e900";
+}
+.icon-aire:before {
+  content: "\e901";
+}
+.icon-alerta:before {
+  content: "\e902";
+}
+.icon-arrow_left:before {
+  content: "\e903";
+}
+.icon-arrow_less:before {
+  content: "\e904";
+}
+.icon-arrow_more:before {
+  content: "\e905";
+}
+.icon-arrow_right:before {
+  content: "\e906";
+}
+.icon-arrow-drop-down:before {
+  content: "\e907";
+}
+.icon-arrow-drop-up:before {
+  content: "\e908";
+}
+.icon-atras:before {
+  content: "\e909";
+}
+.icon-borrar:before {
+  content: "\e90a";
+}
+.icon-caldera:before {
+  content: "\e90b";
+}
+.icon-calendario:before {
+  content: "\e90c";
+}
+.icon-camara:before {
+  content: "\e90d";
+}
+.icon-cerrar:before {
+  content: "\e90e";
+}
+.icon-cif:before {
+  content: "\e90f";
+}
+.icon-clip:before {
+  content: "\e910";
+}
+.icon-cuadre-de-caja:before {
+  content: "\e911";
+}
+.icon-defectos:before {
+  content: "\e912";
+}
+.icon-direccion:before {
+  content: "\e913";
+}
+.icon-dto:before {
+  content: "\e914";
+}
+.icon-editar:before {
+  content: "\e915";
+}
+.icon-envase:before {
+  content: "\e916";
+}
+.icon-estado-aviso:before {
+  content: "\e917";
+}
+.icon-factura:before {
+  content: "\e918";
+}
+.icon-filtro:before {
+  content: "\e919";
+}
+.icon-firma:before {
+  content: "\e91a";
+}
+.icon-historial:before {
+  content: "\e91b";
+}
+.icon-intervencion:before {
+  content: "\e91c";
+}
+.icon-lavanderia:before {
+  content: "\e91d";
+}
+.icon-lista-correcta:before {
+  content: "\e91e";
+}
+.icon-lista-diferente:before {
+  content: "\e91f";
+}
+.icon-lista-manual:before {
+  content: "\e920";
+}
+.icon-listado:before {
+  content: "\e921";
+}
+.icon-localizacion:before {
+  content: "\e922";
+}
+.icon-lupa:before {
+  content: "\e923";
+}
+.icon-mail:before {
+  content: "\e924";
+}
+.icon-mantenimiento:before {
+  content: "\e925";
+}
+.icon-mas:before {
+  content: "\e926";
+}
+.icon-menu:before {
+  content: "\e927";
+}
+.icon-movil:before {
+  content: "\e928";
+}
+.icon-observaciones:before {
+  content: "\e929";
+}
+.icon-papelera:before {
+  content: "\e92a";
+}
+.icon-perfil:before {
+  content: "\e92b";
+}
+.icon-phone:before {
+  content: "\e92c";
+}
+.icon-piezas:before {
+  content: "\e92d";
+}
+.icon-radiadores:before {
+  content: "\e92e";
+}
+.icon-salir:before {
+  content: "\e92f";
+}
+.icon-servicios:before {
+  content: "\e930";
+}
+.icon-sort:before {
+  content: "\e931";
+}
+.icon-toggle-off:before {
+  content: "\e932";
+}
+.icon-toggle-on:before {
+  content: "\e933";
+}
+.icon-usuario:before {
+  content: "\e934";
+}
+.icon-ver:before {
+  content: "\e935";
+}

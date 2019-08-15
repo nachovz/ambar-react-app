@@ -1,29 +1,39 @@
 import React from 'react';
 import TextField from 'app/components/form/TextField';
 import Typography from 'app/components/ui/Typography';
-
-import { BorderedContainer } from './elements';
+import { BorderedContainer, CenteredDiv } from './elements';
 
 const BoxedInput = ({
-  customLabel,
+  topLabel,
+  topValue,
+  bottomLabel,
   label,
   type,
   ...props
 }) => (
-  <BorderedContainer>
-    {!!customLabel &&
+  <CenteredDiv>
+    <CenteredDiv>
       <Typography>
-        {customLabel}
+        { topLabel }
       </Typography>
-    }
-
-    <TextField
-      label={label}
-      type={type}
-      margin="normal"
-      {...props}
-    />
-  </BorderedContainer>
+      <Typography variant="caption">
+        { topValue }
+      </Typography>
+    </CenteredDiv>
+    <BorderedContainer>
+      {!!bottomLabel &&
+        <Typography>
+          { bottomLabel }
+        </Typography>
+      }
+      <TextField
+        label={label}
+        type={type}
+        margin="normal"
+        {...props}
+      />
+    </BorderedContainer>
+  </CenteredDiv>
 );
 
 export default BoxedInput;

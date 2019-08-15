@@ -1,13 +1,13 @@
 import { styled } from 'styletron-react';
 
-export default styled('div', ({ backgroundColor }) => {
+export default styled('div', ({ $backgroundColor = 'inherit' }) => {
   return {
     display: 'flex',
     fontSize: '20px',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
-    background: backgroundColor || 'inherit',
-    color: (backgroundColor === 'black' && 'white') || 'inherit'
+    background: $backgroundColor,
+    color: ($backgroundColor === 'black' && 'white') || 'inherit'
   };
 });

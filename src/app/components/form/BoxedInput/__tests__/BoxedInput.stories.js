@@ -7,19 +7,23 @@ import BoxedInput from '../';
 storiesOf('BoxedInput', module)
   .add('Primary', () => (
     <BoxedInput
-      customLabel="UND. REAL"
+      bottomLabel="UND. REAL"
       type="number"
      />
   ))
   .add('Grouped', () => (
     <Row centered>
       <BoxedInput
-        customLabel="UND. REAL"
+        topLabel="Und."
+        topValue="8370"
+        bottomLabel="UND. REAL"
         type="number"
         placeholder="22"
       />
       <BoxedInput
-        customLabel="KG. REAL"
+        topLabel="Kg"
+        topValue="-10"
+        bottomLabel="KG. REAL"
         type="number"
       />
     </Row>

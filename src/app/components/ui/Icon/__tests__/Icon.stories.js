@@ -93,7 +93,7 @@ storiesOf('Icon', module)
       }
     </PaddedContainer>
   )).add('appearance - inverted', () => (
-    <PaddedContainer backgroundColor="black">
+    <PaddedContainer $backgroundColor="black">
       {ICONS.map( (icon, ind) => (
         <IconHolder key={ind}>
           <Icon

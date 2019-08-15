@@ -1,7 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import getColor from './palette';
 import tinycolor from 'tinycolor2';
-import 'typeface-roboto';
 
 const theme = createMuiTheme({
   palette: {
@@ -47,7 +46,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontSize: 16
+    fontSize: 14
   },
   mixins: {
     toolbar: {

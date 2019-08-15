@@ -5,7 +5,10 @@ import theme from 'app/styles/material';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { Client as StyletronClient } from 'styletron-engine-atomic';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import './style.css';
+
+// css
+import 'app/css/reset.css';
+import 'typeface-roboto';
 
 // Decorate with styletron and global styles
 const styletron = window.styletronClient || new StyletronClient();

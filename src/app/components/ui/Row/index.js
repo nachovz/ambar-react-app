@@ -1,7 +1,7 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
-import { withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { withStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 
 const styles = {
   root:{
@@ -10,17 +10,27 @@ const styles = {
   },
   centered:{
     justifyContent: 'center'
+  },
+  spaceBetween:{
+    justifyContent: 'space-between'
   }
 }
 
 const Row = ({
   classes,
   centered,
+  spaceBetween,
+  customClass,
   ...props
 }) => (
   <Box
     {...props}
-    className={clsx(classes.root, centered && classes.centered)}
+    className={clsx(
+      classes.root,
+      centered && classes.centered,
+      spaceBetween && classes.spaceBetween,
+      customClass && customClass
+    )}
 />
 );
 

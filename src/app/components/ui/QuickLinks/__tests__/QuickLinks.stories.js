@@ -5,5 +5,8 @@ import QuickLinks from '../';
 
 storiesOf('QuickLinks', module)
   .add('Default', () => (
-    <QuickLinks />
+    <QuickLinks
+      phone="888 999 00 44"
+      mobile="888 999 00 44"
+    />
   ));

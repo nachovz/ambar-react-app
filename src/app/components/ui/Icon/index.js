@@ -6,7 +6,7 @@ import PlaceIcon from '@material-ui/icons/Place';
 import { withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
-import 'app/styles/modules/iconography.css';
+import 'app/css/icons.css';
 
 /* Types
 type Props = {
@@ -65,40 +65,39 @@ type Props = {
 };*/
 
 const styles = {
-  root:{
+  root: {
     width: 'auto',
     height: 'auto',
   }
 };
 
-const Icon = ( {
+const Icon = ({
   color,
   classes,
-  $button,
   fontSize,
   icon,
-  fab=false,
-  button=false,
+  fab = false,
   ...props
-} ) => {
-  const classNames= clsx(`icon-${icon}`);
+}) => {
+  const classNames = clsx(`icon-${icon}`);
   if (!icon) return (
     <AddIcon color={color} />
   );
 
-  if(icon === 'place') return (
+  if (icon === 'place') return (
     <PlaceIcon color={color} />
   );
 
-  return(
+  return (
     <UIIcon
-        color={ color }
-        fontSize={ fontSize === "tiny" ? "inherit" : fontSize }
-        className={classes.root}
-        {...props}
-      >
-        <span className={classNames} />
+      color={color}
+      fontSize={fontSize === "tiny" ? "inherit" : fontSize}
+      className={classes.root}
+      {...props}
+    >
+      <span className={classNames} />
     </UIIcon>
-)};
+  )
+};
 
 export default withStyles(styles)(Icon);

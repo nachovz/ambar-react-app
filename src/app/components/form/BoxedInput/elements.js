@@ -1,8 +1,9 @@
 import React from 'react';
 import getColor from 'app/styles/palette';
 import theme from 'app/styles/material';
-import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
+import { styled } from 'styletron-react';
+import Box from '@material-ui/core/Box';
 
 const styles = {
   borderedBoxMaterialStyles: {
@@ -18,3 +19,8 @@ export const BorderedContainer = withStyles(styles)(
     <Box className={classes.borderedBoxMaterialStyles} {...props} />
   )
 );
+
+export const CenteredDiv = styled('div', {
+  textAlign: 'center',
+  paddingTop: `${theme.spacing(1)}px`
+});

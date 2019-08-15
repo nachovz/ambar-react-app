@@ -19,24 +19,24 @@ const IconHolder = styled('div', {
 storiesOf('FAB', module)
   .add('Primary', () => (
     <Fab color="primary" aria-label="Add">
-      <Icon/>
+      <Icon />
     </Fab>
   ))
   .add('Secondary', () => (
     <Fab color="secondary" aria-label="Add">
-      <Icon/>
+      <Icon />
     </Fab>
   ))
   .add('Icons', () => (
     <PaddedContainer >
       {
         ICONS.map((icon, index) => (
-        <IconHolder key={index}>
-          <Fab color={'primary'}>
-            <Icon icon={icon} fab />
-          </Fab>
-          <span> { icon || "default" } </span>
-        </IconHolder>
+          <IconHolder key={index}>
+            <Fab color="primary" block>
+              <Icon icon={icon} fab />
+            </Fab>
+            <span> {icon || "default"} </span>
+          </IconHolder>
         ))
       }
     </PaddedContainer>
