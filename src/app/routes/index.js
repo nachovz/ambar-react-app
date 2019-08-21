@@ -70,6 +70,12 @@ const CartaPorteClient = Loadable({
   loader: () => import(/* webpackChunkName: 'CartaPorte' */ 'app/pages/CartaPorte/Client')
 });
 
+const RecogidaAddPhoto = Loadable({
+  loading: LoadingOverlay,
+  timeout: 15000,
+  loader: () => import(/* webpackChunkName: 'CartaPorte' */ 'app/pages/Recogida/AddPhoto')
+});
+
 
 const routes = [
   {
@@ -114,6 +120,11 @@ const dashboardRoutes = [
     path: '/recogida-add',
     public: true,
     component: RecogidaAdd
+  },
+  {
+    path: '/recogida-add-photo',
+    public: true,
+    component: RecogidaAddPhoto
   },
   {
     path: '/cartaporte-summary',

@@ -20,7 +20,7 @@ const Recogida = ({ history }) => {
         <TopBar
           title="RECOGIDA"
           actionIcon="camara"
-          action={() => console.log("Action: take picture")}
+          action={() => history.push('recogida-add-photo')}
         />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <TextListElement

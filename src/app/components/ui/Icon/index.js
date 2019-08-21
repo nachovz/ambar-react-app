@@ -3,6 +3,7 @@ import * as React from 'react';
 import UIIcon from '@material-ui/core/Icon';
 import AddIcon from '@material-ui/icons/Add';
 import PlaceIcon from '@material-ui/icons/Place';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
@@ -77,9 +78,11 @@ const Icon = ({
   fontSize,
   icon,
   fab = false,
+  className,
   ...props
 }) => {
-  const classNames = clsx(`icon-${icon}`);
+  const iconClass = clsx(`icon-${icon}`);
+  const classesMerge = clsx(classes.root, className)
   if (!icon) return (
     <AddIcon color={color} />
   );
@@ -88,14 +91,18 @@ const Icon = ({
     <PlaceIcon color={color} />
   );
 
+  if (icon === 'delete') return (
+    <DeleteIcon color={color} />
+  );
+
   return (
     <UIIcon
       color={color}
       fontSize={fontSize === "tiny" ? "inherit" : fontSize}
-      className={classes.root}
+      className={classesMerge}
       {...props}
     >
-      <span className={classNames} />
+      <span className={iconClass} />
     </UIIcon>
   )
 };
