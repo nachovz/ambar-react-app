@@ -3,7 +3,6 @@ import * as React from 'react';
 import UIIcon from '@material-ui/core/Icon';
 import AddIcon from '@material-ui/icons/Add';
 import PlaceIcon from '@material-ui/icons/Place';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
@@ -89,10 +88,6 @@ const Icon = ({
 
   if (icon === 'place') return (
     <PlaceIcon color={color} />
-  );
-
-  if (icon === 'delete') return (
-    <DeleteIcon color={color} />
   );
 
   return (
