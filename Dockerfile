@@ -9,6 +9,7 @@ RUN npm ci && mkdir /react-app && mv ./node_modules ./react-app
 WORKDIR /react-app
 COPY . .
 # Build the application and store artifacts in /react-app/dist
+ENV NODE_PATH src
 RUN npm run build
 
 # STAGE 2: Webserver
