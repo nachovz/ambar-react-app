@@ -9,10 +9,18 @@ import TextField from 'app/components/form/TextField';
 import BoxedInput from 'app/components/form/BoxedInput';
 import Row from 'app/components/ui/Row';
 import StepNavigator from 'app/components/app/StepNavigator';
+import Camera from 'app/components/app/Camera';
+import Modal from 'app/components/containers/Modal';
+import Icon from 'app/components/ui/Icon';
+import { CloseContainer } from './elements';
 
 const Recogida = ({ history }) => {
   const moveBack = () => history.goBack();
   const moveNext = () => history.push('cartaporte');
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  }
 
   return(
     <React.Fragment>
@@ -20,7 +28,7 @@ const Recogida = ({ history }) => {
         <TopBar
           title="RECOGIDA"
           actionIcon="camara"
-          action={() => history.push('recogida-add-photo')}
+          action={() => setOpen(true)}
         />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <TextListElement
@@ -75,6 +83,17 @@ const Recogida = ({ history }) => {
           actionIcon="papelera"
         />
       </List>
+      <Modal
+        open={open}
+        onClose={handleClose}
+      >
+        <div>
+          <CloseContainer>
+            <Icon icon="cerrar" onClick={handleClose} />
+          </CloseContainer>
+          <Camera isFullscreen={true}/>
+        </div>
+      </Modal>
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
