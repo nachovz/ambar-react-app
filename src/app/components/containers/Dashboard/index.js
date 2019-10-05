@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { MenuProvider } from 'app/contexts/Menu';
 import Navbar from 'app/components/app/Navbar';
@@ -12,5 +13,6 @@ const Dashboard = ({ children }) => {
     </MenuProvider>
   );
 };
+
 
 export default Dashboard;

@@ -15,15 +15,9 @@ export const Logo = styled('img', {
   marginBottom: '80px'
 });
 
-export const FieldWrapper = styled('section', {
-  marginBottom: '40px',
+export const FormWrapper = styled('div', {
   width: '100%'
 });
-
-export const ButtonWrapper = styled('section', {
-  marginTop: '40px',
-  width: '100%'
-})
 
 export const Footer = styled('section', {
   position: 'absolute',

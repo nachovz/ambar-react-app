@@ -1,0 +1,1571 @@
+{
+    "routes": {
+        "441670b1-fc48-4047-acab-1862ce9df24c-20190910": {
+            "id": "441670b1-fc48-4047-acab-1862ce9df24c-20190910",
+            "revision": 11257,
+            "date": "20190910",
+            "vehicleId": "441670b1-fc48-4047-acab-1862ce9df24c",
+            "driverId": "e907f8a9-1647-4226-940a-fd995c45c139",
+            "vehicleViolations": [
+                "LD"
+            ],
+            "steps": [
+                {
+                    "type": "departure",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 0,
+                    "startSec": 0,
+                    "endSec": 32400,
+                    "driveToNextSec": 2537,
+                    "distanceToNextMt": 42338,
+                    "stopIdx": 0,
+                    "displayLabel": "",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "f267d387-8437-4456-a58a-715c5f5b4a83",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 34937,
+                    "startSec": 34937,
+                    "endSec": 43697,
+                    "driveToNextSec": 794,
+                    "distanceToNextMt": 4801,
+                    "stopIdx": 1,
+                    "displayLabel": "1",
+                    "violations": [
+                        "TGO",
+                        "PDM"
+                    ]
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "2a14e14c-acbe-4930-808b-569bb9645ad2",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 44491,
+                    "startSec": 44491,
+                    "endSec": 47491,
+                    "driveToNextSec": 651,
+                    "distanceToNextMt": 5791,
+                    "stopIdx": 2,
+                    "displayLabel": "2",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "8ba6f7e5-1c23-40df-aff0-bf31b820fd93",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 48142,
+                    "startSec": 48142,
+                    "endSec": 49522,
+                    "driveToNextSec": 828,
+                    "distanceToNextMt": 8550,
+                    "stopIdx": 3,
+                    "displayLabel": "3",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "f9539a56-8b9f-4f9f-870c-c8ed5b21f7be",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 50350,
+                    "startSec": 50350,
+                    "endSec": 51790,
+                    "driveToNextSec": 220,
+                    "distanceToNextMt": 912,
+                    "stopIdx": 4,
+                    "displayLabel": "4",
+                    "violations": []
+                },
+                {
+                    "type": "brk",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": -1,
+                    "startSec": 51790,
+                    "endSec": 55330,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": -1,
+                    "displayLabel": "",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "d9f4394a-db42-4a87-aca2-6a219bf30a52",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 55550,
+                    "startSec": 55550,
+                    "endSec": 58550,
+                    "driveToNextSec": 1170,
+                    "distanceToNextMt": 6068,
+                    "stopIdx": 5,
+                    "displayLabel": "5",
+                    "violations": [
+                        "TW"
+                    ]
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "f283cf50-dc13-4c48-91c2-3f4802496bf0",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 59720,
+                    "startSec": 59720,
+                    "endSec": 61700,
+                    "driveToNextSec": 3767,
+                    "distanceToNextMt": 54941,
+                    "stopIdx": 6,
+                    "displayLabel": "6",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "8ba6f7e5-1c23-40df-aff0-bf31b820fd93",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65467,
+                    "startSec": 65467,
+                    "endSec": 65467,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 7,
+                    "displayLabel": "7",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "2a14e14c-acbe-4930-808b-569bb9645ad2",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65467,
+                    "startSec": 65467,
+                    "endSec": 65467,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 7,
+                    "displayLabel": "8",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "f9539a56-8b9f-4f9f-870c-c8ed5b21f7be",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65467,
+                    "startSec": 65467,
+                    "endSec": 65467,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 7,
+                    "displayLabel": "9",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "f283cf50-dc13-4c48-91c2-3f4802496bf0",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65467,
+                    "startSec": 65467,
+                    "endSec": 65467,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 7,
+                    "displayLabel": "10",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "d9f4394a-db42-4a87-aca2-6a219bf30a52",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65467,
+                    "startSec": 65467,
+                    "endSec": 65467,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 7,
+                    "displayLabel": "11",
+                    "violations": []
+                },
+                {
+                    "type": "arrival",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65467,
+                    "startSec": 65467,
+                    "endSec": 65467,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 7,
+                    "displayLabel": "",
+                    "violations": []
+                }
+            ],
+            "trackingData": null
+        },
+        "441670b1-fc48-4047-acab-1862ce9df24c-20190906": {
+            "id": "441670b1-fc48-4047-acab-1862ce9df24c-20190906",
+            "revision": 11246,
+            "date": "20190906",
+            "vehicleId": "441670b1-fc48-4047-acab-1862ce9df24c",
+            "driverId": "e907f8a9-1647-4226-940a-fd995c45c139",
+            "vehicleViolations": [],
+            "steps": [
+                {
+                    "type": "departure",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 0,
+                    "startSec": 0,
+                    "endSec": 32400,
+                    "driveToNextSec": -1,
+                    "distanceToNextMt": -1,
+                    "stopIdx": 0,
+                    "displayLabel": "",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "2c84b824-0bb7-4c50-8776-b79d5cfab3df",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 32400,
+                    "startSec": 32400,
+                    "endSec": 37584,
+                    "driveToNextSec": -1,
+                    "distanceToNextMt": -1,
+                    "stopIdx": 1,
+                    "displayLabel": "8.2",
+                    "violations": [],
+                    "trackingData": {
+                        "driverId": "e907f8a9-1647-4226-940a-fd995c45c139",
+                        "vehicleId": "441670b1-fc48-4047-acab-1862ce9df24c",
+                        "timeInSec": 32400,
+                        "timeInLatLng": [
+                            40277676,
+                            -3803427
+                        ],
+                        "timeOutSec": 37584,
+                        "timeOutLatLng": [
+                            40277511,
+                            -3803777
+                        ],
+                        "status": null,
+                        "statusSec": -1,
+                        "statusLatLng": null,
+                        "timeInDetectedSec": 32488,
+                        "timeInDetectedLatLng": [
+                            40277680,
+                            -3803492
+                        ],
+                        "timeOutDetectedSec": -1,
+                        "timeOutDetectedLatLng": null,
+                        "pods": null
+                    }
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "88de68ec-daaf-48ac-9177-082886dfbc0d",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 38747,
+                    "startSec": 38747,
+                    "endSec": 41538,
+                    "driveToNextSec": 1655,
+                    "distanceToNextMt": 16350,
+                    "stopIdx": 2,
+                    "displayLabel": "8.1",
+                    "violations": [],
+                    "trackingData": {
+                        "driverId": "e907f8a9-1647-4226-940a-fd995c45c139",
+                        "vehicleId": "441670b1-fc48-4047-acab-1862ce9df24c",
+                        "timeInSec": 38747,
+                        "timeInLatLng": [
+                            40277511,
+                            -3803777
+                        ],
+                        "timeOutSec": 41538,
+                        "timeOutLatLng": [
+                            40277511,
+                            -3803777
+                        ],
+                        "status": null,
+                        "statusSec": -1,
+                        "statusLatLng": null,
+                        "timeInDetectedSec": -1,
+                        "timeInDetectedLatLng": null,
+                        "timeOutDetectedSec": -1,
+                        "timeOutDetectedLatLng": null,
+                        "pods": null
+                    }
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "98cc37bd-a147-455a-92ec-329e38fffe5f",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 43193,
+                    "startSec": 43193,
+                    "endSec": 48473,
+                    "driveToNextSec": 3612,
+                    "distanceToNextMt": 58429,
+                    "stopIdx": 3,
+                    "displayLabel": "8.3",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "2c84b824-0bb7-4c50-8776-b79d5cfab3df",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 52085,
+                    "startSec": 52085,
+                    "endSec": 52085,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 4,
+                    "displayLabel": "8.4",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "88de68ec-daaf-48ac-9177-082886dfbc0d",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 52085,
+                    "startSec": 52085,
+                    "endSec": 52085,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 4,
+                    "displayLabel": "8.5",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "98cc37bd-a147-455a-92ec-329e38fffe5f",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 52085,
+                    "startSec": 52085,
+                    "endSec": 52085,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 4,
+                    "displayLabel": "8.6",
+                    "violations": []
+                },
+                {
+                    "type": "arrival",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 52085,
+                    "startSec": 52085,
+                    "endSec": 52085,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 4,
+                    "displayLabel": "",
+                    "violations": []
+                }
+            ],
+            "trackingData": null
+        },
+        "441670b1-fc48-4047-acab-1862ce9df24c-20190909": {
+            "id": "441670b1-fc48-4047-acab-1862ce9df24c-20190909",
+            "revision": 11255,
+            "date": "20190909",
+            "vehicleId": "441670b1-fc48-4047-acab-1862ce9df24c",
+            "driverId": "e907f8a9-1647-4226-940a-fd995c45c139",
+            "vehicleViolations": [
+                "LD"
+            ],
+            "steps": [
+                {
+                    "type": "departure",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 0,
+                    "startSec": 0,
+                    "endSec": 35896,
+                    "driveToNextSec": 2031,
+                    "distanceToNextMt": 26466,
+                    "stopIdx": 0,
+                    "displayLabel": "",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "38402557-bfc3-4b7a-befc-05409350fef6",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 37927,
+                    "startSec": 37927,
+                    "endSec": 40327,
+                    "driveToNextSec": 151,
+                    "distanceToNextMt": 618,
+                    "stopIdx": 1,
+                    "displayLabel": "8.1",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "868bf8ed-795c-4723-9a2c-e6dc855f1d4f",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 40478,
+                    "startSec": 40478,
+                    "endSec": 43418,
+                    "driveToNextSec": 582,
+                    "distanceToNextMt": 2516,
+                    "stopIdx": 2,
+                    "displayLabel": "8.2",
+                    "violations": [
+                        "PDM"
+                    ]
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "32e2285e-b25b-40b8-b388-6aa5e3f86921",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 44000,
+                    "startSec": 44000,
+                    "endSec": 50600,
+                    "driveToNextSec": 2100,
+                    "distanceToNextMt": 26724,
+                    "stopIdx": 3,
+                    "displayLabel": "8.3",
+                    "violations": []
+                },
+                {
+                    "type": "brk",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": -1,
+                    "startSec": 50600,
+                    "endSec": 54140,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": -1,
+                    "displayLabel": "",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "38402557-bfc3-4b7a-befc-05409350fef6",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 56240,
+                    "startSec": 56240,
+                    "endSec": 56240,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 4,
+                    "displayLabel": "8.4",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "32e2285e-b25b-40b8-b388-6aa5e3f86921",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 56240,
+                    "startSec": 56240,
+                    "endSec": 56240,
+                    "driveToNextSec": 1360,
+                    "distanceToNextMt": 8066,
+                    "stopIdx": 4,
+                    "displayLabel": "8.5",
+                    "violations": []
+                },
+                {
+                    "type": "pickup",
+                    "orderId": "f9b9977e-027a-49fb-84c5-8e337f46cf2c",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 57600,
+                    "startSec": 57600,
+                    "endSec": 63900,
+                    "driveToNextSec": 1210,
+                    "distanceToNextMt": 8063,
+                    "stopIdx": 5,
+                    "displayLabel": "8.6",
+                    "violations": []
+                },
+                {
+                    "type": "delivery",
+                    "orderId": "f9b9977e-027a-49fb-84c5-8e337f46cf2c",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65110,
+                    "startSec": 65110,
+                    "endSec": 65110,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 6,
+                    "displayLabel": "8.7",
+                    "violations": []
+                },
+                {
+                    "type": "arrival",
+                    "idleTimeSec": 0,
+                    "perStopTimeSec": 0,
+                    "arrivalSec": 65110,
+                    "startSec": 65110,
+                    "endSec": 65110,
+                    "driveToNextSec": 0,
+                    "distanceToNextMt": 0,
+                    "stopIdx": 6,
+                    "displayLabel": "",
+                    "violations": []
+                }
+            ],
+            "trackingData": null
+        }
+    },
+    "orders": {
+        "2c84b824-0bb7-4c50-8776-b79d5cfab3df": {
+            "id": "2c84b824-0bb7-4c50-8776-b79d5cfab3df",
+            "name": "GOBLACAR, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190906"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 0,
+            "loads": {
+                "kg": 72864,
+                "superficie": 125,
+                "m3": 594
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/TEIDE 6, FUENLABRADA, Madrid, 28944",
+                    "latLng": [
+                        40277685,
+                        -3805708
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 4020,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "229266_amb",
+                    "Cliente": "398307"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "38402557-bfc3-4b7a-befc-05409350fef6": {
+            "id": "38402557-bfc3-4b7a-befc-05409350fef6",
+            "name": "TALLERES PEGASO, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190909",
+                    "20190910",
+                    "20190911"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 35184,
+                "superficie": 50,
+                "m3": 108
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "PEGASO Nº 30, MADRID, Madrid, 28043",
+                    "latLng": [
+                        40464927,
+                        -3649413
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 2400,
+                "tagsIn": [],
+                "tagsOut": [
+                    "0831csk",
+                    "9462dnv",
+                    "1093kdt",
+                    "5292fgx",
+                    "1689jhb",
+                    "6526htd",
+                    "0083knz",
+                    "1439hnx",
+                    "9252jjm"
+                ],
+                "customFields": {
+                    "Pedido de servicio": "228574_amb",
+                    "Cliente": "393380"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "32e2285e-b25b-40b8-b388-6aa5e3f86921": {
+            "id": "32e2285e-b25b-40b8-b388-6aa5e3f86921",
+            "name": "TALLERES PALOMO, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190909"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 96224,
+                "superficie": 200,
+                "m3": 318
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ TRIBALDOS, 6   VILLAROSA A CANILLAS, MADRID, Madrid, 28043",
+                    "latLng": [
+                        40467358,
+                        -3632305
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 28800,
+                        "endSec": 72000
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 6600,
+                "tagsIn": [],
+                "tagsOut": [
+                    "9213jjm",
+                    "3511jty",
+                    "0831csk",
+                    "1093kdt",
+                    "5292fgx",
+                    "1689jhb",
+                    "6526htd",
+                    "0083knz",
+                    "1439hnx",
+                    "9252jjm"
+                ],
+                "customFields": {
+                    "Pedido de servicio": "229869_amb",
+                    "Cliente": "393123"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "868bf8ed-795c-4723-9a2c-e6dc855f1d4f": {
+            "id": "868bf8ed-795c-4723-9a2c-e6dc855f1d4f",
+            "name": "CARROCERIAS CANILLAS",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190909"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 0,
+            "loads": {
+                "kg": 27664,
+                "m3": 274
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ ALEJANDRO VILLEGAS, 29, MADRID, Madrid, 28043",
+                    "latLng": [
+                        40464903,
+                        -3651082
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 28800,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 55800,
+                        "endSec": 64800
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 2940,
+                "tagsIn": [],
+                "tagsOut": [
+                    "9213jjm",
+                    "3511jty",
+                    "0831csk",
+                    "1093kdt",
+                    "5292fgx",
+                    "1689jhb",
+                    "6526htd",
+                    "0083knz",
+                    "1439hnx",
+                    "9252jjm"
+                ],
+                "customFields": {
+                    "Pedido de servicio": "229856_amb",
+                    "Cliente": "393034"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "2a14e14c-acbe-4930-808b-569bb9645ad2": {
+            "id": "2a14e14c-acbe-4930-808b-569bb9645ad2",
+            "name": "SATAFI MOTOR, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190910"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 34400,
+                "superficie": 25,
+                "m3": 257
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "HERREROS 35  P.I. LOS ANGELES, GETAFE, Madrid, 28906",
+                    "latLng": [
+                        40308690,
+                        -3698475
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 3000,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "228564_amb",
+                    "Cliente": "393254"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "88de68ec-daaf-48ac-9177-082886dfbc0d": {
+            "id": "88de68ec-daaf-48ac-9177-082886dfbc0d",
+            "name": "EDEN ARTES GRAFICAS, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190906"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 24640,
+                "superficie": 25,
+                "m3": 78
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "VALLE DE TOBALINA, 58 NAVE E, MADRID, Madrid, 28021",
+                    "latLng": [
+                        40334597,
+                        -3717221
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 4020,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "230354_amb",
+                    "Cliente": "386926"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "98cc37bd-a147-455a-92ec-329e38fffe5f": {
+            "id": "98cc37bd-a147-455a-92ec-329e38fffe5f",
+            "name": "DA SILVA FERNANDES ELIEZER",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190906"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 24224,
+                "superficie": 100,
+                "m3": 304
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ CUENCA, 19, HUMANES DE MADRID, Madrid, 28970",
+                    "latLng": [
+                        40274443,
+                        -3818187
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 5280,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "230383_amb",
+                    "Cliente": "397293"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "f283cf50-dc13-4c48-91c2-3f4802496bf0": {
+            "id": "f283cf50-dc13-4c48-91c2-3f4802496bf0",
+            "name": "MARTE ALONZO JOSE FRANCISCO",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190910"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 53279,
+                "superficie": 25,
+                "m3": 92
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ DEL PLOMO, 21, NAVE 2, SAN MARTIN DE LA VEGA, Madrid, 28330",
+                    "latLng": [
+                        40233847,
+                        -3641051
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 1980,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "230596_amb",
+                    "Cliente": "398361"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "f267d387-8437-4456-a58a-715c5f5b4a83": {
+            "id": "f267d387-8437-4456-a58a-715c5f5b4a83",
+            "name": "MORE AUTOMOCION, S.L. (FUTUR WAGEN)",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190910",
+                    "20190911",
+                    "20190912"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 204624,
+                "superficie": 550,
+                "m3": 1107
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ RESINA, 29 NAVE E, MADRID, Madrid, 28021",
+                    "latLng": [
+                        40335790,
+                        -3705222
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 8760,
+                "tagsIn": [],
+                "tagsOut": [
+                    "9213jjm",
+                    "3644gbx",
+                    "3511jty",
+                    "9462dnv",
+                    "1093kdt",
+                    "1689jhb",
+                    "6506jvc",
+                    "0083knz",
+                    "2163fts",
+                    "9252jjm"
+                ],
+                "customFields": {
+                    "Pedido de servicio": "233486_amb",
+                    "Cliente": "395151"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "f9b9977e-027a-49fb-84c5-8e337f46cf2c": {
+            "id": "f9b9977e-027a-49fb-84c5-8e337f46cf2c",
+            "name": "STELIAN CIRSTEA BOGDAN",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190909",
+                    "20190910",
+                    "20190911"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 0,
+            "loads": {
+                "kg": 80064,
+                "superficie": 25,
+                "m3": 476
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "COLMENAR DE OREJA, NAVE 17, ALCALÁ DE HENARES, Madrid, 28805",
+                    "latLng": [
+                        40495574,
+                        -3347671
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 6300,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "230244_amb",
+                    "Cliente": "389278"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "f9539a56-8b9f-4f9f-870c-c8ed5b21f7be": {
+            "id": "f9539a56-8b9f-4f9f-870c-c8ed5b21f7be",
+            "name": "HNOS. GOZALO NEBREDA, C.B.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190910"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 20800,
+                "superficie": 25,
+                "m3": 35
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ ORO, 18 BIS, SAN MARTIN DE LA VEGA, Madrid, 28330",
+                    "latLng": [
+                        40228018,
+                        -3637435
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 1440,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "229962_amb",
+                    "Cliente": "387142"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "8ba6f7e5-1c23-40df-aff0-bf31b820fd93": {
+            "id": "8ba6f7e5-1c23-40df-aff0-bf31b820fd93",
+            "name": "SUMICAR AUTO, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190910"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 0,
+            "loads": {
+                "kg": 9120,
+                "superficie": 25,
+                "m3": 74
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "AUTOVIA DEL SUR KM 18,300 NAVE 13A, PINTO, Madrid, 28320",
+                    "latLng": [
+                        40262659,
+                        -3691510
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 28800,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 54000,
+                        "endSec": 63000
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 1380,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "233432_amb",
+                    "Cliente": "393633"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        },
+        "d9f4394a-db42-4a87-aca2-6a219bf30a52": {
+            "id": "d9f4394a-db42-4a87-aca2-6a219bf30a52",
+            "name": "EMPORIORUEDA, S.L.",
+            "eligibility": {
+                "type": "on",
+                "onDates": [
+                    "20190910"
+                ]
+            },
+            "forceVehicleId": null,
+            "priority": 20,
+            "loads": {
+                "kg": 84640,
+                "superficie": 100,
+                "m3": 229
+            },
+            "pickup": {
+                "depotId": null,
+                "location": {
+                    "address": "C/ PLOMO, 6 NAVE 17, SAN MARTIN DE LA VEGA, Madrid, 28330",
+                    "latLng": [
+                        40229947,
+                        -3642205
+                    ],
+                    "status": "OK",
+                    "geoAddress": ""
+                },
+                "timeWindows": [
+                    {
+                        "startSec": 32400,
+                        "endSec": 50400
+                    },
+                    {
+                        "startSec": 57600,
+                        "endSec": 68400
+                    }
+                ],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 3000,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {
+                    "Pedido de servicio": "230034_amb",
+                    "Cliente": "369819"
+                }
+            },
+            "delivery": {
+                "depotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                "location": null,
+                "timeWindows": [],
+                "timeWindowExceptions": {},
+                "notes": "",
+                "phone": null,
+                "email": null,
+                "serviceTimeSec": 0,
+                "tagsIn": [],
+                "tagsOut": [],
+                "customFields": {}
+            },
+            "isService": false
+        }
+    },
+    "vehicles": {
+        "441670b1-fc48-4047-acab-1862ce9df24c": {
+            "id": "441670b1-fc48-4047-acab-1862ce9df24c",
+            "idx": 8,
+            "externalId": "6506JVC",
+            "tracked": true,
+            "color": "000000",
+            "gpsDeviceId": null,
+            "settings": {
+                "20190906": {
+                    "available": true,
+                    "notes": "",
+                    "departureDepotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                    "arrivalDepotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                    "timeWindow": {
+                        "startSec": 32400,
+                        "endSec": 54000
+                    },
+                    "flexStartTime": true,
+                    "perStopCost": 0,
+                    "perStopTimeSec": 0,
+                    "maxWorkingTimeSec": 0,
+                    "maxDrivingTimeSec": 0,
+                    "maxDistanceMt": 0,
+                    "maxOrders": 0,
+                    "breaks": [],
+                    "loadCapacities": {
+                        "kg": 133000,
+                        "superficie": 600,
+                        "m3": 1300
+                    },
+                    "regionIds": [],
+                    "activationCost": 0,
+                    "drivingTimeCost": 2000,
+                    "idleTimeCost": 2000,
+                    "serviceTimeCost": 2000,
+                    "breakTimeCost": 2000,
+                    "kmCost": 100,
+                    "tags": [
+                        "tipo4",
+                        "tipo1",
+                        "6506jvc"
+                    ],
+                    "speedFactor": 70
+                },
+                "20190909": {
+                    "available": true,
+                    "notes": "",
+                    "departureDepotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                    "arrivalDepotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                    "timeWindow": {
+                        "startSec": 32400,
+                        "endSec": 66600
+                    },
+                    "flexStartTime": true,
+                    "perStopCost": 0,
+                    "perStopTimeSec": 0,
+                    "maxWorkingTimeSec": 0,
+                    "maxDrivingTimeSec": 0,
+                    "maxDistanceMt": 0,
+                    "maxOrders": 0,
+                    "breaks": [
+                        {
+                            "startSec": 48600,
+                            "endSec": 52200,
+                            "durationSec": 3540
+                        }
+                    ],
+                    "loadCapacities": {
+                        "kg": 133000,
+                        "superficie": 600,
+                        "m3": 1300
+                    },
+                    "regionIds": [],
+                    "activationCost": 0,
+                    "drivingTimeCost": 0,
+                    "idleTimeCost": 0,
+                    "serviceTimeCost": 0,
+                    "breakTimeCost": 0,
+                    "kmCost": 300,
+                    "tags": [
+                        "tipo4",
+                        "tipo1",
+                        "6506jvc"
+                    ],
+                    "speedFactor": 70
+                },
+                "20190910": {
+                    "available": true,
+                    "notes": "",
+                    "departureDepotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                    "arrivalDepotId": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+                    "timeWindow": {
+                        "startSec": 32400,
+                        "endSec": 66600
+                    },
+                    "flexStartTime": true,
+                    "perStopCost": 0,
+                    "perStopTimeSec": 0,
+                    "maxWorkingTimeSec": 0,
+                    "maxDrivingTimeSec": 0,
+                    "maxDistanceMt": 0,
+                    "maxOrders": 0,
+                    "breaks": [
+                        {
+                            "startSec": 48600,
+                            "endSec": 52200,
+                            "durationSec": 3540
+                        }
+                    ],
+                    "loadCapacities": {
+                        "kg": 133000,
+                        "superficie": 600,
+                        "m3": 1300
+                    },
+                    "regionIds": [],
+                    "activationCost": 0,
+                    "drivingTimeCost": 0,
+                    "idleTimeCost": 0,
+                    "serviceTimeCost": 0,
+                    "breakTimeCost": 0,
+                    "kmCost": 300,
+                    "tags": [
+                        "tipo4",
+                        "tipo1",
+                        "6506jvc"
+                    ],
+                    "speedFactor": 70
+                }
+            }
+        }
+    },
+    "depots": {
+        "f02e111d-f75e-45ac-9c7c-b923eff24c92": {
+            "id": "f02e111d-f75e-45ac-9c7c-b923eff24c92",
+            "name": "Alcala",
+            "setupCost": -1,
+            "setupTimeSec": -1,
+            "location": {
+                "address": "Ambar Plus, Calle Marruecos, Alcalá de Henares, España",
+                "latLng": [
+                    40495512,
+                    -3406381
+                ],
+                "status": "OK",
+                "geoAddress": "Carretera Ajalvir, 28B, 28806 Alcalá de Henares, Madrid, España"
+            },
+            "color": "00FFF9"
+        }
+    },
+    "drivers": {
+        "e907f8a9-1647-4226-940a-fd995c45c139": {
+            "id": "e907f8a9-1647-4226-940a-fd995c45c139",
+            "name": "Petru P13",
+            "email": "pdorinp13@gmail.com",
+            "gpsDeviceId": "77208"
+        }
+    }
+}

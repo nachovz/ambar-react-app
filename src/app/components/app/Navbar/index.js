@@ -7,7 +7,7 @@ import Typography from 'app/components/ui/Typography';
 import { Nav, MenuAction } from './elements';
 
 const Navbar = ({ history }) => {
-  const [_, setMenuState] = useMenuContext();
+  const [, setMenuState] = useMenuContext();
   const openMenu = () => setMenuState(true);
   const goHome = () => history.push('/');
 

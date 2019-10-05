@@ -1,86 +1,43 @@
 import React, { Fragment, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import getToken from 'app/utils/auth/getToken';
 import TextField from 'app/components/form/TextField';
 import SelectField from 'app/components/form/SelectField';
+import QRReader from 'app/components/app/QRReader';
 import Button from 'app/components/ui/Button';
 import Typography from 'app/components/ui/Typography';
-import { Main, Logo, FieldWrapper, ButtonWrapper, Footer } from './elements';
+import AuthenticationForm from 'app/components/auth/AuthenticationForm';
+import CompanyInformationForm from 'app/components/auth/CompanyInformationForm';
+import { Main, FormWrapper, Logo, Footer } from './elements';
 
 import ambar from 'app/images/ambar.png';
 
-const Login = ({ history }) => {
+const Login = () => {
   const [step, setStep] = useState(0);
 
   const changeStep = () => {
-    if (step === 2) {
-      history.push('/');
-    } else {
-      setStep(step + 1);
-    }
+    setStep(step + 1);
   };
+
+  if (getToken() && step === 0) {
+    changeStep();
+  }
+
+  if (step === 2) {
+    return <Redirect to="/" />
+  }
 
   return (
     <Main>
       <Logo src={ambar} alt="ambar" />
-      {step === 0 && (
-        <Fragment>
-          <FieldWrapper>
-            <TextField placeholder="email" type="email" />
-          </FieldWrapper>
-          <FieldWrapper>
-            <TextField placeholder="password" type="password" />
-          </FieldWrapper>
-        </Fragment>
-      )}
-      {step === 1 && (
-        <Typography variant="h6">
-          Read QR
-        </Typography>
-      )}
-      {step === 2 && (
-        <Fragment>
-          <FieldWrapper>
-            <SelectField
-              fullWidth
-              label="Seleccionar ID de Empresa"
-              options={[{
-                label: 'Some id',
-                value: 'Some value'
-              }]}
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <SelectField
-              fullWidth
-              label="Seleccionar ID de Tecnico"
-              options={[{
-                label: 'Some id',
-                value: 'Some value'
-              }]}
-            />
-          </FieldWrapper>
-          <FieldWrapper>
-            <SelectField
-              fullWidth
-              label="Seleccionar ID de Matricula"
-              options={[{
-                label: 'Some id',
-                value: 'Some value'
-              }]}
-            />
-          </FieldWrapper>
-        </Fragment>
-      )}
-      <ButtonWrapper>
-        <Button
-          color="primary"
-          variant="contained"
-          fullWidth
-          onClick={changeStep}
-        >
-          Entrar
-        </Button>
-      </ButtonWrapper>
+      <FormWrapper>
+        {step === 0 && (
+          <AuthenticationForm onAuthorized={changeStep} />
+        )}
+        {step === 1 && (
+          <CompanyInformationForm onVerified={changeStep} />
+        )}
+      </FormWrapper>
       <Footer>
         <Typography variant="caption" color="textSecondary">
           Ambar Plus S.A.
@@ -90,4 +47,4 @@ const Login = ({ history }) => {
   );
 };
 
-export default withRouter(Login);
+export default Login;
