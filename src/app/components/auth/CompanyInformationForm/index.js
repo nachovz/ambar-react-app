@@ -8,6 +8,7 @@ import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useRutasContext } from 'app/contexts/Rutas';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
+import RUTAS from 'app/constants/mock.json';
 
 const CompanyInformationForm = ({ onVerified }) => {
   const [showQr, setShowQr] = useState(false);
@@ -29,8 +30,8 @@ const CompanyInformationForm = ({ onVerified }) => {
   const verifyInformation = async ({ companyId, userId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.WORKWAVE_VEHICLES}/${vehicleId}`);
-      setRutasState({ ...rutas, selected: null });
+      // const rutas = await client.get(`${ENDPOINTS.WORKWAVE_VEHICLES}/${vehicleId}`);
+      setRutasState({ ...RUTAS, selected: null });
       setLoadingState(false);
       onVerified();
     } catch (error) {
