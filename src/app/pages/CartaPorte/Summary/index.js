@@ -12,7 +12,7 @@ import StepNavigator from 'app/components/app/StepNavigator';
 const CartaPorteSummary = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const moveBack = () => history.goBack();
-  const moveNext = () => history.push('cartaporte');
+  const moveNext = () => history.push('/cartaporte-signature');
 
   const { selected } = rutas;
   if(!selected){

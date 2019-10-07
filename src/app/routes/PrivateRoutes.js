@@ -85,6 +85,15 @@ const routes = [
       timeout: 15000,
       loader: () => import(/* webpackChunkName: 'CartaPorte' */ 'app/pages/CartaPorte/Client')
     })
+  },
+  {
+    path: '/cartaporte-signature',
+    public: true,
+    component: Loadable({
+      loading: LoadingOverlay,
+      timeout: 15000,
+      loader: () => import(/* webpackChunkName: 'CartaPorte' */ 'app/pages/CartaPorte/Signature')
+    })
   }
 ];
 
