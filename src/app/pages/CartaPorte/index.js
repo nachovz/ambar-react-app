@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { withRouter } from "react-router";
+import { Redirect } from 'react-router';
+import { useRutasContext } from 'app/contexts/Rutas';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import DateBar from 'app/components/ui/DateBar';
@@ -9,7 +11,27 @@ import Icon from 'app/components/ui/Icon';
 import StepNavigator from 'app/components/app/StepNavigator';
 
 const CartaPorte = ({ history }) => {
+  const [rutas, setRutasState] = useRutasContext();
   const moveTo = (route) => () => history.push(route);
+  const { selected } = rutas;
+
+  if(!selected){
+    history.push('/');
+    return null;
+  }
+
+  console.log(rutas);
+
+  const onSelectedRecogida = (selectedRecogida) => () => {
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected,
+        selectedRecogida
+      }
+    });
+    history.push("/recogida");
+  };
 
   return (
     <Fragment>
@@ -20,85 +42,20 @@ const CartaPorte = ({ history }) => {
           action={() => console.log("Action: open PDF")}
         />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="16060100"
-          subtitle="RP_Baterías de plomo"
-          actionIcon="arrow_right"
-          action={() => history.push("/recogida")}
-          onClick={() => history.push("/recogida")}
-        />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="15020203"
-          subtitle="RP_Trapos contaminados"
-          actionIcon="arrow_right"
-        />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="16050401"
-          subtitle="RP_Aerosoles y Sprais"
-          actionIcon="arrow_right"
-        />
-        <TextListElement
-          disabled
-          icon="mantenimiento"
-          title="16050401"
-          subtitle="RP_Aerosoles y Sprais"
-          actionIcon="toggle-on"
-        />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="15020203"
-          subtitle="RP_Trapos contaminados"
-          actionIcon="arrow_right"
-        />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="16050401"
-          subtitle="RP_Aerosoles y Sprais"
-          actionIcon="arrow_right"
-        />
-        <TextListElement
-          disabled
-          icon="mantenimiento"
-          title="16050401"
-          subtitle="RP_Aerosoles y Sprais"
-          actionIcon="toggle-on"
-        />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="15020203"
-          subtitle="RP_Trapos contaminados"
-          actionIcon="arrow_right"
-        />
-        <TextListElement
-          button
-          iconColor="primary"
-          icon="mantenimiento"
-          title="16050401"
-          subtitle="RP_Aerosoles y Sprais"
-          actionIcon="arrow_right"
-        />
-        <TextListElement
-          disabled
-          icon="mantenimiento"
-          title="16050401"
-          subtitle="RP_Aerosoles y Sprais"
-          actionIcon="toggle-on"
-        />
+        {selected.recogidas.map( (reco,index) => (
+          <TextListElement
+            key={index}
+            button
+            iconColor="primary"
+            icon="mantenimiento"
+            title={reco.id}
+            subtitle={reco.desc}
+            actionIcon={reco.done ? "toggle-on" : "arrow_right"}
+            disabled={reco.done}
+            onClick={onSelectedRecogida(reco)}
+            action={onSelectedRecogida(reco)}
+          />
+        ))}
       </List>
       <Fab
         color="primary"

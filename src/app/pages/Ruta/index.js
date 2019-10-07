@@ -12,9 +12,80 @@ const Ruta = ({ history }) => {
 
   if (!orders) return <Redirect to="/login" />;
 
-  const showInfo = (selected) => () => {
-    setRutasState({ ...rutas, selected });
-    history.push("/quickview");
+  const showInfo = (selected, route) => () => {
+    setRutasState({
+      ...rutas,
+      selected:{
+        recogidas: [
+          {
+            id: 16060100,
+            desc: "RP_Baterías de plomo",
+            unidades: 8370,
+            kg: 10,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 15020203,
+            desc: "RP_Trapos contaminados",
+            unidades: 2222,
+            kg: 20,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 16050401,
+            desc: "RP_Aerosoles y  sprais",
+            unidades: 3333,
+            kg: 30,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 16060100,
+            desc: "RP_Baterías de plomo",
+            unidades: 8370,
+            kg: 10,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 15020203,
+            desc: "RP_Trapos contaminados",
+            unidades: 2222,
+            kg: 20,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 16050401,
+            desc: "RP_Aerosoles y sprais",
+            unidades: 3333,
+            kg: 30,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 16060100,
+            desc: "RP_Baterías de plomo",
+            unidades: 8370,
+            kg: 10,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 15020203,
+            desc: "RP_Trapos contaminados",
+            unidades: 2222,
+            kg: 20,
+            observaciones: "",
+            imagenes: []
+          },{
+            id: 16050401,
+            desc: "RP_Aerosoles y sprais",
+            unidades: 3333,
+            kg: 30,
+            observaciones: "",
+            imagenes: []
+          }
+        ],
+        ...selected
+      }
+    });
+    history.push(route);
   };
 
   const ordersKeys = Object.keys(orders);
@@ -34,8 +105,8 @@ const Ruta = ({ history }) => {
           subtitle={orders[order].pickup.location.address}
           subtitle2=""
           actionIcon="estado-aviso"
-          action={showInfo(orders[order])}
-          onClick={() => history.push("/cartaporte")}
+          action={showInfo(orders[order], "/quickview")}
+          onClick={showInfo(orders[order],"/cartaporte")}
         />
       ))}
     </List>
