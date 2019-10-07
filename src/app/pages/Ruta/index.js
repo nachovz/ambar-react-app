@@ -12,10 +12,11 @@ const Ruta = ({ history }) => {
 
   if (!orders) return <Redirect to="/login" />;
 
-  const showInfo = (selected, route) => () => {
+  const showInfo = (selected, route, done=false) => () => {
     setRutasState({
       ...rutas,
       selected:{
+        ...selected,
         recogidas: [
           {
             id: 16060100,
@@ -81,12 +82,13 @@ const Ruta = ({ history }) => {
             observaciones: "",
             imagenes: []
           }
-        ],
-        ...selected
+        ]
       }
     });
-    history.push(route);
+    history.push(!!done ? '/resumen-dia' : route);
   };
+
+  console.log(rutas);
 
   const ordersKeys = Object.keys(orders);
 
@@ -100,13 +102,14 @@ const Ruta = ({ history }) => {
         <TextListElement
           key={index}
           button
+          disabled={orders[order].done}
           icon="mantenimiento"
           title={orders[order].name}
           subtitle={orders[order].pickup.location.address}
           subtitle2=""
-          actionIcon="estado-aviso"
-          action={showInfo(orders[order], "/quickview")}
-          onClick={showInfo(orders[order],"/cartaporte")}
+          actionIcon={orders[order].done ? "ver" : "estado-aviso"}
+          action={showInfo(orders[order], "/quickview",orders[order].done)}
+          onClick={showInfo(orders[order],"/cartaporte",orders[order].done)}
         />
       ))}
     </List>

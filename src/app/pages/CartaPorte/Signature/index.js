@@ -10,6 +10,7 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import Button from 'app/components/ui/Button';
 import Checkbox from 'app/components/form/Checkbox';
 import Spacer from 'app/components/ui/Spacer';
+import AlertDialog from 'app/components/ui/AlertDialog';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import {
   BorderedContainer,
@@ -19,15 +20,15 @@ import {
 
 const CartaPorteSignature = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
-  const [expanded, setExpanded] = useState(false);
   const [signature, setSignature] = useState();
   const [approvals, setApprovals] = useState({
     conform: false,
     terms: false
   })
+  const [openAlert, setOpenAlert] = React.useState(false);
   let sigPad = React.createRef();
   const moveBack = () => history.goBack();
-  const moveNext = () => history.push('cartaporte');
+  const moveNext = () => setOpenAlert(true);
 
   const { selected } = rutas;
   if(!selected){
@@ -35,21 +36,28 @@ const CartaPorteSignature = ({ history }) => {
     return null;
   }
 
-  const onSelectedRecogida = (selectedRecogida) => () => {
+  const handleSave = () => {
+    selected.done = true;
+    selected.signature = signature;
+    rutas.orders[selected.id] = selected;
     setRutasState({
       ...rutas,
-      selected:{
-        ...selected,
-        selectedRecogida
-      }
+      selected:null
     });
-    history.push("/recogida");
+  };
+
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
   };
 
   return(
     <React.Fragment>
       <List>
-        <TopBar title="CARTA DE PORTE No 198044_amb" />
+        <TopBar
+          title="CARTA DE PORTE No 198044_amb"
+          actionIcon={!signature && "editar"}
+          action={() => sigPad.clear()}
+        />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
       </List>
       <PaddedContainer
@@ -116,10 +124,18 @@ const CartaPorteSignature = ({ history }) => {
         }
       </PaddedContainer>
       <Spacer size="lg"/>
+      <AlertDialog
+        open={openAlert}
+        title="Desea guardar la línea?"
+        handleClose={handleCloseAlert}
+        agreedText="Si, guardar"
+        handleAgree={handleSave}
+        cancelText="No, seguir editando"
+      />
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
-        moveToNextText="Firma cliente"
+        moveToNextText={!!signature && "Aceptar y cerrar CP"}
         moveToNextAction={moveNext}
       />
     </React.Fragment>
