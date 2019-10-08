@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { withRouter } from "react-router";
-import { Redirect } from 'react-router';
 import { useRutasContext } from 'app/contexts/Rutas';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
@@ -48,8 +47,8 @@ const CartaPorte = ({ history }) => {
             button
             iconColor="primary"
             icon="mantenimiento"
-            title={reco.id}
-            subtitle={reco.desc}
+            title={reco.desc}
+            subtitle={reco.id}
             actionIcon={reco.done ? "toggle-on" : "arrow_right"}
             disabled={reco.done}
             onClick={onSelectedRecogida(reco)}

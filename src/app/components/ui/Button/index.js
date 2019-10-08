@@ -1,5 +1,4 @@
 import React from 'react';
-import { styled } from 'styletron-react';
 import { makeStyles } from '@material-ui/core/styles';
 import UIButton from '@material-ui/core/Button';
 

@@ -21,7 +21,7 @@ const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
-  const { register, handleSubmit, errors, formState: { submitCount } } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const { selected } = rutas;
   if(!selected){

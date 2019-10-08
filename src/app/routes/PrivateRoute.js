@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import getToken from 'app/utils/auth/getToken';
 import { useUserContext } from 'app/contexts/User';
 import SessionListener from 'app/components/containers/SessionListener';
