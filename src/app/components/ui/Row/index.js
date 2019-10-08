@@ -6,7 +6,8 @@ import Box from '@material-ui/core/Box';
 const styles = {
   root:{
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   centered:{
     justifyContent: 'center'

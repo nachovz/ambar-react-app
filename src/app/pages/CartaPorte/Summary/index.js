@@ -59,18 +59,9 @@ const CartaPorteSummary = ({ history }) => {
           return(
             <DataListElement
               key={ind}
-              icon={
-                (!!manual && "lista-manual")
-                ||
-                (dif ? "lista-correcta":"lista-diferente")
-              }
-              iconColor={
-                (manual && "secondary")
-                ||
-                (dif ? "primary": "error")
-              }
-              title={id}
-              subtitle={desc}
+              noIcon
+              title={desc}
+              subtitle={id}
               quantities={[unidadesReal, `-${kgReal}`]}
               actionIcon="editar"
               action={onSelectedRecogida(rec)}
