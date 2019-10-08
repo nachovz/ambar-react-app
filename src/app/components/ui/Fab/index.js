@@ -5,8 +5,8 @@ import { NAVBAR_HEIGHT } from 'app/styles/constants';
 
 const useStyles = makeStyles(theme => ({
   fab: {
-    position: 'absolute',
-    bottom: `calc(${NAVBAR_HEIGHT} + ${theme.spacing(1)}px)`,
+    position: 'fixed',
+    bottom: `calc(${NAVBAR_HEIGHT} + ${theme.spacing(6)}px)`,
     right: theme.spacing(2),
   }
 }));
