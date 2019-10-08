@@ -77,9 +77,11 @@ const Icon = ({
   fontSize,
   icon,
   fab = false,
+  className,
   ...props
 }) => {
-  const classNames = clsx(`icon-${icon}`);
+  const iconClass = clsx(`icon-${icon}`);
+  const classesMerge = clsx(classes.root, className)
   if (!icon) return (
     <AddIcon color={color} />
   );
@@ -92,10 +94,10 @@ const Icon = ({
     <UIIcon
       color={color}
       fontSize={fontSize === "tiny" ? "inherit" : fontSize}
-      className={classes.root}
+      className={classesMerge}
       {...props}
     >
-      <span className={classNames} />
+      <span className={iconClass} />
     </UIIcon>
   )
 };

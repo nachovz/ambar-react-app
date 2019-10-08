@@ -1,15 +1,19 @@
 import React from 'react';
 import { styled } from 'styletron-react';
+import { makeStyles } from '@material-ui/core/styles';
 import UIButton from '@material-ui/core/Button';
 
-const ButtonWrapper = styled('div', {
-  margin: '20px 0'
-});
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: `${theme.spacing(2)}px 0`,
+  }
+}));
 
-const Button = (props) => (
-  <ButtonWrapper>
-    <UIButton {...props} />
-  </ButtonWrapper>
-);
+const Button = (props) => {
+  const classes = useStyles();
+  return(
+    <UIButton {...props} className={classes.button}/>
+  )
+};
 
 export default Button;

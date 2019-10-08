@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router";
+import { useRutasContext } from 'app/contexts/Rutas';
+import useForm from 'react-hook-form';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
@@ -9,10 +11,112 @@ import TextField from 'app/components/form/TextField';
 import BoxedInput from 'app/components/form/BoxedInput';
 import Row from 'app/components/ui/Row';
 import StepNavigator from 'app/components/app/StepNavigator';
+import Camera from 'app/components/app/Camera';
+import Modal from 'app/components/containers/Modal';
+import Icon from 'app/components/ui/Icon';
+import AlertDialog from 'app/components/ui/AlertDialog';
+import { CloseContainer } from './elements';
 
 const Recogida = ({ history }) => {
-  const moveBack = () => history.goBack();
-  const moveNext = () => history.push('cartaporte');
+  const [rutas, setRutasState] = useRutasContext();
+  const [openCamera, setOpenCamera] = React.useState(false);
+  const [openAlert, setOpenAlert] = React.useState(false);
+  const { register, handleSubmit, errors, formState: { submitCount } } = useForm();
+
+  const { selected } = rutas;
+  if(!selected){
+    history.push('/');
+    return null;
+  }
+
+  const { selectedRecogida } = selected;
+  if(!selectedRecogida){
+    history.push('/cartaporte');
+    return null;
+  }
+  console.log(rutas);
+
+  const moveBack = () => {
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected,
+        selectedRecogida:null
+      }
+    });
+  }
+
+  const handleCloseCamera = () => {
+    setOpenCamera(false);
+  }
+
+  const handleClickOpenAlert = ({ unidadesReal, kgReal, observaciones="" }) => {
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected,
+        selectedRecogida:{
+          ...selectedRecogida,
+          unidadesReal,
+          kgReal,
+          observaciones
+        }
+      }
+    });
+    setOpenAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
+  };
+
+  const onTakePhoto = (dataUri) => {
+    const imagenes = selectedRecogida.imagenes.concat([{
+            dataUri,
+            title: Date.now().toString()
+          }]);
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected,
+        selectedRecogida:{
+          ...selectedRecogida,
+          imagenes
+        }
+      }
+    });
+    handleCloseCamera();
+  };
+
+  const removeImage = (index) => () => {
+    const imagenes = selectedRecogida.imagenes.filter(
+      (a,ind) => index !== ind
+    );
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected,
+        selectedRecogida:{
+          ...selectedRecogida,
+          imagenes
+        }
+      }
+    });
+  }
+
+  const handleSave = () => {
+    selectedRecogida.done = true;
+    selected.recogidas[selected.recogidas.findIndex(
+      (ele) => ele.id === selectedRecogida.id
+    )] = selectedRecogida;
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected,
+        selectedRecogida:null
+      }
+    });
+  };
 
   return(
     <React.Fragment>
@@ -20,27 +124,31 @@ const Recogida = ({ history }) => {
         <TopBar
           title="RECOGIDA"
           actionIcon="camara"
-          action={() => console.log("Action: take picture")}
+          action={() => setOpenCamera(true)}
         />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <TextListElement
           noDivider
           iconColor="primary"
           icon="mantenimiento"
-          title="16060100"
-          subtitle="RP_Baterías de plomo"
+          title={selectedRecogida.id}
+          subtitle={selectedRecogida.desc}
         />
         <Row centered>
           <BoxedInput
+            name="unidadesReal"
+            register={register}
             topLabel="Und."
-            topValue="8370"
+            topValue={selectedRecogida.unidades}
             bottomLabel="UND. REAL"
             type="number"
             placeholder="22"
           />
           <BoxedInput
+            name="kgReal"
+            register={register}
             topLabel="Kg"
-            topValue="-10"
+            topValue={`-${selectedRecogida.kg}`}
             bottomLabel="KG. REAL"
             type="number"
           />
@@ -49,37 +157,61 @@ const Recogida = ({ history }) => {
           title="Observaciones"
           field={
             <TextField
+              name="observaciones"
+              register={register({ required: false })}
               fullWidth
               multiline
               placeholder="Aquí las observaciones"
             />
           }
         />
-        <FieldListElement title="Imágenes" />
-        <TextListElement
-          noDivider
-          icon="clip"
-          title="img_1.jpg"
-          actionIcon="papelera"
-        />
-        <TextListElement
-          noDivider
-          icon="clip"
-          title="img_2.jpg"
-          actionIcon="papelera"
-        />
-        <TextListElement
-          noDivider
-          icon="clip"
-          title="img_3.jpg"
-          actionIcon="papelera"
-        />
+        {selectedRecogida.imagenes.length > 0 && (
+          <React.Fragment>
+            <FieldListElement title="Imágenes" />
+            {selectedRecogida.imagenes.map( (im,ind) =>(
+              <TextListElement
+                key={ind}
+                noDivider
+                icon={{
+                  src: im.dataUri,
+                  alt: im.title
+                }}
+                title={im.title}
+                actionIcon="papelera"
+                action={removeImage(ind)}
+              />
+            ))}
+          </React.Fragment>
+        )}
+        <div style={{height: '100px'}} />
       </List>
+      <Modal
+        open={openCamera}
+        onClose={handleCloseCamera}
+      >
+        <div>
+          <CloseContainer>
+            <Icon icon="cerrar" onClick={handleCloseCamera} />
+          </CloseContainer>
+          <Camera
+            onTakePhoto={onTakePhoto}
+            isFullscreen={true}
+          />
+        </div>
+      </Modal>
+      <AlertDialog
+        open={openAlert}
+        title="Desea guardar la línea?"
+        handleClose={handleCloseAlert}
+        agreedText="Si, guardar"
+        handleAgree={handleSave}
+        cancelText="No, seguir editando"
+      />
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
         moveToNextText="Confirmación"
-        moveToNextAction={moveNext}
+        moveToNextAction={handleSubmit(handleClickOpenAlert)}
       />
     </React.Fragment>
   );
