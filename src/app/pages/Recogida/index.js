@@ -14,6 +14,7 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import Icon from 'app/components/ui/Icon';
+import Button from 'app/components/ui/Button';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import { CloseContainer } from './elements';
 
@@ -21,7 +22,7 @@ const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, getValues } = useForm();
 
   const { selected } = rutas;
   if(!selected){
@@ -142,6 +143,7 @@ const Recogida = ({ history }) => {
           icon="envase"
           title={envase.id}
           subtitle={envase.desc}
+          quantities={[envase.numero]}
         />
         <Row centered>
           <BoxedInput
@@ -152,6 +154,16 @@ const Recogida = ({ history }) => {
             bottomLabel="UND. REAL"
             type="number"
             placeholder="22"
+            onBlur={() => {
+                const { unidadesReal } = getValues();
+                setValue('kgReal', (parseInt(unidadesReal)*parseInt(envase.numero)));
+              }
+            }
+            bottomInteraction={
+              <Button variant="outlined" size="small" color="secondary">
+                calcular
+              </Button>
+            }
           />
           <BoxedInput
             name="kgReal"

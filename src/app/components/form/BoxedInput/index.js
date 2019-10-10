@@ -9,6 +9,7 @@ const BoxedInput = ({
   bottomLabel,
   label,
   type,
+  bottomInteraction,
   ...props
 }) => (
   <CenteredDiv>
@@ -32,6 +33,7 @@ const BoxedInput = ({
         margin="normal"
         {...props}
       />
+      {bottomInteraction}
     </BorderedContainer>
   </CenteredDiv>
 );

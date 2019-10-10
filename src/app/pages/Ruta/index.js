@@ -21,8 +21,8 @@ const Ruta = ({ history }) => {
           {
             id: 16060100,
             desc: "RP_Baterías de plomo",
-            unidades: 8370,
-            kg: 10,
+            unidades: 2,
+            kg: 2000,
             observaciones: "",
             imagenes: [],
             envase:{

@@ -10,7 +10,8 @@ const styles = {
     border: `1px solid ${getColor('PRIMARY')}`,
     padding: `${theme.spacing(2)}px`,
     textAlign: 'center',
-    margin: `${theme.spacing(1)}px`
+    margin: `${theme.spacing(1)}px`,
+    height: '194px'
   }
 };
 
