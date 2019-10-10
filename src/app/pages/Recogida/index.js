@@ -36,6 +36,8 @@ const Recogida = ({ history }) => {
   }
   console.log(rutas);
 
+  const { envase } = selectedRecogida;
+
   const moveBack = () => {
     setRutasState({
       ...rutas,
@@ -133,6 +135,13 @@ const Recogida = ({ history }) => {
           icon="mantenimiento"
           title={selectedRecogida.id}
           subtitle={selectedRecogida.desc}
+        />
+        <TextListElement
+          noDivider
+          iconColor="primary"
+          icon="envase"
+          title={envase.id}
+          subtitle={envase.desc}
         />
         <Row centered>
           <BoxedInput

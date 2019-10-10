@@ -47,15 +47,10 @@ const CartaPorteSummary = ({ history }) => {
           const {
           id,
           desc,
-          kg,
           kgReal,
-          unidades,
           unidadesReal,
           manual
         } = rec;
-          const dif =
-            kg === parseInt(kgReal) &&
-            unidades === parseInt(unidadesReal);
           return(
             <DataListElement
               key={ind}

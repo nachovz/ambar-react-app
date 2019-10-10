@@ -24,64 +24,37 @@ const Ruta = ({ history }) => {
             unidades: 8370,
             kg: 10,
             observaciones: "",
-            imagenes: []
+            imagenes: [],
+            envase:{
+              id: "EBBX0013",
+              desc: "BIG BAG 1000",
+              numero: "1000"
+            }
           },{
             id: 15020203,
             desc: "RP_Trapos contaminados",
             unidades: 2222,
             kg: 20,
             observaciones: "",
-            imagenes: []
+            imagenes: [],
+            envase:{
+              id: "EBBX0015",
+              desc: "BIDON 100B",
+              numero: "100B"
+            }
           },{
             id: 16050401,
             desc: "RP_Aerosoles y  sprais",
             unidades: 3333,
             kg: 30,
             observaciones: "",
-            imagenes: []
-          },{
-            id: 16060100,
-            desc: "RP_Baterías de plomo",
-            unidades: 8370,
-            kg: 10,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 15020203,
-            desc: "RP_Trapos contaminados",
-            unidades: 2222,
-            kg: 20,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16050401,
-            desc: "RP_Aerosoles y sprais",
-            unidades: 3333,
-            kg: 30,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16060100,
-            desc: "RP_Baterías de plomo",
-            unidades: 8370,
-            kg: 10,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 15020203,
-            desc: "RP_Trapos contaminados",
-            unidades: 2222,
-            kg: 20,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16050401,
-            desc: "RP_Aerosoles y sprais",
-            unidades: 3333,
-            kg: 30,
-            observaciones: "",
-            imagenes: []
-          }
+            imagenes: [],
+            envase:{
+              id: "EBIX0027",
+              desc: "BIDÓN METÁLICO 50",
+              numero: "50"
+            }
+          },
         ]
       }
     });

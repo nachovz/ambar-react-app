@@ -54,23 +54,25 @@ const ListElement = ({
         }
         secondary={secondaryText}
       />
-      {!!actionIcon &&
+      {(!!actionIcon || !!quantities) &&
         <ListItemSecondaryAction>
-          <Row>
-            <React.Fragment>
-              {quantities}
-              <IconButton
-                edge="end"
-                aria-label={actionIcon}
-                onClick={action}
-              >
-                <Icon
-                  icon={actionIcon}
-                  color="primary"
-                  fontSize={actionIconSize}
-                />
-              </IconButton>
-            </React.Fragment>
+            <Row>
+              <React.Fragment>
+                {!!quantities && quantities}
+                {!!actionIcon &&
+                  <IconButton
+                    edge="end"
+                    aria-label={actionIcon}
+                    onClick={action}
+                  >
+                    <Icon
+                      icon={actionIcon}
+                      color="primary"
+                      fontSize={actionIconSize}
+                    />
+                  </IconButton>
+                }
+              </React.Fragment>
           </Row>
         </ListItemSecondaryAction>
       }
