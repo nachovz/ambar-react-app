@@ -37,8 +37,6 @@ const CartaPorteSummary = ({ history }) => {
         <TopBar title="CARTA DE PORTE No 198044_amb" />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <DataListElement
-          informative
-          noIcon
           title="Residuos Recogidos"
           quantities={ ["Ud.", "Kg."] }
           actionIcon="estado-aviso"
@@ -47,22 +45,15 @@ const CartaPorteSummary = ({ history }) => {
           const {
           id,
           desc,
-          kg,
           kgReal,
-          unidades,
           unidadesReal,
           manual
         } = rec;
-          const dif =
-            kg === parseInt(kgReal) &&
-            unidades === parseInt(unidadesReal);
           return(
             <DataListElement
               key={ind}
-              icon={!!manual && "lista-manual" || dif ? "lista-correcta":"lista-diferente"}
-              iconColor={manual && "secondary" || dif ? "primary": "error"}
-              title={id}
-              subtitle={desc}
+              title={desc}
+              subtitle={id}
               quantities={[unidadesReal, `-${kgReal}`]}
               actionIcon="editar"
               action={onSelectedRecogida(rec)}

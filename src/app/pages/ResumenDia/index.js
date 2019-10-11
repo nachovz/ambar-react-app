@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { useRutasContext } from 'app/contexts/Rutas';
 import StepNavigator from 'app/components/app/StepNavigator';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
+import BorderedContainer from 'app/components/ui/BorderedContainer';
+import ImageComponent from 'app/components/ui/ImageComponent';
+import PaddedContainer from 'app/components/ui/PaddedContainer';
+import Checkbox from 'app/components/form/Checkbox';
+import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 
 const STEPS = {
   resumen: {
@@ -27,19 +33,33 @@ const STEPS = {
   },
   residuos: {
     previous: 'gestor',
+    next: 'observaciones'
+  },
+  observaciones: {
+    previous: 'residuos',
     next: 'firma'
   },
   firma: {
-    previous: 'residuos'
+    previous: 'observaciones'
   },
 }
 
-const ResumenDia = () => {
+const ResumenDia = ({ history }) => {
   const [step, setStep] = useState('resumen');
+  const [rutas] = useRutasContext();
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
   const moveToPreviousStep = () => setStep(STEPS[step].previous);
+
+  const { selected } = rutas;
+
+  if(!selected){
+    history.push('/');
+    return null;
+  }
+
+  console.log(selected)
 
   return (
     <div>
@@ -75,6 +95,12 @@ const ResumenDia = () => {
             actionIcon="arrow_right"
             actionIconSize="small"
             onClick={moveToStep('residuos')}
+          />
+          <TextListElement
+            title="Observaciones"
+            actionIcon="arrow_right"
+            actionIconSize="small"
+            onClick={moveToStep('observaciones')}
           />
           <TextListElement
             title="Firma Cliente"
@@ -219,30 +245,50 @@ const ResumenDia = () => {
             title="Residuos Recogidos"
             quantities={['Ud.', 'Kg.']}
           />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="RP_Baterias de plomo"
-            quantities={[5, -20]}
+          {selected.recogidas.map( (rec, ind) =>{
+            const {
+            id,
+            desc,
+            kgReal,
+            unidadesReal,
+            manual
+          } = rec;
+            return(
+              <DataListElement
+                key={ind}
+                icon={rec.done ? "toggle-on" : "toggle-off"}
+                title={desc}
+                subtitle={id}
+                quantities={rec.done ? [unidadesReal, `-${kgReal}`] : ['-','-']}
+              />
+            )
+          })}
+        </List>
+      )}
+      {step === 'observaciones' && (
+        <List>
+          <TextListElement
+            informative
+            title="Observaciones"
           />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="RP_Papel contaminado"
-            quantities={[10, -22]}
-          />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="Trozos plasticos varios"
-            quantities={[2, -16]}
-          />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="RP_Baterias de plomo"
-            quantities={[5, -20]}
-          />
+          {selected.observaciones && selected.observaciones.map( ({ label, on }, ind) =>(
+            <FieldListElement
+              key={ind}
+              field={
+                <Checkbox
+                    color="primary"
+                    disabled
+                    label={label}
+                    input={{
+                      value: on,
+                      onChange:
+                        () => {
+                        }
+                    }}
+                  />
+              }
+            />
+          ))}
         </List>
       )}
       {step === 'firma' && (
@@ -251,7 +297,14 @@ const ResumenDia = () => {
             informative
             title="Firma Client"
           />
-          <TextListElement noDivider title="Firm component goes here!" />
+          <PaddedContainer>
+            <BorderedContainer>
+              <ImageComponent
+                src={selected.signature}
+                alt=""
+              />
+            </BorderedContainer>
+          </PaddedContainer>
         </List>
       )}
       <StepNavigator

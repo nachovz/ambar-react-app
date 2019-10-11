@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import * as rutas from 'app/constants/mock.json';
+//import * as rutas from 'app/constants/mock.json';
 
 const RutasContext = createContext();
 

@@ -2,9 +2,9 @@ import 'fetch-everywhere';
 import axios from 'axios';
 import omitBy from 'app/utils/omitBy';
 import getToken from 'app/utils/auth/getToken';
-import saveUser from 'app/utils/auth/saveUser';
-import deleteToken from 'app/utils/auth/deleteToken';
-import ENDPOINTS from 'app/constants/endpoints';
+//import saveUser from 'app/utils/auth/saveUser';
+//import deleteToken from 'app/utils/auth/deleteToken';
+//import ENDPOINTS from 'app/constants/endpoints';
 
 const client = {
   get: (url, options) => {

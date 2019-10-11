@@ -1,10 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import getToken from 'app/utils/auth/getToken';
-import TextField from 'app/components/form/TextField';
-import SelectField from 'app/components/form/SelectField';
-import QRReader from 'app/components/app/QRReader';
-import Button from 'app/components/ui/Button';
 import Typography from 'app/components/ui/Typography';
 import AuthenticationForm from 'app/components/auth/AuthenticationForm';
 import CompanyInformationForm from 'app/components/auth/CompanyInformationForm';

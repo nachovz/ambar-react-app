@@ -6,18 +6,18 @@ import saveUser from 'app/utils/auth/saveUser';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useUserContext } from 'app/contexts/User';
-import client from 'app/client';
-import ENDPOINTS from 'app/constants/endpoints';
+//import client from 'app/client';
+//import ENDPOINTS from 'app/constants/endpoints';
 
 const AuthenticationForm = ({ onAuthorized }) => {
   const [{ token, ...user }, setUserState] = useUserContext();
   const [,setSnackbarContext] = useSnackbarContext();
   const [, setLoadingState] = useLoadingContext();
-  const { register, handleSubmit, errors, formState: { submitCount } } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const login = async ({ username, password }) => {
-    const userData = `${username}:${password}`;
-    const auth = `Basic ${btoa(userData)}`;
+    //const userData = `${username}:${password}`;
+    //const auth = `Basic ${btoa(userData)}`;
     setLoadingState(true);
     try {
       // const result = await client.post(ENDPOINTS.LOGIN, {

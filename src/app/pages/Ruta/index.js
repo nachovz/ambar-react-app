@@ -16,73 +16,7 @@ const Ruta = ({ history }) => {
     setRutasState({
       ...rutas,
       selected:{
-        ...selected,
-        recogidas: [
-          {
-            id: 16060100,
-            desc: "RP_Baterías de plomo",
-            unidades: 8370,
-            kg: 10,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 15020203,
-            desc: "RP_Trapos contaminados",
-            unidades: 2222,
-            kg: 20,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16050401,
-            desc: "RP_Aerosoles y  sprais",
-            unidades: 3333,
-            kg: 30,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16060100,
-            desc: "RP_Baterías de plomo",
-            unidades: 8370,
-            kg: 10,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 15020203,
-            desc: "RP_Trapos contaminados",
-            unidades: 2222,
-            kg: 20,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16050401,
-            desc: "RP_Aerosoles y sprais",
-            unidades: 3333,
-            kg: 30,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16060100,
-            desc: "RP_Baterías de plomo",
-            unidades: 8370,
-            kg: 10,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 15020203,
-            desc: "RP_Trapos contaminados",
-            unidades: 2222,
-            kg: 20,
-            observaciones: "",
-            imagenes: []
-          },{
-            id: 16050401,
-            desc: "RP_Aerosoles y sprais",
-            unidades: 3333,
-            kg: 30,
-            observaciones: "",
-            imagenes: []
-          }
-        ]
+        ...selected
       }
     });
     history.push(!!done ? '/resumen-dia' : route);

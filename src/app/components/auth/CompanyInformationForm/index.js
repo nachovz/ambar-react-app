@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TextField from 'app/components/form/TextField';
 import Button from 'app/components/ui/Button';
 import QRReader from 'app/components/app/QRReader';
@@ -6,8 +6,8 @@ import useForm from 'react-hook-form';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useRutasContext } from 'app/contexts/Rutas';
-import client from 'app/client';
-import ENDPOINTS from 'app/constants/endpoints';
+//import client from 'app/client';
+//import ENDPOINTS from 'app/constants/endpoints';
 import RUTAS from 'app/constants/mock.json';
 
 const CompanyInformationForm = ({ onVerified }) => {
@@ -15,7 +15,7 @@ const CompanyInformationForm = ({ onVerified }) => {
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setRutasState] = useRutasContext();
-  const { register, handleSubmit, watch, setValue, errors, formState: { submitCount } } = useForm({
+  const { register, handleSubmit, watch, setValue, errors } = useForm({
     defaultValues: { companyId: 'AMB' }
   });
 
