@@ -37,8 +37,6 @@ const CartaPorteSummary = ({ history }) => {
         <TopBar title="CARTA DE PORTE No 198044_amb" />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <DataListElement
-          informative
-          noIcon
           title="Residuos Recogidos"
           quantities={ ["Ud.", "Kg."] }
           actionIcon="estado-aviso"
@@ -54,7 +52,6 @@ const CartaPorteSummary = ({ history }) => {
           return(
             <DataListElement
               key={ind}
-              noIcon
               title={desc}
               subtitle={id}
               quantities={[unidadesReal, `-${kgReal}`]}

@@ -15,6 +15,7 @@ storiesOf('List Elements', module)
       <DataListElement
         icon="mantenimiento"
         title="RP_Baterías de plomo"
+        subtitle="2324441"
         quantities={[5, -20]}
       />
       <DataListElement
@@ -24,16 +25,19 @@ storiesOf('List Elements', module)
       />
       <DataListElement
         title="RP_Baterías de plomo"
+        subtitle="2324441"
         quantities={[5, -20]}
         actionIcon="editar"
       />
       <DataListElement
         title="RP_Baterías de plomo con nombre largo"
+        subtitle="2324441"
         quantities={[5000, -20000]}
         actionIcon="editar"
       />
       <DataListElement
         title="RP_Baterías de plomo con otro nombre largo"
+        subtitle="2324441"
         quantities={[5, -20]}
         actionIcon="editar"
       />
