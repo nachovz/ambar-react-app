@@ -19,8 +19,6 @@ const CartaPorte = ({ history }) => {
     return null;
   }
 
-  console.log(rutas);
-
   const onSelectedRecogida = (selectedRecogida) => () => {
     setRutasState({
       ...rutas,
@@ -36,12 +34,12 @@ const CartaPorte = ({ history }) => {
     <Fragment>
       <List>
         <TopBar
-          title="Carta de porte: 19844_amb"
+          title={`Carta de porte: ${selected.pickup.customFields["Pedido de servicio"]}`}
           actionIcon="mantenimiento"
           action={() => console.log("Action: open PDF")}
         />
         <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
-        {selected.recogidas.map( (reco,index) => (
+        {!!selected.recogidas && selected.recogidas.map( (reco,index) => (
           <TextListElement
             key={index}
             button

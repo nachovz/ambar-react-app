@@ -16,46 +16,7 @@ const Ruta = ({ history }) => {
     setRutasState({
       ...rutas,
       selected:{
-        ...selected,
-        recogidas: [
-          {
-            id: 16060100,
-            desc: "RP_Baterías de plomo",
-            unidades: 2,
-            kg: 2000,
-            observaciones: "",
-            imagenes: [],
-            envase:{
-              id: "EBBX0013",
-              desc: "BIG BAG 1000",
-              numero: "1000"
-            }
-          },{
-            id: 15020203,
-            desc: "RP_Trapos contaminados",
-            unidades: 2222,
-            kg: 20,
-            observaciones: "",
-            imagenes: [],
-            envase:{
-              id: "EBBX0015",
-              desc: "BIDON 100B",
-              numero: "100B"
-            }
-          },{
-            id: 16050401,
-            desc: "RP_Aerosoles y  sprais",
-            unidades: 3333,
-            kg: 30,
-            observaciones: "",
-            imagenes: [],
-            envase:{
-              id: "EBIX0027",
-              desc: "BIDÓN METÁLICO 50",
-              numero: "50"
-            }
-          },
-        ]
+        ...selected
       }
     });
     history.push(!!done ? '/resumen-dia' : route);

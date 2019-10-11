@@ -107,6 +107,7 @@ const Recogida = ({ history }) => {
     });
   }
 
+
   const handleSave = () => {
     selectedRecogida.done = true;
     selected.recogidas[selected.recogidas.findIndex(
@@ -149,6 +150,7 @@ const Recogida = ({ history }) => {
           <BoxedInput
             name="unidadesReal"
             register={register}
+            defaultValue={selectedRecogida.unidadesReal}
             topLabel="Und."
             topValue={selectedRecogida.unidades}
             bottomLabel="UND. REAL"
@@ -169,6 +171,7 @@ const Recogida = ({ history }) => {
           <BoxedInput
             name="kgReal"
             register={register}
+            defaultValue={selectedRecogida.kgReal}
             topLabel="Kg"
             topValue={`-${selectedRecogida.kg}`}
             bottomLabel="KG. REAL"

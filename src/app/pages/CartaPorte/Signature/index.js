@@ -12,9 +12,9 @@ import Checkbox from 'app/components/form/Checkbox';
 import Spacer from 'app/components/ui/Spacer';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
+import BorderedContainer from 'app/components/ui/BorderedContainer';
+import ImageComponent from 'app/components/ui/ImageComponent';
 import {
-  BorderedContainer,
-  ImageComponent,
   ErrorContainer
 } from './elements';
 
@@ -40,6 +40,8 @@ const CartaPorteSignature = ({ history }) => {
     selected.done = true;
     selected.signature = signature;
     rutas.orders[selected.id] = selected;
+    console.log(selected);
+    console.log(rutas);
     setRutasState({
       ...rutas,
       selected:null
@@ -82,27 +84,6 @@ const CartaPorteSignature = ({ history }) => {
               () => setApprovals({...approvals, terms: !approvals.terms})
           }}
         />
-        <BorderedContainer>
-          {
-            signature ?
-              <ImageComponent
-                src={signature}
-                alt=""
-              />
-              :
-              approvals.conform && approvals.terms && (
-                <SignatureCanvas
-                  penColor='green'
-                  ref={(ref) => { sigPad = ref }}
-                  canvasProps={{
-                    className: 'sigCanvas',
-                    width: 350,
-                    height: 300
-                  }}
-                />
-              )
-          }
-        </BorderedContainer>
         {approvals.conform && approvals.terms && !signature &&
           <Button
             variant="contained"
@@ -115,6 +96,26 @@ const CartaPorteSignature = ({ history }) => {
             Guardar firma
           </Button>
         }
+        <BorderedContainer>
+          {signature ?
+            <ImageComponent
+              src={signature}
+              alt=""
+            />
+            :
+            approvals.conform && approvals.terms && (
+              <SignatureCanvas
+                penColor='green'
+                ref={(ref) => { sigPad = ref }}
+                canvasProps={{
+                  className: 'sigCanvas',
+                  width: 350,
+                  height: 250
+                }}
+              />
+            )
+          }
+        </BorderedContainer>
         {!signature &&
           <ErrorContainer>
             <Typography variant="caption" color="error">
@@ -122,7 +123,20 @@ const CartaPorteSignature = ({ history }) => {
             </Typography>
           </ErrorContainer>
         }
+        {approvals.conform && approvals.terms && !signature &&
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            onClick={
+              () => setSignature(sigPad.getTrimmedCanvas().toDataURL('image/png'))
+            }
+          >
+            Guardar firma
+          </Button>
+        }
       </PaddedContainer>
+      <Spacer size="lg"/>
       <Spacer size="lg"/>
       <AlertDialog
         open={openAlert}

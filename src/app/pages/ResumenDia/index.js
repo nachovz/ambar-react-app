@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useRutasContext } from 'app/contexts/Rutas';
 import StepNavigator from 'app/components/app/StepNavigator';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
+import BorderedContainer from 'app/components/ui/BorderedContainer';
+import ImageComponent from 'app/components/ui/ImageComponent';
+import PaddedContainer from 'app/components/ui/PaddedContainer';
 
 const STEPS = {
   resumen: {
@@ -34,12 +38,22 @@ const STEPS = {
   },
 }
 
-const ResumenDia = () => {
+const ResumenDia = ({ history }) => {
   const [step, setStep] = useState('resumen');
+  const [rutas, setRutasState] = useRutasContext();
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
   const moveToPreviousStep = () => setStep(STEPS[step].previous);
+
+  const { selected } = rutas;
+
+  if(!selected){
+    history.push('/');
+    return null;
+  }
+
+  console.log(selected)
 
   return (
     <div>
@@ -219,30 +233,24 @@ const ResumenDia = () => {
             title="Residuos Recogidos"
             quantities={['Ud.', 'Kg.']}
           />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="RP_Baterias de plomo"
-            quantities={[5, -20]}
-          />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="RP_Papel contaminado"
-            quantities={[10, -22]}
-          />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="Trozos plasticos varios"
-            quantities={[2, -16]}
-          />
-          <DataListElement
-            noIcon
-            title="16060100"
-            subtitle="RP_Baterias de plomo"
-            quantities={[5, -20]}
-          />
+          {selected.recogidas.map( (rec, ind) =>{
+            const {
+            id,
+            desc,
+            kgReal,
+            unidadesReal,
+            manual
+          } = rec;
+            return(
+              <DataListElement
+                key={ind}
+                icon={rec.done ? "toggle-on" : "toggle-off"}
+                title={desc}
+                subtitle={id}
+                quantities={rec.done ? [unidadesReal, `-${kgReal}`] : ['-','-']}
+              />
+            )
+          })}
         </List>
       )}
       {step === 'firma' && (
@@ -251,7 +259,14 @@ const ResumenDia = () => {
             informative
             title="Firma Client"
           />
-          <TextListElement noDivider title="Firm component goes here!" />
+          <PaddedContainer>
+            <BorderedContainer>
+              <ImageComponent
+                src={selected.signature}
+                alt=""
+              />
+            </BorderedContainer>
+          </PaddedContainer>
         </List>
       )}
       <StepNavigator
