@@ -8,6 +8,8 @@ import DataListElement from 'app/components/ui/ListElement/DataListElement';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import ImageComponent from 'app/components/ui/ImageComponent';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
+import Checkbox from 'app/components/form/Checkbox';
+import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 
 const STEPS = {
   resumen: {
@@ -31,16 +33,20 @@ const STEPS = {
   },
   residuos: {
     previous: 'gestor',
+    next: 'observaciones'
+  },
+  observaciones: {
+    previous: 'residuos',
     next: 'firma'
   },
   firma: {
-    previous: 'residuos'
+    previous: 'observaciones'
   },
 }
 
 const ResumenDia = ({ history }) => {
   const [step, setStep] = useState('resumen');
-  const [rutas, setRutasState] = useRutasContext();
+  const [rutas] = useRutasContext();
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
@@ -89,6 +95,12 @@ const ResumenDia = ({ history }) => {
             actionIcon="arrow_right"
             actionIconSize="small"
             onClick={moveToStep('residuos')}
+          />
+          <TextListElement
+            title="Observaciones"
+            actionIcon="arrow_right"
+            actionIconSize="small"
+            onClick={moveToStep('observaciones')}
           />
           <TextListElement
             title="Firma Cliente"
@@ -251,6 +263,32 @@ const ResumenDia = ({ history }) => {
               />
             )
           })}
+        </List>
+      )}
+      {step === 'observaciones' && (
+        <List>
+          <TextListElement
+            informative
+            title="Observaciones"
+          />
+          {selected.observaciones && selected.observaciones.map( ({ label, on }, ind) =>(
+            <FieldListElement
+              key={ind}
+              field={
+                <Checkbox
+                    color="primary"
+                    disabled
+                    label={label}
+                    input={{
+                      value: on,
+                      onChange:
+                        () => {
+                        }
+                    }}
+                  />
+              }
+            />
+          ))}
         </List>
       )}
       {step === 'firma' && (

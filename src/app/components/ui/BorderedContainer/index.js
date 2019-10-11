@@ -1,21 +1,27 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import theme from 'app/styles/material';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from 'app/components/ui/Paper';
 import getColor from 'app/styles/palette';
+import clsx from 'clsx';
 
-const styles = {
+const useStyles = makeStyles( theme => ({
   root: {
     border: `1px ${getColor('LIGHTGREY')} solid`,
     width: '100%',
     textAlign: 'center',
     padding: `${theme.spacing(2)}px 0`
+  },
+  padded: {
+    padding: theme.spacing(3, 2)
   }
+}));
+
+const BorderedContainer = ({ padded = false, ...props }) => {
+  const classes = useStyles();
+  return (
+    <Paper {...props} className={clsx(classes.root,padded && classes.padded)}>
+    </Paper>
+  );
 }
 
-const BorderedContainer = ({ classes, ...props }) => (
-  <Paper {...props} className={classes.root}>
-  </Paper>
-);
-
-export default withStyles(styles)(BorderedContainer);
+export default BorderedContainer;

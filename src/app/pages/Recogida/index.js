@@ -49,9 +49,7 @@ const Recogida = ({ history }) => {
     });
   }
 
-  const handleCloseCamera = () => {
-    setOpenCamera(false);
-  }
+  const handleCloseCamera = () => setOpenCamera(false);
 
   const handleClickOpenAlert = ({ unidadesReal, kgReal, observaciones="" }) => {
     setRutasState({
