@@ -154,7 +154,8 @@ const Recogida = ({ history }) => {
             bottomLabel="UND. REAL"
             type="number"
             placeholder="22"
-            onBlur={() => {
+            onBlur={
+              () => {
                 const { unidadesReal } = getValues();
                 setValue('kgReal', (parseInt(unidadesReal)*parseInt(envase.numero)));
               }

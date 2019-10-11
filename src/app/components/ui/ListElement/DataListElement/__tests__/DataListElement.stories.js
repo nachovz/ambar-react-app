@@ -13,17 +13,27 @@ storiesOf('List Elements', module)
         quantities={[18]}
       />
       <DataListElement
-        noIcon
         icon="mantenimiento"
-        title="16060100"
-        subtitle="RP_Baterías de plomo"
+        title="RP_Baterías de plomo"
         quantities={[5, -20]}
       />
       <DataListElement
-        noIcon
-        icon="mantenimiento"
-        title="16060100"
-        subtitle="RP_Baterías de plomo"
+        title="Residuos Recogidos"
+        quantities={ ["Ud.", "Kg."] }
+        actionIcon="estado-aviso"
+      />
+      <DataListElement
+        title="RP_Baterías de plomo"
+        quantities={[5, -20]}
+        actionIcon="editar"
+      />
+      <DataListElement
+        title="RP_Baterías de plomo con nombre largo"
+        quantities={[5000, -20000]}
+        actionIcon="editar"
+      />
+      <DataListElement
+        title="RP_Baterías de plomo con otro nombre largo"
         quantities={[5, -20]}
         actionIcon="editar"
       />
