@@ -13,48 +13,67 @@ storiesOf('BoxedInput', module)
      />
   ))
   .add('Grouped', () => (
-    <React.Fragment>
-      <BoxedInput
-        topLabel="Und."
-        topValue="8370"
-        bottomLabel="UND. REAL"
-        icon="unidades"
-        input={
-          <TextField
-            name="unidadesReal"
-            type="number"
-            placeholder="22"
-          />
-        }
-      />
-      <BoxedInput
-        topLabel="Kg"
-        topValue="-10"
-        bottomLabel="KG. REAL"
-        type="number"
-        icon="peso"
-        input={
-          <SelectField
-            name="unidadesReal"
-            type="number"
-            placeholder="22"
-            options={[
-              {
-                label: "Primero",
-                value: 1
-              },{
-                label: "Segundo",
-                value: 2
-              },{
-                label: "Tercero",
-                value: 3
-              },{
-                label: "Cuarto",
-                value: 4
-              }
-            ]}
-          />
-        }
-      />
-    </React.Fragment>
+    <BoxedInputContainer />
   ));
+
+  const BoxedInputContainer = () => {
+    const [values, setValues] = React.useState({
+      unidadesReal: 0,
+      pesoReal: 1
+    });
+
+    const handleChange = (name) => ({ target: { value }}) => {
+      setValues({...values, [name]: value});
+    };
+
+    return(
+      <React.Fragment>
+        <BoxedInput
+          topLabel="Und."
+          topValue="8370"
+          bottomLabel="UND. REAL"
+          icon="unidades"
+          input={
+            <TextField
+              name="unidadesReal"
+              type="number"
+              placeholder="22"
+              value={values.unidadesReal}
+              onChange={handleChange('unidadesReal')}
+            />
+          }
+        />
+        <BoxedInput
+          topLabel="Kg"
+          topValue="-10"
+          bottomLabel="KG. REAL"
+          type="number"
+          icon="peso"
+          input={
+            <SelectField
+              name="pesoReal"
+              type="number"
+              placeholder="22"
+              value={values.pesoReal}
+              onChange={handleChange('pesoReal')}
+              options={[
+                {
+                  label: "Primero",
+                  value: 1
+                },{
+                  label: "Segundo",
+                  value: 2
+                },{
+                  label: "Tercero",
+                  value: 3
+                },{
+                  label: "Cuarto",
+                  value: 4
+                }
+              ]}
+            />
+          }
+        />
+    </React.Fragment>
+    )
+  }

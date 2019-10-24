@@ -22,7 +22,7 @@ const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
-  const [kgValue, setKgValue] = React.useState(100)
+  const [kgValue, setKgValue] = React.useState(100);
   const { register, handleSubmit, setValue } = useForm();
 
   React.useEffect(() => {
