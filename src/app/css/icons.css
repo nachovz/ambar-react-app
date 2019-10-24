@@ -1,13 +1,12 @@
 @font-face {
   font-family: 'ambaricon-font';
-  src:  url('../fonts/ambaricon-font.eot?8pduir');
-  src:  url('../fonts/ambaricon-font.eot?8pduir#iefix') format('embedded-opentype'),
-    url('../fonts/ambaricon-font.ttf?8pduir') format('truetype'),
-    url('../fonts/ambaricon-font.woff?8pduir') format('woff'),
-    url('../fonts/ambaricon-font.svg?8pduir#ambaricon-font') format('svg');
+  src:  url('../fonts/ambaricon-font.eot?brtlx9');
+  src:  url('../fonts/ambaricon-font.eot?brtlx9#iefix') format('embedded-opentype'),
+    url('../fonts/ambaricon-font.ttf?brtlx9') format('truetype'),
+    url('../fonts/ambaricon-font.woff?brtlx9') format('woff'),
+    url('../fonts/ambaricon-font.svg?brtlx9#ambaricon-font') format('svg');
   font-weight: normal;
   font-style: normal;
-
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -18,13 +17,19 @@
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: inherit;
+  line-height: 1;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-unidades:before {
+  content: "\e936";
+}
+.icon-peso:before {
+  content: "\e937";
+}
 .icon-acciones:before {
   content: "\e900";
 }

@@ -54,7 +54,7 @@ const TopBar = ({
                   aria-label={secondaryActionIcon}
                   onClick={secondaryAction}
                   className={classes.leftMargin}>
-                  <Icon icon={secondaryActionIcon} button />
+                  <Icon icon={secondaryActionIcon} />
                 </IconButton>
               }
             </Row>

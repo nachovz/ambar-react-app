@@ -1,41 +1,42 @@
 import React from 'react';
-import TextField from 'app/components/form/TextField';
 import Typography from 'app/components/ui/Typography';
-import { BorderedContainer, CenteredDiv } from './elements';
+import Row from 'app/components/ui/Row';
+import Icon from 'app/components/ui/Icon';
+import Spacer from 'app/components/ui/Spacer';
+import { CustomRow, BorderedContainer, CenteredDiv } from './elements';
 
 const BoxedInput = ({
   topLabel,
   topValue,
   bottomLabel,
-  label,
-  type,
-  bottomInteraction,
-  ...props
+  icon,
+  input
 }) => (
-  <CenteredDiv>
-    <CenteredDiv>
-      <Typography>
-        { topLabel }
-      </Typography>
-      <Typography variant="caption">
-        { topValue }
-      </Typography>
-    </CenteredDiv>
+  <CustomRow>
+    <Row>
+      <Icon
+       icon={icon}
+       color="primary"
+      />
+      <Spacer direction="horizontal"/>
+      <CenteredDiv>
+        <Typography>
+          { topLabel }
+        </Typography>
+        <Typography variant="caption">
+          { topValue }
+        </Typography>
+      </CenteredDiv>
+    </Row>
     <BorderedContainer>
       {!!bottomLabel &&
         <Typography>
           { bottomLabel }
         </Typography>
       }
-      <TextField
-        label={label}
-        type={type}
-        margin="normal"
-        {...props}
-      />
-      {bottomInteraction}
+      {!!input && input}
     </BorderedContainer>
-  </CenteredDiv>
+  </CustomRow>
 );
 
 export default BoxedInput;

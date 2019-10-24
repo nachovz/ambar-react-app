@@ -79,3 +79,37 @@ export const RUTA = [
     ]
   }
 ];
+
+export const PESO_OPTIONS = [
+  {
+    label: "100% del peso",
+    value: 100
+  },{
+    label: "90% del peso",
+    value: 90
+  },{
+    label: "80% del peso",
+    value: 80
+  },{
+    label: "70% del peso",
+    value: 70
+  },{
+    label: "60% del peso",
+    value: 60
+  },{
+    label: "50% del peso",
+    value: 50
+  },{
+    label: "40% del peso",
+    value: 40
+  },{
+    label: "30% del peso",
+    value: 30
+  },{
+    label: "90% del peso",
+    value: 20
+  },{
+    label: "10% del peso",
+    value: 10
+  }
+]

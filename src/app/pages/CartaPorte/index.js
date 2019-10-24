@@ -44,7 +44,7 @@ const CartaPorte = ({ history }) => {
 
   useEffect( () => {
     selected && setObs(selected.observaciones || observaciones)
-  });
+  }, [selected]);
 
   if(!selected){
     history.push('/');

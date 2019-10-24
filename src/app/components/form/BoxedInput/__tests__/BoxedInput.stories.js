@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Row from 'app/components/ui/Row';
+import TextField from 'app/components/form/TextField';
+import SelectField from 'app/components/form/SelectField';
 
 import BoxedInput from '../';
 
@@ -12,19 +13,48 @@ storiesOf('BoxedInput', module)
      />
   ))
   .add('Grouped', () => (
-    <Row centered>
+    <React.Fragment>
       <BoxedInput
         topLabel="Und."
         topValue="8370"
         bottomLabel="UND. REAL"
-        type="number"
-        placeholder="22"
+        icon="unidades"
+        input={
+          <TextField
+            name="unidadesReal"
+            type="number"
+            placeholder="22"
+          />
+        }
       />
       <BoxedInput
         topLabel="Kg"
         topValue="-10"
         bottomLabel="KG. REAL"
         type="number"
+        icon="peso"
+        input={
+          <SelectField
+            name="unidadesReal"
+            type="number"
+            placeholder="22"
+            options={[
+              {
+                label: "Primero",
+                value: 1
+              },{
+                label: "Segundo",
+                value: 2
+              },{
+                label: "Tercero",
+                value: 3
+              },{
+                label: "Cuarto",
+                value: 4
+              }
+            ]}
+          />
+        }
       />
-    </Row>
+    </React.Fragment>
   ));

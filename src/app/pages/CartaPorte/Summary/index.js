@@ -54,7 +54,7 @@ const CartaPorteSummary = ({ history }) => {
               key={ind}
               title={desc}
               subtitle={id}
-              quantities={[unidadesReal, `-${kgReal}`]}
+              quantities={[unidadesReal, `${kgReal}%`]}
               actionIcon="editar"
               action={onSelectedRecogida(rec)}
             />

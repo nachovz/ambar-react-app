@@ -9,20 +9,31 @@ import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import TextField from 'app/components/form/TextField';
 import BoxedInput from 'app/components/form/BoxedInput';
-import Row from 'app/components/ui/Row';
 import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import Icon from 'app/components/ui/Icon';
-import Button from 'app/components/ui/Button';
 import AlertDialog from 'app/components/ui/AlertDialog';
+import SelectField from 'app/components/form/SelectField';
 import { CloseContainer } from './elements';
+import { PESO_OPTIONS } from 'app/constants/values';
 
 const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
-  const { register, handleSubmit, setValue, getValues } = useForm();
+  const [kgValue, setKgValue] = React.useState(100)
+  const { register, handleSubmit, setValue } = useForm();
+
+  React.useEffect(() => {
+    register({ name: "kgReal" });
+  }, [register])
+
+  React.useEffect( () => {
+    if(!!selected && !!selectedRecogida && !!selectedRecogida.kgReal){
+      setKgValue(selectedRecogida.kgReal)
+    }
+  }, []);
 
   const { selected } = rutas;
   if(!selected){
@@ -105,7 +116,6 @@ const Recogida = ({ history }) => {
     });
   }
 
-
   const handleSave = () => {
     selectedRecogida.done = true;
     selected.recogidas[selected.recogidas.findIndex(
@@ -119,6 +129,11 @@ const Recogida = ({ history }) => {
       }
     });
   };
+
+  const handleMultiChange = ({ target: { value } }) => {
+    setValue("kgReal", value);
+    setKgValue(value);
+  }
 
   return(
     <React.Fragment>
@@ -144,38 +159,37 @@ const Recogida = ({ history }) => {
           subtitle={envase.desc}
           quantities={[envase.numero]}
         />
-        <Row centered>
-          <BoxedInput
-            name="unidadesReal"
-            register={register}
-            defaultValue={selectedRecogida.unidadesReal}
-            topLabel="Und."
-            topValue={selectedRecogida.unidades}
-            bottomLabel="UND. REAL"
-            type="number"
-            placeholder="22"
-            onBlur={
-              () => {
-                const { unidadesReal } = getValues();
-                setValue('kgReal', (parseInt(unidadesReal)*parseInt(envase.numero)));
-              }
-            }
-            bottomInteraction={
-              <Button variant="outlined" size="small" color="secondary">
-                calcular
-              </Button>
-            }
-          />
-          <BoxedInput
-            name="kgReal"
-            register={register}
-            defaultValue={selectedRecogida.kgReal}
-            topLabel="Kg"
-            topValue={`-${selectedRecogida.kg}`}
-            bottomLabel="KG. REAL"
-            type="number"
-          />
-        </Row>
+        <BoxedInput
+          topLabel="Und."
+          topValue={selectedRecogida.unidades}
+          bottomLabel="UND. REAL"
+          icon="unidades"
+          input={
+            <TextField
+              register={register}
+              defaultValue={selectedRecogida.unidadesReal}
+              name="unidadesReal"
+              type="number"
+              placeholder="22"
+            />
+          }
+        />
+        <BoxedInput
+          topLabel="Kg"
+          topValue={selectedRecogida.kg}
+          bottomLabel="KG. REAL"
+          icon="peso"
+          input={
+            <SelectField
+              name="kgReal"
+              value={kgValue}
+              defaultValue={selectedRecogida.kgReal}
+              options={PESO_OPTIONS}
+              onChange={handleMultiChange}
+              helperText="Seleccionar %"
+            />
+          }
+        />
         <FieldListElement
           title="Observaciones"
           field={

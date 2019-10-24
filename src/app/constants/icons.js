@@ -51,5 +51,7 @@ export default ["acciones",
   "toggle-off",
   "toggle-on",
   "usuario",
-  "ver"
+  "ver",
+  "unidades",
+  "peso"
 ];

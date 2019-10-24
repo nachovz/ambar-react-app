@@ -5,7 +5,6 @@ import FieldError from '../FieldError';
 
 const SelectField = ({
   options,
-  register = () => {},
   error,
   ...props
 }) => (
@@ -13,7 +12,6 @@ const SelectField = ({
     <UITextField
       select
       {...props}
-      SelectProps={{ ref: register({ required: 'Este campo es requerido' })}}
     >
       {options.map(option => (
         <MenuItem key={option.value} value={option.value}>
