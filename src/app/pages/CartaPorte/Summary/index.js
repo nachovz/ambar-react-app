@@ -33,27 +33,26 @@ const CartaPorteSummary = ({ history }) => {
 
   return(
     <React.Fragment>
+      <TopBar title={`CARTA DE PORTE No ${selected.serviceOrderId}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
-        <TopBar title="CARTA DE PORTE No 198044_amb" />
-        <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <DataListElement
           title="Residuos Recogidos"
-          quantities={ ["Ud.", "Kg."] }
+          quantities={ ["Und", "%"] }
           actionIcon="estado-aviso"
         />
-        {selected.recogidas.filter( (r) => !!r.done).map( (rec, ind) =>{
+        {selected.data.filter( (r) => !!r.done).map( (rec, ind) =>{
           const {
-          id,
-          desc,
+          itemId,
+          itemName,
           kgReal,
-          unidadesReal,
-          manual
+          unidadesReal
         } = rec;
           return(
             <DataListElement
               key={ind}
-              title={desc}
-              subtitle={id}
+              title={itemName}
+              subtitle={itemId}
               quantities={[unidadesReal, `${kgReal}%`]}
               actionIcon="editar"
               action={onSelectedRecogida(rec)}

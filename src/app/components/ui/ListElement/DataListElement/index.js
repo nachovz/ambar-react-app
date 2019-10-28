@@ -5,11 +5,16 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from 'app/components/ui/Typography';
 import Row from 'app/components/ui/Row';
 import theme from 'app/styles/material';
+import getColor from 'app/styles/palette';
+import clsx from 'clsx';
 
 const styles = {
   rowContainer:{
-    padding: `${theme.spacing(0.5)}px ${theme.spacing()}px` ,
-    borderBottom: '1px solid lightgrey'
+    padding: `${theme.spacing(1)}px` ,
+    borderBottom: `1px solid ${getColor('LIGHTGREY')}`
+  },
+  disabled:{
+    color: `${getColor('GREY')}`
   },
   titleColumn:{
     width: '50%',
@@ -33,10 +38,11 @@ const DataListElement = ({
   classes,
   actionIcon,
   action,
-  actionIconSize = 'small'
+  actionIconSize = 'small',
+  disabled=false
 }) =>(
   <Row
-    customClass={classes.rowContainer}
+    customClass={clsx(classes.rowContainer, disabled && classes.disabled)}
   >
     {!!icon &&
       <div className={classes.iconColumn}>
@@ -50,7 +56,7 @@ const DataListElement = ({
       <Typography>
         {title}
       </Typography>
-      <Typography variant="body2" color="textSecondary">
+      <Typography variant="body2" color="textSecondary" className={disabled && classes.disabled}>
         {subtitle}
       </Typography>
     </div>

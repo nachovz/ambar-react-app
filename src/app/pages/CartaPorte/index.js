@@ -14,36 +14,18 @@ import Row from 'app/components/ui/Row';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import Typography from 'app/components/ui/Typography';
 import { CenteredPaddedContainer } from './elements';
-
-const observaciones = [
-  {
-    label: "Observación #1",
-    on: false
-  },{
-    label: "Observación #2",
-    on: false
-  },{
-    label: "Otra observación",
-    on: false
-  },{
-    label: "Observación #3",
-    on: false
-  },{
-    label: "Observaciones",
-    on: false
-  }
-]
+import { OBSERVACIONES } from 'app/constants/values';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [modal, setModal] = React.useState(false);
-  const [obs, setObs] = React.useState(observaciones);
+  const [obs, setObs] = React.useState(OBSERVACIONES);
 
   const moveTo = (route) => () => history.push(route);
   const { selected } = rutas;
 
   useEffect( () => {
-    selected && setObs(selected.observaciones || observaciones)
+    selected && setObs(selected.observaciones || OBSERVACIONES)
   }, [selected]);
 
   if(!selected){
@@ -68,29 +50,36 @@ const CartaPorte = ({ history }) => {
 
   return (
     <Fragment>
+      <TopBar
+        title={`Carta de porte: ${selected.serviceOrderId}`}
+        actionIcon="mantenimiento"
+        action={() => console.log("Action: open PDF")}
+        secondaryActionIcon="servicios"
+        secondaryAction={() => setModal(true)}
+      />
+      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
-        <TopBar
-          title={`Carta de porte: ${selected.pickup.customFields["Pedido de servicio"]}`}
-          actionIcon="mantenimiento"
-          action={() => console.log("Action: open PDF")}
-          secondaryActionIcon="servicios"
-          secondaryAction={() => setModal(true)}
-        />
-        <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
-        {!!selected.recogidas && selected.recogidas.map( (reco,index) => (
+        {!!selected.data ? selected.data.map( (reco,index) => (
           <TextListElement
             key={index}
             button
             iconColor="primary"
             icon="mantenimiento"
-            title={reco.desc}
-            subtitle={reco.id}
+            title={reco.itemName}
+            subtitle={reco.itemId}
             actionIcon={reco.done ? "toggle-on" : "arrow_right"}
             disabled={reco.done}
             onClick={onSelectedRecogida(reco)}
             action={onSelectedRecogida(reco)}
           />
-        ))}
+        ))
+        :
+        <CenteredPaddedContainer>
+          <Typography variant="caption" color="error" display="block">
+            Error al cargar las recogidas. Contactar oficina.
+          </Typography>
+        </CenteredPaddedContainer>
+      }
       </List>
       <Fab
         color="primary"
@@ -137,8 +126,8 @@ const CartaPorte = ({ history }) => {
         </CenteredPaddedContainer>
       </Modal>
       <StepNavigator
-        moveToPreviousText="Datos de Usuario"
-        moveToPreviousAction={moveTo('cartaporte-client')}
+        moveToPreviousText="Ruta"
+        moveToPreviousAction={moveTo('')}
         moveToNextText="Resumen de Recogida"
         moveToNextAction={moveTo('cartaporte-summary')}
       />

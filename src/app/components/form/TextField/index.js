@@ -22,7 +22,7 @@ const validations = {
   }
 };
 
-const TextField = ({ type, register = () => {}, error, ...props }) => {
+const TextField = ({ type, register = () => {}, required=registerOptions.required, error, ...props }) => {
   return (
     <FieldWrapper>
       <FieldError error={error}>
@@ -31,7 +31,7 @@ const TextField = ({ type, register = () => {}, error, ...props }) => {
           fullWidth
           error={!!error}
           inputRef={register({
-            ...registerOptions,
+            required,
             ...validations[type] && validations[type]
           })}
         />

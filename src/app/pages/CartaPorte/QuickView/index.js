@@ -26,15 +26,15 @@ const CartaPorteQuickView = ({ history }) => {
       <List>
         <TextListElement
           noDivider
-          title={selected.name}
-          subtitle={selected.pickup.location.address}
+          title={selected.serviceAddressName}
+          subtitle={selected.serviceAddress}
           actionIcon="place"
           action={() => console.log("Action: open Maps")}
         />
         <TextListElement
           noDivider
           title="Carta de Porte"
-          subtitle="Total 15 líneas"
+          subtitle={`Total ${selected.data.length} líneas`}
         />
         <TextListElement
           noDivider

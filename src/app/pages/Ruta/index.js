@@ -8,7 +8,7 @@ import TextListElement from 'app/components/ui/ListElement/TextListElement';
 
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
-  const { orders } = rutas;
+  const orders = rutas.data;
 
   if (!orders) return <Redirect to="/login" />;
 
@@ -22,31 +22,31 @@ const Ruta = ({ history }) => {
     history.push(!!done ? '/resumen-dia' : route);
   };
 
-  console.log(rutas);
-
   const ordersKeys = Object.keys(orders);
 
   return (
-    <List>
+    <React.Fragment>
       <TopBar
-        title={`Total avisos: ${ordersKeys.lenght}`}
-        rightText="29 Jul 2019"
-      />
-      {ordersKeys.map((order, index) => (
-        <TextListElement
-          key={index}
-          button
-          disabled={orders[order].done}
-          icon="mantenimiento"
-          title={orders[order].name}
-          subtitle={orders[order].pickup.location.address}
-          subtitle2=""
-          actionIcon={orders[order].done ? "ver" : "estado-aviso"}
-          action={showInfo(orders[order], "/quickview",orders[order].done)}
-          onClick={showInfo(orders[order],"/cartaporte",orders[order].done)}
+          title={`Total avisos: ${ordersKeys.length}`}
+          now
         />
-      ))}
-    </List>
+      <List>
+        {ordersKeys.map((order, index) => (
+          <TextListElement
+            key={index}
+            button
+            disabled={orders[order].done}
+            icon="mantenimiento"
+            title={orders[order].serviceAddressName}
+            subtitle={orders[order].serviceAddress}
+            subtitle2=""
+            actionIcon={orders[order].done ? "ver" : "estado-aviso"}
+            action={showInfo(orders[order], "/quickview",orders[order].done)}
+            onClick={showInfo(orders[order],"/cartaporte",orders[order].done)}
+          />
+        ))}
+      </List>
+    </React.Fragment>
   );
 };
 

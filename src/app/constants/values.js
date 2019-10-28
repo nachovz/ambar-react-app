@@ -106,10 +106,29 @@ export const PESO_OPTIONS = [
     label: "30% del peso",
     value: 30
   },{
-    label: "90% del peso",
+    label: "20% del peso",
     value: 20
   },{
     label: "10% del peso",
     value: 10
+  }
+]
+
+export const OBSERVACIONES = [
+  {
+    label: "Observación #1",
+    on: false
+  },{
+    label: "Observación #2",
+    on: false
+  },{
+    label: "Otra observación",
+    on: false
+  },{
+    label: "Observación #3",
+    on: false
+  },{
+    label: "Observaciones",
+    on: false
   }
 ]

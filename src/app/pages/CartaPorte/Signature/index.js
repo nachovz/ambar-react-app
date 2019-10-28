@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
-import List from 'app/components/ui/List';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import Typography from 'app/components/ui/Typography';
@@ -39,9 +38,7 @@ const CartaPorteSignature = ({ history }) => {
   const handleSave = () => {
     selected.done = true;
     selected.signature = signature;
-    rutas.orders[selected.id] = selected;
-    console.log(selected);
-    console.log(rutas);
+    rutas.data[selected.serviceOrderId] = selected;
     setRutasState({
       ...rutas,
       selected:null
@@ -54,18 +51,13 @@ const CartaPorteSignature = ({ history }) => {
 
   return(
     <React.Fragment>
-      <List>
-        <TopBar
-          title="CARTA DE PORTE No 198044_amb"
-          actionIcon={!signature && "editar"}
-          action={() => sigPad.clear()}
-        />
-        <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
-      </List>
-      <PaddedContainer
-        $noVertical
-      >
-
+       <TopBar
+        title={`Carta de porte: ${selected.serviceOrderId}`}
+        actionIcon={!signature && "editar"}
+        action={() => sigPad.clear()}
+      />
+      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+      <PaddedContainer $noVertical>
         <Checkbox
           color="primary"
           label="Conformidad con la recogida"

@@ -40,7 +40,8 @@ const STEPS = {
     next: 'firma'
   },
   firma: {
-    previous: 'observaciones'
+    previous: 'observaciones',
+    next: 'Volver a Ruta'
   },
 }
 
@@ -58,8 +59,6 @@ const ResumenDia = ({ history }) => {
     history.push('/');
     return null;
   }
-
-  console.log(selected)
 
   return (
     <div>
@@ -239,27 +238,30 @@ const ResumenDia = ({ history }) => {
       )}
       {step === 'residuos' && (
         <List>
+          <TextListElement
+            informative
+            title="Residuos recogidos"
+          />
           <DataListElement
             noIcon
             informative
-            title="Residuos Recogidos"
-            quantities={['Ud.', 'Kg.']}
+            title="Nombre"
+            quantities={['Und', '%']}
           />
-          {selected.recogidas.map( (rec, ind) =>{
-            const {
-            id,
-            desc,
+          {selected.data.map( ({
+            itemId,
+            itemName,
             kgReal,
             unidadesReal,
-            manual
-          } = rec;
+            done
+          }, ind) =>{
             return(
               <DataListElement
                 key={ind}
-                icon={rec.done ? "toggle-on" : "toggle-off"}
-                title={desc}
-                subtitle={id}
-                quantities={rec.done ? [unidadesReal, `-${kgReal}`] : ['-','-']}
+                title={itemName}
+                subtitle={itemId}
+                quantities={done ? [unidadesReal, `${kgReal}%`] : ['-','-']}
+                disabled={!done}
               />
             )
           })}
@@ -295,7 +297,7 @@ const ResumenDia = ({ history }) => {
         <List>
           <TextListElement
             informative
-            title="Firma Client"
+            title="Firma del cliente"
           />
           <PaddedContainer>
             <BorderedContainer>
@@ -309,7 +311,12 @@ const ResumenDia = ({ history }) => {
       )}
       <StepNavigator
         moveToNextText={STEPS[step].next}
-        moveToNextAction={moveToNextStep}
+        moveToNextAction={
+          STEPS[step].next === 'Volver a Ruta' ?
+            () => history.push('')
+            :
+            moveToNextStep
+          }
         moveToPreviousText={STEPS[step].previous}
         moveToPreviousAction={moveToPreviousStep}
       />

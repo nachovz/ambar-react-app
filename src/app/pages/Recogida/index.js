@@ -13,7 +13,6 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import Icon from 'app/components/ui/Icon';
-import AlertDialog from 'app/components/ui/AlertDialog';
 import SelectField from 'app/components/form/SelectField';
 import { CloseContainer } from './elements';
 import { PESO_OPTIONS } from 'app/constants/values';
@@ -21,19 +20,31 @@ import { PESO_OPTIONS } from 'app/constants/values';
 const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
-  const [openAlert, setOpenAlert] = React.useState(false);
   const [kgValue, setKgValue] = React.useState(100);
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, errors } = useForm();
 
   React.useEffect(() => {
     register({ name: "kgReal" });
   }, [register])
 
   React.useEffect( () => {
-    if(!!selected && !!selectedRecogida && !!selectedRecogida.kgReal){
-      setKgValue(selectedRecogida.kgReal)
+    const { selected } = rutas;
+    if(!!selected){
+      const { selectedRecogida } = selected;
+      if(!!selectedRecogida){
+        const {
+          kgReal,
+          unidadesReal,
+          observaciones
+        } = selectedRecogida;
+        const kgDefault = kgReal || kgValue;
+        setKgValue(kgDefault);
+        setValue("kgReal", kgDefault);
+        unidadesReal && setValue("unidadesReal", unidadesReal);
+        observaciones && setValue("observaciones", observaciones);
+      }
     }
-  }, []);
+  }, [rutas, setValue, kgValue]);
 
   const { selected } = rutas;
   if(!selected){
@@ -46,9 +57,6 @@ const Recogida = ({ history }) => {
     history.push('/cartaporte');
     return null;
   }
-  console.log(rutas);
-
-  const { envase } = selectedRecogida;
 
   const moveBack = () => {
     setRutasState({
@@ -62,28 +70,8 @@ const Recogida = ({ history }) => {
 
   const handleCloseCamera = () => setOpenCamera(false);
 
-  const handleClickOpenAlert = ({ unidadesReal, kgReal, observaciones="" }) => {
-    setRutasState({
-      ...rutas,
-      selected:{
-        ...selected,
-        selectedRecogida:{
-          ...selectedRecogida,
-          unidadesReal,
-          kgReal,
-          observaciones
-        }
-      }
-    });
-    setOpenAlert(true);
-  };
-
-  const handleCloseAlert = () => {
-    setOpenAlert(false);
-  };
-
   const onTakePhoto = (dataUri) => {
-    const imagenes = selectedRecogida.imagenes.concat([{
+    const imagenes = (selectedRecogida.imagenes || []).concat([{
             dataUri,
             title: Date.now().toString()
           }]);
@@ -116,10 +104,13 @@ const Recogida = ({ history }) => {
     });
   }
 
-  const handleSave = () => {
+  const handleSave = ({ unidadesReal, kgReal, observaciones="" }) => {
+    selectedRecogida.unidadesReal = unidadesReal;
+    selectedRecogida.kgReal = kgReal;
+    selectedRecogida.observaciones = observaciones;
     selectedRecogida.done = true;
-    selected.recogidas[selected.recogidas.findIndex(
-      (ele) => ele.id === selectedRecogida.id
+    selected.data[selected.data.findIndex(
+      (ele) => ele.itemId === selectedRecogida.itemId
     )] = selectedRecogida;
     setRutasState({
       ...rutas,
@@ -137,53 +128,53 @@ const Recogida = ({ history }) => {
 
   return(
     <React.Fragment>
+      <TopBar
+        title="RECOGIDA"
+        actionIcon="camara"
+        action={() => setOpenCamera(true)}
+      />
+      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+
       <List>
-        <TopBar
-          title="RECOGIDA"
-          actionIcon="camara"
-          action={() => setOpenCamera(true)}
-        />
-        <DateBar title="FECHA RECOGIDA: 29 Agosto 2019" />
         <TextListElement
           noDivider
           iconColor="primary"
           icon="mantenimiento"
-          title={selectedRecogida.id}
-          subtitle={selectedRecogida.desc}
+          title={selectedRecogida.itemName}
+          subtitle={selectedRecogida.itemId}
         />
         <TextListElement
           noDivider
           iconColor="primary"
           icon="envase"
-          title={envase.id}
-          subtitle={envase.desc}
-          quantities={[envase.numero]}
+          title={selectedRecogida.packingMaterialName}
+          subtitle={selectedRecogida.res_InventPackingMaterialCode}
+          quantities={[selectedRecogida.res_Qty_Env]}
         />
         <BoxedInput
-          topLabel="Und."
-          topValue={selectedRecogida.unidades}
-          bottomLabel="UND. REAL"
+          topLabel="Und"
+          topValue={selectedRecogida.res_Qty_Env}
+          bottomLabel="REAL"
           icon="unidades"
           input={
             <TextField
               register={register}
-              defaultValue={selectedRecogida.unidadesReal}
               name="unidadesReal"
               type="number"
               placeholder="22"
+              error={errors.unidadesReal}
             />
           }
         />
         <BoxedInput
-          topLabel="Kg"
-          topValue={selectedRecogida.kg}
-          bottomLabel="KG. REAL"
+          topLabel={selectedRecogida.unit}
+          topValue={selectedRecogida.qty}
+          bottomLabel="REAL"
           icon="peso"
           input={
             <SelectField
               name="kgReal"
               value={kgValue}
-              defaultValue={selectedRecogida.kgReal}
               options={PESO_OPTIONS}
               onChange={handleMultiChange}
               helperText="Seleccionar %"
@@ -195,14 +186,15 @@ const Recogida = ({ history }) => {
           field={
             <TextField
               name="observaciones"
-              register={register({ required: false })}
+              register={register}
+              required={false}
               fullWidth
               multiline
               placeholder="Aquí las observaciones"
             />
           }
         />
-        {selectedRecogida.imagenes.length > 0 && (
+        {!!selectedRecogida.imagenes && selectedRecogida.imagenes.length > 0 && (
           <React.Fragment>
             <FieldListElement title="Imágenes" />
             {selectedRecogida.imagenes.map( (im,ind) =>(
@@ -236,19 +228,11 @@ const Recogida = ({ history }) => {
           />
         </div>
       </Modal>
-      <AlertDialog
-        open={openAlert}
-        title="Desea guardar la línea?"
-        handleClose={handleCloseAlert}
-        agreedText="Si, guardar"
-        handleAgree={handleSave}
-        cancelText="No, seguir editando"
-      />
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
         moveToNextText="Confirmación"
-        moveToNextAction={handleSubmit(handleClickOpenAlert)}
+        moveToNextAction={handleSubmit(handleSave)}
       />
     </React.Fragment>
   );

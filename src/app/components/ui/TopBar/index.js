@@ -10,16 +10,21 @@ import Row from 'app/components/ui/Row';
 import Box from '@material-ui/core/Box';
 import { DarkContainer } from './elements';
 import theme from 'app/styles/material';
+import getNow from 'app/utils/getNow';
 
 const styles = {
   leftMargin: {
     marginLeft: `${theme.spacing(1)}px`
+  },
+  listItemContainer: {
+    listStyleType: 'none'
   }
 };
 
 const TopBar = ({
   title,
   rightText,
+  now=false,
   actionIcon,
   action,
   secondaryActionIcon,
@@ -27,8 +32,8 @@ const TopBar = ({
   classes,
   ...props
 }) => (
-    <DarkContainer>
-      <ListItem {...props}>
+    <DarkContainer className={classes.listItemContainer}>
+      <ListItem {...props} >
         <ListItemText
           disableTypography
           primary={
@@ -37,7 +42,7 @@ const TopBar = ({
                 {title}
               </Box>
               <Typography noWrap variant="caption" display="block">
-                {rightText}
+                {now ? getNow() : rightText}
               </Typography>
             </Row>
           }
