@@ -131,4 +131,4 @@ export const OBSERVACIONES = [
     label: "Observaciones",
     on: false
   }
-]
+];

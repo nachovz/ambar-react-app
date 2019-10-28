@@ -23,7 +23,7 @@ const CartaPorteSignature = ({ history }) => {
   const [approvals, setApprovals] = useState({
     conform: false,
     terms: false
-  })
+  });
   const [openAlert, setOpenAlert] = React.useState(false);
   let sigPad = React.createRef();
   const moveBack = () => history.goBack();

@@ -1,0 +1,224 @@
+{
+    "data": [
+        {
+            "id": "EBBX0013",
+            "description": "BIG BAG 1000"
+        },
+        {
+            "id": "EBIX0015",
+            "description": "BIDON 100B"
+        },
+        {
+            "id": "EBIX0016",
+            "description": "BIDON 120B"
+        },
+        {
+            "id": "EBIX0017",
+            "description": "BIDON 20"
+        },
+        {
+            "id": "EBIX0018",
+            "description": "BIDON 30"
+        },
+        {
+            "id": "EBIX0019",
+            "description": "BIDON 25"
+        },
+        {
+            "id": "EBIX0020",
+            "description": "BIDON 5"
+        },
+        {
+            "id": "EBIX0021",
+            "description": "BIDON 60"
+        },
+        {
+            "id": "EBIX0022",
+            "description": "BIDON 60"
+        },
+        {
+            "id": "EBIX0024",
+            "description": "BIDON B200 B"
+        },
+        {
+            "id": "EBIX0025",
+            "description": "BIDON B200 R"
+        },
+        {
+            "id": "EBIX0026",
+            "description": "BIDON METÁLICO 50"
+        },
+        {
+            "id": "EBIX0027",
+            "description": "BIDON METÁLICO 60"
+        },
+        {
+            "id": "EBIX0028",
+            "description": "JERRICAN 10"
+        },
+        {
+            "id": "EBIX0029",
+            "description": "BIDON 1"
+        },
+        {
+            "id": "EBIX0030",
+            "description": "BIDON 250"
+        },
+        {
+            "id": "EBOX0029",
+            "description": "BAGST 200"
+        },
+        {
+            "id": "EBOX0030",
+            "description": "BAGST 60"
+        },
+        {
+            "id": "EBOX0031",
+            "description": "UNIDAD"
+        },
+        {
+            "id": "EBOX0032",
+            "description": "FARDO"
+        },
+        {
+            "id": "ECXX0031",
+            "description": "CONTEN BAS 120 DT"
+        },
+        {
+            "id": "ECXX0032",
+            "description": "CONTEN BAT DT"
+        },
+        {
+            "id": "ECXX0033",
+            "description": "CONTEN BAT 120 DT"
+        },
+        {
+            "id": "ECXX0034",
+            "description": "CONTEN BAT 220 DT"
+        },
+        {
+            "id": "ECXX0035",
+            "description": "CONTEN CONFIDENCIAL 240 L DT"
+        },
+        {
+            "id": "ECXX0036",
+            "description": "CONTEN BAT 650 DT"
+        },
+        {
+            "id": "ECXX0037",
+            "description": "CONTEN LUB 500 DT"
+        },
+        {
+            "id": "ECXX0038",
+            "description": "MULTIBOX 2170 DT"
+        },
+        {
+            "id": "ECXX0039",
+            "description": "CONTEN CONFIDENCIAL 60L DT"
+        },
+        {
+            "id": "ECXX0040",
+            "description": "CONTENEDOR 30M3 DT"
+        },
+        {
+            "id": "ECXX0041",
+            "description": "A GRANEL"
+        },
+        {
+            "id": "ECXX0042",
+            "description": "CONTENEDOR 20M3 DT"
+        },
+        {
+            "id": "ECXX0043",
+            "description": "CONTENEDOR 12M3 DT"
+        },
+        {
+            "id": "ECXX0044",
+            "description": "MULTIBOX 2250 DT"
+        },
+        {
+            "id": "ECXX0045",
+            "description": "CONTEN BAS 360 DT"
+        },
+        {
+            "id": "ECXX0046",
+            "description": "CONTEN LUB 400 DT"
+        },
+        {
+            "id": "ECXX0047",
+            "description": "CONTEN LUB 700 DT"
+        },
+        {
+            "id": "ECXX0048",
+            "description": "CONTENEDOR 7M3 DT"
+        },
+        {
+            "id": "ECXX0049",
+            "description": "ACE VEGETAL"
+        },
+        {
+            "id": "ECXX0050",
+            "description": "CONT. BAS 1000 DT"
+        },
+        {
+            "id": "ECXX0051",
+            "description": "CONT. BAS. 800 L. DT"
+        },
+        {
+            "id": "EENV0039",
+            "description": "BOX PILAS"
+        },
+        {
+            "id": "EENV0040",
+            "description": "CBOX"
+        },
+        {
+            "id": "EENV0041",
+            "description": "PALET"
+        },
+        {
+            "id": "EENV0060",
+            "description": "GRAN EMBALAJE"
+        },
+        {
+            "id": "EGRG0041",
+            "description": "GRG 500"
+        },
+        {
+            "id": "EGRG0042",
+            "description": "GRG 1000"
+        },
+        {
+            "id": "EJAU0043",
+            "description": "JAULA MALLA 2M3 DT"
+        },
+        {
+            "id": "EJAU0044",
+            "description": "JAULA TUBO 2M3 DT"
+        },
+        {
+            "id": "EJAU0047",
+            "description": "GRG JAULA 1M3"
+        },
+        {
+            "id": "EJAU0048",
+            "description": "GRG JAU BURBUJA DT"
+        },
+        {
+            "id": "EJAU0114",
+            "description": "JAULA METAL 4M3 DT"
+        },
+        {
+            "id": "EPRE0047",
+            "description": "ALK PRESS TAINER"
+        },
+        {
+            "id": "ESOP0054",
+            "description": "PORTABAG DT"
+        },
+        {
+            "id": "SADX0199",
+            "description": "SUMINISTRO ENV. LAB. 0,5 L."
+        }
+    ]
+}

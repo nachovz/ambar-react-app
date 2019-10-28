@@ -1,0 +1,1606 @@
+{
+    "data": [
+        {
+            "id": "02010100",
+            "description": "NO USO_ Lodos de lavado y limpieza",
+            "lerDesc": "Lodos de lavado y limpieza",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p. (acidos), 8, III (E)"
+        },
+        {
+            "id": "02010800",
+            "description": "RP_Residuos agroquímicos que contienen sustancias peligrosas,",
+            "lerDesc": "Residuos agroquímicos que contienen sustancias peligrosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "02010801",
+            "description": "RP_Pesticidas y raticidas",
+            "lerDesc": "Residuos agroquímicos que contienen sustancias peligrosas",
+            "tipoDesc": "RESIDUO, UN 3288 SOLIDO TOXICO, INORGANICO, N.E.P. (agroquimicos), 6.1, III, (E)"
+        },
+        {
+            "id": "02010900",
+            "description": "Residuos agroquimicos dintintos de los mencionados en el código 020108",
+            "lerDesc": "Residuos agroquímicos distintos de los mencionados en el cód",
+            "tipoDesc": ""
+        },
+        {
+            "id": "02020400",
+            "description": "Lodos depuradora Ind Car",
+            "lerDesc": "Lodos del tratamiento in situ de efluentes",
+            "tipoDesc": ""
+        },
+        {
+            "id": "02030400",
+            "description": "NO USO_Producto inadecuado para el consumo",
+            "lerDesc": "Materiales inadecuados para el consumo o la elaboración",
+            "tipoDesc": ""
+        },
+        {
+            "id": "02030401",
+            "description": "Producto inadecuado para el consumo",
+            "lerDesc": "Materiales inadecuados para el consumo o la elaboración",
+            "tipoDesc": ""
+        },
+        {
+            "id": "02070401",
+            "description": "Materiales inadecuados para el consumo o la elaboración",
+            "lerDesc": "Materiales inadecuados para el consumo o la elaboración",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "03031000",
+            "description": "Lodos de depuradora de Ind. Papel",
+            "lerDesc": "Desechos de fibras y lodos de fibras, de materiales de carga",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06010200",
+            "description": "RP_Ácido clorhídrico.",
+            "lerDesc": "Ácido clorhídrico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06010300",
+            "description": "RP_Ácido fluorhídrico.",
+            "lerDesc": "Ácido fluorhídrico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06010400",
+            "description": "RP_Ácido fosfórico y ácido fosforoso.",
+            "lerDesc": "Ácido fosfórico y ácido fosforoso",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06010500",
+            "description": "RP_Ácido nítrico y ácido nitroso.",
+            "lerDesc": "Ácido nítrico y ácido nitroso",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06010600",
+            "description": "RP_Otros ácidos.",
+            "lerDesc": "Otros ácidos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06020100",
+            "description": "RP_Hidróxido cálcico.",
+            "lerDesc": "Hidróxido cálcico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06020400",
+            "description": "RP_Sosa caustica",
+            "lerDesc": "Hidróxido potásico e hidróxido sódico",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p., 8, III (E)"
+        },
+        {
+            "id": "06020500",
+            "description": "RP_Otras bases.",
+            "lerDesc": "Otras bases",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06031300",
+            "description": "RP_Sales sólidas y soluciones que contienen metales pesados",
+            "lerDesc": "Sales sólidas y soluciones que contienen metales pesados",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "06031400",
+            "description": "NO USO_Sales sólidas y soluciones distintas de las mencionadas en los códigos 06 03 11 y 06 03 13.",
+            "lerDesc": "Sales sólidas y soluciones distintas de las mencionadas en l",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "06031401",
+            "description": "NO USO_Sales Inorgánicas_polvo Extintor",
+            "lerDesc": "Sales sólidas y soluciones distintas de las mencionadas en l",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "06130100",
+            "description": "RP_NO USO_Productos Fitosanitarios",
+            "lerDesc": "Productos fitosanitarios inorgánicos, conservantes de la mad",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "06130200",
+            "description": "RP_NO USO_Carbón activo usado (excepto el código 06 07 02).",
+            "lerDesc": "Carbón activo usado (excepto la categoría 06 07 02)",
+            "tipoDesc": ""
+        },
+        {
+            "id": "06130201",
+            "description": "RP_Carbon activo usado",
+            "lerDesc": "Carbón activo usado (excepto la categoría 06 07 02)",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07010300",
+            "description": "RP_NO USO_Disolventes, líquidos de limpieza y licores madre organo halogenados,",
+            "lerDesc": "Disolventes, líquidos de limpieza y licores madre organohalo",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07010301",
+            "description": "RP_NO USO_Percloretileno",
+            "lerDesc": "Disolventes, líquidos de limpieza y licores madre organohalo",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07010400",
+            "description": "RP_NO USO_Otros disolventes, líquidos de limpieza y licores madre orgánicos,",
+            "lerDesc": "Otros disolventes, líquidos de limpieza y licores madre orgá",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07010401",
+            "description": "RP_NO USO_Desengrasante",
+            "lerDesc": "Otros disolventes, líquidos de limpieza y licores madre orgá",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07020800",
+            "description": "RP_NO USO_Otros residuos de reaccion y destilacion",
+            "lerDesc": "Otros residuos de reacción y de destilación",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "07029900",
+            "description": "NO USAR_Reactivos de laboratorio",
+            "lerDesc": "Residuos no especificados en otra categoría",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07029901",
+            "description": "NO USO_Residuos no especificados en otra categoría.",
+            "lerDesc": "Residuos no especificados en otra categoría",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07040100",
+            "description": "RP_Liquidos de limpieza",
+            "lerDesc": "Líquidos de limpieza y licores madre acuosos",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "07041301",
+            "description": "RP_cebos",
+            "lerDesc": "Residuos sólidos que contienen sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "07050101",
+            "description": "RP_Poliol_Liquidos de limpieza y licores madre acuosos",
+            "lerDesc": "Líquidos de limpieza y licores madre acuosos",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "08011100",
+            "description": "RP_Residuos de pintura y barniz y disolventes organicos No Halogenados",
+            "lerDesc": "Residuos de pintura y barniz que contienen disolventes orgán",
+            "tipoDesc": "RESIDUOS,UN 1263, PRODUCTOS PARA LA PINTURA,(Disolventes, Lodos), 3, GE III, E"
+        },
+        {
+            "id": "08011101",
+            "description": "RP_Polvo de Lijado de Pintura",
+            "lerDesc": "Residuos de pintura y barniz que contienen disolventes orgán",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "08011102",
+            "description": "RP_Residuos de Pintura y Barniz que contienen disolventes orgánicos u otras sustancias peligrosas.",
+            "lerDesc": "Residuos de pintura y barniz que contienen disolventes orgán",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "08011200",
+            "description": "NO USO_Residuos de pintura y barniz _RNP",
+            "lerDesc": "Residuos de pintura y barniz, distintos de los especificados",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08011300",
+            "description": "RP_NO USO_Lodos de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas,",
+            "lerDesc": "Lodos de pintura y barniz que contienen disolventes orgánico",
+            "tipoDesc": "RESIDUOS,UN 1263, PRODUCTOS PARA LA PINTURA,(Restos de pinturas),3,III"
+        },
+        {
+            "id": "08011301",
+            "description": "RP_NO USO_Restos de pintura al agua",
+            "lerDesc": "Lodos de pintura y barniz que contienen disolventes orgánico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08011500",
+            "description": "RP_NO USO_Lodos acuosos que contienen pintura o barniz con disolventes orgánicos u otras sustancias peligrosas,",
+            "lerDesc": "Lodos acuosos que contienen pintura o barniz con disolventes",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08011501",
+            "description": "RP_NO USO_Restos de pintura al agua",
+            "lerDesc": "Lodos acuosos que contienen pintura o barniz con disolventes",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08011700",
+            "description": "RP_NO USO_Residuos del decapado o eliminación de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas,",
+            "lerDesc": "Residuos del decapado o eliminación de pintura y barniz que",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08011701",
+            "description": "RP_Polvo de lijado de pintura y barniz",
+            "lerDesc": "Residuos del decapado o eliminación de pintura y barniz que",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "08011702",
+            "description": "RP_Pigmentos y Resinas",
+            "lerDesc": "Residuos del decapado o eliminación de pintura y barniz que",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "08011900",
+            "description": "RP_NO USO_Suspensiones acuosas que contienen pintura o barniz con disolventes orgánicos u otras sustancias peligrosas,",
+            "lerDesc": "Suspensiones acuosas que contienen pintura o barniz con diso",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08011901",
+            "description": "RP_Aguas con pinturas",
+            "lerDesc": "Suspensiones acuosas que contienen pintura o barniz con diso",
+            "tipoDesc": "RESIDUOS,UN 1263, PRODUCTOS PARA LA PINTURA,(Disolventes, Lodos), 3, GE III, E"
+        },
+        {
+            "id": "08011902",
+            "description": "RP_Aguas de lavado",
+            "lerDesc": "Suspensiones acuosas que contienen pintura o barniz con diso",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08031200",
+            "description": "RP_Residuos de tintas",
+            "lerDesc": "Residuos de tintas que contienen sustancias peligrosas",
+            "tipoDesc": "RESIDUO,UN 1992,LIQUIDO INFLAMABLE, TOXICO N.E.P.,(Disolvente Halogenado),3 (6.1),II (D/E)"
+        },
+        {
+            "id": "08031400",
+            "description": "RP_NO USO_Lodos de tinta que contienen sustancias peligrosas,",
+            "lerDesc": "Lodos de tinta que contienen sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08031401",
+            "description": "RP_NO USO_Pintura en botes",
+            "lerDesc": "Lodos de tinta que contienen sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08031700",
+            "description": "RP_NO USO_Residuos de tóner de impresión que contienen sustancias peligrosas,",
+            "lerDesc": "Residuos de tóner de impresión que contienen sustancias peli",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08031701",
+            "description": "RP_Toner",
+            "lerDesc": "Residuos de tóner de impresión que contienen sustancias peli",
+            "tipoDesc": "TONER"
+        },
+        {
+            "id": "08031800",
+            "description": "Toner de Impresión",
+            "lerDesc": "Residuos de tóner de impresión, distintos de los especificad",
+            "tipoDesc": "TONER"
+        },
+        {
+            "id": "08040900",
+            "description": "RP_Adhesivos y Sellantes",
+            "lerDesc": "Residuos de adhesivos y sellantes que contienen disolventes",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "08041100",
+            "description": "RP_NO USO_Lodos de adhesivos y sellantes que contienen disolventes orgánicos u otras sustancias peligrosas,",
+            "lerDesc": "Lodos de adhesivos y sellantes que contienen disolventes org",
+            "tipoDesc": ""
+        },
+        {
+            "id": "08041500",
+            "description": "RP_Líquidos acuosos con Adhesivos y disolventes",
+            "lerDesc": "Residuos líquidos acuosos que contienen adhesivos o sellante",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "09010100",
+            "description": "RP_Soluciones de revelado y soluciones activadoras al agua.",
+            "lerDesc": "Soluciones de revelado y soluciones activadoras al agua",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "09010101",
+            "description": "RP_Liquido revelador",
+            "lerDesc": "Soluciones de revelado y soluciones activadoras al agua",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "09010400",
+            "description": "RP_Soluciones de fijado.",
+            "lerDesc": "Soluciones de fijado",
+            "tipoDesc": ""
+        },
+        {
+            "id": "09010401",
+            "description": "RP_Liquido fijador",
+            "lerDesc": "Soluciones de fijado",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "09010500",
+            "description": "RP_NO USO_Soluciones de blanqueo y blanqueo-fijado",
+            "lerDesc": "Soluciones de blanqueo y soluciones de blanqueo-fijado",
+            "tipoDesc": ""
+        },
+        {
+            "id": "09010600",
+            "description": "RP_NO USO_Res. que contiene plata de res. fotográficos",
+            "lerDesc": "Residuos que contienen plata procedente del tratamiento in s",
+            "tipoDesc": ""
+        },
+        {
+            "id": "09010800",
+            "description": "Radiografías",
+            "lerDesc": "Películas y papel fotográfico que no contienen plata ni comp",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "10010400",
+            "description": "RP_Cenizas volantes y polvo de caldera de hidrocarburos",
+            "lerDesc": "Cenizas volantes y polvo de caldera de hidrocarburos",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "10010900",
+            "description": "RP_NO USO_Ácido sulfúrico,",
+            "lerDesc": "Ácido sulfúrico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "10011800",
+            "description": "RP_Residuos procedentes de la depuración de gases",
+            "lerDesc": "Residuos procedentes de la depuración de gases que contienen",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "10020701",
+            "description": "RP_Polvo de aspiracion",
+            "lerDesc": "Residuos sólidos del tratamiento de gases que contienen sust",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "10090600",
+            "description": "Arenas de fundición",
+            "lerDesc": "Machos y moldes de fundición sin colada distintos de los esp",
+            "tipoDesc": ""
+        },
+        {
+            "id": "10091100",
+            "description": "RP_Escoria de desulfuracion",
+            "lerDesc": "Otras partículas que contienen sustancias peligrosas",
+            "tipoDesc": "UN 3132, RESIDUO SOLIDO QUE REACCIONA CON EL AGUA, INFLAMABLE, N.E.P., 4.3 (4.1), III, (E)"
+        },
+        {
+            "id": "11010600",
+            "description": "RP_Acidos",
+            "lerDesc": "Ácidos no especificados en otra categoría",
+            "tipoDesc": "RESIDUOS, UN 1830 ÁCIDO SULFÚRICO, 8,II"
+        },
+        {
+            "id": "11010900",
+            "description": "RP_Lodos y tortas de filtracion que contienen sustancias peligrosas",
+            "lerDesc": "Lodos y tortas de filtración que contienen sustancias peligr",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "11011100",
+            "description": "RP_Aguas con amoniaco",
+            "lerDesc": "Líquidos acuosos de enjuague que contienen sustancias peligr",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "11020200",
+            "description": "RP_NO USO_Lodos de la hidrometalurgia del zinc (incluidas jarosita y goethita).",
+            "lerDesc": "Lodos de la hidrometalurgia del zinc (incluidas jarosita y g",
+            "tipoDesc": ""
+        },
+        {
+            "id": "11030100",
+            "description": "RP_Aguas con Cianuros",
+            "lerDesc": "Residuos que contienen cianuro",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "12010200",
+            "description": "Polvo y partículas de metales férreos",
+            "lerDesc": "Polvo y partículas de metales férreos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "12010900",
+            "description": "RP_NO USO_Emulsiones y disoluciones de mecanizado sin halógenos.",
+            "lerDesc": "Emulsiones y disoluciones de mecanizado sin halógenos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "12010901",
+            "description": "RP_Taladrina",
+            "lerDesc": "Emulsiones y disoluciones de mecanizado sin halógenos",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "12011200",
+            "description": "RP_Ceras y grasas usadas.",
+            "lerDesc": "Ceras y grasas usadas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "12011400",
+            "description": "RP_Lodos de mecanizado que contienen sustancias peligrosas.",
+            "lerDesc": "Lodos de mecanizado que contienen sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "12011600",
+            "description": "RP_Residuos de granallado",
+            "lerDesc": "Residuos de granallado o chorreado que contienen sustancias",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "12011700",
+            "description": "Residuos de granallado.",
+            "lerDesc": "Residuos de granallado o chorreado distintos de los especifi",
+            "tipoDesc": ""
+        },
+        {
+            "id": "12030100",
+            "description": "RP_Líquidos acuosos de limpieza.",
+            "lerDesc": "Líquidos acuosos de limpieza",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "12030101",
+            "description": "RP_Aguas de espumogeno",
+            "lerDesc": "Líquidos acuosos de limpieza",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "12030102",
+            "description": "RP_Aguas con metales",
+            "lerDesc": "Líquidos acuosos de limpieza",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "13011000",
+            "description": "RP_Aceites No Clorados",
+            "lerDesc": "Aceites hidráulicos minerales no clorados",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "13020400",
+            "description": "RP_Aceites minerales clorados de motor, de transmision mecánica y lubricantes",
+            "lerDesc": "Aceites minerales clorados de motor, de transmisión mecánica",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "13020500",
+            "description": "RP_Aceite Usado",
+            "lerDesc": "Aceites minerales no clorados de motor, de transmisión mecán",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "13020800",
+            "description": "RP_Otros aceites de motor, de transmisión mecánica y lubricantes,",
+            "lerDesc": "Otros aceites de motor, de transmisión mecánica y lubricante",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "13050200",
+            "description": "RP_Lodos con Hidrocarburos",
+            "lerDesc": "Lodos de separadores de agua/sustancias aceitosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "13050201",
+            "description": "RP_Aguas con Hidrocarburos",
+            "lerDesc": "Lodos de separadores de agua/sustancias aceitosas",
+            "tipoDesc": "RESIDUO, UN 3295 Hidrocarburos Liquidos N.E.P. 3 GE III"
+        },
+        {
+            "id": "13050203",
+            "description": "RP_Mezcla de combustibles",
+            "lerDesc": "Lodos de separadores de agua/sustancias aceitosas",
+            "tipoDesc": "RESIDUO, UN 3296 Hidrocarburos Liquidos N.E.P. 3 GE III"
+        },
+        {
+            "id": "13050700",
+            "description": "RP_NO USO_Agua aceitosa procedente de separadores de agualsustancias aceitosas.",
+            "lerDesc": "Agua aceitosa procedente de separadores de agua/sustancias a",
+            "tipoDesc": ""
+        },
+        {
+            "id": "13070300",
+            "description": "RP_Otros combustibles (incluidas mezclas).",
+            "lerDesc": "Otros combustibles (incluidas mezclas)",
+            "tipoDesc": ""
+        },
+        {
+            "id": "14060100",
+            "description": "RP_Clorofluorocarbonos, HCFC, HFC.",
+            "lerDesc": "Clorofluorocarburos, HCFC, HFC",
+            "tipoDesc": "RESIDUO,UN 1950,AEROSOLES,inflamables,2.1 (D)**"
+        },
+        {
+            "id": "14060200",
+            "description": "RP_Disolvente Halogenado",
+            "lerDesc": "Otros disolventes y mezclas de disolventes halogenados",
+            "tipoDesc": "RESIDUO,UN 1992,LIQUIDO INFLAMABLE, TOXICO N.E.P.,(Disolvente Halogenado),3 (6.1),II (D/E)"
+        },
+        {
+            "id": "14060300",
+            "description": "RP_Disolvente No Halogenado",
+            "lerDesc": "Otros disolventes y mezclas de disolventes",
+            "tipoDesc": "RESIDUOS, UN 1993,LIQUIDO INFLAMABLE,N.E.P.,(Disolvente no Halogenado),3,III"
+        },
+        {
+            "id": "14060301",
+            "description": "RP_Disolvente Industrial No Halogenado",
+            "lerDesc": "Otros disolventes y mezclas de disolventes",
+            "tipoDesc": "UN 1993 RESIDUO LIQUIDO INFLAMABLE, N.E.P. (productos para la pintura), 3, III (D/E)"
+        },
+        {
+            "id": "15010100",
+            "description": "Envases de papel y carton",
+            "lerDesc": "Envases de papel y cartón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15010200",
+            "description": "Envases de plástico.",
+            "lerDesc": "Envases de plástico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15010300",
+            "description": "Envases de madera",
+            "lerDesc": "Envases de madera",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15010400",
+            "description": "Envases metálicos.",
+            "lerDesc": "Envases metálicos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15011000",
+            "description": "RP_NO USO_Envases que contienen restos de sustancias peligrosas o estén contaminados por ellas.",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15011001",
+            "description": "RP_Envases plásticos contaminados",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15011002",
+            "description": "RP_NO USO_Envases plásticos de mecanica (botes)",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15011003",
+            "description": "RP_Envases plásticos de pintura",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "RESIDUOS,UN 1263, PRODUCTOS PARA LA PINTURA,(Restos de pinturas),3,III"
+        },
+        {
+            "id": "15011004",
+            "description": "RP_Envases metálicos contaminados",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15011005",
+            "description": "RP_Envases vidrio contaminados",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "RESIDUOS,UN 3243,SOLIDOS QUE CONTIENEN LIQUIDO TOXICO,N.E.P.,(Envases),6.1,II"
+        },
+        {
+            "id": "15011006",
+            "description": "RP_Envases plásticos BIG BAG contaminados",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15011007",
+            "description": "RP_Envases madera contaminados",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15011008",
+            "description": "RP_NO USO_Viruta metálica contaminada",
+            "lerDesc": "Envases que contienen restos de sustancias peligrosas o está",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15011100",
+            "description": "RP_NO USO_ Envases metálicos, incluidos los recipientes a presión vacíos, que contienen una matriz porosa sólida peligrosa (ej, amianto).",
+            "lerDesc": "Envases metálicos, incluidos los recipientes a presión vacío",
+            "tipoDesc": "RESIDUO,UN 1950,AEROSOLES,inflamables,2.1 (D)**"
+        },
+        {
+            "id": "15011101",
+            "description": "RP_Envases Aerosol Vacio",
+            "lerDesc": "Envases metálicos, incluidos los recipientes a presión vacío",
+            "tipoDesc": "RESIDUO,UN 1950,AEROSOLES,inflamables,2.1 (D)**"
+        },
+        {
+            "id": "15020200",
+            "description": "RP_Absorbentes, materiales de filtración (incluido los filtros de aceite no especificados en otra categoría) trapos de limpieza",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020201",
+            "description": "RP_Papel contaminado",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020202",
+            "description": "RP_Sepiolita Contaminada",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020203",
+            "description": "RP_Trapos contaminados",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020204",
+            "description": "RP_Tierras contaminadas absorbentes",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020205",
+            "description": "RP_Filtros de cabina",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020206",
+            "description": "RP_NO USO_Filtros de combustible",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15020207",
+            "description": "RP_Papel de enmascarar",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020208",
+            "description": "RP_Latiguillos Absorbentes Contaminados",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020209",
+            "description": "RP_Plástico Contaminado",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020210",
+            "description": "RP_Papel absorbente contaminado",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020211",
+            "description": "RP_Filtros de aceite distintos de automoción",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020212",
+            "description": "RP_Mangas de los Filtros de aspiración",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020213",
+            "description": "RP_Absorbentes (Pinceles, rodillos..) Contaminados",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020214",
+            "description": "RP_Restos de fibras absorbentes contaminadas diversas",
+            "lerDesc": "Absorbentes, materiales de filtración (incluidos los filtros",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "15020300",
+            "description": "Filtros de aire",
+            "lerDesc": "Absorbentes, materiales de filtración, trapos de limpieza y",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15020301",
+            "description": "Ropas protectoras usadas",
+            "lerDesc": "Absorbentes, materiales de filtración, trapos de limpieza y",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15020302",
+            "description": "Latiguillos",
+            "lerDesc": "Absorbentes, materiales de filtración, trapos de limpieza y",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15020303",
+            "description": "Trapos de limpieza no contaminados",
+            "lerDesc": "Absorbentes, materiales de filtración, trapos de limpieza y",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15020304",
+            "description": "NO USO_Material de filtracion_Lana de Roca",
+            "lerDesc": "Absorbentes, materiales de filtración, trapos de limpieza y",
+            "tipoDesc": ""
+        },
+        {
+            "id": "15020305",
+            "description": "Material de filtracion_Lana de Roca",
+            "lerDesc": "Absorbentes, materiales de filtración, trapos de limpieza y",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16010300",
+            "description": "Neumáticos",
+            "lerDesc": "Neumáticos fuera de uso",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16010700",
+            "description": "RP_Filtros de aceite",
+            "lerDesc": "Filtros de aceite",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16010701",
+            "description": "RP_Filtros de Gasoil",
+            "lerDesc": "Filtros de aceite",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011100",
+            "description": "RP_Pastillas de freno",
+            "lerDesc": "Zapatas de freno que contienen amianto",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16011300",
+            "description": "RP_Líquidos de frenos.",
+            "lerDesc": "Líquidos de frenos",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16011400",
+            "description": "RP_Anticongelante",
+            "lerDesc": "Anticongelantes que contienen sustancias peligrosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16011700",
+            "description": "Metales férreos.",
+            "lerDesc": "Metales ferrosos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011701",
+            "description": "NO USO_Extintor vacio",
+            "lerDesc": "Metales ferrosos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011800",
+            "description": "Metales no férreos.",
+            "lerDesc": "Metales no ferrosos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011801",
+            "description": "Aluminio",
+            "lerDesc": "Metales no ferrosos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011900",
+            "description": "Plástico.",
+            "lerDesc": "Plástico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011901",
+            "description": "Paragolpes",
+            "lerDesc": "Plástico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16011902",
+            "description": "Trozos plásticos varios",
+            "lerDesc": "Plástico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16012000",
+            "description": "Vidrio.",
+            "lerDesc": "Vidrio",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16012001",
+            "description": "Lunas de automovil",
+            "lerDesc": "Vidrio",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16012100",
+            "description": "RP_Componentes peligrosos distintos de los especificados en los códigos 16 01 07 a 16 01 11, 16 01 13 y 16 01 14,",
+            "lerDesc": "Componentes peligrosos distintos de los especificados en los",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16012101",
+            "description": "RP_Filtros de combustible",
+            "lerDesc": "Componentes peligrosos distintos de los especificados en los",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021100",
+            "description": "RP_Equipos desechados con HFC.",
+            "lerDesc": "Equipos desechados que contienen clorofluorocarburos, HCFC,",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021201",
+            "description": "RP_Equipos desechados que contienen amianto libre",
+            "lerDesc": "Equipos desechados que contiene amianto libre",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021300",
+            "description": "RP_NO USO_Equipos desechados que contienen componentes peligrosos (4), distintos de los especificados en los códigos 16 02 09 a 16 02 12,",
+            "lerDesc": "Equipos desechados que contienen componentes peligrosos ( 2",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16021301",
+            "description": "RP_Desechos electronicos",
+            "lerDesc": "Equipos desechados que contienen componentes peligrosos ( 2",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16021322",
+            "description": "RP_RAEE_Pantallas y monitores",
+            "lerDesc": "Equipos desechados que contienen componentes peligrosos ( 2",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021341",
+            "description": "RP_RAEE_Grandes aparatos con componentes peligrosos",
+            "lerDesc": "Equipos desechados que contienen componentes peligrosos ( 2",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021351",
+            "description": "RP_RAEE_Pequeños aparatos con CP y pilas",
+            "lerDesc": "Equipos desechados que contienen componentes peligrosos ( 2",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021400",
+            "description": "Equipos desechados distintos de los especificados en codigos 160209 a 160213",
+            "lerDesc": "Equipos desechados distintos de los especificados en los cód",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16021432",
+            "description": "RAEE_Lamparas LED",
+            "lerDesc": "Equipos desechados distintos de los especificados en los cód",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021442",
+            "description": "RAEE_Grandes aparatos",
+            "lerDesc": "Equipos desechados distintos de los especificados en los cód",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021452",
+            "description": "RAEE_Pequeños aparatos",
+            "lerDesc": "Equipos desechados distintos de los especificados en los cód",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021500",
+            "description": "NO USO_RP_Componentes peligrosos retirados de equipos desechados",
+            "lerDesc": "Componentes peligrosos retirados de equipos desechados",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16021600",
+            "description": "NO USO_Componentes retirados de RAEE distintos de 160215*",
+            "lerDesc": "Componentes retirados de equipos desechados distintos de los",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16030300",
+            "description": "RP_Residuos inorgánicos que contienes sust. pel.",
+            "lerDesc": "Residuos inorgánicos que contienen sustancias peligrosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16030301",
+            "description": "RP_Restos de lija y otros abrasivos",
+            "lerDesc": "Residuos inorgánicos que contienen sustancias peligrosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16030400",
+            "description": "Residuos Inorgánicos_Vajillas Destruccion",
+            "lerDesc": "Residuos inorgánicos distintos de los especificados en el có",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16030500",
+            "description": "RP_Residuos orgánicos que contienen sustancias peligrosas.",
+            "lerDesc": "Residuos orgánicos que contienen sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16030600",
+            "description": "NO USO_Residuos orgánicos distintos de los especificados en el código 16 03 05.",
+            "lerDesc": "Residuos orgánicos distintos de los especificados en el códi",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16050400",
+            "description": "RP_Bombonas de Gases en recipientes a presión (incluidos los halones) que contienen sustancias peligrosas.",
+            "lerDesc": "Gases en recipientes a presión (incluidos los halones) que c",
+            "tipoDesc": "RESIDUO,UN 1950,AEROSOLES,inflamables,2.1 (D)**"
+        },
+        {
+            "id": "16050401",
+            "description": "RP_Aerosoles y sprays",
+            "lerDesc": "Gases en recipientes a presión (incluidos los halones) que c",
+            "tipoDesc": "RESIDUO,UN 1950,AEROSOLES,inflamables,2.1 (D)**"
+        },
+        {
+            "id": "16050402",
+            "description": "RP_Extintores",
+            "lerDesc": "Gases en recipientes a presión (incluidos los halones) que c",
+            "tipoDesc": "RESIDUO,UN 1950,AEROSOLES,inflamables,2.1 (D)**"
+        },
+        {
+            "id": "16050600",
+            "description": "RP_Productos químicos de laboratorio que consisten en, o contienen, sustancias peligrosas, incluidas las mezclas de productos químicos de la",
+            "lerDesc": "Productos químicos de laboratorio que consisten en, o contie",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p., 8, III (E)"
+        },
+        {
+            "id": "16050601",
+            "description": "RP_Reactivos de laboratorio",
+            "lerDesc": "Productos químicos de laboratorio que consisten en, o contie",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p. (acidos), 8, III (E)"
+        },
+        {
+            "id": "16050603",
+            "description": "RP_Plaguicidas_Asimilabres React Lab.",
+            "lerDesc": "Productos químicos de laboratorio que consisten en, o contie",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p. (acidos), 8, III (E)"
+        },
+        {
+            "id": "16050700",
+            "description": "RP_NO USO_Prod. Químicos Inorg. desechados",
+            "lerDesc": "Productos químicos inorgánicos desechados que consisten en,",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16050800",
+            "description": "RP_prod. Químicos Org. desechados",
+            "lerDesc": "Productos químicos orgánicos desechados que consisten en, o",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16050801",
+            "description": "RP_Isocianato",
+            "lerDesc": "Productos químicos orgánicos desechados que consisten en, o",
+            "tipoDesc": "RESIDUOS, UN 2206, ISOCIANATOS TOXICOS, N.E.P., 6.1, II, (D/E)"
+        },
+        {
+            "id": "16060100",
+            "description": "RP_Baterías de plomo.",
+            "lerDesc": "Baterías de plomo",
+            "tipoDesc": "UN 2794 RESIDUO ACUMULADORES ELECTRICOS DE ELECTROLITO LIQUIDO ACIDO, 8, (E)"
+        },
+        {
+            "id": "16060200",
+            "description": "RP_Acumuladores de Ni-Cd.",
+            "lerDesc": "Acumuladores de Ni-Cd",
+            "tipoDesc": "RESIDUOS,UN 2795,ACUMULADORES eléctricos DE ELECTROLITO LÍQUIDO ALCALINO,8,(E)"
+        },
+        {
+            "id": "16060300",
+            "description": "RP_Pilas que contienen mercurio.",
+            "lerDesc": "Pilas que contienen mercurio",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16060400",
+            "description": "Pilas alcalinas (excepto las del código 16 06 03).",
+            "lerDesc": "Pilas alcalinas (excepto 16 06 03)",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "16060500",
+            "description": "Otras pilas y acumuladores,",
+            "lerDesc": "Otras pilas y acumuladores",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16060600",
+            "description": "RP_NO USO_Electrolitos de pilas y acumuladores",
+            "lerDesc": "Electrolitos de pilas y acumuladores recogidos selectivament",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16070800",
+            "description": "RP_Residuos que contienen hidrocarburos,",
+            "lerDesc": "Residuos que contienen hidrocarburos",
+            "tipoDesc": "RESIDUO, UN 3296 Hidrocarburos Liquidos N.E.P. 3 GE III"
+        },
+        {
+            "id": "16070900",
+            "description": "RP_NO USO_Residuos que contienen otras sustancias peligrosas,",
+            "lerDesc": "Residuos que contienen otras sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16080200",
+            "description": "RP_NO USO_Catalizador Usado que contiene metales",
+            "lerDesc": "Catalizadores usados que contienen metales de transición",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16080700",
+            "description": "RP_Catalizadores usados contaminados con sustancias peligrosas.",
+            "lerDesc": "Catalizadores usados contaminados con sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16090200",
+            "description": "RP_Acidos Cromicos, Cromatos, por ejemplo, cromato potásico",
+            "lerDesc": "Cromatos, por ejemplo, cromato potásico, dicromato sódico o",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p. (acidos), 8, III (E)"
+        },
+        {
+            "id": "16100100",
+            "description": "RP_NO USO_Residuos liquidos acuosos con sus. peligrosas",
+            "lerDesc": "Residuos líquidos acuosos que contienen sustancias peligrosa",
+            "tipoDesc": ""
+        },
+        {
+            "id": "16100101",
+            "description": "RP_Aguas acidas residuales",
+            "lerDesc": "Residuos líquidos acuosos que contienen sustancias peligrosa",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p. (acidos), 8, III (E)"
+        },
+        {
+            "id": "17010700",
+            "description": "Mezcla de hormigón, ladrillos, tejas y materiales distintos de las especificadas en código 170106",
+            "lerDesc": "Mezclas de hormigón, ladrillos, tejas y materiales cerámicos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17020100",
+            "description": "Madera.",
+            "lerDesc": "Madera",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17020200",
+            "description": "NO USO_Vidrio.",
+            "lerDesc": "Vidrio",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17020300",
+            "description": "Plastico",
+            "lerDesc": "Plástico",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17040100",
+            "description": "NO USO_Cobre, bronce, laton.",
+            "lerDesc": "Cobre, bronce, latón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17040101",
+            "description": "NO USO_Cobre.",
+            "lerDesc": "Cobre, bronce, latón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17040102",
+            "description": "NO USO_Laton",
+            "lerDesc": "Cobre, bronce, latón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17040200",
+            "description": "Aluminio",
+            "lerDesc": "Aluminio",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17040500",
+            "description": "Hierro y acero.",
+            "lerDesc": "Hierro y acero",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17040900",
+            "description": "RP_Residuos metálicos contaminados con sustancias peligrosas,",
+            "lerDesc": "Residuos metálicos contaminados con sustancias peligrosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "17041100",
+            "description": "Cables distintos de los especificados en el código 17 04 10.",
+            "lerDesc": "Cables distintos de los especificados en el código 17 04 10",
+            "tipoDesc": ""
+        },
+        {
+            "id": "17050300",
+            "description": "RP_Tierra y piedras que contienen sustancias peligrosas.",
+            "lerDesc": "Tierra y piedras que contienen sustancias peligrosas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "17060501",
+            "description": "RP_NO USO_Materiales de construccion que contienen amianto",
+            "lerDesc": "Materiales de construcción que contienen amianto",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "17060502",
+            "description": "RP_Materiales de construccion que contienen amianto",
+            "lerDesc": "Materiales de construcción que contienen amianto",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "18010300",
+            "description": "NO AUT_ RP_Res. cuya recogida y eli.l es esencial para prev. infecc.",
+            "lerDesc": "Residuos cuya recogida y eliminación es objeto de requisitos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "18010600",
+            "description": "NO AUT_RP_Prod. Químicos que cont. en o cont. suss.pel.",
+            "lerDesc": "Productos químicos que consisten en, o contienen, sustancias",
+            "tipoDesc": "RESIDUOS, UN 1993,LIQUIDO INFLAMABLE,N.E.P.,(Aguas laboratorio),3,III"
+        },
+        {
+            "id": "18010601",
+            "description": "RP_Colutorio (boterio)",
+            "lerDesc": "Productos químicos que consisten en, o contienen, sustancias",
+            "tipoDesc": ""
+        },
+        {
+            "id": "18010800",
+            "description": "NO AUT_RP_Medicamentos citotóxicos y citostáticos",
+            "lerDesc": "Medicamentos citotóxicos y citostáticos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "18010900",
+            "description": "Productos cosméticos No Peligrosos",
+            "lerDesc": "Medicamentos distintos de los especificados en el código 18",
+            "tipoDesc": ""
+        },
+        {
+            "id": "19020500",
+            "description": "RP_NO USO_Lodos de tratamientos físico-químicos que contienen sustancias peligrosas.",
+            "lerDesc": "Lodos de tratamientos físicoquímicos que contienen sustancia",
+            "tipoDesc": ""
+        },
+        {
+            "id": "19020501",
+            "description": "RP_Lodos de depuradora",
+            "lerDesc": "Lodos de tratamientos físicoquímicos que contienen sustancia",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "19020502",
+            "description": "RP_Lodos de filtro prensa",
+            "lerDesc": "Lodos de tratamientos físicoquímicos que contienen sustancia",
+            "tipoDesc": ""
+        },
+        {
+            "id": "19020503",
+            "description": "RP_Lodos de evaporadora",
+            "lerDesc": "Lodos de tratamientos físicoquímicos que contienen sustancia",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "19070300",
+            "description": "Lixiviados de Vertedero",
+            "lerDesc": "Lixiviados de vertedero distintos de los especificados en el",
+            "tipoDesc": ""
+        },
+        {
+            "id": "19081300",
+            "description": "NO USO_RP_Lodos procedentes de otros tramientos de aguas residuales industriales, que contienen sustancias peligrosas",
+            "lerDesc": "Lodos que contienen sustancias peligrosas procedentes de otr",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "19081400",
+            "description": "RNP_Lodos tratamiento aguas industriales",
+            "lerDesc": "Lodos procedentes de otros tratamientos de aguas residuales",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "19120200",
+            "description": "NO USO_Metales férreos",
+            "lerDesc": "Metales férreos",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "19120300",
+            "description": "NO USO_Metales no férreos",
+            "lerDesc": "Metales no férreos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "19120400",
+            "description": "Plástico y Caucho",
+            "lerDesc": "Plástico y caucho",
+            "tipoDesc": ""
+        },
+        {
+            "id": "19121200",
+            "description": "NO USO_Otros residuos (incluidas mezclas de materiales) procedentes del tratamiento",
+            "lerDesc": "Otros residuos (incluidas mezclas de materiales) procedentes",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20010100",
+            "description": "Papel y cartón.",
+            "lerDesc": "Papel y cartón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20010101",
+            "description": "Papel",
+            "lerDesc": "Papel y cartón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20010102",
+            "description": "Carton",
+            "lerDesc": "Papel y cartón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20010103",
+            "description": "Papel Confidencial",
+            "lerDesc": "Papel y cartón",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20010200",
+            "description": "Vidrio Botellas",
+            "lerDesc": "Vidrio",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20010800",
+            "description": "Residuos biodegradables de cocinas y restaurantes",
+            "lerDesc": "Residuos biodegradables de cocinas y restaurantes",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20011000",
+            "description": "Ropa Usada",
+            "lerDesc": "Ropa",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20011400",
+            "description": "RP_Acidos",
+            "lerDesc": "Ácidos",
+            "tipoDesc": "RESIDUO, UN 1760, Líquido corrosivo n.e.p. (acidos), 8, III (E)"
+        },
+        {
+            "id": "20011500",
+            "description": "RP_Alcalis.",
+            "lerDesc": "Álcalis",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20011900",
+            "description": "RP_Plaguicidas",
+            "lerDesc": "Plaguicidas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20012100",
+            "description": "RP_Fluorescentes y Otros con Hg",
+            "lerDesc": "Tubos fluorescentes y otros residuos que contienen mercurio",
+            "tipoDesc": "TUBOS DE FLUORESCENTES"
+        },
+        {
+            "id": "20012300",
+            "description": "RP_Equipos desechados que contienen clorofluorocarbonos.",
+            "lerDesc": "Equipos desechados que contienen clorofluorocarburos",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20012500",
+            "description": "Aceites y grasas comestibles",
+            "lerDesc": "Aceites y grasas comestibles",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20012600",
+            "description": "RP_Aceites y grasas comestibles",
+            "lerDesc": "Aceites y grasas distintos de los especificados en el código",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20012900",
+            "description": "RP_NO USO_Detergentes que contienes sust. pelig.",
+            "lerDesc": "Detergentes que contienen sustancias peligrosas",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20013200",
+            "description": "Medicamentos",
+            "lerDesc": "Medicamentos distintos de los especificados en el código 20",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20013300",
+            "description": "NO USO_RP_Baterías y acumuladores especificados en los códigos160601,160602 o 160603 y baterías y acumuladores sin clasificar que contien",
+            "lerDesc": "Baterías y acumuladores especificados en los códigos 16 06 0",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20013400",
+            "description": "NO USO_Baterías y acumuladores distintos de los especificados  en el código 200133*",
+            "lerDesc": "Baterías y acumuladores distintos de los especificados en el",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20013500",
+            "description": "RP_Aparatos Eléctricos y Eléctronicos",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados, distintos de l",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20013501",
+            "description": "RP_Material Informático",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados, distintos de l",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20013502",
+            "description": "RP_Compresores",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados, distintos de l",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20013503",
+            "description": "RP_Aparatos Electromédicos",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados, distintos de l",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20013561",
+            "description": "RP_RAEE_Aparatos informatica y telecomunicaciones pequeños con componentes peligrosos",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados, distintos de l",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20013600",
+            "description": "Equipos Electricos y Electronicos",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados distintos de lo",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20013601",
+            "description": "Material Informatico",
+            "lerDesc": "Equipos eléctricos y electrónicos desechados distintos de lo",
+            "tipoDesc": "EQUIPOS ELECTRICOS  Y ELECTRONICOS DESECHADOS"
+        },
+        {
+            "id": "20013800",
+            "description": "Madera",
+            "lerDesc": "Madera distinta de la especificada en el código 20 01 37",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20013900",
+            "description": "Plásticos_Carcasas CD",
+            "lerDesc": "Plásticos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20014000",
+            "description": "Metales",
+            "lerDesc": "Metales",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20019900",
+            "description": "Productos caducados NP",
+            "lerDesc": "Otras fracciones no especificadas en otra categoría",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20019901",
+            "description": "Basura",
+            "lerDesc": "Otras fracciones no especificadas en otra categoría",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20030100",
+            "description": "Mezcla residuos municipales",
+            "lerDesc": "Mezclas de residuos municipales",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20030101",
+            "description": "r.s.u. - fraccion amarilla",
+            "lerDesc": "Mezclas de residuos municipales",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20030102",
+            "description": "Mecla residuos municipales Viruta",
+            "lerDesc": "Mezclas de residuos municipales",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20030103",
+            "description": "Chupetes",
+            "lerDesc": "Mezclas de residuos municipales",
+            "tipoDesc": ""
+        },
+        {
+            "id": "20030400",
+            "description": "Lodos de Fosa Septica",
+            "lerDesc": "Lodos de fosas sépticas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20030600",
+            "description": "Residuos de limpieza de alcantarillado",
+            "lerDesc": "Residuos de la limpieza de alcantarillas",
+            "tipoDesc": "EXENTO DE ADR"
+        },
+        {
+            "id": "20030700",
+            "description": "Residuos voluminosos_Colchones",
+            "lerDesc": "Residuos voluminosos",
+            "tipoDesc": ""
+        },
+        {
+            "id": "CMTO011",
+            "description": "TRAPOS LIMPIEZA PUNTO COLOR PAQ. 5KG",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "EBBX0014",
+            "description": "BIG BAG 500",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "EBIX0023",
+            "description": "BIDON 60",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "SADX0212",
+            "description": "BIDONUSADO1 B200",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "SADX0213",
+            "description": "BIDONUSADO1 B60",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "SADX0219",
+            "description": "CONT RSU",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "SADX0255",
+            "description": "BIDONUSADO1 GRG1000",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "STTE0375",
+            "description": "SERV REC 2500",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "SVXX0382",
+            "description": "JAULA 2M3",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        },
+        {
+            "id": "XXXX0003",
+            "description": "FAROS",
+            "lerDesc": "Referencias de envase",
+            "tipoDesc": ""
+        }
+    ]
+}

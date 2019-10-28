@@ -47,7 +47,10 @@ const ListElement = ({
         disableTypography
         primary={
           <Row spaceBetween>
-            <Typography noWrap variant="body1">
+            <Typography
+              noWrap={!informative}
+              variant="body1"
+            >
               {title}
             </Typography>
           </Row>

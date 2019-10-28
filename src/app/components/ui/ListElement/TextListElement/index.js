@@ -29,6 +29,7 @@ const TextListElement = ({
           </React.Fragment>
         }
         {...props}
+        informative
       />
       {!noDivider &&
         <Divider component="li" variant={informative && 'inset'} />

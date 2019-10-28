@@ -81,6 +81,7 @@ const CartaPorte = ({ history }) => {
         </CenteredPaddedContainer>
       }
       </List>
+      <div style={{height: '100px'}} />
       <Fab
         color="primary"
         aria-label="Nuevo"

@@ -12,9 +12,7 @@ import BoxedInput from 'app/components/form/BoxedInput';
 import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
-import Icon from 'app/components/ui/Icon';
 import SelectField from 'app/components/form/SelectField';
-import { CloseContainer } from './elements';
 import { PESO_OPTIONS } from 'app/constants/values';
 
 const Recogida = ({ history }) => {
@@ -37,14 +35,15 @@ const Recogida = ({ history }) => {
           unidadesReal,
           observaciones
         } = selectedRecogida;
-        const kgDefault = kgReal || kgValue;
-        setKgValue(kgDefault);
-        setValue("kgReal", kgDefault);
+        if(!!kgReal){
+          setKgValue(kgReal);
+          setValue("kgReal", kgReal);
+        }
         unidadesReal && setValue("unidadesReal", unidadesReal);
         observaciones && setValue("observaciones", observaciones);
       }
     }
-  }, [rutas, setValue, kgValue]);
+  }, [rutas, setValue]);
 
   const { selected } = rutas;
   if(!selected){
@@ -134,7 +133,6 @@ const Recogida = ({ history }) => {
         action={() => setOpenCamera(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
-
       <List>
         <TextListElement
           noDivider
@@ -161,7 +159,7 @@ const Recogida = ({ history }) => {
               register={register}
               name="unidadesReal"
               type="number"
-              placeholder="22"
+              placeholder="-"
               error={errors.unidadesReal}
             />
           }
@@ -218,15 +216,10 @@ const Recogida = ({ history }) => {
         open={openCamera}
         onClose={handleCloseCamera}
       >
-        <div>
-          <CloseContainer>
-            <Icon icon="cerrar" onClick={handleCloseCamera} />
-          </CloseContainer>
-          <Camera
-            onTakePhoto={onTakePhoto}
-            isFullscreen={true}
-          />
-        </div>
+        <Camera
+          onTakePhoto={onTakePhoto}
+          isFullscreen={true}
+        />
       </Modal>
       <StepNavigator
         moveToPreviousText="Atrás"

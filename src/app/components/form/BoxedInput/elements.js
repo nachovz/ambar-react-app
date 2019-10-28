@@ -15,7 +15,7 @@ const styles = {
     padding: `${theme.spacing(2)}px`,
     textAlign: 'center',
     margin: `${theme.spacing(1)}px`,
-    width: '200px'
+    width: '220px'
   }
 };
 
