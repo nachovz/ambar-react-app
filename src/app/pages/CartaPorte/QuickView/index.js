@@ -5,6 +5,7 @@ import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import QuickLinks from 'app/components/ui/QuickLinks';
 import Typography from 'app/components/ui/Typography';
+import StepNavigator from 'app/components/app/StepNavigator';
 
 const CartaPorteQuickView = ({ history }) => {
   const [{ selected }] = useRutasContext();
@@ -14,14 +15,20 @@ const CartaPorteQuickView = ({ history }) => {
     return null;
   }
 
-  console.log('Selected', selected);
+  const moveNext = () => {
+    history.push("/cartaporte");
+  }
+
+  const moveBack = () => {
+    history.push("/");
+  }
 
   return (
     <React.Fragment>
       <QuickLinks
         phone="888 999 00 44"
         mobile="888 999 00 44"
-        mainAction={() => history.push("/cartaporte")}
+        mainAction={moveNext}
       />
       <List>
         <TextListElement
@@ -74,6 +81,12 @@ const CartaPorteQuickView = ({ history }) => {
           subtitle="Vehículo lleno"
         />
       </List>
+      <StepNavigator
+        moveToPreviousText="Ruta"
+        moveToPreviousAction={moveBack}
+        moveToNextText="Carta de Porte"
+        moveToNextAction={moveNext}
+      />
     </React.Fragment>
   );
 };

@@ -9,7 +9,6 @@ import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import TextField from 'app/components/form/TextField';
 import BoxedInput from 'app/components/form/BoxedInput';
-import SelectField from 'app/components/form/SelectField';
 import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
@@ -33,18 +32,18 @@ const RecogidaAdd = ({ history }) => {
   const { selected } = rutas;
 
   React.useEffect(() => {
-    register({ name: "waste"});
-    register({ name: "container"});
+    register({ name: "waste" });
+    register({ name: "container" });
     register({ name: "kgReal" });
   }, [register]);
 
-  React.useEffect( () => {
-    if(!!selected){
-        setValue("kgReal", kgValue);
+  React.useEffect(() => {
+    if (!!selected) {
+      setValue("kgReal", kgValue);
     }
   }, [selected, setValue, kgValue]);
 
-  if(!selected){
+  if (!selected) {
     history.push('/');
     return null;
   }
@@ -54,20 +53,20 @@ const RecogidaAdd = ({ history }) => {
   const onTakePhoto = (dataUri) => {
     setImages(
       (images || [])
-      .concat([{
-        dataUri,
-        title: Date.now().toString()
-      }])
+        .concat([{
+          dataUri,
+          title: Date.now().toString()
+        }])
     );
     handleCloseCamera();
   };
 
   const removeImage = (index) => () => {
-    setImages(images.filter((a,ind) => index !== ind));
+    setImages(images.filter((a, ind) => index !== ind));
   }
 
-  const handleChange = (type) => (value) =>{
-    switch(type){
+  const handleChange = (type) => (value) => {
+    switch (type) {
       case 'WASTE':
         setWaste(value);
         setValue("waste", value);
@@ -108,7 +107,7 @@ const RecogidaAdd = ({ history }) => {
     });
     setRutasState({
       ...rutas,
-      selected:{
+      selected: {
         ...selected
       }
     });
@@ -116,7 +115,7 @@ const RecogidaAdd = ({ history }) => {
     moveNext();
   };
 
-  return(
+  return (
     <React.Fragment>
       <TopBar
         title={`Carta de porte: ${selected.serviceOrderId}`}
@@ -139,7 +138,7 @@ const RecogidaAdd = ({ history }) => {
             subtitle={waste.lerDesc}
             subtitle2={waste.id}
             actionIcon="papelera"
-            action={()=>setWaste(undefined)}
+            action={() => setWaste(undefined)}
           />
           :
           <FieldListElement
@@ -150,7 +149,7 @@ const RecogidaAdd = ({ history }) => {
                 value={waste}
                 onChange={handleChange("WASTE")}
                 fakeAsync
-                suggestions={WASTES.data.map((wa) =>(
+                suggestions={WASTES.data.map((wa) => (
                   {
                     label: wa.description,
                     ...wa
@@ -169,7 +168,7 @@ const RecogidaAdd = ({ history }) => {
             title={container.description}
             subtitle={container.id}
             actionIcon="papelera"
-            action={()=>setContainer(undefined)}
+            action={() => setContainer(undefined)}
           />
           :
           <FieldListElement
@@ -179,7 +178,7 @@ const RecogidaAdd = ({ history }) => {
               <Autocomplete
                 value={container}
                 onChange={handleChange("CONTAINER")}
-                suggestions={CONTAINERS.data.map((co) =>(
+                suggestions={CONTAINERS.data.map((co) => (
                   {
                     label: co.description,
                     ...co
@@ -236,7 +235,7 @@ const RecogidaAdd = ({ history }) => {
             {!!images && images.length > 0 && (
               <React.Fragment>
                 <FieldListElement title="Imágenes" />
-                {images.map( (im,ind) =>(
+                {images.map((im, ind) => (
                   <TextListElement
                     key={ind}
                     noDivider
@@ -251,7 +250,7 @@ const RecogidaAdd = ({ history }) => {
                 ))}
               </React.Fragment>
             )}
-            <div style={{height: '100px'}} />
+            <div style={{ height: '100px' }} />
           </React.Fragment>
         }
         <Modal
@@ -271,13 +270,13 @@ const RecogidaAdd = ({ history }) => {
           handleAgree={handleSubmit(handleSave)}
           cancelText="No, seguir editando"
         />
-        <StepNavigator
+      </List>
+      <StepNavigator
           moveToPreviousText="Atrás"
           moveToPreviousAction={moveBack}
           moveToNextText="Agregar"
           moveToNextAction={() => setOpenAlert(true)}
         />
-      </List>
     </React.Fragment>
   );
 }

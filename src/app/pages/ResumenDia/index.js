@@ -309,6 +309,7 @@ const ResumenDia = ({ history }) => {
           </PaddedContainer>
         </List>
       )}
+      <div style={{height: '100px'}} />
       <StepNavigator
         moveToNextText={STEPS[step].next}
         moveToNextAction={
