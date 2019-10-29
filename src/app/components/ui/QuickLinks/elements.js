@@ -7,7 +7,7 @@ const styles = {
   darkCenteredMaterialStyles: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     background: `${getColor('LIGHTGREY')}`
   },
   centered: {

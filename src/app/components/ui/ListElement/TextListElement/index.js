@@ -23,7 +23,11 @@ const TextListElement = ({
             >
               {subtitle}
             </Typography>
-            <Typography noWrap variant="body2" color="textSecondary">
+            <Typography
+              noWrap={!informative}
+              variant="body2"
+              color="textSecondary"
+            >
               {subtitle2}
             </Typography>
           </React.Fragment>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRutasContext } from 'app/contexts/Rutas';
 import StepNavigator from 'app/components/app/StepNavigator';
+import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
@@ -10,6 +11,7 @@ import ImageComponent from 'app/components/ui/ImageComponent';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import Checkbox from 'app/components/form/Checkbox';
 import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
+import COMPANY from 'app/constants/company_info.json';
 
 const STEPS = {
   resumen: {
@@ -47,22 +49,35 @@ const STEPS = {
 
 const ResumenDia = ({ history }) => {
   const [step, setStep] = useState('resumen');
-  const [rutas] = useRutasContext();
+  const [{ selected }] = useRutasContext();
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
   const moveToPreviousStep = () => setStep(STEPS[step].previous);
 
-  const { selected } = rutas;
-
   if(!selected){
     history.push('/');
     return null;
   }
+  const {
+    serviceOrderId,
+    serviceDateTime,
+    serviceAddressName,
+    custAccount,
+    serviceAddress,
+    clientPhone,
+    clientEmail,
+    clientVat,
+    clientContactPersonName,
+    clientTimeTable
+  } = selected;
 
   return (
     <div>
-      <TopBar title="CARTA DE PORTE Nº12335453_amb" />
+      <TopBar
+        title={`Carta de porte: ${serviceOrderId}`}
+      />
+      <DateBar title={`FECHA RECOGIDA: ${serviceDateTime}`} />
       {step === 'resumen' && (
         <List>
           <TextListElement
@@ -117,18 +132,8 @@ const ResumenDia = ({ history }) => {
           />
           <TextListElement
             noDivider
-            title="Nombre Conductor"
-            subtitle="Juan Martinez Gonzales"
-          />
-          <TextListElement
-            noDivider
-            title="DNI"
-            subtitle="0900000H"
-          />
-          <TextListElement
-            noDivider
             title="Matricula Vehiculo"
-            subtitle="0ADE000"
+            subtitle="XXXXXXXX"
           />
         </List>
       )}
@@ -141,32 +146,43 @@ const ResumenDia = ({ history }) => {
           <TextListElement
             noDivider
             title="Cargador"
-            subtitle="Vehiculos Paz S.L"
+            subtitle={serviceAddressName}
           />
           <TextListElement
             noDivider
             title="Codigo"
-            subtitle="090000"
+            subtitle={custAccount}
           />
           <TextListElement
             noDivider
+            informative
             title="Direccion"
-            subtitle="CLLJ: de la Forja, s/n 28850 Torrejon Madrid"
+            subtitle={serviceAddress}
           />
           <TextListElement
             noDivider
             title="Telefono"
-            subtitle="91623993"
+            subtitle={clientPhone}
+          />
+          <TextListElement
+            noDivider
+            title="Email"
+            subtitle={clientEmail}
           />
           <TextListElement
             noDivider
             title="CIF"
-            subtitle="8908234"
+            subtitle={clientVat}
           />
           <TextListElement
             noDivider
             title="Contacto"
-            subtitle="Enrrique B"
+            subtitle={clientContactPersonName}
+          />
+          <TextListElement
+            noDivider
+            title="Horario"
+            subtitle={clientTimeTable}
           />
         </List>
       )}
@@ -179,32 +195,32 @@ const ResumenDia = ({ history }) => {
           <TextListElement
             noDivider
             title="Transportista"
-            subtitle="Ambar Plus, S.L."
+            subtitle={COMPANY.name}
           />
           <TextListElement
             noDivider
             title="Direccion"
-            subtitle="CLLJ: de la Forja, s/n 28850 Torrejon Madrid"
+            subtitle={COMPANY.address}
           />
           <TextListElement
             noDivider
             title="Accesible"
-            subtitle="Camion"
+            subtitle="?????? Camión"
           />
           <TextListElement
             noDivider
             title="CIF"
-            subtitle="8908234"
+            subtitle={COMPANY.cif}
           />
           <TextListElement
             noDivider
             title="Matricula"
-            subtitle="0ADE000"
+            subtitle="XXXXXXXX"
           />
           <TextListElement
             noDivider
             title="Conductor"
-            subtitle="nº P16"
+            subtitle="???? preferredTechnician?"
           />
         </List>
       )}
@@ -217,22 +233,22 @@ const ResumenDia = ({ history }) => {
           <TextListElement
             noDivider
             title="Gestor"
-            subtitle="Ambar Plus, S.L."
+            subtitle={COMPANY.name}
           />
           <TextListElement
             noDivider
             title="Direccion"
-            subtitle="CLLJ: de la Forja, s/n 28850 Torrejon Madrid"
+            subtitle={COMPANY.address}
           />
           <TextListElement
             noDivider
             title="CIF"
-            subtitle="8908234"
+            subtitle={COMPANY.cif}
           />
           <TextListElement
             noDivider
             title="Telefono"
-            subtitle="91623993"
+            subtitle={COMPANY.phone}
           />
         </List>
       )}
@@ -273,24 +289,33 @@ const ResumenDia = ({ history }) => {
             informative
             title="Observaciones"
           />
-          {selected.observaciones && selected.observaciones.map( ({ label, on }, ind) =>(
-            <FieldListElement
-              key={ind}
-              field={
-                <Checkbox
-                    color="primary"
-                    disabled
-                    label={label}
-                    input={{
-                      value: on,
-                      onChange:
-                        () => {
-                        }
-                    }}
-                  />
-              }
-            />
-          ))}
+          {selected.observaciones ?
+            selected.observaciones.map( ({ label, on }, ind) =>(
+              <FieldListElement
+                key={ind}
+                field={
+                  <Checkbox
+                      color="primary"
+                      disabled
+                      label={label}
+                      input={{
+                        value: on,
+                        onChange:
+                          () => {
+                          }
+                      }}
+                    />
+                }
+              />
+            ))
+            :
+            (
+              <TextListElement
+                noDivider
+                title="No hay observaciones"
+              />
+            )
+          }
         </List>
       )}
       {step === 'firma' && (

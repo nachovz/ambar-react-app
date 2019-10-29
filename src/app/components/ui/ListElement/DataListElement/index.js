@@ -42,7 +42,7 @@ const DataListElement = ({
   disabled=false
 }) =>(
   <Row
-    customClass={clsx(classes.rowContainer, disabled && classes.disabled)}
+    customClass={clsx(classes.rowContainer, !!disabled && classes.disabled)}
   >
     {!!icon &&
       <div className={classes.iconColumn}>
@@ -56,7 +56,7 @@ const DataListElement = ({
       <Typography>
         {title}
       </Typography>
-      <Typography variant="body2" color="textSecondary" className={disabled && classes.disabled}>
+      <Typography variant="body2" color="textSecondary" className={clsx(!!disabled && classes.disabled)}>
         {subtitle}
       </Typography>
     </div>

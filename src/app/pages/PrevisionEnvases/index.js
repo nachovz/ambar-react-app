@@ -1,53 +1,51 @@
 import React, { Fragment } from 'react';
+import { withRouter } from "react-router";
+import { useRutasContext } from 'app/contexts/Rutas';
 import TopBar from 'app/components/ui/TopBar';
-import Typography from 'app/components/ui/Typography';
 import List from 'app/components/ui/List';
+import DateBar from 'app/components/ui/DateBar';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
-import { Date } from './elements';
+import StepNavigator from 'app/components/app/StepNavigator';
+import dictionaryGenerator from 'app/utils/dictionaryGenerator';
 
-const PrevisionEnvases = () => {
+const PrevisionEnvases = ({ history }) => {
+  const [{ selected }] = useRutasContext();
+
+  if (!selected) {
+    history.push('/');
+    return null;
+  }
+
+  const containersDictionary = dictionaryGenerator(selected.data, "res_InventPackingMaterialCode", "res_Qty_Env", "packingMaterialName");
+  const containerKeys = Object.keys(containersDictionary);
+
+  const moveBack = () => {
+    history.push("/cartaporte");
+  }
+
   return (
     <Fragment>
-      <TopBar title="PREVISIÓN DE ENVASES - RUTA" />
-      <Date>
-        <Typography variant="caption">
-          FECHA RECOGIDA: 5 Febrero 2019
-        </Typography>
-      </Date>
+      <TopBar
+        title={`Carta de porte: ${selected.serviceOrderId}`}
+      />
+      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
+      {containerKeys.map(container =>(
         <DataListElement
           icon="envase"
-          title="Contenedor Baterías"
-          quantities={[1]}
+          title={containersDictionary[container].name}
+          subtitle={container}
+          quantities={[containersDictionary[container].qty]}
         />
-        <DataListElement
-          icon="envase"
-          title="Bagst 200"
-          quantities={[18]}
-        />
-        <DataListElement
-          icon="envase"
-          title="Bidon 60"
-          quantities={[4]}
-        />
-        <DataListElement
-          icon="envase"
-          title="Bidon B200 B"
-          quantities={[1]}
-        />
-        <DataListElement
-          icon="envase"
-          title="Bidon 5"
-          quantities={[1]}
-        />
-        <DataListElement
-          icon="envase"
-          title="A granel"
-          quantities={[8]}
-        />
+      ))}
       </List>
+      <StepNavigator
+        moveToPreviousText="Carta de Porte"
+        moveToPreviousAction={moveBack}
+        moveToNextText=""
+      />
     </Fragment>
   );
 };
 
-export default PrevisionEnvases;
+export default withRouter(PrevisionEnvases);

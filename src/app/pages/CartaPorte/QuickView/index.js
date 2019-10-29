@@ -6,6 +6,7 @@ import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import QuickLinks from 'app/components/ui/QuickLinks';
 import Typography from 'app/components/ui/Typography';
 import StepNavigator from 'app/components/app/StepNavigator';
+import dictionaryGenerator from 'app/utils/dictionaryGenerator';
 
 const CartaPorteQuickView = ({ history }) => {
   const [{ selected }] = useRutasContext();
@@ -14,6 +15,8 @@ const CartaPorteQuickView = ({ history }) => {
     history.push('/');
     return null;
   }
+  const containersDictionary = dictionaryGenerator(selected.data, "res_InventPackingMaterialCode", "res_Qty_Env");
+  const containerKeys = Object.keys(containersDictionary);
 
   const moveNext = () => {
     history.push("/cartaporte");
@@ -26,13 +29,13 @@ const CartaPorteQuickView = ({ history }) => {
   return (
     <React.Fragment>
       <QuickLinks
-        phone="888 999 00 44"
-        mobile="888 999 00 44"
+        mobile={selected.clientPhone}
         mainAction={moveNext}
       />
       <List>
         <TextListElement
           noDivider
+          informative
           title={selected.serviceAddressName}
           subtitle={selected.serviceAddress}
           actionIcon="place"
@@ -48,24 +51,11 @@ const CartaPorteQuickView = ({ history }) => {
           title="Previsión de Envases"
           secondaryText={
             <React.Fragment>
-              <Typography variant="body2" color="textSecondary">
-                Bidón B200 8 x 15 unid.
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                Bidón 60 x 2 unid.
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                Bagst 200 x 5 unid.
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                Bidón 25 x 15 unid.
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                Jaula Tubo 2M3 DT x 2 unid
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                GRG 100 x 2 unid.
-              </Typography>
+              {containerKeys.map( container => (
+                <Typography key={container} variant="body2" color="textSecondary">
+                  {container} x {containersDictionary[container].qty} Und.
+                </Typography>
+              ))}
             </React.Fragment>
           }
         />
