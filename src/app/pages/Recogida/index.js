@@ -210,7 +210,6 @@ const Recogida = ({ history }) => {
             ))}
           </React.Fragment>
         )}
-        <div style={{height: '100px'}} />
       </List>
       <Modal
         open={openCamera}

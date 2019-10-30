@@ -51,6 +51,10 @@ const ResumenDia = ({ history }) => {
   const [step, setStep] = useState('resumen');
   const [{ selected }] = useRutasContext();
 
+  React.useEffect( () => {
+    window.scrollTo(0, 0);
+  })
+
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
   const moveToPreviousStep = () => setStep(STEPS[step].previous);
@@ -334,7 +338,6 @@ const ResumenDia = ({ history }) => {
           </PaddedContainer>
         </List>
       )}
-      <div style={{height: '100px'}} />
       <StepNavigator
         moveToNextText={STEPS[step].next}
         moveToNextAction={

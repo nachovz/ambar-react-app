@@ -4,11 +4,10 @@ import { SnackbarProvider } from "app/contexts/Snackbar";
 import { RutasProvider } from "app/contexts/Rutas";
 import { UserProvider } from 'app/contexts/User';
 import Snackbar from 'app/components/app/Snackbar';
-import { Container } from './elements';
 
 const AppWrapper = ({ children }) => {
   return (
-    <Container>
+    <React.Fragment>
       <UserProvider>
         <SnackbarProvider>
           <LoadingProvider>
@@ -19,7 +18,7 @@ const AppWrapper = ({ children }) => {
           </LoadingProvider>
         </SnackbarProvider>
       </UserProvider>
-    </Container>
+    </React.Fragment>
   );
 };
 

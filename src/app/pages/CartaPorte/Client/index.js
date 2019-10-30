@@ -76,7 +76,6 @@ const CartaPorteClient = ({ history }) => {
           />
         }
       </List>
-      <div style={{height: '100px'}} />
       <StepNavigator
         moveToPreviousText="Carta de Porte"
         moveToPreviousAction={moveBack}

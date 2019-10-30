@@ -9,7 +9,10 @@ export const Nav = styled('nav', {
   justifyContent: 'space-between',
   padding: '0 20px',
   color: getColor('WHITE').toHexString(),
-  background: getColor('PRIMARY').toHexString()
+  background: getColor('PRIMARY').toHexString(),
+  position: 'fixed',
+  width: '100%',
+  zIndex: '1000'
 });
 
 export const MenuAction = styled('span', {

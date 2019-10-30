@@ -3,7 +3,7 @@ import ListUI from '@material-ui/core/List';
 
 const List = (props) => {
   return (
-    <ListUI {...props} />
+    <ListUI {...props} disablePadding />
   );
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Typography from 'app/components/ui/Typography';
 import Icon from 'app/components/ui/Icon';
 import ListItem from '@material-ui/core/ListItem';
@@ -9,17 +8,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Row from 'app/components/ui/Row';
 import Box from '@material-ui/core/Box';
 import { DarkContainer } from './elements';
-import theme from 'app/styles/material';
+import Spacer from 'app/components/ui/Spacer';
 import getNow from 'app/utils/getNow';
-
-const styles = {
-  leftMargin: {
-    marginLeft: `${theme.spacing(1)}px`
-  },
-  listItemContainer: {
-    listStyleType: 'none'
-  }
-};
 
 const TopBar = ({
   title,
@@ -29,10 +19,9 @@ const TopBar = ({
   action,
   secondaryActionIcon,
   secondaryAction,
-  classes,
   ...props
 }) => (
-    <DarkContainer className={classes.listItemContainer}>
+    <DarkContainer>
       <ListItem {...props} >
         <ListItemText
           disableTypography
@@ -54,13 +43,15 @@ const TopBar = ({
                 <Icon icon={actionIcon} />
               </IconButton>
               {!!secondaryActionIcon &&
-                <IconButton
-                  edge="end"
-                  aria-label={secondaryActionIcon}
-                  onClick={secondaryAction}
-                  className={classes.leftMargin}>
-                  <Icon icon={secondaryActionIcon} />
-                </IconButton>
+                <React.Fragment>
+                  <Spacer direction="horizontal"/>
+                  <IconButton
+                    edge="end"
+                    aria-label={secondaryActionIcon}
+                    onClick={secondaryAction}>
+                    <Icon icon={secondaryActionIcon} />
+                  </IconButton>
+                </React.Fragment>
               }
             </Row>
           </ListItemSecondaryAction>
@@ -69,4 +60,4 @@ const TopBar = ({
     </DarkContainer>
   );
 
-export default withStyles(styles)(TopBar);
+export default TopBar;

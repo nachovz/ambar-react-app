@@ -10,7 +10,7 @@ const COLOURS = {
   GREY: '#616161',
   BLACK: '#000000',
   WHITE: '#FFFFFF',
-  LIGHTGREY: '#00000024',
+  LIGHTGREY: '#ececec',
   RED: '#F44336',
   TRANSPARENT: tinycolor({ r: 0, g: 0, b: 0, a: 0 })
 };

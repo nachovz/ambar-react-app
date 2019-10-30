@@ -250,7 +250,6 @@ const RecogidaAdd = ({ history }) => {
                 ))}
               </React.Fragment>
             )}
-            <div style={{ height: '100px' }} />
           </React.Fragment>
         }
         <Modal

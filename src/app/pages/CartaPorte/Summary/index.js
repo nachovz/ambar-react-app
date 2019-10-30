@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
 import List from 'app/components/ui/List';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
+import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import Fab from 'app/components/ui/Fab';
@@ -31,6 +32,8 @@ const CartaPorteSummary = ({ history }) => {
     history.push("/recogida");
   };
 
+  const filtered = selected.data.filter( (r) => !!r.done);
+
   return(
     <React.Fragment>
       <TopBar title={`CARTA DE PORTE No ${selected.serviceOrderId}`} />
@@ -41,24 +44,31 @@ const CartaPorteSummary = ({ history }) => {
           quantities={ ["Und", "%"] }
           actionIcon="estado-aviso"
         />
-        {selected.data.filter( (r) => !!r.done).map( (rec, ind) =>{
-          const {
-          itemId,
-          itemName,
-          kgReal,
-          unidadesReal
-        } = rec;
-          return(
-            <DataListElement
-              key={ind}
-              title={itemName}
-              subtitle={itemId}
-              quantities={[unidadesReal, `${kgReal}%`]}
-              actionIcon="editar"
-              action={onSelectedRecogida(rec)}
+        {filtered.length > 0 ?
+          filtered.map( (rec, ind) =>{
+            const {
+            itemId,
+            itemName,
+            kgReal,
+            unidadesReal
+          } = rec;
+            return(
+              <DataListElement
+                key={ind}
+                title={itemName}
+                subtitle={itemId}
+                quantities={[unidadesReal, `${kgReal}%`]}
+                actionIcon="editar"
+                action={onSelectedRecogida(rec)}
+              />
+            )
+            })
+          :
+            <TextListElement
+              noDivider
+              title="No hay recogidas terminadas"
             />
-          )
-        })}
+          }
       </List>
       <Fab
         color="primary"
@@ -70,7 +80,7 @@ const CartaPorteSummary = ({ history }) => {
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
-        moveToNextText="Firma cliente"
+        moveToNextText={filtered.length > 0 && "Firma cliente"}
         moveToNextAction={moveNext}
       />
     </React.Fragment>
