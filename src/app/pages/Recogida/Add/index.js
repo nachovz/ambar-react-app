@@ -22,7 +22,10 @@ const RecogidaAdd = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [waste, setWaste] = React.useState();
   const [container, setContainer] = React.useState();
-  const [kgValue, setKgValue] = React.useState(100);
+  const [kgValue, setKgValue] = React.useState({
+    label: "100% del peso",
+    value: 100
+  });
   const [images, setImages] = React.useState([]);
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
@@ -192,8 +195,8 @@ const RecogidaAdd = ({ history }) => {
           <React.Fragment>
             <BoxedInput
               topLabel="Und"
-              topValue="?"
-              bottomLabel="REAL"
+              topValue="-"
+              bottomLabel="CANTIDAD"
               icon="unidades"
               input={
                 <TextField
@@ -206,9 +209,9 @@ const RecogidaAdd = ({ history }) => {
               }
             />
             <BoxedInput
-              topLabel="kg?"
-              topValue="#?"
-              bottomLabel="REAL"
+              topLabel="kg"
+              topValue="-"
+              bottomLabel="CANTIDAD"
               icon="peso"
               input={
                 <Autocomplete
@@ -258,7 +261,6 @@ const RecogidaAdd = ({ history }) => {
         >
           <Camera
             onTakePhoto={onTakePhoto}
-            isFullscreen={true}
           />
         </Modal>
         <AlertDialog

@@ -73,7 +73,9 @@ const ResumenDia = ({ history }) => {
     clientEmail,
     clientVat,
     clientContactPersonName,
-    clientTimeTable
+    clientTimeTable,
+    clientAccesible,
+    responsible
   } = selected;
 
   return (
@@ -134,11 +136,12 @@ const ResumenDia = ({ history }) => {
             informative
             title="Conductor"
           />
+          {/*
           <TextListElement
             noDivider
             title="Matricula Vehiculo"
             subtitle="XXXXXXXX"
-          />
+          />*/}
         </List>
       )}
       {step === 'cargador' && (
@@ -209,22 +212,24 @@ const ResumenDia = ({ history }) => {
           <TextListElement
             noDivider
             title="Accesible"
-            subtitle="?????? Camión"
+            subtitle={clientAccesible}
           />
           <TextListElement
             noDivider
             title="CIF"
             subtitle={COMPANY.cif}
           />
+          {/*
           <TextListElement
             noDivider
             title="Matricula"
             subtitle="XXXXXXXX"
           />
+          */}
           <TextListElement
             noDivider
             title="Conductor"
-            subtitle="???? preferredTechnician?"
+            subtitle={responsible}
           />
         </List>
       )}
