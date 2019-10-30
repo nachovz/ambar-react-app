@@ -2,7 +2,7 @@ import 'fetch-everywhere';
 import axios from 'axios';
 import omitBy from 'app/utils/omitBy';
 import getToken from 'app/utils/auth/getToken';
-//import saveUser from 'app/utils/auth/saveUser';
+import { setUserHeaders, getUserHeaders } from 'app/utils/auth/userSession';
 //import deleteToken from 'app/utils/auth/deleteToken';
 //import ENDPOINTS from 'app/constants/endpoints';
 
@@ -13,7 +13,7 @@ const client = {
   },
 
   post: (url, options) => {
-    const params = { ...options, method: 'POST' };
+    const params = { ...options, method: 'post' };
     return makeRequest(url, params);
   },
 
@@ -33,41 +33,25 @@ const client = {
   },
 };
 
-const makeRequest = async (url, {
-  body,
-  omitRetry,
-  headers,
-  workwaveHeader,
-  ...params
-}) => {
-  const options = {
-    ...params,
-    withCredentials: true,
-    headers: {
-      ...headers && headers,
-      ...workwaveHeader && { 'X-WorkWave-Key': process.env.REACT_APP_X_WORKWAVE_KEY },
-      ...getDefaultHeaders()
-    },
-    body
-  };
-
+const makeRequest = async (url, { body, headers, method }) => {
   try {
-    const response = await axios(url, options);
+    const response = await axios({
+      url,
+      method,
+      data: body,
+      headers: buildHeaders(headers),
+    });
     return successHandler(response);
   } catch (error) {
-    if (error.response && error.response.data && error.response.data.message === 'jwt expired') {
-      console.log('please refresh the token');
-      // retryRequest(url, options);
-    }
     errorHandler(error);
   }
 };
 
-const getDefaultHeaders = () => {
-  const token = getToken();
+const buildHeaders = (headers = {}) => {
   return omitBy({
+    ...headers,
+    ...getUserHeaders(),
     'Content-Type': 'application/json; charset=utf-8',
-    ...token && { Authorization: `Bearer ${token}` }
   }, (item) => !item);
 };
 
@@ -76,7 +60,6 @@ const getDefaultHeaders = () => {
 //     const response = await Request.post(ENDPOINTS.REFRESH_TOKEN, {
 //
 //     });
-//     saveUser(response, response.token);
 //     return makeRequest(url, { ...options, omitRetry: true });
 //   } catch (error) {
 //     console.log('i was about to delete the token');
@@ -91,6 +74,8 @@ const successHandler = (response) => {
   //     throw result.errors;
   //   });
   // }
+  console.log("SUCCESS RESPONSE", response);
+  setUserHeaders(response.headers);
   return response.data;
 };
 

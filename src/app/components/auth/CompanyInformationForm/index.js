@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from 'app/components/form/TextField';
 import Button from 'app/components/ui/Button';
 import QRReader from 'app/components/app/QRReader';
@@ -6,9 +6,9 @@ import useForm from 'react-hook-form';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useRutasContext } from 'app/contexts/Rutas';
-//import client from 'app/client';
-//import ENDPOINTS from 'app/constants/endpoints';
-import RUTAS from 'app/constants/mock_oct.json';
+import client from 'app/client';
+import ENDPOINTS from 'app/constants/endpoints';
+import RUTAS from 'app/constants/mock.json';
 
 const CompanyInformationForm = ({ onVerified }) => {
   const [showQr, setShowQr] = useState(false);
@@ -18,6 +18,14 @@ const CompanyInformationForm = ({ onVerified }) => {
   const { register, handleSubmit, watch, setValue, errors } = useForm({
     defaultValues: { companyId: 'AMB' }
   });
+
+  useEffect(() => {
+    setLoadingState(true);
+    const getCompany = async() => await client.get(`${ENDPOINTS.COMPANY}`);
+    const company = getCompany();
+    setLoadingState(false);
+
+  }, [])
 
   const setQrState = (state) => () => setShowQr(state);
 
@@ -30,8 +38,8 @@ const CompanyInformationForm = ({ onVerified }) => {
   const verifyInformation = async ({ companyId, userId, vehicleId }) => {
     setLoadingState(true);
     try {
-      // const rutas = await client.get(`${ENDPOINTS.WORKWAVE_VEHICLES}/${vehicleId}`);
-      setRutasState({ ...RUTAS, selected: null });
+      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
+      setRutasState({ ...rutas, selected: null });
       setLoadingState(false);
       onVerified();
     } catch (error) {
@@ -55,16 +63,6 @@ const CompanyInformationForm = ({ onVerified }) => {
         placeholder="Seleccionar ID de Empresa"
         error={errors.companyId}
       />
-      {/*
-      <TextField
-        type="text"
-        name="userId"
-        register={register}
-        label="Seleccionar ID de Tecnico"
-        placeholder="Seleccionar ID de Tecnico"
-        error={errors.userId}
-      />
-      */}
       <TextField
         type="text"
         name="vehicleId"

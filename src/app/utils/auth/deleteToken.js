@@ -1,6 +1,6 @@
 const deleteToken = () => {
-  if (sessionStorage.getItem('AUTH_TOKEN')) {
-    sessionStorage.removeItem('AUTH_TOKEN');
+  if (sessionStorage.getItem('ACCESS_TOKEN')) {
+    sessionStorage.removeItem('ACCESS_TOKEN');
   }
 };
 

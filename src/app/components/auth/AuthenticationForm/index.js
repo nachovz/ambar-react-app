@@ -2,12 +2,11 @@ import React from 'react';
 import TextField from 'app/components/form/TextField';
 import Button from 'app/components/ui/Button';
 import useForm from 'react-hook-form';
-import saveUser from 'app/utils/auth/saveUser';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useUserContext } from 'app/contexts/User';
-//import client from 'app/client';
-//import ENDPOINTS from 'app/constants/endpoints';
+import client from 'app/client';
+import ENDPOINTS from 'app/constants/endpoints';
 
 const AuthenticationForm = ({ onAuthorized }) => {
   const [{ token, ...user }, setUserState] = useUserContext();
@@ -15,18 +14,13 @@ const AuthenticationForm = ({ onAuthorized }) => {
   const [, setLoadingState] = useLoadingContext();
   const { register, handleSubmit, errors } = useForm();
 
-  const login = async ({ username, password }) => {
-    //const userData = `${username}:${password}`;
-    //const auth = `Basic ${btoa(userData)}`;
+  const login = async ({ email, password }) => {
     setLoadingState(true);
     try {
-      // const result = await client.post(ENDPOINTS.LOGIN, {
-      //   headers: { Authorization: auth }
-      // });
-      const result = { access_token: "dummy" };
+      const result = await client.post(ENDPOINTS.LOGIN, {
+        body: { email, password }
+      });
       setLoadingState(false);
-      saveUser(result);
-      setUserState({ ...user, token: result.access_token });
       onAuthorized();
     } catch (error) {
       setLoadingState(false);
@@ -41,12 +35,12 @@ const AuthenticationForm = ({ onAuthorized }) => {
   return (
     <form>
       <TextField
-        name="username"
+        name="email"
         register={register}
         label="usuario"
         placeholder="usuario"
         type="text"
-        error={errors.username}
+        error={errors.email}
       />
       <TextField
         name="password"
