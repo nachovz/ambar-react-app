@@ -218,7 +218,6 @@ const Recogida = ({ history }) => {
       >
         <Camera
           onTakePhoto={onTakePhoto}
-          isFullscreen={true}
         />
       </Modal>
       <StepNavigator

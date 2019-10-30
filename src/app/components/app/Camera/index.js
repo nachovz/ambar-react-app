@@ -1,6 +1,6 @@
 import React from 'react';
 import CameraImport, { FACING_MODES } from 'react-html5-camera-photo';
-import 'react-html5-camera-photo/build/css/index.css';
+import './index.css';
 
 const Camera = ({ onTakePhoto, backCamera=true, ...props }) => {
   return(
@@ -8,6 +8,8 @@ const Camera = ({ onTakePhoto, backCamera=true, ...props }) => {
         onTakePhoto={onTakePhoto}
         idealFacingMode={FACING_MODES.ENVIRONMENT}
         isImageMirror={false}
+        idealResolution = {{width: 640, height: 480}}
+        sizeFactor = {0.5}
         {...props}/>
   );
 }
