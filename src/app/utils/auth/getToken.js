@@ -1,1 +1,1 @@
-export default () => sessionStorage.getItem('AUTH_TOKEN');
+export default () => sessionStorage.getItem('ACCESS_TOKEN');
