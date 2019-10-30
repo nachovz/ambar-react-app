@@ -59,17 +59,6 @@ const CartaPorteQuickView = ({ history }) => {
             </React.Fragment>
           }
         />
-        <TextListElement
-          noDivider
-          informative
-          title="Observaciones de Oficina"
-          subtitle="Nunc erat dolor, gravida vel tincidunt eu, accumsan sed magna. Proin sit amet lorem vitae tortor eleifend semper eu non turpis. Sed at orci ullamcorper, varius mi quis, auctor magna."
-        />
-        <TextListElement
-          noDivider
-          title="Recogida Anulada"
-          subtitle="Vehículo lleno"
-        />
       </List>
       <StepNavigator
         moveToPreviousText="Ruta"
