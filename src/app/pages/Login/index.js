@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
-import getToken from 'app/utils/auth/getToken';
+import { getAccessToken } from 'app/utils/auth/userSession';
 import Typography from 'app/components/ui/Typography';
 import AuthenticationForm from 'app/components/auth/AuthenticationForm';
 import CompanyInformationForm from 'app/components/auth/CompanyInformationForm';
@@ -15,7 +15,7 @@ const Login = () => {
     setStep(step + 1);
   };
 
-  if (getToken() && step === 0) {
+  if (getAccessToken() && step === 0) {
     changeStep();
   }
 

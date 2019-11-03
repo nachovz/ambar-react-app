@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useLoadingContext } from 'app/contexts/Loading';
-import getToken from 'app/utils/auth/getToken';
+import { getAccessToken } from 'app/utils/auth/userSession';
 
 const SessionListener = ({ history, props, children }) => {
   const [loadingState] = useLoadingContext();
 
   useEffect(() => {
-    if (!loadingState && !getToken()) {
+    if (!loadingState && !getAccessToken()) {
       history.push('/login');
     }
   }, [history, loadingState]);

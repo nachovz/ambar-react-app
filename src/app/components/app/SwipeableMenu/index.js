@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import deleteToken from 'app/utils/auth/deleteToken';
+import { deleteUserSession } from 'app/utils/auth/userSession';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -25,7 +25,7 @@ const SwipeableMenu = ({ history }) => {
   const toggleMenu = (state) => () => setSwipeableMenuState(state);
   const goTo = (route) => () => history.push(route);
   const signOut = () => {
-    deleteToken();
+    deleteUserSession();
     history.push('/login');
   }
 

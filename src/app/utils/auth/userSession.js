@@ -13,3 +13,17 @@ export const getUserHeaders = () => ({
   'expiry': sessionStorage.getItem('EXPIRY'),
   'client': sessionStorage.getItem('CLIENT'),
 });
+
+export const getAccessToken = () => {
+  return sessionStorage.getItem('ACCESS_TOKEN');
+};
+
+const SESSION_HEADERS = ['ACCESS_TOKEN', 'TOKEN_TYPE', 'UID', 'EXPIRY', 'CLIENT'];
+
+export const deleteUserSession = () => {
+  SESSION_HEADERS.map((header) => {
+    if (sessionStorage.getItem(header)) {
+      sessionStorage.removeItem(header);
+    }
+  });
+};
