@@ -14,7 +14,7 @@ import Row from 'app/components/ui/Row';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import Typography from 'app/components/ui/Typography';
 import { CenteredPaddedContainer } from './elements';
-import { OBSERVACIONES } from 'app/constants/values';
+import { OBSERVACIONES, TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -52,9 +52,9 @@ const CartaPorte = ({ history }) => {
     <Fragment>
       <TopBar
         title={`Carta de porte: ${selected.serviceOrderId}`}
-        actionIcon="mantenimiento"
+        actionIcon="descarga-dcs"
         action={() => console.log("Action: open PDF")}
-        secondaryActionIcon="servicios"
+        secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
@@ -64,7 +64,7 @@ const CartaPorte = ({ history }) => {
             key={index}
             button
             iconColor="primary"
-            icon="mantenimiento"
+            icon={TIPOS_RECOGIDAS[reco.projCategoryId]}
             title={reco.itemName}
             subtitle={reco.itemId}
             actionIcon={reco.done ? "toggle-on" : "arrow_right"}

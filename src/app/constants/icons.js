@@ -1,4 +1,5 @@
-export default ["acciones",
+export default [
+  "acciones",
   "aire",
   "alerta",
   "arrow_left",
@@ -53,5 +54,10 @@ export default ["acciones",
   "usuario",
   "ver",
   "unidades",
-  "peso"
+  "peso",
+  "recogida",
+  "entrega",
+  "servicio",
+  "descarga-dcs",
+  "observaciones"
 ];

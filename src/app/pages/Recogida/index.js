@@ -13,7 +13,7 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import SelectField from 'app/components/form/SelectField';
-import { PESO_OPTIONS } from 'app/constants/values';
+import { PESO_OPTIONS, TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -137,7 +137,7 @@ const Recogida = ({ history }) => {
         <TextListElement
           noDivider
           iconColor="primary"
-          icon="mantenimiento"
+          icon={TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]}
           title={selectedRecogida.itemName}
           subtitle={selectedRecogida.itemId}
         />

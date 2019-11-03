@@ -132,3 +132,9 @@ export const OBSERVACIONES = [
     on: false
   }
 ];
+
+export const TIPOS_RECOGIDAS = {
+  "Res_Peligr": "recogida",
+  "Servicios": "servicio",
+  "Entrega": "entrega"
+}

@@ -1,12 +1,13 @@
 @font-face {
   font-family: 'ambaricon-font';
-  src:  url('../fonts/ambaricon-font.eot?brtlx9');
-  src:  url('../fonts/ambaricon-font.eot?brtlx9#iefix') format('embedded-opentype'),
-    url('../fonts/ambaricon-font.ttf?brtlx9') format('truetype'),
-    url('../fonts/ambaricon-font.woff?brtlx9') format('woff'),
-    url('../fonts/ambaricon-font.svg?brtlx9#ambaricon-font') format('svg');
+  src:  url('../fonts/ambaricon-font.eot?wd49ua');
+  src:  url('../fonts/ambaricon-font.eot?wd49ua#iefix') format('embedded-opentype'),
+    url('../fonts/ambaricon-font.ttf?wd49ua') format('truetype'),
+    url('../fonts/ambaricon-font.woff?wd49ua') format('woff'),
+    url('../fonts/ambaricon-font.svg?wd49ua#ambaricon-font') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -24,11 +25,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-unidades:before {
+.icon-salir:before {
+  content: "\e925";
+}
+.icon-observaciones:before {
+  content: "\e92f";
+}
+.icon-mantenimiento:before {
   content: "\e936";
 }
 .icon-peso:before {
   content: "\e937";
+}
+.icon-unidades:before {
+  content: "\e938";
+}
+.icon-descarga-dcs:before {
+  content: "\e939";
+}
+.icon-entrega:before {
+  content: "\e93a";
+}
+.icon-recogida:before {
+  content: "\e93b";
+}
+.icon-servicio:before {
+  content: "\e93c";
 }
 .icon-acciones:before {
   content: "\e900";
@@ -141,9 +163,6 @@
 .icon-mail:before {
   content: "\e924";
 }
-.icon-mantenimiento:before {
-  content: "\e925";
-}
 .icon-mas:before {
   content: "\e926";
 }
@@ -153,7 +172,7 @@
 .icon-movil:before {
   content: "\e928";
 }
-.icon-observaciones:before {
+.icon-observacion:before {
   content: "\e929";
 }
 .icon-papelera:before {
@@ -170,9 +189,6 @@
 }
 .icon-radiadores:before {
   content: "\e92e";
-}
-.icon-salir:before {
-  content: "\e92f";
 }
 .icon-servicios:before {
   content: "\e930";
