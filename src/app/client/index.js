@@ -1,10 +1,7 @@
 import 'fetch-everywhere';
 import axios from 'axios';
 import omitBy from 'app/utils/omitBy';
-import getToken from 'app/utils/auth/getToken';
 import { setUserHeaders, getUserHeaders } from 'app/utils/auth/userSession';
-//import deleteToken from 'app/utils/auth/deleteToken';
-//import ENDPOINTS from 'app/constants/endpoints';
 
 const client = {
   get: (url, options) => {
@@ -55,26 +52,8 @@ const buildHeaders = (headers = {}) => {
   }, (item) => !item);
 };
 
-// const retryRequest = async (url, options) => {
-//   try {
-//     const response = await Request.post(ENDPOINTS.REFRESH_TOKEN, {
-//
-//     });
-//     return makeRequest(url, { ...options, omitRetry: true });
-//   } catch (error) {
-//     console.log('i was about to delete the token');
-//     // deleteToken();
-//   }
-// };
-
 const successHandler = (response) => {
   if (!response) return null;
-  // if (!response.ok) {
-  //   return response.json().then((result) => {
-  //     throw result.errors;
-  //   });
-  // }
-  console.log("SUCCESS RESPONSE", response);
   setUserHeaders(response.headers);
   return response.data;
 };
