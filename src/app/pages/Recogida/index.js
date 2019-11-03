@@ -13,6 +13,9 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import SelectField from 'app/components/form/SelectField';
+import RecogidaForm from 'app/components/recogida/RecogidaForm';
+import EntregaForm from 'app/components/recogida/EntregaForm';
+import ServicioForm from 'app/components/recogida/ServicioForm';
 import { PESO_OPTIONS, TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const Recogida = ({ history }) => {
@@ -124,6 +127,25 @@ const Recogida = ({ history }) => {
     setValue("kgReal", value);
     setKgValue(value);
   }
+  const propsToForm = {
+    selectedRecogida:selectedRecogida,
+    register:register,
+    handleMultiChange:handleMultiChange,
+    kgValue:kgValue,
+    errors:errors,
+  }
+  const renderForm = () => {
+    switch(TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]){
+      case "recogida":
+        return <RecogidaForm {...propsToForm}/>;
+      case "entrega":
+        return <EntregaForm {...propsToForm}/>;
+      case "servicio":
+        return <ServicioForm {...propsToForm}/>;
+      default:
+        break;
+    }
+  };
 
   return(
     <React.Fragment>
@@ -134,51 +156,7 @@ const Recogida = ({ history }) => {
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
-        <TextListElement
-          noDivider
-          iconColor="primary"
-          icon={TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]}
-          title={selectedRecogida.itemName}
-          subtitle={selectedRecogida.itemId}
-        />
-        <TextListElement
-          noDivider
-          iconColor="primary"
-          icon="envase"
-          title={selectedRecogida.packingMaterialName}
-          subtitle={selectedRecogida.res_InventPackingMaterialCode}
-          quantities={[selectedRecogida.res_Qty_Env]}
-        />
-        <BoxedInput
-          topLabel="Und"
-          topValue={selectedRecogida.res_Qty_Env}
-          bottomLabel="REAL"
-          icon="unidades"
-          input={
-            <TextField
-              register={register}
-              name="unidadesReal"
-              type="number"
-              placeholder="-"
-              error={errors.unidadesReal}
-            />
-          }
-        />
-        <BoxedInput
-          topLabel={selectedRecogida.unit}
-          topValue={selectedRecogida.qty}
-          bottomLabel="REAL"
-          icon="peso"
-          input={
-            <SelectField
-              name="kgReal"
-              value={kgValue}
-              options={PESO_OPTIONS}
-              onChange={handleMultiChange}
-              helperText="Seleccionar %"
-            />
-          }
-        />
+        {renderForm()}
         <FieldListElement
           title="Observaciones"
           field={

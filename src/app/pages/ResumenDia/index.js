@@ -285,7 +285,10 @@ const ResumenDia = ({ history }) => {
                 key={ind}
                 title={itemName}
                 subtitle={itemId}
-                quantities={done ? [unidadesReal, `${kgReal}%`] : ['-','-']}
+                quantities={done ? [
+                  (!!unidadesReal ? unidadesReal : '-'),
+                  (!!kgReal ? `${kgReal}%` : '-')
+                ] : ['-','-']}
                 disabled={!done}
               />
             )
