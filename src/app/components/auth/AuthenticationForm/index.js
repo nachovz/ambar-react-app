@@ -20,7 +20,7 @@ const AuthenticationForm = ({ onAuthorized }) => {
       await client.post(ENDPOINTS.LOGIN, {
         body: { email, password }
       });
-      setUserState(true);
+      setUserState({ isAuthenticated: true });
       setLoadingState(false);
       onAuthorized();
     } catch (error) {
