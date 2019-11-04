@@ -9,14 +9,19 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import dictionaryGenerator from 'app/utils/dictionaryGenerator';
 
 const PrevisionEnvases = ({ history }) => {
-  const [{ selected }] = useRutasContext();
+  const [rutas] = useRutasContext();
 
-  if (!selected) {
+  if (!rutas || ! rutas.data) {
     history.push('/');
     return null;
   }
 
-  const containersDictionary = dictionaryGenerator(selected.data, "res_InventPackingMaterialCode", "res_Qty_Env", "packingMaterialName");
+  const rutaRecogidasData = Object.keys(rutas.data).reduce((result, key) => ([
+    ...result,
+    ...rutas.data[key].data
+  ]), []);
+
+  const containersDictionary = dictionaryGenerator(rutaRecogidasData, "res_InventPackingMaterialCode", "res_Qty_Env", "packingMaterialName");
   const containerKeys = Object.keys(containersDictionary);
 
   const moveBack = () => {
@@ -26,9 +31,8 @@ const PrevisionEnvases = ({ history }) => {
   return (
     <Fragment>
       <TopBar
-        title={`Carta de porte: ${selected.serviceOrderId}`}
+        title="Prevision de envases:"
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
       {containerKeys.map((container, index) =>(
         <DataListElement
