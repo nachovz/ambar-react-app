@@ -35,35 +35,11 @@ const ContextualMenu = ({ history }) => {
       <div className={classes.list}>
         <MenuHeader />
         <List>
-          <ListItem
-            button
-            onClick={goTo('/cartaporte-client')}
-          >
-            <ListItemIcon>
-              <Icon icon="usuario" />
-            </ListItemIcon>
-            <ListItemText primary="Datos Usuario" />
-          </ListItem>
-          <ListItem button>
+          <ListItem button onClick={goTo('/cartaporte')}>
             <ListItemIcon>
               <Icon icon="mantenimiento" />
             </ListItemIcon>
             <ListItemText primary="Carta de Porte" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <Icon icon="firma" />
-            </ListItemIcon>
-            <ListItemText primary="Firma" />
-          </ListItem>
-          <ListItem
-            button
-            onClick={goTo('prevision-envases')}
-          >
-            <ListItemIcon>
-              <Icon icon="envase" />
-            </ListItemIcon>
-            <ListItemText primary="Prevision de Envases" />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
@@ -73,14 +49,6 @@ const ContextualMenu = ({ history }) => {
           </ListItem>
         </List>
         <Divider />
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <Icon icon="estado-aviso" />
-            </ListItemIcon>
-            <ListItemText primary="Anular recogida" />
-          </ListItem>
-        </List>
       </div>
     </Drawer>
   );
