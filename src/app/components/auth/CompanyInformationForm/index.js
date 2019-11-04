@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import TextField from 'app/components/form/TextField';
 import Button from 'app/components/ui/Button';
 import QRReader from 'app/components/app/QRReader';
 import useForm from 'react-hook-form';
+import { useCompanyContext } from 'app/contexts/Loading';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useRutasContext } from 'app/contexts/Rutas';
+import { setVehicleSession } from 'app/utils/vehicle';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import RUTAS from 'app/constants/mock_oct.json';
 
 const CompanyInformationForm = ({ onVerified }) => {
   const [showQr, setShowQr] = useState(false);
+  const [, setCompanyState] = useState();
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setRutasState] = useRutasContext();
@@ -20,12 +24,14 @@ const CompanyInformationForm = ({ onVerified }) => {
   });
 
   useEffect(() => {
-    setLoadingState(true);
-    const getCompany = async() => await client.get(`${ENDPOINTS.COMPANY}`);
-    const company = getCompany();
-    setLoadingState(false);
-
-  }, [])
+    async function fetchData() {
+      setLoadingState(true);
+      const companies = await client.get(`${ENDPOINTS.COMPANY}`);
+      setCompanyState(companies);
+      setLoadingState(false);
+    }
+    fetchData();
+  }, []);
 
   const setQrState = (state) => () => setShowQr(state);
 
@@ -35,11 +41,15 @@ const CompanyInformationForm = ({ onVerified }) => {
 
   const vehicleId = watch('vehicleId');
 
-  const verifyInformation = async ({ companyId, userId, vehicleId }) => {
+  const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = RUTAS;//await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
+      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
+      const containers = await client.get(`${ENDPOINTS.GET_CONTAINERS_BY_COMPANY}`);
+      const wastes = await client.get(`${ENDPOINTS.GET_WASTES_BY_COMPANY}`);
       setRutasState({ ...rutas, selected: null });
+      setCompanyState({ wastes, containers, company: companyId });
+      setVehicleSession(vehicleId, moment());
       setLoadingState(false);
       onVerified();
     } catch (error) {

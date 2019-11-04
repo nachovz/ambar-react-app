@@ -5,7 +5,7 @@ const RutasContext = createContext();
 
 export const RutasProvider = ({ children }) => {
   return (
-    <RutasContext.Provider value={useState({ orders: null, selected: null })}>
+    <RutasContext.Provider value={useState({ data: null, selected: null })}>
       {children}
     </RutasContext.Provider>
   );

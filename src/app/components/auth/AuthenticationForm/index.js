@@ -4,13 +4,11 @@ import Button from 'app/components/ui/Button';
 import useForm from 'react-hook-form';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
-import { useUserContext } from 'app/contexts/User';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 
 const AuthenticationForm = ({ onAuthorized }) => {
-  const [{ token, ...user }, setUserState] = useUserContext();
-  const [,setSnackbarContext] = useSnackbarContext();
+  const [, setSnackbarContext] = useSnackbarContext();
   const [, setLoadingState] = useLoadingContext();
   const { register, handleSubmit, errors } = useForm();
 
