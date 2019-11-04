@@ -48,7 +48,7 @@ const CartaPorteSignature = ({ history }) => {
 
     try {
       const body = buildCartaporte(selected);
-      const result = await client.post(ENDPOINTS.ROUTE, { body});
+      await client.post(ENDPOINTS.ROUTE, { body});
       addCompletedCartaporte(selected.serviceOrderId);
       setLoadingState(false);
     } catch (error) {
