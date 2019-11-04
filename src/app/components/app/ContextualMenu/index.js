@@ -32,15 +32,19 @@ const ContextualMenu = ({ history }) => {
   const closeMenu = () => setMenuState({ ...menuState, contextual: false });
   const goTo = (route) => () => history.push(route);
 
-  const openDCS = () => {
+  const openDCS = async () => {
     setLoadingState(true);
     try {
-      getDCS(selected.filePath);
+      await getDCS(selected.filePath);
       setLoadingState(false);
     } catch (error) {
       setLoadingState(false);
+      const message = error.response && error.response.status && error.response.status === 404
+        ? 'No se encontro DCS'
+        : 'Hubo un error en el servidor';
+
       setSnackbarContext({
-        message: 'Hubo un error en el servidor',
+        message,
         variant: 'error',
         open: true
       });

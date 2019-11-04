@@ -38,16 +38,19 @@ const CartaPorte = ({ history }) => {
     return null;
   }
 
-  //!modal && selected.observaciones && setObs(selected.observaciones);
-  const openDCS = () => {
+  const openDCS = async () => {
     setLoadingState(true);
     try {
-      getDCS(rutas.selected.filePath);
+      await getDCS(rutas.selected.filePath);
       setLoadingState(false);
     } catch (error) {
+      const message = error.response && error.response.status && error.response.status === 404
+        ? 'No se encontro DCS'
+        : 'Hubo un error en el servidor';
+
       setLoadingState(false);
       setSnackbarContext({
-        message: 'Hubo un error en el servidor',
+        message,
         variant: 'error',
         open: true
       });
