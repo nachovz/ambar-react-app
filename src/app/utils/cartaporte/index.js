@@ -44,7 +44,7 @@ export const setCompletedCarteporte = (data) => {
 
 export const filterCompletedCartaPorteByDate = () => {
   const completed = JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];
-  const filtered = completed.filter((item) => !moment().isSame(moment(item.date), 'day'));
+  const filtered = completed.filter((item) => moment().isSame(moment(item.date), 'day'));
   localStorage.removeItem('COMPLETED_CARTAS_DE_PORTE');
   localStorage.setItem('COMPLETED_CARTAS_DE_PORTE', JSON.stringify(filtered));
 };
