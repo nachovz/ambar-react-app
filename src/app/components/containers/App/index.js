@@ -3,11 +3,12 @@ import { CompanyProvider } from 'app/contexts/Company';
 import { LoadingProvider } from "app/contexts/Loading";
 import { SnackbarProvider } from "app/contexts/Snackbar";
 import { RutasProvider } from "app/contexts/Rutas";
+import { UserProvider } from 'app/contexts/User';
 import Snackbar from 'app/components/app/Snackbar';
 
 const AppWrapper = ({ children }) => {
   return (
-    <React.Fragment>
+    <UserProvider>
       <CompanyProvider>
         <SnackbarProvider>
           <LoadingProvider>
@@ -18,7 +19,7 @@ const AppWrapper = ({ children }) => {
           </LoadingProvider>
         </SnackbarProvider>
       </CompanyProvider>
-    </React.Fragment>
+    </UserProvider>
   );
 };
 
