@@ -42,7 +42,10 @@ const MainMenu = ({ history }) => {
       <div className={classes.list}>
         <MenuHeader />
         <List>
-          <ListItem button>
+          <ListItem
+            button
+            onClick={goTo('/')}
+          >
             <ListItemIcon>
               <Icon icon="listado" />
             </ListItemIcon>
