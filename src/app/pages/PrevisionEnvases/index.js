@@ -30,8 +30,9 @@ const PrevisionEnvases = ({ history }) => {
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
-      {containerKeys.map(container =>(
+      {containerKeys.map((container, index) =>(
         <DataListElement
+          key={index}
           icon="envase"
           title={containersDictionary[container].name}
           subtitle={container}
