@@ -21,7 +21,7 @@ export const getAccessToken = () => {
 const SESSION_HEADERS = ['ACCESS_TOKEN', 'TOKEN_TYPE', 'UID', 'EXPIRY', 'CLIENT'];
 
 export const deleteUserSession = () => {
-  SESSION_HEADERS.map((header) => {
+  SESSION_HEADERS.forEach((header) => {
     if (sessionStorage.getItem(header)) {
       sessionStorage.removeItem(header);
     }

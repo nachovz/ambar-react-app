@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
@@ -8,15 +9,13 @@ import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import TextField from 'app/components/form/TextField';
-import BoxedInput from 'app/components/form/BoxedInput';
 import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
-import SelectField from 'app/components/form/SelectField';
 import RecogidaForm from 'app/components/recogida/RecogidaForm';
 import EntregaForm from 'app/components/recogida/EntregaForm';
 import ServicioForm from 'app/components/recogida/ServicioForm';
-import { PESO_OPTIONS, TIPOS_RECOGIDAS } from 'app/constants/values';
+import { TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();

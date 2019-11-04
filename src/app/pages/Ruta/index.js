@@ -26,7 +26,7 @@ const Ruta = ({ history }) => {
       }
       fetchData();
     }
-  }, [rutas]);
+  }, [rutas, setLoadingState, setRutasState, vehicleId]);
 
   if (!vehicleId || isVehicleIdExpired()) {
     return (

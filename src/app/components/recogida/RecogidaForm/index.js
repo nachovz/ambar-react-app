@@ -1,6 +1,5 @@
 import React from 'react';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
-import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 import TextField from 'app/components/form/TextField';
 import SelectField from 'app/components/form/SelectField';
 import BoxedInput from 'app/components/form/BoxedInput';

@@ -15,7 +15,7 @@ const AuthenticationForm = ({ onAuthorized }) => {
   const login = async ({ email, password }) => {
     setLoadingState(true);
     try {
-      const result = await client.post(ENDPOINTS.LOGIN, {
+      await client.post(ENDPOINTS.LOGIN, {
         body: { email, password }
       });
       setLoadingState(false);
@@ -37,7 +37,7 @@ const AuthenticationForm = ({ onAuthorized }) => {
         register={register}
         label="usuario"
         placeholder="usuario"
-        type="text"
+        type="email"
         error={errors.email}
       />
       <TextField
