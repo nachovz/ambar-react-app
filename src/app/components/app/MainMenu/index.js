@@ -49,7 +49,7 @@ const MainMenu = ({ history }) => {
             <ListItemIcon>
               <Icon icon="listado" />
             </ListItemIcon>
-            <ListItemText primary="Ruta / Cartas de Porte" />
+            <ListItemText primary="Ruta" />
           </ListItem>
           <ListItem
             button
