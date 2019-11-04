@@ -15,7 +15,18 @@ const CartaPorteQuickView = ({ history }) => {
     history.push('/');
     return null;
   }
-  const containersDictionary = dictionaryGenerator(selected.data, "res_InventPackingMaterialCode", "res_Qty_Env");
+
+  const {
+    data,
+    clientPhone,
+    serviceAddressName,
+    serviceAddress,
+    clientEmail,
+    clientVat,
+    clientTimeTable
+  } = selected;
+
+  const containersDictionary = dictionaryGenerator(data, "res_InventPackingMaterialCode", "res_Qty_Env");
   const containerKeys = Object.keys(containersDictionary);
 
   const moveNext = () => {
@@ -29,25 +40,67 @@ const CartaPorteQuickView = ({ history }) => {
   return (
     <React.Fragment>
       <QuickLinks
-        mobile={selected.clientPhone}
+        mobile={clientPhone}
         mainAction={moveNext}
       />
       <List>
         <TextListElement
-          noDivider
           informative
-          title={selected.serviceAddressName}
-          subtitle={selected.serviceAddress}
+          icon="usuario"
+          title="Nombre de la empresa"
+          subtitle={serviceAddressName}
+        />
+        <TextListElement
+          informative
+          icon="direccion"
+          title="Dirección"
+          subtitle={serviceAddress}
           actionIcon="place"
           action={() => console.log("Action: open Maps")}
         />
+        {!!clientPhone &&
+          <TextListElement
+            informative
+            icon="movil"
+            title="Teléfono Móvil"
+            subtitle={clientPhone}
+            actionIcon="movil"
+          />
+        }
+        {!!clientEmail &&
+          <TextListElement
+            informative
+            icon="mail"
+            title="Email"
+            subtitle={clientEmail}
+            actionIcon="mail"
+          />
+        }
+        {!!clientVat &&
+          <TextListElement
+            informative
+            icon="cif"
+            title="CIF"
+            subtitle={clientVat}
+          />
+        }
+        {!!clientTimeTable &&
+          <TextListElement
+            informative
+            icon="calendario"
+            title="Horario"
+            subtitle={clientTimeTable}
+          />
+        }
         <TextListElement
           noDivider
+          icon="mantenimiento"
           title="Carta de Porte"
-          subtitle={`Total ${selected.data.length} líneas`}
+          subtitle={`Total ${data.length} líneas`}
         />
         <TextListElement
           noDivider
+          icon="envase"
           title="Previsión de Envases"
           secondaryText={
             <React.Fragment>
