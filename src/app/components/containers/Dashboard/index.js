@@ -1,7 +1,6 @@
 import React from 'react';
 import { MenuProvider } from 'app/contexts/Menu';
 import Navbar from 'app/components/app/Navbar';
-import SwipableMenu from 'app/components/app/SwipeableMenu';
 import { Wrapper } from './elements';
 
 const Dashboard = ({ children }) => {
@@ -12,7 +11,6 @@ const Dashboard = ({ children }) => {
   return (
     <MenuProvider>
       <Navbar />
-      <SwipableMenu />
       <Wrapper>
         { children }
       </Wrapper>

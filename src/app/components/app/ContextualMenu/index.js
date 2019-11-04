@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { useMenuContext } from 'app/contexts/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import { deleteUserSession } from 'app/utils/auth/userSession';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,39 +12,49 @@ import Icon from 'app/components/ui/Icon';
 import MenuHeader from 'app/components/app/MenuHeader';
 import { MENU_WIDTH } from 'app/styles/constants';
 
-const useStyles = makeStyles ({
+const useStyles = makeStyles({
   list: {
     width: MENU_WIDTH
   }
 });
 
-const SwipeableMenu = ({ history }) => {
-  const [swipeableMenuState, setSwipeableMenuState] = useState(false);
+const ContextualMenu = ({ history }) => {
+  const [menuState, setMenuState] = useMenuContext();
   const classes = useStyles();
 
-  const toggleMenu = (state) => () => setSwipeableMenuState(state);
+  const closeMenu = () => setMenuState({ ...menuState, contextual: false });
   const goTo = (route) => () => history.push(route);
-  const signOut = () => {
-    deleteUserSession();
-    history.push('/login');
-  }
 
   return (
-    <SwipeableDrawer
-      open={swipeableMenuState}
+    <Drawer
+      open={menuState.contextual}
       anchor="left"
       variant="temporary"
-      onOpen={toggleMenu(true)}
-      onClose={toggleMenu(false)}
+      onClose={closeMenu}
     >
       <div className={classes.list}>
         <MenuHeader />
         <List>
+          <ListItem
+            button
+            onClick={goTo('/cartaporte-client')}
+          >
+            <ListItemIcon>
+              <Icon icon="usuario" />
+            </ListItemIcon>
+            <ListItemText primary="Datos Usuario" />
+          </ListItem>
           <ListItem button>
             <ListItemIcon>
-              <Icon icon="listado" />
+              <Icon icon="mantenimiento" />
             </ListItemIcon>
-            <ListItemText primary="Ruta / Cartas de Porte" />
+            <ListItemText primary="Carta de Porte" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <Icon icon="firma" />
+            </ListItemIcon>
+            <ListItemText primary="Firma" />
           </ListItem>
           <ListItem
             button
@@ -55,25 +65,25 @@ const SwipeableMenu = ({ history }) => {
             </ListItemIcon>
             <ListItemText primary="Prevision de Envases" />
           </ListItem>
-          <ListItem button onClick={goTo('resumen-dia')}>
+          <ListItem button>
             <ListItemIcon>
-              <Icon icon="filtro" />
+              <Icon icon="alerta" />
             </ListItemIcon>
-            <ListItemText primary="Resumen del dia" />
+            <ListItemText primary="DCS" />
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem button onClick={signOut}>
+          <ListItem button>
             <ListItemIcon>
-              <Icon icon="salir" />
+              <Icon icon="estado-aviso" />
             </ListItemIcon>
-            <ListItemText primary="Cerrar Sesion" />
+            <ListItemText primary="Anular recogida" />
           </ListItem>
         </List>
       </div>
-    </SwipeableDrawer>
+    </Drawer>
   );
 };
 
-export default withRouter(SwipeableMenu);
+export default withRouter(ContextualMenu);

@@ -1,28 +1,37 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { useMenuContext } from 'app/contexts/Menu';
+import { useRutasContext } from 'app/contexts/Rutas';
 import Icon from 'app/components/ui/Icon';
-import Menu from 'app/components/app/Menu';
+import ContextualMenu from 'app/components/app/ContextualMenu';
+import MainMenu from 'app/components/app/MainMenu';
 import Typography from 'app/components/ui/Typography';
-import { Nav, MenuAction } from './elements';
+import { Nav, Title, MenuAction } from './elements';
 
 const Navbar = ({ history }) => {
-  const [, setMenuState] = useMenuContext();
-  const openMenu = () => setMenuState(true);
-  const goHome = () => history.push('/');
+  const [rutas] = useRutasContext();
+  const [menuState, setMenuState] = useMenuContext();
+  const openMainMenu = () => setMenuState({ ...menuState, main: true });
+  const openContextualMenu = () => setMenuState({ ...menuState, contextual: true });
 
   return (
     <Nav>
-      <MenuAction onClick={openMenu}>
+      <MenuAction onClick={openMainMenu}>
         <Icon icon="menu" fontSize="small" />
       </MenuAction>
-      <Typography variant="subtitle1">
-        Ruta
-      </Typography>
-      <MenuAction onClick={goHome}>
-        <Icon icon="listado" fontSize="small" />
-      </MenuAction>
-      <Menu />
+
+      <Title>
+        <Typography variant="subtitle1">
+          Ruta
+        </Typography>
+      </Title>
+      {rutas.selected && (
+        <MenuAction onClick={openContextualMenu}>
+          <Icon icon="listado" fontSize="small" />
+        </MenuAction>
+      )}
+      <MainMenu />
+      {rutas.selected && <ContextualMenu />}
     </Nav>
   );
 };

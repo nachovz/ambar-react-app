@@ -15,6 +15,11 @@ export const Nav = styled('nav', {
   zIndex: '1000'
 });
 
+export const Title = styled('div', {
+  flexGrow: 2,
+  textAlign: 'center'
+});
+
 export const MenuAction = styled('span', {
   cursor: 'pointer'
 });
