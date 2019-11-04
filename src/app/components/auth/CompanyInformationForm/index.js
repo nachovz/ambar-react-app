@@ -9,6 +9,7 @@ import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useRutasContext } from 'app/contexts/Rutas';
 import { setVehicleSession } from 'app/utils/vehicle';
 import { setCompanySession } from 'app/utils/company';
+import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 
@@ -21,6 +22,10 @@ const CompanyInformationForm = ({ onVerified }) => {
   const { register, handleSubmit, watch, setValue, errors } = useForm({
     defaultValues: { companyId: 'AMB' }
   });
+
+  useEffect(() => {
+    filterCompletedCartaPorteByDate();
+  }, []);
 
   useEffect(() => {
     async function fetchData() {

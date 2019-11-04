@@ -23,10 +23,6 @@ const Recogida = ({ history }) => {
   const [kgValue, setKgValue] = React.useState(100);
   const { register, handleSubmit, setValue, errors } = useForm();
 
-  React.useEffect(() => {
-    register({ name: "kgReal" });
-  }, [register])
-
   React.useEffect( () => {
     const { selected } = rutas;
     if(!!selected){
@@ -39,7 +35,6 @@ const Recogida = ({ history }) => {
         } = selectedRecogida;
         if(!!kgReal){
           setKgValue(kgReal);
-          setValue("kgReal", kgReal);
         }
         unidadesReal && setValue("unidadesReal", unidadesReal);
         observaciones && setValue("observaciones", observaciones);
@@ -105,9 +100,9 @@ const Recogida = ({ history }) => {
     });
   }
 
-  const handleSave = ({ unidadesReal, kgReal, observaciones="" }) => {
+  const handleSave = ({ unidadesReal, observaciones="" }) => {
     selectedRecogida.unidadesReal = unidadesReal;
-    selectedRecogida.kgReal = kgReal;
+    selectedRecogida.kgReal = kgValue;
     selectedRecogida.observaciones = observaciones;
     selectedRecogida.done = true;
     selected.data[selected.data.findIndex(
@@ -123,7 +118,6 @@ const Recogida = ({ history }) => {
   };
 
   const handleMultiChange = ({ target: { value } }) => {
-    setValue("kgReal", value);
     setKgValue(value);
   }
   const propsToForm = {
