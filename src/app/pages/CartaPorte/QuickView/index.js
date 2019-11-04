@@ -7,6 +7,12 @@ import QuickLinks from 'app/components/ui/QuickLinks';
 import Typography from 'app/components/ui/Typography';
 import StepNavigator from 'app/components/app/StepNavigator';
 import dictionaryGenerator from 'app/utils/dictionaryGenerator';
+import { openLink } from 'app/utils/openLink';
+import {
+  LINK_TYPE_MAP,
+  LINK_TYPE_PHONE,
+  LINK_TYPE_EMAIL
+} from 'app/constants/values';
 
 const CartaPorteQuickView = ({ history }) => {
   const [{ selected }] = useRutasContext();
@@ -41,6 +47,7 @@ const CartaPorteQuickView = ({ history }) => {
     <React.Fragment>
       <QuickLinks
         mobile={clientPhone}
+        mobileAction={() => openLink(LINK_TYPE_PHONE, clientPhone)}
         mainAction={moveNext}
       />
       <List>
@@ -56,7 +63,7 @@ const CartaPorteQuickView = ({ history }) => {
           title="Dirección"
           subtitle={serviceAddress}
           actionIcon="place"
-          action={() => console.log("Action: open Maps")}
+          action={() => openLink(LINK_TYPE_MAP,serviceAddress)}
         />
         {!!clientPhone &&
           <TextListElement
@@ -65,6 +72,7 @@ const CartaPorteQuickView = ({ history }) => {
             title="Teléfono Móvil"
             subtitle={clientPhone}
             actionIcon="movil"
+            action={() => openLink(LINK_TYPE_PHONE, clientPhone)}
           />
         }
         {!!clientEmail &&
@@ -74,6 +82,7 @@ const CartaPorteQuickView = ({ history }) => {
             title="Email"
             subtitle={clientEmail}
             actionIcon="mail"
+            action={() => openLink(LINK_TYPE_EMAIL, clientEmail)}
           />
         }
         {!!clientVat &&

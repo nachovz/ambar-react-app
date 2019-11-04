@@ -149,6 +149,13 @@ const Recogida = ({ history }) => {
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
+        <TextListElement
+          noDivider
+          iconColor="primary"
+          icon={TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]}
+          title={selectedRecogida.itemName}
+          subtitle={selectedRecogida.itemId}
+        />
         {renderForm()}
         <FieldListElement
           title="Observaciones"

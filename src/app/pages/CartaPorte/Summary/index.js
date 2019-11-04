@@ -9,6 +9,7 @@ import TopBar from 'app/components/ui/TopBar';
 import Fab from 'app/components/ui/Fab';
 import Icon from 'app/components/ui/Icon';
 import StepNavigator from 'app/components/app/StepNavigator';
+import { TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const CartaPorteSummary = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -50,8 +51,10 @@ const CartaPorteSummary = ({ history }) => {
             itemId,
             itemName,
             kgReal,
-            unidadesReal
+            unidadesReal,
+            projCategoryId
           } = rec;
+            const typeRecogida = TIPOS_RECOGIDAS[projCategoryId] === 'recogida';
             return(
               <DataListElement
                 key={ind}
@@ -59,7 +62,7 @@ const CartaPorteSummary = ({ history }) => {
                 subtitle={itemId}
                 quantities={[
                   (!!unidadesReal ? unidadesReal : '-'),
-                  (!!kgReal ? `${kgReal}%` : '-')
+                  (!!kgReal && typeRecogida ? `${kgReal}%` : '-')
                 ]}
                 actionIcon="editar"
                 action={onSelectedRecogida(rec)}

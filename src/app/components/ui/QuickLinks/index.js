@@ -5,14 +5,14 @@ import Icon from 'app/components/ui/Icon';
 import Box from '@material-ui/core/Box';
 import { DarkContainer, Centered } from './elements';
 
-const QuickLinks = ({ mobile, phone, mainAction }) => (
+const QuickLinks = ({ mobile, mobileAction, phone, phoneAction, mainAction }) => (
   <DarkContainer pt={2}>
     {!!phone &&
       <Centered>
         <Fab
           block
           color="primary"
-          onClick={() => console.log(`Action: call ${phone}`)}
+          onClick={phoneAction}
         >
           <Icon icon="phone" fab />
         </Fab>
@@ -28,7 +28,7 @@ const QuickLinks = ({ mobile, phone, mainAction }) => (
         <Fab
           block
           color="primary"
-          onClick={() => console.log(`Action: call ${mobile}`)}
+          onClick={mobileAction}
         >
           <Icon icon="movil" fab />
         </Fab>

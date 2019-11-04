@@ -136,5 +136,16 @@ export const OBSERVACIONES = [
 export const TIPOS_RECOGIDAS = {
   "Res_Peligr": "recogida",
   "Servicios": "servicio",
-  "Entrega": "entrega"
+  "Entrega": "entrega",
+  "Res_NoPel": "recogida"
+}
+
+export const LINK_TYPE_MAP = "map";
+export const LINK_TYPE_EMAIL = "email";
+export const LINK_TYPE_PHONE = "phone";
+
+export const LINK_VALUES = {
+  [LINK_TYPE_PHONE]: "tel:",
+  [LINK_TYPE_EMAIL]: "mailto:",
+  [LINK_TYPE_MAP]: "http://maps.google.com/?q="
 }

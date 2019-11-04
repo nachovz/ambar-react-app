@@ -114,7 +114,6 @@ const RecogidaAdd = ({ history }) => {
         ...selected
       }
     });
-    console.log(rutas);
     moveNext();
   };
 

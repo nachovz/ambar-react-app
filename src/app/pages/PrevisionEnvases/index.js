@@ -24,7 +24,7 @@ const PrevisionEnvases = ({ history }) => {
   const containerKeys = Object.keys(containersDictionary);
 
   const moveBack = () => {
-    history.push("/cartaporte");
+    history.push("/");
   }
 
   return (
@@ -44,7 +44,7 @@ const PrevisionEnvases = ({ history }) => {
       ))}
       </List>
       <StepNavigator
-        moveToPreviousText="Carta de Porte"
+        moveToPreviousText="Ruta"
         moveToPreviousAction={moveBack}
         moveToNextText=""
       />
