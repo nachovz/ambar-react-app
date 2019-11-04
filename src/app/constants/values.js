@@ -136,7 +136,8 @@ export const OBSERVACIONES = [
 export const TIPOS_RECOGIDAS = {
   "Res_Peligr": "recogida",
   "Servicios": "servicio",
-  "Entrega": "entrega"
+  "Entrega": "entrega",
+  "Res_NoPel": "recogida"
 }
 
 export const LINK_TYPE_MAP = "map";

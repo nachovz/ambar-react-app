@@ -86,7 +86,7 @@ const CartaPorte = ({ history }) => {
             icon={TIPOS_RECOGIDAS[reco.projCategoryId]}
             title={reco.itemName}
             subtitle={reco.itemId}
-            actionIcon={reco.done ? "toggle-on" : "arrow_right"}
+            actionIcon={reco.done ? "editar" : "arrow_right"}
             disabled={reco.done}
             onClick={onSelectedRecogida(reco)}
             action={onSelectedRecogida(reco)}
