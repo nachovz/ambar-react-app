@@ -14,8 +14,7 @@ import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import Autocomplete from 'app/components/form/Autocomplete';
-import WASTES from 'app/constants/wastes_oct.json';
-import CONTAINERS from 'app/constants/containers_oct.json';
+import { getCompanySession } from 'app/utils/company';
 import { PESO_OPTIONS } from 'app/constants/values';
 
 const RecogidaAdd = ({ history }) => {
@@ -51,6 +50,7 @@ const RecogidaAdd = ({ history }) => {
     return null;
   }
 
+  const { wastes, containers } = getCompanySession();
   const handleCloseCamera = () => setOpenCamera(false);
 
   const onTakePhoto = (dataUri) => {
@@ -152,7 +152,7 @@ const RecogidaAdd = ({ history }) => {
                 value={waste}
                 onChange={handleChange("WASTE")}
                 fakeAsync
-                suggestions={WASTES.data.map((wa) => (
+                suggestions={wastes.data.map((wa) => (
                   {
                     label: wa.description,
                     ...wa
@@ -181,7 +181,7 @@ const RecogidaAdd = ({ history }) => {
               <Autocomplete
                 value={container}
                 onChange={handleChange("CONTAINER")}
-                suggestions={CONTAINERS.data.map((co) => (
+                suggestions={containers.data.map((co) => (
                   {
                     label: co.description,
                     ...co

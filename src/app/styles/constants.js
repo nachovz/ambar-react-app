@@ -1,5 +1,6 @@
 export const ZINDEX = {
-  'OVERLAY': 1000
+  'MODAL': 999,
+  'OVERLAY': 1000 
 };
 
 export const NAVBAR_HEIGHT = '50px';

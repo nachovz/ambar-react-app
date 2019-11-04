@@ -14,10 +14,15 @@ import Row from 'app/components/ui/Row';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import Typography from 'app/components/ui/Typography';
 import { CenteredPaddedContainer } from './elements';
+import { useSnackbarContext } from 'app/contexts/Snackbar';
+import { useLoadingContext } from 'app/contexts/Loading';
+import { getDCS } from 'app/utils/dcs';
 import { OBSERVACIONES, TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
+  const [, setSnackbarContext] = useSnackbarContext();
+  const [, setLoadingState] = useLoadingContext();
   const [modal, setModal] = React.useState(false);
   const [obs, setObs] = React.useState(OBSERVACIONES);
 
@@ -34,6 +39,20 @@ const CartaPorte = ({ history }) => {
   }
 
   //!modal && selected.observaciones && setObs(selected.observaciones);
+  const openDCS = () => {
+    setLoadingState(true);
+    try {
+      getDCS(rutas.selected.filePath);
+      setLoadingState(false);
+    } catch (error) {
+      setLoadingState(false);
+      setSnackbarContext({
+        message: 'Hubo un error en el servidor',
+        variant: 'error',
+        open: true
+      });
+    }
+  }
 
   const onSelectedRecogida = (selectedRecogida) => () => {
     setRutasState({
@@ -53,7 +72,7 @@ const CartaPorte = ({ history }) => {
       <TopBar
         title={`Carta de porte: ${selected.serviceOrderId}`}
         actionIcon="descarga-dcs"
-        action={() => console.log("Action: open PDF")}
+        action={openDCS}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />

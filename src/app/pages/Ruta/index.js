@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from "react-router";
 import { Redirect } from 'react-router';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
+import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { getVehicleSession, isVehicleIdExpired } from 'app/utils/vehicle';
+import { setCompletedCarteporte } from 'app/utils/cartaporte';
 import List from 'app/components/ui/List';
 import TopBar from 'app/components/ui/TopBar';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
@@ -13,20 +15,37 @@ import TextListElement from 'app/components/ui/ListElement/TextListElement';
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [, setLoadingState] = useLoadingContext();
-  const orders = rutas.data || [];
+  const [, setSnackbarContext] = useSnackbarContext();
+  const [orders, setOrders] = useState([]);
   const { vehicleId } = getVehicleSession();
+
+  useEffect(() => {
+    if (rutas && rutas.data) {
+      setCompletedCarteporte(rutas.data);
+    }
+    setOrders(rutas.data || []);
+  }, [rutas, setOrders]);
 
   useEffect(() => {
     if (!rutas || !rutas.data) {
       async function fetchData() {
         setLoadingState(true);
-        const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
-        setRutasState({ ...rutas, selected: null });
-        setLoadingState(false);
+        try {
+          const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
+          setRutasState({ ...rutas, selected: null });
+          setLoadingState(false);
+        } catch (error) {
+          setLoadingState(false);
+          setSnackbarContext({
+            message: 'Hubo un error en el servidor',
+            variant: 'error',
+            open: true
+          });
+        }
       }
       fetchData();
     }
-  }, [rutas, setLoadingState, setRutasState, vehicleId]);
+  }, [rutas, setLoadingState, setRutasState, vehicleId, setSnackbarContext]);
 
   if (!vehicleId || isVehicleIdExpired()) {
     return (

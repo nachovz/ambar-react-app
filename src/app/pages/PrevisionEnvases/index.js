@@ -3,7 +3,6 @@ import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
-import DateBar from 'app/components/ui/DateBar';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
 import StepNavigator from 'app/components/app/StepNavigator';
 import dictionaryGenerator from 'app/utils/dictionaryGenerator';

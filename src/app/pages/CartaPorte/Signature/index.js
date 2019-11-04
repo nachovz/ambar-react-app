@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
+import { useLoadingContext } from 'app/contexts/Loading';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import Typography from 'app/components/ui/Typography';
@@ -13,12 +14,16 @@ import AlertDialog from 'app/components/ui/AlertDialog';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import ImageComponent from 'app/components/ui/ImageComponent';
+import { buildCartaporte, addCompletedCartaporte } from 'app/utils/cartaporte';
+import client from 'app/client';
+import ENDPOINTS from 'app/constants/endpoints';
 import {
   ErrorContainer
 } from './elements';
 
 const CartaPorteSignature = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
+  const [, setLoadingState] = useLoadingContext();
   const [signature, setSignature] = useState();
   const [approvals, setApprovals] = useState({
     conform: false,
@@ -35,13 +40,24 @@ const CartaPorteSignature = ({ history }) => {
     return null;
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    setLoadingState(true);
     selected.done = true;
     selected.signature = signature;
     rutas.data[selected.serviceOrderId] = selected;
+
+    try {
+      const body = buildCartaporte(selected);
+      await client.post(ENDPOINTS.ROUTE, { body});
+      addCompletedCartaporte(selected.serviceOrderId);
+      setLoadingState(false);
+    } catch (error) {
+      setLoadingState(false);
+    }
+
     setRutasState({
       ...rutas,
-      selected:null
+      selected: null
     });
   };
 

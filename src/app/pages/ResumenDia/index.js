@@ -11,6 +11,7 @@ import ImageComponent from 'app/components/ui/ImageComponent';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import Checkbox from 'app/components/form/Checkbox';
 import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
+import { getVehicleSession } from 'app/utils/vehicle';
 import COMPANY from 'app/constants/company_info.json';
 
 const STEPS = {
@@ -63,6 +64,9 @@ const ResumenDia = ({ history }) => {
     history.push('/');
     return null;
   }
+
+  const { vehicleId } = getVehicleSession();
+
   const {
     serviceOrderId,
     serviceDateTime,
@@ -136,12 +140,12 @@ const ResumenDia = ({ history }) => {
             informative
             title="Conductor"
           />
-          {/*
+
           <TextListElement
             noDivider
             title="Matricula Vehiculo"
-            subtitle="XXXXXXXX"
-          />*/}
+            subtitle={vehicleId}
+          />
         </List>
       )}
       {step === 'cargador' && (
@@ -219,13 +223,11 @@ const ResumenDia = ({ history }) => {
             title="CIF"
             subtitle={COMPANY.cif}
           />
-          {/*
           <TextListElement
             noDivider
             title="Matricula"
-            subtitle="XXXXXXXX"
+            subtitle={vehicleId}
           />
-          */}
           <TextListElement
             noDivider
             title="Conductor"
