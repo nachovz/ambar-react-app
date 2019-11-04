@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from "react-router";
 import { Redirect } from 'react-router';
 import client from 'app/client';
@@ -16,14 +16,15 @@ const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
-  const orders = rutas.data || [];
+  const [orders, setOrders] = useState([]);
   const { vehicleId } = getVehicleSession();
 
   useEffect(() => {
     if (rutas && rutas.data) {
       setCompletedCarteporte(rutas.data);
     }
-  }, [rutas]);
+    setOrders(rutas.data || []);
+  }, [rutas, setOrders]);
 
   useEffect(() => {
     if (!rutas || !rutas.data) {
