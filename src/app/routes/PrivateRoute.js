@@ -8,11 +8,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const [{ isAuthenticated }, setUserState] = useUserContext();
   const token = getAccessToken();
 
-  if (!isAuthenticated && token) setUserState({ isAuthenticated: true });
+  if (!isAuthenticated && token) {
+    setUserState({ isAuthenticated: true });
+  }
 
   return (
     <Route {...rest} render={(props) => (
-      isAuthenticated ? (
+      isAuthenticated || token ? (
         <SessionListener>
           <Component {...props} />
         </SessionListener>

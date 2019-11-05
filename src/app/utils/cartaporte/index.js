@@ -5,7 +5,7 @@ import { TIPOS_RECOGIDAS } from 'app/constants/values';
 export const buildCartaporte = (selected) => {
   const { vehicleId } = getVehicleSession();
 
-  selected.data.reduce((result, current) => {
+  return selected.data.reduce((result, current) => {
     if (!current.done) return result;
 
     return [
