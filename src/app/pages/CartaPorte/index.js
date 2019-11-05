@@ -8,35 +8,34 @@ import TopBar from 'app/components/ui/TopBar';
 import Fab from 'app/components/ui/Fab';
 import Icon from 'app/components/ui/Icon';
 import StepNavigator from 'app/components/app/StepNavigator';
-import Modal from 'app/components/containers/Modal';
-import Checkbox from 'app/components/form/Checkbox';
-import Row from 'app/components/ui/Row';
-import BorderedContainer from 'app/components/ui/BorderedContainer';
-import Typography from 'app/components/ui/Typography';
-import { CenteredPaddedContainer } from './elements';
+import NotesModal from 'app/components/form/NotesModal';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { getDCS } from 'app/utils/dcs';
-import { OBSERVACIONES, TIPOS_RECOGIDAS } from 'app/constants/values';
+import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setLoadingState] = useLoadingContext();
   const [modal, setModal] = React.useState(false);
-  const [obs, setObs] = React.useState(OBSERVACIONES);
+  let { notes } = getCompanySession();
+  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
+
 
   const moveTo = (route) => () => history.push(route);
   const { selected } = rutas;
 
   useEffect( () => {
-    selected && setObs(selected.observaciones || OBSERVACIONES)
-  }, [selected]);
+    selected && setObs(selected.observaciones || formatCompanyNotes(notes, 1))
+  }, [selected, notes]);
 
   if(!selected){
     history.push('/');
     return null;
   }
+
 
   const openDCS = async () => {
     setLoadingState(true);
@@ -69,7 +68,19 @@ const CartaPorte = ({ history }) => {
   };
 
   const handleCloseModal = () => setModal(false);
-
+  const handleNotes = (ind) => () => {
+    var temp = obs;
+    temp[ind].on = !temp[ind].on;
+    selected.observaciones = temp;
+    setObs(temp);
+    setModal(false);
+    setRutasState({
+      ...rutas,
+      selected:{
+        ...selected
+      }
+    });
+  }
   return (
     <Fragment>
       <TopBar
@@ -96,11 +107,9 @@ const CartaPorte = ({ history }) => {
           />
         ))
         :
-        <CenteredPaddedContainer>
-          <Typography variant="caption" color="error" display="block">
-            Error al cargar las recogidas. Contactar oficina.
-          </Typography>
-        </CenteredPaddedContainer>
+        <TextListElement
+          subtitle="Error al cargar las recogidas. Contactar oficina."
+        />
       }
       </List>
       <Fab
@@ -110,43 +119,13 @@ const CartaPorte = ({ history }) => {
       >
         <Icon />
       </Fab>
-      <Modal
-        open={modal}
-        onClose={handleCloseModal}
-      >
-        <CenteredPaddedContainer>
-          <BorderedContainer padded>
-            <Typography variant="h5" component="h3">
-              Observaciones
-            </Typography>
-            {obs.map( ({ label, on }, ind) => (
-              <Row key={ind}>
-                <Checkbox
-                  color="primary"
-                  label={label}
-                  input={{
-                    value: on,
-                    onChange:
-                      () => {
-                        var temp = obs;
-                        temp[ind].on = !temp[ind].on;
-                        selected.observaciones = temp;
-                        setObs(temp);
-                        setModal(false);
-                        setRutasState({
-                          ...rutas,
-                          selected:{
-                            ...selected
-                          }
-                        });
-                      }
-                  }}
-                />
-              </Row>
-            ))}
-          </BorderedContainer>
-        </CenteredPaddedContainer>
-      </Modal>
+      <NotesModal
+        modal={modal}
+        handleCloseModal={handleCloseModal}
+        title="Observaciones"
+        list={obs}
+        handleList={handleNotes}
+      />
       <StepNavigator
         moveToPreviousText="Ruta"
         moveToPreviousAction={moveTo('')}

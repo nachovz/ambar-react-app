@@ -4,7 +4,7 @@ const CompanyContext = createContext();
 
 export const CompanyProvider = ({ children }) => {
   return (
-    <CompanyContext.Provider value={useState({ company: null, wastes: null, containers: null })}>
+    <CompanyContext.Provider value={useState({ company: null, wastes: null, containers: null, notes: null })}>
       {children}
     </CompanyContext.Provider>
   );

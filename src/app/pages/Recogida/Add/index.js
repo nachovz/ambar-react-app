@@ -50,7 +50,7 @@ const RecogidaAdd = ({ history }) => {
     return null;
   }
 
-  const { wastes, containers } = getCompanySession();
+  const { wastes, containers, notes } = getCompanySession();
   const handleCloseCamera = () => setOpenCamera(false);
 
   const onTakePhoto = (dataUri) => {

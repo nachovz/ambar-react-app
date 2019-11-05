@@ -1,0 +1,12 @@
+{
+    "data": [
+        {
+            "description": "El contenedor se encuentra en mal estado",
+            "type": "0"
+        },
+        {
+            "description": "El cliente solicitó mas material",
+            "type": "1"
+        }
+    ]
+}

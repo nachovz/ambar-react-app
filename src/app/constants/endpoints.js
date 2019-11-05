@@ -8,7 +8,8 @@ const ENDPOINTS = {
   GET_CONTAINERS_BY_COMPANY: `${BASE_URL}/company/amb/container`,
   GET_WASTES_BY_COMPANY: `${BASE_URL}/company/amb/waste`,
   ROUTE: `${BASE_URL}/company/amb/route`,
-  DCS: `${BASE_URL}/dcs`
+  DCS: `${BASE_URL}/dcs`,
+  GET_NOTES: `${BASE_URL}/notes`
 };
 
 export default ENDPOINTS;
