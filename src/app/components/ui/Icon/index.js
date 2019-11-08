@@ -4,6 +4,7 @@ import UIIcon from '@material-ui/core/Icon';
 import AddIcon from '@material-ui/icons/Add';
 import PlaceIcon from '@material-ui/icons/Place';
 import { withStyles } from '@material-ui/core/styles';
+import getColor from 'app/styles/palette';
 import clsx from 'clsx';
 
 import 'app/css/icons.css';
@@ -68,6 +69,15 @@ const styles = {
   root: {
     width: 'auto',
     height: 'auto',
+  },
+  recogida:{
+    color: getColor('RECOGIDA')
+  },
+  entrega:{
+    color: getColor('ENTREGA')
+  },
+  servicio:{
+    color: getColor('SERVICIO')
   }
 };
 
@@ -81,7 +91,13 @@ const Icon = ({
   ...props
 }) => {
   const iconClass = clsx(`icon-${icon}`);
-  const classesMerge = clsx(classes.root, className)
+  const classesMerge = clsx(
+    classes.root,
+    className,
+    icon === 'recogida' ? classes.recogida : {},
+    icon === 'servicio' ? classes.servicio : {},
+    icon === 'entrega' ? classes.entrega : {}
+  );
   if (!icon) return (
     <AddIcon color={color} />
   );

@@ -12,7 +12,10 @@ const COLOURS = {
   WHITE: '#FFFFFF',
   LIGHTGREY: '#ececec',
   RED: '#F44336',
-  TRANSPARENT: tinycolor({ r: 0, g: 0, b: 0, a: 0 })
+  TRANSPARENT: tinycolor({ r: 0, g: 0, b: 0, a: 0 }),
+  RECOGIDA: '#03A9F4',
+  ENTREGA: '#00C9E3',
+  SERVICIO: '#0277BD'
 };
 
 const getColor = (colorName) => {
