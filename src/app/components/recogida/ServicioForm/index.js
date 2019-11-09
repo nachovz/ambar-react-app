@@ -8,7 +8,8 @@ import Checkbox from 'app/components/form/Checkbox';
 const ServicioForm = ({
   selectedRecogida,
   register,
-  errors
+  errors,
+  setValue
 }) => {
 
   const [checked, setChecked] = React.useState(false);
@@ -24,6 +25,7 @@ const ServicioForm = ({
       <FieldListElement
         field={
           <Switch
+            name="servicioRealizado"
             checked={checked}
             onChange={handleChange}
             value="Realizado"
@@ -34,6 +36,7 @@ const ServicioForm = ({
       <FieldListElement
         field={
           <Checkbox
+            name="servicioExtraInfo"
             disabled={!checked}
             color="secondary"
             label="Incluir información adicional"

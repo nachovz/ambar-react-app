@@ -126,6 +126,7 @@ const Recogida = ({ history }) => {
     handleMultiChange:handleMultiChange,
     kgValue:kgValue,
     errors:errors,
+    setValue:setValue
   }
   const renderForm = () => {
     switch(TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]){
@@ -140,6 +141,7 @@ const Recogida = ({ history }) => {
     }
   };
 
+  console.log(selectedRecogida);
   return(
     <React.Fragment>
       <TopBar
