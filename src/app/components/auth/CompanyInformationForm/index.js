@@ -13,6 +13,7 @@ import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import NOTES from 'app/constants/notes_oct.json';
+import RUTAS from 'app/constants/mock_oct.json';
 
 const CompanyInformationForm = ({ onVerified }) => {
   const [showQr, setShowQr] = useState(false);
@@ -49,7 +50,7 @@ const CompanyInformationForm = ({ onVerified }) => {
   const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
+      const rutas = RUTAS;//await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
       const containers = await client.get(`${ENDPOINTS.GET_CONTAINERS_BY_COMPANY}`);
       const wastes = await client.get(`${ENDPOINTS.GET_WASTES_BY_COMPANY}`);
       const notes = NOTES;//await client.get(`${ENDPOINTS.GET_NOTES}`);

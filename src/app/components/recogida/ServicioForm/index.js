@@ -3,6 +3,7 @@ import TextField from 'app/components/form/TextField';
 import BoxedInput from 'app/components/form/BoxedInput';
 import Switch from 'app/components/form/Switch';
 import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
+import Checkbox from 'app/components/form/Checkbox';
 
 const ServicioForm = ({
   selectedRecogida,
@@ -11,9 +12,11 @@ const ServicioForm = ({
 }) => {
 
   const [checked, setChecked] = React.useState(false);
+  const [moreInfo, setMoreInfo] = React.useState(false);
 
   const handleChange = event => {
     setChecked(event.target.checked);
+    setMoreInfo(false);
   };
 
   return(
@@ -28,7 +31,20 @@ const ServicioForm = ({
           />
         }
       />
-      {checked &&
+      <FieldListElement
+        field={
+          <Checkbox
+            disabled={!checked}
+            color="secondary"
+            label="Incluir información adicional"
+            input={{
+              value: moreInfo,
+              onChange: () => setMoreInfo(!moreInfo)
+            }}
+          />
+        }
+      />
+      {checked && moreInfo &&
         <BoxedInput
           bottomLabel="UNIDADES"
           icon="unidades"

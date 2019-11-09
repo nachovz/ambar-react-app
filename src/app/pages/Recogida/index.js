@@ -191,7 +191,7 @@ const Recogida = ({ history }) => {
       </List>
       <Modal
         open={openCamera}
-        onClose={handleCloseCamera}
+        handleCloseModal={handleCloseCamera}
       >
         <Camera
           onTakePhoto={onTakePhoto}
