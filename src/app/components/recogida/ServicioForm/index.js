@@ -9,27 +9,40 @@ const ServicioForm = ({
   selectedRecogida,
   register,
   errors,
-  setValue
+  setValue,
+  getValues
 }) => {
 
   const [checked, setChecked] = React.useState(false);
   const [moreInfo, setMoreInfo] = React.useState(false);
 
-  const handleChange = event => {
-    setChecked(event.target.checked);
-    setMoreInfo(false);
-  };
+  React.useEffect( () => {
+    
+    if(!!selectedRecogida){
+      const {
+        servicioRealizado,
+        servicioExtraInfo
+      } = selectedRecogida;
+      servicioRealizado && setValue("servicioRealizado", servicioRealizado);
+      servicioExtraInfo && setValue("servicioExtraInfo", servicioExtraInfo);
+    }
+  }, [selectedRecogida, setValue]);
 
+  console.log(getValues());
   return(
     <React.Fragment>
       <FieldListElement
         field={
           <Switch
             name="servicioRealizado"
-            checked={checked}
-            onChange={handleChange}
-            value="Realizado"
-            label={checked ? "Realizado":"No Realizado"}
+            inputRef={register}
+            checked={(getValues().servicioRealizado === 'Realizado')}
+            value={(getValues().servicioRealizado || "Realizado")}
+            label={getValues().servicioRealizado ? "Realizado":"No Realizado"}
+            onChange={(e)=>{
+              console.log(e.target.checke);
+              setValue("servicioRealizado",e.target.checked);
+            }}
           />
         }
       />
@@ -37,17 +50,19 @@ const ServicioForm = ({
         field={
           <Checkbox
             name="servicioExtraInfo"
-            disabled={!checked}
+            disabled={!getValues().servicioRealizado}
             color="secondary"
             label="Incluir información adicional"
+            inputRef={register}
+            value={getValues().servicioExtraInfo}
             input={{
-              value: moreInfo,
-              onChange: () => setMoreInfo(!moreInfo)
+              value: getValues().servicioExtraInfo,
+              onChange: (e) => setValue("servicioExtraInfo",e)
             }}
           />
         }
       />
-      {checked && moreInfo &&
+      {getValues().servicioRealizado && getValues().servicioExtraInfo &&
         <BoxedInput
           bottomLabel="UNIDADES"
           icon="unidades"

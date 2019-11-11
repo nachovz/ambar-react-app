@@ -21,7 +21,7 @@ const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [kgValue, setKgValue] = React.useState(100);
-  const { register, handleSubmit, setValue, errors } = useForm();
+  const { register, handleSubmit, setValue, errors, getValues } = useForm();
 
   React.useEffect( () => {
     const { selected } = rutas;
@@ -100,14 +100,19 @@ const Recogida = ({ history }) => {
     });
   }
 
-  const handleSave = ({ unidadesReal, observaciones="" }) => {
+  const handleSave = ({ unidadesReal, observaciones="", ...props }) => {
     selectedRecogida.unidadesReal = unidadesReal;
     selectedRecogida.kgReal = kgValue;
     selectedRecogida.observaciones = observaciones;
     selectedRecogida.done = true;
+    let temp = {
+      ...selectedRecogida,
+      ...props
+    };
+    console.log(props);
     selected.data[selected.data.findIndex(
       (ele) => ele.itemId === selectedRecogida.itemId
-    )] = selectedRecogida;
+    )] = temp;//selectedRecogida;
     setRutasState({
       ...rutas,
       selected:{
@@ -126,7 +131,8 @@ const Recogida = ({ history }) => {
     handleMultiChange:handleMultiChange,
     kgValue:kgValue,
     errors:errors,
-    setValue:setValue
+    setValue:setValue,
+    getValues:getValues
   }
   const renderForm = () => {
     switch(TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]){
