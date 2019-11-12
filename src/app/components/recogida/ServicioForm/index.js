@@ -12,12 +12,7 @@ const ServicioForm = ({
   setValue,
   getValues
 }) => {
-
-  const [checked, setChecked] = React.useState(false);
-  const [moreInfo, setMoreInfo] = React.useState(false);
-
   React.useEffect( () => {
-    
     if(!!selectedRecogida){
       const {
         servicioRealizado,
@@ -27,8 +22,6 @@ const ServicioForm = ({
       servicioExtraInfo && setValue("servicioExtraInfo", servicioExtraInfo);
     }
   }, [selectedRecogida, setValue]);
-
-  console.log(getValues());
   return(
     <React.Fragment>
       <FieldListElement
@@ -41,6 +34,8 @@ const ServicioForm = ({
             label={getValues().servicioRealizado ? "Realizado":"No Realizado"}
             onChange={(e)=>{
               setValue("servicioRealizado",e.target.checked);
+              setValue("servicioExtraInfo",false);
+              setValue("unidadesReal", "");
             }}
           />
         }

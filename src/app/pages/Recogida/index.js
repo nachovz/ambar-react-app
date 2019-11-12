@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
@@ -104,18 +103,17 @@ const Recogida = ({ history }) => {
     selectedRecogida.unidadesReal = unidadesReal;
     selectedRecogida.kgReal = kgValue;
     selectedRecogida.observaciones = observaciones;
-    if(selectedRecogida.done && !props.servicioRealizado){
-      
+    if(selectedRecogida.done){
+      selectedRecogida.done = (!props.servicioRealizado && unidadesReal === '0') && false;
+    }else{
+      selectedRecogida.done =  (unidadesReal !== '0' && !!unidadesReal && true);
     }
-    selectedRecogida.done = true;
-    let temp = {
+    selected.data[selected.data.findIndex(
+      (ele) => ele.itemId === selectedRecogida.itemId
+    )] = {
       ...selectedRecogida,
       ...props
     };
-    console.log(props);
-    selected.data[selected.data.findIndex(
-      (ele) => ele.itemId === selectedRecogida.itemId
-    )] = temp;//selectedRecogida;
     setRutasState({
       ...rutas,
       selected:{
@@ -149,8 +147,6 @@ const Recogida = ({ history }) => {
         break;
     }
   };
-
-  console.log(selectedRecogida);
   return(
     <React.Fragment>
       <TopBar
