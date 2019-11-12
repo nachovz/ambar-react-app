@@ -14,16 +14,21 @@ import Modal from 'app/components/containers/Modal';
 import RecogidaForm from 'app/components/recogida/RecogidaForm';
 import EntregaForm from 'app/components/recogida/EntregaForm';
 import ServicioForm from 'app/components/recogida/ServicioForm';
+import NotesModal from 'app/components/form/NotesModal';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 
 const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [kgValue, setKgValue] = React.useState(100);
   const { register, handleSubmit, setValue, errors, getValues } = useForm();
-
+  let { notes } = getCompanySession();
+  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
+  const [modal, setModal] = React.useState(false);
+  const { selected } = rutas;
+  
   React.useEffect( () => {
-    const { selected } = rutas;
     if(!!selected){
       const { selectedRecogida } = selected;
       if(!!selectedRecogida){
@@ -41,7 +46,11 @@ const Recogida = ({ history }) => {
     }
   }, [rutas, setValue]);
 
-  const { selected } = rutas;
+  React.useEffect( () => {
+    selected && setObs(selected.observaciones || formatCompanyNotes(notes, 0))
+  }, [selected, notes]);
+
+  
   if(!selected){
     history.push('/');
     return null;
@@ -102,7 +111,7 @@ const Recogida = ({ history }) => {
   const handleSave = ({ unidadesReal, observaciones="", ...props }) => {
     selectedRecogida.unidadesReal = unidadesReal;
     selectedRecogida.kgReal = kgValue;
-    selectedRecogida.observaciones = observaciones;
+    selectedRecogida.observaciones = obs.reduce((tot, ob) => tot+(ob.on ? ', '+ob.label : ''));
     if(selectedRecogida.done){
       selectedRecogida.done = (!props.servicioRealizado && unidadesReal === '0') && false;
     }else{
@@ -126,6 +135,15 @@ const Recogida = ({ history }) => {
   const handleMultiChange = ({ target: { value } }) => {
     setKgValue(value);
   }
+
+  const handleCloseModal = () => setModal(false);
+  const handleNotes = (ind) => () => {
+    var temp = obs;
+    temp[ind].on = !temp[ind].on;
+    console.log(temp);
+    setObs(temp);
+  }
+
   const propsToForm = {
     selectedRecogida:selectedRecogida,
     register:register,
@@ -153,6 +171,8 @@ const Recogida = ({ history }) => {
         title="RECOGIDA"
         actionIcon="camara"
         action={() => setOpenCamera(true)}
+        secondaryActionIcon="observaciones"
+        secondaryAction={() => setModal(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
@@ -164,19 +184,6 @@ const Recogida = ({ history }) => {
           subtitle={selectedRecogida.itemId}
         />
         {renderForm()}
-        <FieldListElement
-          title="Observaciones"
-          field={
-            <TextField
-              name="observaciones"
-              register={register}
-              required={false}
-              fullWidth
-              multiline
-              placeholder="Aquí las observaciones"
-            />
-          }
-        />
         {!!selectedRecogida.imagenes && selectedRecogida.imagenes.length > 0 && (
           <React.Fragment>
             <FieldListElement title="Imágenes" />
@@ -196,6 +203,13 @@ const Recogida = ({ history }) => {
           </React.Fragment>
         )}
       </List>
+      <NotesModal
+        modal={modal}
+        handleCloseModal={handleCloseModal}
+        title="Observaciones"
+        list={obs}
+        handleList={handleNotes}
+      />
       <Modal
         open={openCamera}
         handleCloseModal={handleCloseCamera}
