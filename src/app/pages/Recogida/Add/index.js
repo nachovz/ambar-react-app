@@ -14,7 +14,8 @@ import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import Autocomplete from 'app/components/form/Autocomplete';
-import { getCompanySession } from 'app/utils/company';
+import NotesModal from 'app/components/form/NotesModal';
+import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 import { PESO_OPTIONS } from 'app/constants/values';
 
 const RecogidaAdd = ({ history }) => {
@@ -29,6 +30,10 @@ const RecogidaAdd = ({ history }) => {
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
   const { register, handleSubmit, setValue, errors } = useForm();
+  const { wastes, containers, notes } = getCompanySession();
+  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
+  const [modal, setModal] = React.useState(false);
+
   const moveBack = () => history.goBack();
   const moveNext = () => history.push('cartaporte');
   const { selected } = rutas;
@@ -50,7 +55,7 @@ const RecogidaAdd = ({ history }) => {
     return null;
   }
 
-  const { wastes, containers, notes } = getCompanySession();
+  
   const handleCloseCamera = () => setOpenCamera(false);
 
   const onTakePhoto = (dataUri) => {
@@ -93,7 +98,6 @@ const RecogidaAdd = ({ history }) => {
   const handleSave = ({
     waste,
     container,
-    observaciones,
     kgReal,
     unidadesReal
   }) => {
@@ -105,8 +109,9 @@ const RecogidaAdd = ({ history }) => {
       res_InventPackingMaterialCode: container.id,
       kgReal: kgReal.value,
       unidadesReal,
-      observaciones,
-      images
+      observaciones: obs,
+      images,
+      projCategoryId: "Res_Peligr"
     });
     setRutasState({
       ...rutas,
@@ -117,12 +122,16 @@ const RecogidaAdd = ({ history }) => {
     moveNext();
   };
 
+  const handleCloseModal = () => setModal(false);
+
   return (
     <React.Fragment>
       <TopBar
         title={`Carta de porte: ${selected.serviceOrderId}`}
         actionIcon={!!waste && !!container && "camara"}
         action={() => setOpenCamera(true)}
+        secondaryActionIcon="observaciones"
+        secondaryAction={() => setModal(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       <List>
@@ -221,19 +230,6 @@ const RecogidaAdd = ({ history }) => {
                 />
               }
             />
-            <FieldListElement
-              title="Observaciones"
-              field={
-                <TextField
-                  name="observaciones"
-                  register={register}
-                  required={false}
-                  fullWidth
-                  multiline
-                  placeholder="Aquí las observaciones"
-                />
-              }
-            />
             {!!images && images.length > 0 && (
               <React.Fragment>
                 <FieldListElement title="Imágenes" />
@@ -271,6 +267,13 @@ const RecogidaAdd = ({ history }) => {
           cancelText="No, seguir editando"
         />
       </List>
+      <NotesModal
+        modal={modal}
+        handleCloseModal={handleCloseModal}
+        title="Observaciones"
+        obs={obs}
+        setObs={setObs}
+      />
       <StepNavigator
           moveToPreviousText="Atrás"
           moveToPreviousAction={moveBack}

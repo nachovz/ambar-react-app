@@ -7,7 +7,6 @@ import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
-import TextField from 'app/components/form/TextField';
 import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
@@ -24,7 +23,7 @@ const Recogida = ({ history }) => {
   const [kgValue, setKgValue] = React.useState(100);
   const { register, handleSubmit, setValue, errors, getValues } = useForm();
   let { notes } = getCompanySession();
-  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
+  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 0));
   const [modal, setModal] = React.useState(false);
   const { selected } = rutas;
   
@@ -41,15 +40,11 @@ const Recogida = ({ history }) => {
           setKgValue(kgReal);
         }
         unidadesReal && setValue("unidadesReal", unidadesReal);
-        observaciones && setValue("observaciones", observaciones);
+        observaciones && setObs(observaciones);
+        
       }
     }
-  }, [rutas, setValue]);
-
-  React.useEffect( () => {
-    selected && setObs(selected.observaciones || formatCompanyNotes(notes, 0))
-  }, [selected, notes]);
-
+  }, [selected, setValue]);
   
   if(!selected){
     history.push('/');
@@ -61,7 +56,7 @@ const Recogida = ({ history }) => {
     history.push('/cartaporte');
     return null;
   }
-
+  console.log(selectedRecogida);
   const moveBack = () => {
     setRutasState({
       ...rutas,
@@ -111,7 +106,7 @@ const Recogida = ({ history }) => {
   const handleSave = ({ unidadesReal, observaciones="", ...props }) => {
     selectedRecogida.unidadesReal = unidadesReal;
     selectedRecogida.kgReal = kgValue;
-    selectedRecogida.observaciones = obs.reduce((tot, ob) => tot+(ob.on ? ', '+ob.label : ''));
+    selectedRecogida.observaciones = obs;//obs.reduce((tot, ob) => tot+(ob.on ? ', '+ob.label : ''));
     if(selectedRecogida.done){
       selectedRecogida.done = (!props.servicioRealizado && unidadesReal === '0') && false;
     }else{
@@ -137,12 +132,7 @@ const Recogida = ({ history }) => {
   }
 
   const handleCloseModal = () => setModal(false);
-  const handleNotes = (ind) => () => {
-    var temp = obs;
-    temp[ind].on = !temp[ind].on;
-    console.log(temp);
-    setObs(temp);
-  }
+  
 
   const propsToForm = {
     selectedRecogida:selectedRecogida,
@@ -207,8 +197,8 @@ const Recogida = ({ history }) => {
         modal={modal}
         handleCloseModal={handleCloseModal}
         title="Observaciones"
-        list={obs}
-        handleList={handleNotes}
+        obs={obs}
+        setObs={setObs}
       />
       <Modal
         open={openCamera}

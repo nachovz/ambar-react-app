@@ -19,17 +19,25 @@ const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setLoadingState] = useLoadingContext();
-  const [modal, setModal] = React.useState(false);
   let { notes } = getCompanySession();
   const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
-
-
+  const [modal, setModal] = React.useState(false);
   const moveTo = (route) => () => history.push(route);
   const { selected } = rutas;
 
   useEffect( () => {
-    selected && setObs(selected.observaciones || formatCompanyNotes(notes, 1))
-  }, [selected, notes]);
+    selected && selected.observaciones && setObs(selected.observaciones);
+  }, [selected]);
+
+  useEffect( () => {
+    obs && setRutasState( currentRuta => ({
+      ...currentRuta,
+      selected:{
+        ...currentRuta.selected,
+        observaciones: obs
+      }
+    }));
+  }, [obs, setRutasState]);
 
   if(!selected){
     history.push('/');
@@ -68,19 +76,7 @@ const CartaPorte = ({ history }) => {
   };
 
   const handleCloseModal = () => setModal(false);
-  const handleNotes = (ind) => () => {
-    var temp = obs;
-    temp[ind].on = !temp[ind].on;
-    selected.observaciones = temp;
-    setObs(temp);
-    setModal(false);
-    setRutasState({
-      ...rutas,
-      selected:{
-        ...selected
-      }
-    });
-  }
+  console.log(selected);
   return (
     <Fragment>
       <TopBar
@@ -123,8 +119,8 @@ const CartaPorte = ({ history }) => {
         modal={modal}
         handleCloseModal={handleCloseModal}
         title="Observaciones"
-        list={obs}
-        handleList={handleNotes}
+        obs={obs}
+        setObs={setObs}
       />
       <StepNavigator
         moveToPreviousText="Ruta"

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'app/components/containers/Modal';
-import Checkbox from 'app/components/form/Checkbox';
+import CheckboxClear from 'app/components/form/CheckboxClear';
 import Row from 'app/components/ui/Row';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import Typography from 'app/components/ui/Typography';
@@ -10,9 +10,20 @@ const NotesModal = ({
   modal,
   handleCloseModal,
   title,
-  list,
-  handleList
+  obs=[],
+  setObs
 }) => {
+
+  const handleNotes = (ind) => (event) => {
+    var temp = obs.map( (note, index) => {
+      if(ind===index){
+        note.on = event.target.checked;
+      }
+      return note;
+    });
+    setObs(temp);
+  };
+
   return(
     <Modal
         open={modal}
@@ -23,15 +34,14 @@ const NotesModal = ({
             <Typography variant="h5" component="h3">
               {title}
             </Typography>
-            {list.map( ({ label, on }, ind) => (
-              <Row key={ind}>
-                <Checkbox
+            {obs.map( ({ label, on }, ind) => (
+              <Row key={label}>
+                <CheckboxClear
                   color="primary"
                   label={label}
-                  input={{
-                    value: on,
-                    onChange:handleList(ind)
-                  }}
+                  value={ind}
+                  checked={on}
+                  onChange={handleNotes(ind)}
                 />
               </Row>
             ))}
