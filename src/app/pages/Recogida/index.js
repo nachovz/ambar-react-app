@@ -104,6 +104,9 @@ const Recogida = ({ history }) => {
     selectedRecogida.unidadesReal = unidadesReal;
     selectedRecogida.kgReal = kgValue;
     selectedRecogida.observaciones = observaciones;
+    if(selectedRecogida.done && !props.servicioRealizado){
+      
+    }
     selectedRecogida.done = true;
     let temp = {
       ...selectedRecogida,

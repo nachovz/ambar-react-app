@@ -40,7 +40,6 @@ const ServicioForm = ({
             value={(getValues().servicioRealizado || "Realizado")}
             label={getValues().servicioRealizado ? "Realizado":"No Realizado"}
             onChange={(e)=>{
-              console.log(e.target.checke);
               setValue("servicioRealizado",e.target.checked);
             }}
           />
@@ -54,29 +53,33 @@ const ServicioForm = ({
             color="secondary"
             label="Incluir información adicional"
             inputRef={register}
-            value={getValues().servicioExtraInfo}
             input={{
-              value: getValues().servicioExtraInfo,
-              onChange: (e) => setValue("servicioExtraInfo",e)
+              value: (getValues().servicioExtraInfo || false),
+              onChange: (e) => {
+                setValue("servicioExtraInfo",e);
+                setValue("unidadesReal", "");
+              }
             }}
           />
         }
       />
-      {getValues().servicioRealizado && getValues().servicioExtraInfo &&
-        <BoxedInput
-          bottomLabel="UNIDADES"
-          icon="unidades"
-          input={
-            <TextField
-              register={register}
-              name="unidadesReal"
-              type="number"
-              placeholder="-"
-              error={errors.unidadesReal}
-            />
-          }
-        />
-      }
+      <BoxedInput
+        style={{
+          display: ( (getValues().servicioRealizado && getValues().servicioExtraInfo) ? "flex" : "none" )
+        }}
+        bottomLabel="UNIDADES"
+        icon="unidades"
+        input={
+          <TextField
+            register={register}
+            required={false}
+            name="unidadesReal"
+            type="number"
+            placeholder="-"
+            error={errors.unidadesReal}
+          />
+        }
+      />
     </React.Fragment>
   )
 }
