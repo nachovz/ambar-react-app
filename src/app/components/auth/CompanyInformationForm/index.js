@@ -13,7 +13,7 @@ import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import NOTES from 'app/constants/notes_oct.json';
-import RUTAS from 'app/constants/mock_oct.json';
+//import RUTAS from 'app/constants/mock_oct.json';
 
 const CompanyInformationForm = ({ onVerified }) => {
   const [showQr, setShowQr] = useState(false);
