@@ -121,7 +121,7 @@ const CartaPorte = ({ history }) => {
       <StepNavigator
         moveToPreviousText="Ruta"
         moveToPreviousAction={moveTo('')}
-        moveToNextText="Resumen de Recogida"
+        moveToNextText="Resumen"
         moveToNextAction={moveTo('cartaporte-summary')}
       />
     </Fragment>

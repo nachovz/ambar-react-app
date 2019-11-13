@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import UIFab from '@material-ui/core/Fab';
-import { NAVBAR_HEIGHT } from 'app/styles/constants';
 
 const useStyles = makeStyles(theme => ({
   fab: {
     position: 'fixed',
-    bottom: `calc(${NAVBAR_HEIGHT} + ${theme.spacing(6)}px)`,
-    right: theme.spacing(2),
+    bottom: `11px`,
+    left: `calc(calc(100vw / 2) - calc(56px / 2))`,
+    zIndex: 100
   }
 }));
 
