@@ -20,14 +20,10 @@ const CartaPorte = ({ history }) => {
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setLoadingState] = useLoadingContext();
   let { notes } = getCompanySession();
-  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
+  const { selected } = rutas;
+  const [obs, setObs] = React.useState((selected && selected.observaciones) ||formatCompanyNotes(notes, 1));
   const [modal, setModal] = React.useState(false);
   const moveTo = (route) => () => history.push(route);
-  const { selected } = rutas;
-
-  useEffect( () => {
-    selected && selected.observaciones && setObs(selected.observaciones);
-  }, [selected]);
 
   useEffect( () => {
     obs && setRutasState( currentRuta => ({
