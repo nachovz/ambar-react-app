@@ -1,0 +1,1 @@
+export const esIntlFormatter = new Intl.NumberFormat('es-ES');

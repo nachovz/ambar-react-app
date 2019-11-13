@@ -37,6 +37,7 @@ const TextField = ({
           {...props}
           type={type}
           error={!!error}
+          fullWidth
           inputRef={register({
             required,
             ...validations[type] && validations[type]

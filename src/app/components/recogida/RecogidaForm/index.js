@@ -5,6 +5,7 @@ import SelectField from 'app/components/form/SelectField';
 import BoxedInput from 'app/components/form/BoxedInput';
 import { PESO_OPTIONS } from 'app/constants/values';
 import { BlueCenteredText } from './elements';
+import { esIntlFormatter } from 'app/utils/esIntlFormatter';
 
 const RecogidaForm = ({
   selectedRecogida,
@@ -64,7 +65,7 @@ const RecogidaForm = ({
     />
     {getValues().unidadesReal && 
       <BlueCenteredText>
-        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{(selectedRecogida.weight * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
+        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
       </BlueCenteredText>
     }
     <TextListElement

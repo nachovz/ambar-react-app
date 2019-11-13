@@ -56,7 +56,6 @@ const Recogida = ({ history }) => {
     history.push('/cartaporte');
     return null;
   }
-  console.log(selectedRecogida);
   const moveBack = () => {
     setRutasState({
       ...rutas,

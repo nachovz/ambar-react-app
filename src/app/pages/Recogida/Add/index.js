@@ -15,8 +15,10 @@ import Modal from 'app/components/containers/Modal';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import Autocomplete from 'app/components/form/Autocomplete';
 import NotesModal from 'app/components/form/NotesModal';
+import { PrimaryCenteredText } from 'app/components/ui/PrimaryCenteredText';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 import { PESO_OPTIONS } from 'app/constants/values';
+import { esIntlFormatter } from 'app/utils/esIntlFormatter';
 
 const RecogidaAdd = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -29,7 +31,7 @@ const RecogidaAdd = ({ history }) => {
   const [images, setImages] = React.useState([]);
   const [openCamera, setOpenCamera] = React.useState(false);
   const [openAlert, setOpenAlert] = React.useState(false);
-  const { register, handleSubmit, setValue, errors } = useForm();
+  const { register, handleSubmit, setValue, errors, getValues } = useForm();
   const { wastes, containers, notes } = getCompanySession();
   const [obs, setObs] = React.useState(formatCompanyNotes(notes, 1));
   const [modal, setModal] = React.useState(false);
@@ -171,15 +173,27 @@ const RecogidaAdd = ({ history }) => {
           />
         }
         {!!container ?
-          <TextListElement
-            noDivider
-            informative
-            iconColor="primary"
+          <BoxedInput
+            topLabel={
+              <React.Fragment>
+                <strong>{container.weight || 'NULL'}</strong> Kgs./Lts.*
+                <br/>
+                por <strong>(1)</strong> unidad
+              </React.Fragment>
+            }
             icon="envase"
-            title={container.description}
-            subtitle={container.id}
-            actionIcon="papelera"
-            action={() => setContainer(undefined)}
+            iconColor="primary"
+            input={
+              <TextListElement
+                disableGutters
+                noDivider
+                noIcon
+                title={container.description}
+                subtitle={container.id}
+                actionIcon="papelera"
+                action={() => setContainer(undefined)}
+              />
+            }
           />
           :
           <FieldListElement
@@ -203,23 +217,20 @@ const RecogidaAdd = ({ history }) => {
           <React.Fragment>
             <BoxedInput
               topLabel="Und"
-              topValue="-"
-              bottomLabel="CANTIDAD"
               icon="unidades"
               input={
                 <TextField
                   register={register}
+                  noMargin
                   name="unidadesReal"
                   type="number"
-                  placeholder="-"
+                  placeholder="CANTIDAD"
                   error={errors.unidadesReal}
                 />
               }
             />
             <BoxedInput
-              topLabel="kg"
-              topValue="-"
-              bottomLabel="CANTIDAD"
+              topLabel="% de llenado"
               icon="peso"
               input={
                 <Autocomplete
@@ -250,23 +261,28 @@ const RecogidaAdd = ({ history }) => {
             )}
           </React.Fragment>
         }
-        <Modal
-          open={openCamera}
-          onClose={handleCloseCamera}
-        >
-          <Camera
-            onTakePhoto={onTakePhoto}
-          />
-        </Modal>
-        <AlertDialog
-          open={openAlert}
-          title="Desea guardar la Recogida Manual?"
-          handleClose={handleCloseAlert}
-          agreedText="Si, guardar"
-          handleAgree={handleSubmit(handleSave)}
-          cancelText="No, seguir editando"
-        />
+        {getValues().unidadesReal && 
+          <PrimaryCenteredText>
+            La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
+          </PrimaryCenteredText>
+        }
       </List>
+      <Modal
+        open={openCamera}
+        onClose={handleCloseCamera}
+      >
+        <Camera
+          onTakePhoto={onTakePhoto}
+        />
+      </Modal>
+      <AlertDialog
+        open={openAlert}
+        title="Desea guardar la Recogida Manual?"
+        handleClose={handleCloseAlert}
+        agreedText="Si, guardar"
+        handleAgree={handleSubmit(handleSave)}
+        cancelText="No, seguir editando"
+      />
       <NotesModal
         modal={modal}
         handleCloseModal={handleCloseModal}

@@ -72,7 +72,6 @@ const CartaPorte = ({ history }) => {
   };
 
   const handleCloseModal = () => setModal(false);
-  console.log(selected);
   return (
     <Fragment>
       <TopBar
