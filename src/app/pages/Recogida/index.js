@@ -192,12 +192,6 @@ const Recogida = ({ history }) => {
             ))}
           </React.Fragment>
         )}
-        <TextListElement
-          noDivider
-          informative
-          noIcon
-          subtitle="*La medida Kgs (kilogramos) es aplicada a los residuos sólidos, la medida Lts (litros) es aplicada a los residuos líquidos)"
-        />
       </List>
       <NotesModal
         modal={modal}

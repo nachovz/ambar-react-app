@@ -62,15 +62,16 @@ const ServicioForm = ({
         style={{
           display: ( (getValues().servicioRealizado && getValues().servicioExtraInfo) ? "flex" : "none" )
         }}
-        bottomLabel="UNIDADES"
         icon="unidades"
+        topLabel="Und."
         input={
           <TextField
             register={register}
             required={false}
+            noMargin
             name="unidadesReal"
             type="number"
-            placeholder="-"
+            placeholder="UNIDADES"
             error={errors.unidadesReal}
           />
         }

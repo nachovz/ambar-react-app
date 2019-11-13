@@ -1,42 +1,44 @@
 import React from 'react';
 import Typography from 'app/components/ui/Typography';
-import Row from 'app/components/ui/Row';
 import Icon from 'app/components/ui/Icon';
 import Spacer from 'app/components/ui/Spacer';
-import { CustomRow, BorderedContainer, CenteredDiv } from './elements';
+import Box from '@material-ui/core/Box';
+import { CustomRow, CenteredDiv, InnerRow } from './elements';
 
 const BoxedInput = ({
-  topLabel,
-  topValue,
+  topLabel = "% del llenado",
+  topValue = "",
   bottomLabel,
   icon,
   input,
   style
 }) => (
   <CustomRow style={style}>
-    <Row>
+    <InnerRow>
       <Icon
        icon={icon}
        color="primary"
       />
-      <Spacer direction="horizontal"/>
+      <Spacer direction="horizontal" size="xl"/>
       <CenteredDiv>
-        <Typography>
-          { topLabel }
-        </Typography>
-        <Typography variant="caption">
-          { topValue }
+        <Typography color="textSecondary" variant="caption">
+          {topLabel} <strong>{topValue}</strong>
         </Typography>
       </CenteredDiv>
-    </Row>
-    <BorderedContainer>
+    </InnerRow>
+    <InnerRow>
       {!!bottomLabel &&
-        <Typography>
-          { bottomLabel }
-        </Typography>
+        <React.Fragment>
+          <Box whiteSpace="nowrap">
+            <Typography variant="overline" >
+              { bottomLabel }
+            </Typography>
+          </Box>
+          <Spacer direction="horizontal" />
+        </React.Fragment>
       }
       {!!input && input}
-    </BorderedContainer>
+    </InnerRow>
   </CustomRow>
 );
 

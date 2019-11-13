@@ -22,14 +22,20 @@ const validations = {
   }
 };
 
-const TextField = ({ type, register = () => {}, required=registerOptions.required, error, ...props }) => {
+const TextField = ({
+  type, 
+  register = () => {}, 
+  required=registerOptions.required, 
+  error,
+  noMargin, 
+  ...props 
+}) => {
   return (
-    <FieldWrapper>
+    <FieldWrapper $noMargin={noMargin}>
       <FieldError error={error}>
         <TextFieldUI
           {...props}
           type={type}
-          fullWidth
           error={!!error}
           inputRef={register({
             required,

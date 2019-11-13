@@ -1,36 +1,38 @@
 import React from 'react';
-import getColor from 'app/styles/palette';
 import theme from 'app/styles/material';
 import { withStyles } from '@material-ui/core/styles';
 import { styled } from 'styletron-react';
-import Box from '@material-ui/core/Box';
 import Row from 'app/components/ui/Row';
 
 const styles = {
-  specialRow: {
-    justifyContent: 'space-around'
+  customRow: {
+    justifyContent: 'space-around',
+    padding: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
   },
   borderedBoxMaterialStyles: {
-    border: `1px solid ${getColor('PRIMARY')}`,
-    padding: `${theme.spacing(2)}px`,
     textAlign: 'center',
-    margin: `${theme.spacing(1)}px`,
-    width: '220px'
+    display: 'flex',
+    alignItems: 'center',
+    width: '50%'
+  },
+  innerRow:{
+    flexGrow: '1',
+    width: '50%'
   }
 };
 
 export const CustomRow = withStyles(styles)(
   ({ classes, ...props }) =>(
-    <Row customClass={classes.specialRow} {...props} />
-  )
-);
-
-export const BorderedContainer = withStyles(styles)(
-  ({ classes, ...props }) => (
-    <Box className={classes.borderedBoxMaterialStyles} {...props} />
+    <Row customClass={classes.customRow} {...props} />
   )
 );
 
 export const CenteredDiv = styled('div', {
   textAlign: 'center'
 });
+
+export const InnerRow = withStyles(styles)(
+  ({ classes, ...props}) => (
+    <Row customClass={classes.innerRow} {...props} />
+  )
+);

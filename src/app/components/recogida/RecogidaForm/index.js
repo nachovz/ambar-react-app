@@ -22,24 +22,21 @@ const RecogidaForm = ({
       quantities={[selectedRecogida.res_Qty_Env]}
     />
     <BoxedInput
-      topLabel="Und"
+      topLabel="Und."
       topValue={selectedRecogida.res_Qty_Env}
-      bottomLabel="REAL"
       icon="unidades"
       input={
         <TextField
           register={register}
+          noMargin
           name="unidadesReal"
           type="number"
-          placeholder="-"
+          placeholder="UNIDADES REAL"
           error={errors.unidadesReal}
         />
       }
     />
     <BoxedInput
-      topLabel={selectedRecogida.unit}
-      topValue={selectedRecogida.qty}
-      bottomLabel="REAL"
       icon="peso"
       input={
         <SelectField
@@ -47,11 +44,16 @@ const RecogidaForm = ({
           value={kgValue}
           options={PESO_OPTIONS}
           onChange={handleMultiChange}
-          helperText="Seleccionar %"
+          helperText="PESO REAL ESTIMADO"
         />
       }
     />
-
+    <TextListElement
+      noDivider
+      informative
+      noIcon
+      subtitle="*La medida Kgs (kilogramos) es aplicada a los residuos sólidos, la medida Lts (litros) es aplicada a los residuos líquidos)"
+    />
   </React.Fragment>
 );
 

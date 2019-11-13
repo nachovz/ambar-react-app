@@ -8,14 +8,15 @@ const EntregaForm = ({
 }) =>(
   <React.Fragment>
     <BoxedInput
-      bottomLabel="UNIDADES"
       icon="unidades"
+      topLabel="Und."
       input={
         <TextField
+          noMargin
           register={register}
           name="unidadesReal"
           type="number"
-          placeholder="-"
+          placeholder="UNIDADES"
           error={errors.unidadesReal}
         />
       }

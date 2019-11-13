@@ -7,7 +7,7 @@ const SIZES = {
   sm: `${theme.spacing(1)}px`,
   md: `${theme.spacing(2)}px`,
   lg: `${theme.spacing(3)}px`,
-  xl: `${theme.spacing(7)}px`
+  xl: `${theme.spacing(4)}px`
 };
 
 export const Container = styled('div', ({ $direction, $size }) => {
