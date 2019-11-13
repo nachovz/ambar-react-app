@@ -4,22 +4,36 @@ import TextField from 'app/components/form/TextField';
 import SelectField from 'app/components/form/SelectField';
 import BoxedInput from 'app/components/form/BoxedInput';
 import { PESO_OPTIONS } from 'app/constants/values';
+import { BlueCenteredText } from './elements';
 
 const RecogidaForm = ({
   selectedRecogida,
   register,
   errors,
   handleMultiChange,
-  kgValue
+  kgValue,
+  getValues
 }) => (
   <React.Fragment>
-    <TextListElement
-      noDivider
-      iconColor="primary"
+    <BoxedInput
+      topLabel={
+        <React.Fragment>
+          <strong>{selectedRecogida.weight}</strong> Kgs./Lts.*
+          <br/>
+          por <strong>(1)</strong> unidad
+        </React.Fragment>
+      }
       icon="envase"
-      title={selectedRecogida.packingMaterialName}
-      subtitle={selectedRecogida.res_InventPackingMaterialCode}
-      quantities={[selectedRecogida.res_Qty_Env]}
+      iconColor="primary"
+      input={
+        <TextListElement
+          disableGutters
+          noDivider
+          noIcon
+          title={selectedRecogida.packingMaterialName}
+          subtitle={selectedRecogida.res_InventPackingMaterialCode}
+        />
+      }
     />
     <BoxedInput
       topLabel="Und."
@@ -48,6 +62,11 @@ const RecogidaForm = ({
         />
       }
     />
+    {getValues().unidadesReal && 
+      <BlueCenteredText>
+        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{(selectedRecogida.weight * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
+      </BlueCenteredText>
+    }
     <TextListElement
       noDivider
       informative
