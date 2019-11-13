@@ -10,9 +10,10 @@ const BoxedInput = ({
   topValue,
   bottomLabel,
   icon,
-  input
+  input,
+  style
 }) => (
-  <CustomRow>
+  <CustomRow style={style}>
     <Row>
       <Icon
        icon={icon}
