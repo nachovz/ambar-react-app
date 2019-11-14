@@ -32,10 +32,10 @@ const AlertDialog = ({
           </DialogContent>
         }
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} variant="outlined" color="primary">
             {cancelText}
           </Button>
-          <Button onClick={handleAgree} color="primary" autoFocus>
+          <Button onClick={handleAgree} variant="outlined" color="primary" autoFocus>
             {agreedText}
           </Button>
         </DialogActions>

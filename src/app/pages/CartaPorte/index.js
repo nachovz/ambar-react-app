@@ -40,7 +40,6 @@ const CartaPorte = ({ history }) => {
     return null;
   }
 
-
   const openDCS = async () => {
     setLoadingState(true);
     try {

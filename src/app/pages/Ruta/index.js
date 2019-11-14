@@ -11,6 +11,8 @@ import { setCompletedCarteporte } from 'app/utils/cartaporte';
 import List from 'app/components/ui/List';
 import TopBar from 'app/components/ui/TopBar';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
+import AlertDialog from 'app/components/ui/AlertDialog';
+import getGeoPosition from 'app/utils/getGeoPosition';
 
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -18,6 +20,9 @@ const Ruta = ({ history }) => {
   const [, setSnackbarContext] = useSnackbarContext();
   const [orders, setOrders] = useState([]);
   const { vehicleId } = getVehicleSession();
+  const [openAlert, setOpenAlert] = React.useState({ 
+    open: false
+  });
 
   useEffect(() => {
     if (rutas && rutas.data) {
@@ -52,15 +57,41 @@ const Ruta = ({ history }) => {
       <Redirect to="/login" />
     );
   }
-
-  const showInfo = (selected, route, done=false) => () => {
+    
+  const showInfo = async () => {
+    setLoadingState(true);
+    const { lat, lng } = await getGeoPosition();
     setRutasState({
       ...rutas,
       selected:{
-        ...selected
+        ...openAlert.selected,
+        latitudeStart: parseFloat(lat),
+        longitudeStart: parseFloat(lng)
       }
     });
-    history.push(!!done ? '/resumen-dia' : route);
+    setLoadingState(false);
+    history.push("/cartaporte");
+  };
+
+  const handleCloseAlert = () => setOpenAlert({ open: false });
+  const handleOpenCartaPorte = (selected, route, done=false) => () => {
+    
+    if(route === "/quickview" || done){
+      setRutasState({
+        ...rutas,
+        selected:{
+          ...selected
+        }
+      });
+      history.push(!!done ? '/resumen-dia' : route);
+      return;
+    }
+
+    setOpenAlert({
+      open: true,
+      selected
+    });
+    //showInfo(orders[order], "/quickview",orders[order].done)
   };
 
   const ordersKeys = Object.keys(orders);
@@ -68,9 +99,9 @@ const Ruta = ({ history }) => {
   return (
     <React.Fragment>
       <TopBar
-          title={`Total avisos: ${ordersKeys.length}`}
-          now
-        />
+        title={`Total avisos: ${ordersKeys.length}`}
+        now
+      />
       <List>
         {ordersKeys.map((order, index) => (
           <TextListElement
@@ -82,11 +113,32 @@ const Ruta = ({ history }) => {
             subtitle={orders[order].serviceAddress}
             subtitle2=""
             actionIcon={orders[order].done ? "ver" : "estado-aviso"}
-            action={showInfo(orders[order], "/quickview",orders[order].done)}
-            onClick={showInfo(orders[order],"/cartaporte",orders[order].done)}
+            action={
+              handleOpenCartaPorte(
+                orders[order], 
+                "/quickview",
+                orders[order].done
+              )
+            }
+            onClick={
+              handleOpenCartaPorte(
+                orders[order],
+                "/cartaporte",
+                orders[order].done
+              )
+            }
           />
         ))}
       </List>
+      <AlertDialog
+        open={openAlert.open}
+        title="¿Deseas iniciar la recolección de datos?"
+        content="Se registrará la ubicación actual."
+        handleClose={handleCloseAlert}
+        agreedText="Si"
+        handleAgree={showInfo}
+        cancelText="No"
+      />
     </React.Fragment>
   );
 };

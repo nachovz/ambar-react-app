@@ -20,6 +20,7 @@ import ENDPOINTS from 'app/constants/endpoints';
 import {
   ErrorContainer
 } from './elements';
+import getGeoPosition from 'app/utils/getGeoPosition';
 
 const CartaPorteSignature = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -45,6 +46,9 @@ const CartaPorteSignature = ({ history }) => {
     selected.done = true;
     selected.signature = signature;
     rutas.data[selected.serviceOrderId] = selected;
+    const { lat, lng } = await getGeoPosition();
+    selected.latitudeEnd = lat;
+    selected.longitudeEnd = lng;
 
     try {
       const body = buildCartaporte(selected);
@@ -148,7 +152,8 @@ const CartaPorteSignature = ({ history }) => {
       <Spacer size="lg"/>
       <AlertDialog
         open={openAlert}
-        title="Desea guardar la línea?"
+        title="¿Desea guardar la línea?"
+        content="La información será enviada a la oficina."
         handleClose={handleCloseAlert}
         agreedText="Si, guardar"
         handleAgree={handleSave}
