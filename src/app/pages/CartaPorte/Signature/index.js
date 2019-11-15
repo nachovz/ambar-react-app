@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
+import useForm from 'react-hook-form';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import Typography from 'app/components/ui/Typography';
@@ -14,11 +15,13 @@ import AlertDialog from 'app/components/ui/AlertDialog';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import ImageComponent from 'app/components/ui/ImageComponent';
+import TextField from 'app/components/form/TextField';
 import { buildCartaporte, addCompletedCartaporte } from 'app/utils/cartaporte';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import {
-  ErrorContainer
+  ErrorContainer,
+  FullWidthForm
 } from './elements';
 import getGeoPosition from 'app/utils/getGeoPosition';
 
@@ -31,6 +34,7 @@ const CartaPorteSignature = ({ history }) => {
     terms: false
   });
   const [openAlert, setOpenAlert] = React.useState(false);
+  const { register, handleSubmit, setValue, errors, getValues } = useForm();
   let sigPad = React.createRef();
   const moveBack = () => history.goBack();
   const moveNext = () => setOpenAlert(true);
@@ -41,17 +45,19 @@ const CartaPorteSignature = ({ history }) => {
     return null;
   }
 
-  const handleSave = async () => {
+  const handleSave = async ({ clientDNI, clientName }) => {
     setLoadingState(true);
     selected.done = true;
     selected.signature = signature;
-    rutas.data[selected.serviceOrderId] = selected;
+    selected.clientName = clientName;
+    selected.clientDNI = clientDNI;
     const { lat, lng } = await getGeoPosition();
     selected.latitudeEnd = lat;
     selected.longitudeEnd = lng;
-
+    rutas.data[selected.serviceOrderId] = selected;
+    
     try {
-      const body = buildCartaporte(selected, signature);
+      const body = buildCartaporte(selected, signature, clientDNI, clientName);
       await client.post(ENDPOINTS.ROUTE, { body });
       addCompletedCartaporte(selected.serviceOrderId);
       setLoadingState(false);
@@ -76,7 +82,27 @@ const CartaPorteSignature = ({ history }) => {
         action={() => sigPad.clear()}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+      
       <PaddedContainer $noVertical>
+        <Typography variant="h6" gutterBottom>
+          Confirmación de cliente
+        </Typography>
+        <FullWidthForm>
+          <TextField
+            register={register}
+            name="clientDNI"
+            type="text"
+            placeholder="DNI"
+            error={errors.clientDNI}
+          />
+          <TextField
+            register={register}
+            name="clientName"
+            type="text"
+            placeholder="Nombre"
+            error={errors.clientName}
+          />
+        </FullWidthForm>
         <Checkbox
           color="primary"
           label="Conformidad con la recogida"
@@ -152,10 +178,10 @@ const CartaPorteSignature = ({ history }) => {
       <AlertDialog
         open={openAlert}
         title="¿Desea guardar la línea?"
-        content="La información será enviada a la oficina."
+        content="La información será enviada a la oficina. Se registrará la ubicación actual."
         handleClose={handleCloseAlert}
         agreedText="Si, guardar"
-        handleAgree={handleSave}
+        handleAgree={handleSubmit(handleSave)}
         cancelText="No, seguir editando"
       />
       <StepNavigator

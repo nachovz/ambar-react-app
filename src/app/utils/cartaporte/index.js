@@ -2,10 +2,21 @@ import moment from 'moment';
 import { getVehicleSession } from 'app/utils/vehicle';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
 
-export const buildCartaporte = (selected, signature) => {
+export const buildCartaporte = ({ 
+    latitudeStart,
+    longitudeStart,
+    latitudeEnd,
+    longitudeEnd,
+    clientName,
+    clientDNI, 
+    signature,
+    data,
+    serviceOrderId,
+    observaciones
+  }) => {
   const { vehicleId } = getVehicleSession();
 
-  const items = selected.data.reduce((result, current) => {
+  const items = data.reduce((result, current) => {
     if (!current.done) return result;
 
     return [
@@ -18,7 +29,7 @@ export const buildCartaporte = (selected, signature) => {
         ...TIPOS_RECOGIDAS[current.projCategoryId] === "recogida" &&
           { "percentage": `${current.kgReal || ""}` },
         images: (current.imagenes || []).map(({ dataUri }) => dataUri),
-        notes: (current.observaciones || []).map(({ label }) => label),
+        notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
         manual: !!current.manual
       }
     ];
@@ -26,11 +37,17 @@ export const buildCartaporte = (selected, signature) => {
 
   return {
     data: {
-      "order_id": selected.serviceOrderId,
+      "order_id": serviceOrderId,
       "vehicle_id": vehicleId,
-      notes: (selected.observaciones || []).map(({ label }) => label),
+      notes: (observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
       signature,
-      items
+      items,
+      latitudeStart,
+      longitudeStart,
+      latitudeEnd,
+      longitudeEnd,
+      clientName,
+      clientDNI
     }
   };
 };

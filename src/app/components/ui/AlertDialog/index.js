@@ -5,6 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from 'app/components/ui/Button';
+import Spacer from 'app/components/ui/Spacer';
 
 const AlertDialog = ({
   title,
@@ -35,6 +36,7 @@ const AlertDialog = ({
           <Button onClick={handleClose} variant="outlined" color="primary">
             {cancelText}
           </Button>
+          <Spacer direction="horizontal"/>
           <Button onClick={handleAgree} variant="outlined" color="primary" autoFocus>
             {agreedText}
           </Button>
