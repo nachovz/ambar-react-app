@@ -2,26 +2,37 @@ import moment from 'moment';
 import { getVehicleSession } from 'app/utils/vehicle';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
 
-export const buildCartaporte = (selected) => {
+export const buildCartaporte = (selected, signature) => {
   const { vehicleId } = getVehicleSession();
 
-  return selected.data.reduce((result, current) => {
+  const items = selected.data.reduce((result, current) => {
     if (!current.done) return result;
 
     return [
       ...result,
       {
-        "order_id": selected.serviceOrderId,
         "waste_id": current.itemId || "",
+        "type": TIPOS_RECOGIDAS[current.projCategoryId],
         "container_id": current.res_InventPackingMaterialCode || "",
-        "vehicle_id": vehicleId,
         "container_quantity": current.unidadesReal || "",
         ...TIPOS_RECOGIDAS[current.projCategoryId] === "recogida" &&
           { "percentage": `${current.kgReal || ""}` },
-        "notes": ""
+        images: (current.imagenes || []).map(({ dataUri }) => dataUri),
+        notes: (current.observaciones || []).map(({ label }) => label),
+        manual: !!current.manual
       }
     ];
   }, []);
+
+  return {
+    data: {
+      "order_id": selected.serviceOrderId,
+      "vehicle_id": vehicleId,
+      notes: (selected.observaciones || []).map(({ label }) => label),
+      signature,
+      items
+    }
+  };
 };
 
 export const addCompletedCartaporte = (serviceOrderId) => {

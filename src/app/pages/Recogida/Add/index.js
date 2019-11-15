@@ -57,7 +57,7 @@ const RecogidaAdd = ({ history }) => {
     return null;
   }
 
-  
+
   const handleCloseCamera = () => setOpenCamera(false);
 
   const onTakePhoto = (dataUri) => {
@@ -105,15 +105,18 @@ const RecogidaAdd = ({ history }) => {
   }) => {
     selected.data.push({
       done: true,
-      itemName: waste.label,
-      itemId: waste.id,
+      ...waste && {
+        itemName: waste.label,
+        itemId: waste.id,
+      },
       packingMaterialName: container.description,
       res_InventPackingMaterialCode: container.id,
       kgReal: kgReal.value,
       unidadesReal,
       observaciones: obs,
       images,
-      projCategoryId: "Res_Peligr"
+      projCategoryId: "Res_Peligr",
+      manual: true
     });
     setRutasState({
       ...rutas,
@@ -261,7 +264,7 @@ const RecogidaAdd = ({ history }) => {
             )}
           </React.Fragment>
         }
-        {getValues().unidadesReal && 
+        {getValues().unidadesReal &&
           <PrimaryCenteredText>
             La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
           </PrimaryCenteredText>

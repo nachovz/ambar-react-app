@@ -51,18 +51,17 @@ const CartaPorteSignature = ({ history }) => {
     selected.longitudeEnd = lng;
 
     try {
-      const body = buildCartaporte(selected);
+      const body = buildCartaporte(selected, signature);
       await client.post(ENDPOINTS.ROUTE, { body });
       addCompletedCartaporte(selected.serviceOrderId);
       setLoadingState(false);
+      setRutasState({
+        ...rutas,
+        selected: null
+      });
     } catch (error) {
       setLoadingState(false);
     }
-
-    setRutasState({
-      ...rutas,
-      selected: null
-    });
   };
 
   const handleCloseAlert = () => {
