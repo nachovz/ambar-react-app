@@ -30,8 +30,7 @@ const CartaPorteSignature = ({ history }) => {
   const [, setLoadingState] = useLoadingContext();
   const [signature, setSignature] = useState();
   const [approvals, setApprovals] = useState({
-    conform: false,
-    terms: false
+    conform: false
   });
   const [openAlert, setOpenAlert] = React.useState(false);
   const { register, handleSubmit, errors } = useForm();
@@ -112,16 +111,7 @@ const CartaPorteSignature = ({ history }) => {
               () => setApprovals({...approvals, conform: !approvals.conform})
           }}
         />
-        <Checkbox
-          color="primary"
-          label="Acepto términos y condiciones"
-          input={{
-            value: approvals.terms,
-            onChange:
-              () => setApprovals({...approvals, terms: !approvals.terms})
-          }}
-        />
-        {approvals.conform && approvals.terms && !signature &&
+        {approvals.conform && !signature &&
           <Button
             variant="contained"
             color="secondary"
@@ -140,7 +130,7 @@ const CartaPorteSignature = ({ history }) => {
               alt=""
             />
             :
-            approvals.conform && approvals.terms && (
+            approvals.conform && (
               <SignatureCanvas
                 penColor='green'
                 ref={(ref) => { sigPad = ref }}
@@ -160,7 +150,7 @@ const CartaPorteSignature = ({ history }) => {
             </Typography>
           </ErrorContainer>
         }
-        {approvals.conform && approvals.terms && !signature &&
+        {approvals.conform && !signature &&
           <Button
             variant="contained"
             color="secondary"

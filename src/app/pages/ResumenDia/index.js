@@ -28,14 +28,14 @@ const STEPS = {
   },
   transportista: {
     previous: 'cargador',
-    next: 'gestor'
+    next: 'destinatario'
   },
-  gestor: {
+  destinatario: {
     previous: 'transportista',
     next: 'residuos'
   },
   residuos: {
-    previous: 'gestor',
+    previous: 'destinatario',
     next: 'observaciones'
   },
   observaciones: {
@@ -97,7 +97,7 @@ const ResumenDia = ({ history }) => {
             onClick={moveToStep('conductor')}
           />
           <TextListElement
-            title="Cargador"
+            title="Cargador/Expedidor"
             actionIcon="arrow_right"
             actionIconSize="small"
             onClick={moveToStep('cargador')}
@@ -109,10 +109,10 @@ const ResumenDia = ({ history }) => {
             onClick={moveToStep('transportista')}
           />
           <TextListElement
-            title="Gestor"
+            title="Destinatario"
             actionIcon="arrow_right"
             actionIconSize="small"
-            onClick={moveToStep('gestor')}
+            onClick={moveToStep('destinatario')}
           />
           <TextListElement
             title="Residuos Recogidos"
@@ -143,7 +143,7 @@ const ResumenDia = ({ history }) => {
 
           <TextListElement
             noDivider
-            title="Matricula Vehiculo"
+            title="Matrícula Vehículo"
             subtitle={vehicleId}
           />
         </List>
@@ -152,27 +152,27 @@ const ResumenDia = ({ history }) => {
         <List>
           <TextListElement
             informative
-            title="Cargador Contractual"
+            title="Cargador/Expedidor Contractual"
           />
           <TextListElement
             noDivider
-            title="Cargador"
+            title="Cargador/Expedidor"
             subtitle={serviceAddressName}
           />
           <TextListElement
             noDivider
-            title="Codigo"
+            title="Código"
             subtitle={custAccount}
           />
           <TextListElement
             noDivider
             informative
-            title="Direccion"
+            title="Dirección"
             subtitle={serviceAddress}
           />
           <TextListElement
             noDivider
-            title="Telefono"
+            title="Teléfono"
             subtitle={clientPhone}
           />
           <TextListElement
@@ -210,7 +210,7 @@ const ResumenDia = ({ history }) => {
           />
           <TextListElement
             noDivider
-            title="Direccion"
+            title="Dirección"
             subtitle={COMPANY.address}
           />
           <TextListElement
@@ -225,7 +225,7 @@ const ResumenDia = ({ history }) => {
           />
           <TextListElement
             noDivider
-            title="Matricula"
+            title="Matrícula"
             subtitle={vehicleId}
           />
           <TextListElement
@@ -235,20 +235,20 @@ const ResumenDia = ({ history }) => {
           />
         </List>
       )}
-      {step === 'gestor' && (
+      {step === 'destinatario' && (
         <List>
           <TextListElement
             informative
-            title="Gestor"
+            title="Destinatario"
           />
           <TextListElement
             noDivider
-            title="Gestor"
+            title="Destinatario"
             subtitle={COMPANY.name}
           />
           <TextListElement
             noDivider
-            title="Direccion"
+            title="Dirección"
             subtitle={COMPANY.address}
           />
           <TextListElement
@@ -258,7 +258,7 @@ const ResumenDia = ({ history }) => {
           />
           <TextListElement
             noDivider
-            title="Telefono"
+            title="Teléfono"
             subtitle={COMPANY.phone}
           />
         </List>
