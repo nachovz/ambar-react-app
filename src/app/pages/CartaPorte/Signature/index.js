@@ -34,7 +34,7 @@ const CartaPorteSignature = ({ history }) => {
     terms: false
   });
   const [openAlert, setOpenAlert] = React.useState(false);
-  const { register, handleSubmit, setValue, errors, getValues } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   let sigPad = React.createRef();
   const moveBack = () => history.goBack();
   const moveNext = () => setOpenAlert(true);

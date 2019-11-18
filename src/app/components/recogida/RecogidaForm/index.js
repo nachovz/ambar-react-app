@@ -13,8 +13,11 @@ const RecogidaForm = ({
   errors,
   handleMultiChange,
   kgValue,
-  getValues
-}) => (
+  getValues,
+  watch
+}) => {
+  const unidadesReal =  watch('unidadesReal');
+  return(
   <React.Fragment>
     <BoxedInput
       topLabel={
@@ -63,9 +66,9 @@ const RecogidaForm = ({
         />
       }
     />
-    {getValues().unidadesReal && 
+    {unidadesReal>0 && 
       <BlueCenteredText>
-        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
+        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgValue/100))}</strong> Kgs./Lts.*
       </BlueCenteredText>
     }
     <TextListElement
@@ -76,5 +79,5 @@ const RecogidaForm = ({
     />
   </React.Fragment>
 );
-
+  }
 export default RecogidaForm;

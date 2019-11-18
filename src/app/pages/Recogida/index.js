@@ -21,7 +21,14 @@ const Recogida = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [openCamera, setOpenCamera] = React.useState(false);
   const [kgValue, setKgValue] = React.useState(100);
-  const { register, handleSubmit, setValue, errors, getValues } = useForm();
+  const { 
+    register, 
+    handleSubmit, 
+    setValue, 
+    errors, 
+    getValues, 
+    watch 
+  } = useForm();
   let { notes } = getCompanySession();
   const [obs, setObs] = React.useState(formatCompanyNotes(notes, 0));
   const [modal, setModal] = React.useState(false);
@@ -132,7 +139,6 @@ const Recogida = ({ history }) => {
 
   const handleCloseModal = () => setModal(false);
   
-
   const propsToForm = {
     selectedRecogida:selectedRecogida,
     register:register,
@@ -140,7 +146,8 @@ const Recogida = ({ history }) => {
     kgValue:kgValue,
     errors:errors,
     setValue:setValue,
-    getValues:getValues
+    getValues:getValues,
+    watch: watch
   }
   const renderForm = () => {
     switch(TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]){
