@@ -1,5 +1,6 @@
 import 'fetch-everywhere';
 import axios from 'axios';
+import https from 'https';
 import omitBy from 'app/utils/omitBy';
 import { setUserHeaders, getUserHeaders } from 'app/utils/auth/userSession';
 
@@ -37,6 +38,9 @@ const makeRequest = async (url, { body, headers, method }) => {
       method,
       data: body,
       headers: buildHeaders(headers),
+      httpsAgent: new https.Agent({
+        rejectUnauthorized: false
+      })
     });
     return successHandler(response);
   } catch (error) {
