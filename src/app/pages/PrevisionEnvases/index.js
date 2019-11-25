@@ -20,7 +20,7 @@ const PrevisionEnvases = ({ history }) => {
     ...rutas.data[key].data
   ]), []);
 
-  const containersDictionary = dictionaryGenerator(rutaRecogidasData, "res_InventPackingMaterialCode", "res_Qty_Env", "packingMaterialName");
+  const containersDictionary = dictionaryGenerator(rutaRecogidasData, "packingMaterialName", "res_Qty_Env", "packingMaterialName");
   const containerKeys = Object.keys(containersDictionary);
 
   const moveBack = () => {
