@@ -5,13 +5,15 @@ import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
-import DataListElement from 'app/components/ui/ListElement/DataListElement';
 import BorderedContainer from 'app/components/ui/BorderedContainer';
 import ImageComponent from 'app/components/ui/ImageComponent';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import Checkbox from 'app/components/form/Checkbox';
-import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
+import FieldListElement from 'app/components/ui/ListElement/FieldListElement';import Table from 'app/components/ui/Table';
+import TableElement from 'app/components/ui/Table/TableElement';
 import { getVehicleSession } from 'app/utils/vehicle';
+import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { esIntlFormatter } from 'app/utils/esIntlFormatter';
 import COMPANY from 'app/constants/company_info.json';
 
 const STEPS = {
@@ -265,36 +267,57 @@ const ResumenDia = ({ history }) => {
       )}
       {step === 'residuos' && (
         <List>
-          <TextListElement
-            informative
-            title="Residuos recogidos"
-          />
-          <DataListElement
-            noIcon
-            informative
-            title="Nombre"
-            quantities={['Und', '%']}
-          />
-          {selected.data.map( ({
-            itemId,
-            itemName,
-            kgReal,
-            unidadesReal,
-            done
-          }, ind) =>{
-            return(
-              <DataListElement
-                key={ind}
-                title={itemName}
-                subtitle={itemId}
-                quantities={done ? [
-                  (!!unidadesReal ? unidadesReal : '-'),
-                  (!!kgReal ? `${kgReal}%` : '-')
-                ] : ['-','-']}
-                disabled={!done}
-              />
-            )
-          })}
+          <Table
+            title={'Elemento/Código'}
+            size="small"
+            noScrolling
+            headers={[
+              'Cantidad', 
+              'Kgs./Lts.'
+            ]}
+          >
+            {selected.data.map( ({
+              itemId,
+              itemName,
+              kgReal,
+              unidadesReal,
+              done,
+              projCategoryId,
+              qty,
+              servicioRealizado,
+              weight
+            }, ind) =>{
+              const typeEntrega = TIPOS_RECOGIDAS[projCategoryId] === "entrega";
+              const typeServicio = TIPOS_RECOGIDAS[projCategoryId] === "servicio";
+              let calc = '';
+              switch(TIPOS_RECOGIDAS[projCategoryId]){
+                case 'recogida':
+                  calc = (esIntlFormatter.format(parseFloat((weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgReal/100)));
+                  break;
+                case 'entrega':
+                  calc = (esIntlFormatter.format(parseFloat(qty) * parseInt( unidadesReal )));
+                  break;
+                case 'servicio':
+                  calc = servicioRealizado ? 'REALIZADO' : 'NO REALIZADO';
+                  break;
+                default:
+                  calc = 'N/A';
+                  break;
+              };
+              const qts = (done || typeServicio) ? [
+                typeEntrega ? unidadesReal : "",
+                calc
+              ] : ['-', '-'];
+              return(
+                <TableElement
+                  key={ind}
+                  title={itemName}
+                  subtitle={itemId}
+                  cells={qts}
+                />
+              )
+            })}
+          </Table>
         </List>
       )}
       {step === 'observaciones' && (

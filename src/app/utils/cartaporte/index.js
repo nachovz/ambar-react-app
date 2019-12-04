@@ -17,20 +17,22 @@ export const buildCartaporte = ({
   const { vehicleId } = getVehicleSession();
 
   const items = data.reduce((result, current) => {
-    if (!current.done) return result;
+    const typeServicio = TIPOS_RECOGIDAS[current.projCategoryId] === "servicio";
+    if (!current.done && !typeServicio) return result;
 
     return [
       ...result,
       {
         "waste_id": current.itemId || "",
-        "type": TIPOS_RECOGIDAS[current.projCategoryId],
+        "type": current.projCategoryId,
         "container_id": current.res_InventPackingMaterialCode || "",
         "container_quantity": current.unidadesReal || "",
-        ...TIPOS_RECOGIDAS[current.projCategoryId] === "recogida" &&
-          { "percentage": `${current.kgReal || ""}` },
         images: (current.imagenes || []).map(({ dataUri }) => dataUri),
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
-        manual: !!current.manual
+        manual: !!current.manual,
+        ...TIPOS_RECOGIDAS[current.projCategoryId] === "recogida" &&
+          { "percentage": `${current.kgReal || ""}` },
+        ...typeServicio && { delivered: !!current.servicioRealizado } 
       }
     ];
   }, []);

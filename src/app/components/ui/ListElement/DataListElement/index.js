@@ -23,7 +23,8 @@ const styles = {
     overflowWrap: 'break-word'
   },
   valueColumn:{
-    width: '15%'
+    width: '15%',
+    textAlign: 'right'
   },
   iconColumn:{
     width: '12%'
