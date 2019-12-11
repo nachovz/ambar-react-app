@@ -133,12 +133,18 @@ export const OBSERVACIONES = [
   }
 ];
 
+const RECOGIDA = 'recogida';
+const SERVICIO = 'servicio';
+const ENTREGA = 'entrega';
+
 export const TIPOS_RECOGIDAS = {
-  "Res_Peligr": "recogida",
-  "Servicios": "servicio",
-  "Entrega": "entrega",
-  "Res_NoPel": "recogida"
-}
+  "Res_Peligr": RECOGIDA,
+  "Servicios": SERVICIO,
+  "Entrega": ENTREGA,
+  "Res_NoPel": RECOGIDA
+};
+
+export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA];
 
 export const LINK_TYPE_MAP = "map";
 export const LINK_TYPE_EMAIL = "email";
@@ -148,4 +154,4 @@ export const LINK_VALUES = {
   [LINK_TYPE_PHONE]: "tel:",
   [LINK_TYPE_EMAIL]: "mailto:",
   [LINK_TYPE_MAP]: "http://maps.google.com/?q="
-}
+};

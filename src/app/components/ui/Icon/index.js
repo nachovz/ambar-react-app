@@ -78,6 +78,9 @@ const styles = {
   },
   servicio:{
     color: getColor('SERVICIO')
+  },
+  white:{
+    color: getColor('WHITE')
   }
 };
 
@@ -88,6 +91,7 @@ const Icon = ({
   icon,
   fab = false,
   className,
+  white,
   ...props
 }) => {
   const iconClass = clsx(`icon-${icon}`);
@@ -96,7 +100,8 @@ const Icon = ({
     className,
     icon === 'recogida' ? classes.recogida : {},
     icon === 'servicio' ? classes.servicio : {},
-    icon === 'entrega' ? classes.entrega : {}
+    icon === 'entrega' ? classes.entrega : {},
+    white ? classes.white : {}
   );
   if (!icon) return (
     <AddIcon color={color} />

@@ -9,11 +9,10 @@ import BorderedContainer from 'app/components/ui/BorderedContainer';
 import ImageComponent from 'app/components/ui/ImageComponent';
 import PaddedContainer from 'app/components/ui/PaddedContainer';
 import Checkbox from 'app/components/form/Checkbox';
-import FieldListElement from 'app/components/ui/ListElement/FieldListElement';import Table from 'app/components/ui/Table';
-import TableElement from 'app/components/ui/Table/TableElement';
+import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 import { getVehicleSession } from 'app/utils/vehicle';
-import { TIPOS_RECOGIDAS } from 'app/constants/values';
-import { esIntlFormatter } from 'app/utils/esIntlFormatter';
+import { getRecogidaTypes } from 'app/constants/values';
+import RecogidaGroupedTable from 'app/components/data/RecogidaGroupedTable';
 import COMPANY from 'app/constants/company_info.json';
 
 const STEPS = {
@@ -266,59 +265,20 @@ const ResumenDia = ({ history }) => {
         </List>
       )}
       {step === 'residuos' && (
-        <List>
-          <Table
-            title={'Elemento/Código'}
-            size="small"
-            noScrolling
-            headers={[
-              'Cantidad', 
-              'Kgs./Lts.'
-            ]}
-          >
-            {selected.data.map( ({
-              itemId,
-              itemName,
-              kgReal,
-              unidadesReal,
-              done,
-              projCategoryId,
-              qty,
-              servicioRealizado,
-              weight
-            }, ind) =>{
-              const typeEntrega = TIPOS_RECOGIDAS[projCategoryId] === "entrega";
-              const typeServicio = TIPOS_RECOGIDAS[projCategoryId] === "servicio";
-              let calc = '';
-              switch(TIPOS_RECOGIDAS[projCategoryId]){
-                case 'recogida':
-                  calc = (esIntlFormatter.format(parseFloat((weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgReal/100)));
-                  break;
-                case 'entrega':
-                  calc = (esIntlFormatter.format(parseFloat(qty) * parseInt( unidadesReal )));
-                  break;
-                case 'servicio':
-                  calc = servicioRealizado ? 'REALIZADO' : 'NO REALIZADO';
-                  break;
-                default:
-                  calc = 'N/A';
-                  break;
-              };
-              const qts = (done || typeServicio) ? [
-                typeEntrega ? unidadesReal : "",
-                calc
-              ] : ['-', '-'];
-              return(
-                <TableElement
-                  key={ind}
-                  title={itemName}
-                  subtitle={itemId}
-                  cells={qts}
-                />
-              )
-            })}
-          </Table>
-        </List>
+        <React.Fragment>
+          {!!selected.data && 
+            getRecogidaTypes()
+            .map( type => 
+              <RecogidaGroupedTable 
+                key={type} 
+                type={type} 
+                recogidas={selected.data}
+              />
+            )
+          }
+        </React.Fragment>
+        
+        
       )}
       {step === 'observaciones' && (
         <List>

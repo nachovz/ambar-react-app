@@ -12,8 +12,11 @@ import NotesModal from 'app/components/form/NotesModal';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { getDCS } from 'app/utils/dcs';
-import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { TIPOS_RECOGIDAS, getRecogidaTypes } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
+import ExpansionPanel from 'app/components/ui/ExpansionPanel';
+import getColor from 'app/styles/palette';
+import Typography from 'app/components/ui/Typography';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -70,6 +73,42 @@ const CartaPorte = ({ history }) => {
     history.push("/recogida");
   };
 
+  const filterRecogidasByType = (type, recogidas) => {
+    return(
+      <React.Fragment key={type}>
+        <ExpansionPanel
+          noPadding 
+          content={{
+            title: type.toUpperCase(),
+            icon: type,
+            background: getColor(type.toUpperCase()),
+            content:(
+              <List>
+                {recogidas
+                  .filter( reco => TIPOS_RECOGIDAS[reco.projCategoryId] === type )
+                  .map( (reco,index) => (
+                    <TextListElement
+                      key={index}
+                      button
+                      iconColor="primary"
+                      icon={TIPOS_RECOGIDAS[reco.projCategoryId]}
+                      title={reco.itemName}
+                      subtitle={reco.itemId}
+                      actionIcon={reco.done ? "editar" : "arrow_right"}
+                      disabled={reco.done}
+                      onClick={onSelectedRecogida(reco)}
+                      action={onSelectedRecogida(reco)}
+                    />
+                  ))
+              }
+              </List>
+            )
+          }}
+        />
+      </React.Fragment>
+    )
+  };
+
   const handleCloseModal = () => setModal(false);
   return (
     <Fragment>
@@ -81,27 +120,25 @@ const CartaPorte = ({ history }) => {
         secondaryAction={() => setModal(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
-      <List>
-        {!!selected.data ? selected.data.map( (reco,index) => (
-          <TextListElement
-            key={index}
-            button
-            iconColor="primary"
-            icon={TIPOS_RECOGIDAS[reco.projCategoryId]}
-            title={reco.itemName}
-            subtitle={reco.itemId}
-            actionIcon={reco.done ? "editar" : "arrow_right"}
-            disabled={reco.done}
-            onClick={onSelectedRecogida(reco)}
-            action={onSelectedRecogida(reco)}
-          />
-        ))
+      <ExpansionPanel 
+        content={{
+          title: 'Observaciones Oficina',
+          icon: 'observaciones',
+          content:(
+            <Typography>
+              Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+            </Typography>
+          )
+        }}
+      />
+      {!!selected.data ? 
+          getRecogidaTypes()
+          .map( type => filterRecogidasByType(type, selected.data))
         :
-        <TextListElement
-          subtitle="Error al cargar las recogidas. Contactar oficina."
-        />
+          <TextListElement
+            subtitle="Error al cargar las recogidas. Contactar oficina."
+          />
       }
-      </List>
       <Fab
         color="primary"
         aria-label="Nuevo"

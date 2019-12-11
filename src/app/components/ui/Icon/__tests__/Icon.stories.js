@@ -105,4 +105,18 @@ storiesOf('Icon', module)
         ))
       }
     </PaddedContainer>
+  )).add('appearance - White', () => (
+    <PaddedContainer>
+      {ICONS.map( (icon, ind) => (
+        <IconHolder key={ind}>
+          <Icon
+            icon={icon}
+            white
+          />
+          <br/>
+          <span> { icon } </span>
+        </IconHolder>
+        ))
+      }
+    </PaddedContainer>
   ));

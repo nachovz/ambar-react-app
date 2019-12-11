@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     minWidth: '120vw',
   },
   tableWrapper: {
-    height: `calc(${window.screen.availHeight}px - 212px)`,
+    maxHeight: `50vh`,
     overflow: 'auto',
   }
 });
