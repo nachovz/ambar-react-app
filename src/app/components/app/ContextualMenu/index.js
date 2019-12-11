@@ -13,7 +13,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from 'app/components/ui/Icon';
 import MenuHeader from 'app/components/app/MenuHeader';
-import { getDCS } from 'app/utils/dcs';
+import { getPDF } from 'app/utils/dcs';
 import { MENU_WIDTH } from 'app/styles/constants';
 
 const useStyles = makeStyles({
@@ -32,10 +32,10 @@ const ContextualMenu = ({ history }) => {
   const closeMenu = () => setMenuState({ ...menuState, contextual: false });
   const goTo = (route) => () => history.push(route);
 
-  const openDCS = async () => {
+  const openCP = async () => {
     setLoadingState(true);
     try {
-      await getDCS(selected.filePath);
+      await getPDF(selected.cpFilePath);
       setLoadingState(false);
     } catch (error) {
       setLoadingState(false);
@@ -67,12 +67,14 @@ const ContextualMenu = ({ history }) => {
             </ListItemIcon>
             <ListItemText primary="Carta de Porte" />
           </ListItem>
-          <ListItem button onClick={openDCS}>
-            <ListItemIcon>
-              <Icon icon="alerta" />
-            </ListItemIcon>
-            <ListItemText primary="DCS" />
-          </ListItem>
+          {!!selected.cpFilePath &&
+            <ListItem button onClick={openCP}>
+              <ListItemIcon>
+                <Icon icon="alerta" />
+              </ListItemIcon>
+              <ListItemText primary="Carta de Porte PDF" />
+            </ListItem>
+          }
         </List>
         <Divider />
       </div>

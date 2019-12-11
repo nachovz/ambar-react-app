@@ -8,6 +8,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+v1.5.1: implementado descarga DCS/CP pdf (12/11/2019)
++ Renombrado getDCS a getPDF
++ Implementado descarga de DCS/CP
+
 v1.5.0: revamp vista de cartaporte/Summary/ResumenDia (12/11/2019)
 + Ajustes en Expandable.
 + Creado componente funcional para mostrar lista de recogidas en desplegables.

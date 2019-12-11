@@ -11,7 +11,7 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import NotesModal from 'app/components/form/NotesModal';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useLoadingContext } from 'app/contexts/Loading';
-import { getDCS } from 'app/utils/dcs';
+import { getPDF } from 'app/utils/dcs';
 import { TIPOS_RECOGIDAS, getRecogidaTypes } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 import ExpansionPanel from 'app/components/ui/ExpansionPanel';
@@ -46,7 +46,7 @@ const CartaPorte = ({ history }) => {
   const openDCS = async () => {
     setLoadingState(true);
     try {
-      await getDCS(rutas.selected.filePath);
+      await getPDF(rutas.selected.dcsFilePath);
       setLoadingState(false);
     } catch (error) {
       const message = error.response && error.response.status && error.response.status === 404
@@ -114,7 +114,7 @@ const CartaPorte = ({ history }) => {
     <Fragment>
       <TopBar
         title={`Carta de porte: ${selected.serviceOrderId}`}
-        actionIcon="descarga-dcs"
+        actionIcon={selected.dcsFilePath && "descarga-dcs"}
         action={openDCS}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}

@@ -31,7 +31,7 @@ const client = {
   },
 };
 
-const makeRequest = async (url, { body, headers, method }) => {
+const makeRequest = async (url, { body, headers, method, responseType }) => {
   try {
     const response = await axios({
       url,
@@ -40,7 +40,8 @@ const makeRequest = async (url, { body, headers, method }) => {
       headers: buildHeaders(headers),
       httpsAgent: new https.Agent({
         rejectUnauthorized: false
-      })
+      }),
+      responseType
     });
     return successHandler(response);
   } catch (error) {

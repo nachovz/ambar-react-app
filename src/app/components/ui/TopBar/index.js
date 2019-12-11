@@ -36,12 +36,14 @@ const TopBar = ({
             </Row>
           }
         />
-        {!!actionIcon &&
+        
           <ListItemSecondaryAction>
             <Row>
-              <IconButton edge="end" aria-label={actionIcon} onClick={action}>
-                <Icon icon={actionIcon} />
-              </IconButton>
+              {!!actionIcon &&
+                <IconButton edge="end" aria-label={actionIcon} onClick={action}>
+                  <Icon icon={actionIcon} />
+                </IconButton>
+              }
               {!!secondaryActionIcon &&
                 <React.Fragment>
                   <Spacer direction="horizontal"/>
@@ -55,7 +57,6 @@ const TopBar = ({
               }
             </Row>
           </ListItemSecondaryAction>
-        }
       </ListItem>
     </DarkContainer>
   );
