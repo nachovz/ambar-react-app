@@ -29,7 +29,8 @@ const CartaPorteQuickView = ({ history }) => {
     serviceAddress,
     clientEmail,
     clientVat,
-    clientTimeTable
+    clientTimeTable,
+    officeNotes
   } = selected;
 
   const containersDictionary = dictionaryGenerator(data, "res_InventPackingMaterialCode", "res_Qty_Env");
@@ -121,13 +122,15 @@ const CartaPorteQuickView = ({ history }) => {
             </React.Fragment>
           }
         />
-        <TextListElement
-          noDivider
-          informative
-          icon="observaciones"
-          title="Observaciones Oficina"
-          subtitle={`Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.`}
-        />
+        {!!officeNotes &&
+          <TextListElement
+            noDivider
+            informative
+            icon="observaciones"
+            title="Observaciones Oficina"
+            subtitle={officeNotes}
+          />
+        }
       </List>
       <StepNavigator
         moveToPreviousText="Ruta"
