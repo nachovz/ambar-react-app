@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+v1.5.3: Recogida review menu changes
+- Eliminado el menú contextual para ResumenDia
+
 v1.5.2: usa `officeNotes` para mostrar Observaciones oficina (12/11/2019)
 
 v1.5.1: implementado descarga DCS/CP pdf (12/11/2019)

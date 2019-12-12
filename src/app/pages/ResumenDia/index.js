@@ -59,7 +59,7 @@ const ResumenDia = ({ history }) => {
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
-  const moveToPreviousStep = () => setStep(STEPS[step].previous);
+  //const moveToPreviousStep = () => setStep(STEPS[step].previous);
 
   if(!selected){
     history.push('/');
@@ -332,15 +332,15 @@ const ResumenDia = ({ history }) => {
         </List>
       )}
       <StepNavigator
-        moveToNextText={STEPS[step].next}
+        moveToNextText={""}
         moveToNextAction={
           STEPS[step].next === 'Volver a Ruta' ?
             () => history.push('')
             :
             moveToNextStep
           }
-        moveToPreviousText={STEPS[step].previous}
-        moveToPreviousAction={moveToPreviousStep}
+        moveToPreviousText={step !== 'resumen' && "Menú"}
+        moveToPreviousAction={() => setStep("resumen")}
       />
     </div>
   );
