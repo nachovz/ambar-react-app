@@ -50,10 +50,10 @@
 			"manual": false
 		}
 	],
-	"latitudeStart": 25.7615375,
-	"longitudeStart": -80.1964325,
-	"latitudeEnd": 25.7615375,
-	"longitudeEnd": -80.1964325,
-	"clientName": "Marco Vilera",
-	"clientDNI": "1234"
+	"latitude_start": 25.7615375,
+	"longitude_start": -80.1964325,
+	"latitude_end": 25.7615375,
+	"longitude_end": -80.1964325,
+	"client_name": "Marco Vilera",
+	"client_dni": "1234"
 }

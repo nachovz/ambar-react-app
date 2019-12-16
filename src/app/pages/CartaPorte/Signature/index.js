@@ -48,11 +48,11 @@ const CartaPorteSignature = ({ history }) => {
     setLoadingState(true);
     selected.done = true;
     selected.signature = signature;
-    selected.clientName = clientName;
-    selected.clientDNI = clientDNI;
+    selected.client_name = clientName;
+    selected.client_dni = clientDNI;
     const { lat, lng } = await getGeoPosition();
-    selected.latitudeEnd = lat;
-    selected.longitudeEnd = lng;
+    selected.latitude_end = lat;
+    selected.longitude_end = lng;
     rutas.data[selected.serviceOrderId] = selected;
     
     try {

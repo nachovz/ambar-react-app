@@ -65,8 +65,8 @@ const Ruta = ({ history }) => {
       ...rutas,
       selected:{
         ...openAlert.selected,
-        latitudeStart: parseFloat(lat),
-        longitudeStart: parseFloat(lng)
+        latitude_start: parseFloat(lat),
+        longitude_start: parseFloat(lng)
       }
     });
     setLoadingState(false);

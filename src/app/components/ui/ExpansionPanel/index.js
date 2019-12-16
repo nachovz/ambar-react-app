@@ -30,7 +30,7 @@ const ExpansionPanel = ({
 }) => {
   const classes = useStyles({ background });
   return(
-    <ExpansionPanelUI {...props}>
+    <ExpansionPanelUI defaultExpanded={true} {...props}>
       <ExpansionPanelSummary 
         expandIcon={<Icon icon='arrow_less' white={!!background} />}
         classes={{

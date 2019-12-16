@@ -3,12 +3,12 @@ import { getVehicleSession } from 'app/utils/vehicle';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
 
 export const buildCartaporte = ({ 
-    latitudeStart,
-    longitudeStart,
-    latitudeEnd,
-    longitudeEnd,
-    clientName,
-    clientDNI, 
+    latitude_start,
+    longitude_start,
+    latitude_end,
+    longitude_end,
+    client_name,
+    client_dni, 
     signature,
     data,
     serviceOrderId,
@@ -44,12 +44,12 @@ export const buildCartaporte = ({
       notes: (observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
       signature,
       items,
-      latitudeStart,
-      longitudeStart,
-      latitudeEnd,
-      longitudeEnd,
-      clientName,
-      clientDNI
+      latitude_start,
+      longitude_start,
+      latitude_end,
+      longitude_end,
+      client_name,
+      client_dni
     }
   };
 };
