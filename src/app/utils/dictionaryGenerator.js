@@ -7,10 +7,10 @@ const dictionaryGenerator = ( data, key, value, name) => {
       if(!dictionary[element[key]]){
         dictionary[element[key]] = {
           name: element[name],
-          qty: parseInt(element[value])
+          Qty: parseInt(element[value])
         }
       }else{
-        dictionary[element[key]].qty += parseInt(element[value])
+        dictionary[element[key]].Qty += parseInt(element[value])
       }
     }
   });

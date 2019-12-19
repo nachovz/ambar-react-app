@@ -53,12 +53,12 @@ const CartaPorteSignature = ({ history }) => {
     const { lat, lng } = await getGeoPosition();
     selected.latitude_end = lat;
     selected.longitude_end = lng;
-    rutas.data[selected.serviceOrderId] = selected;
+    rutas.data[selected.ServiceOrderId] = selected;
     
     try {
       const body = buildCartaporte(selected, signature, clientDNI, clientName);
       await client.post(ENDPOINTS.ROUTE, { body });
-      addCompletedCartaporte(selected.serviceOrderId);
+      addCompletedCartaporte(selected.ServiceOrderId);
       setLoadingState(false);
       setRutasState({
         ...rutas,
@@ -76,7 +76,7 @@ const CartaPorteSignature = ({ history }) => {
   return(
     <React.Fragment>
        <TopBar
-        title={`Carta de porte: ${selected.serviceOrderId}`}
+        title={`Carta de porte: ${selected.ServiceOrderId}`}
         actionIcon={!signature && "editar"}
         action={() => sigPad.clear()}
       />

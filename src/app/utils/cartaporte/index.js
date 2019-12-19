@@ -11,27 +11,27 @@ export const buildCartaporte = ({
     client_dni, 
     signature,
     data,
-    serviceOrderId,
+    ServiceOrderId,
     observaciones
   }) => {
   const { vehicleId } = getVehicleSession();
 
   const items = data.reduce((result, current) => {
-    const typeServicio = TIPOS_RECOGIDAS[current.projCategoryId] === "servicio";
+    const typeServicio = TIPOS_RECOGIDAS[current.ProjCategoryId] === "servicio";
     if (!current.done && !typeServicio) return result;
 
     return [
       ...result,
       {
-        "waste_id": current.itemId || "",
-        "category_id": current.projCategoryId,
-        "line_number": current.serviceOrderLineNum,
-        "container_id": current.res_InventPackingMaterialCode || "",
+        "waste_id": current.ItemId || "",
+        "category_id": current.ProjCategoryId,
+        "line_number": current.ServiceOrderLineNum,
+        "container_id": current.Res_InventPackingMaterialCode || "",
         "container_quantity": current.unidadesReal || "",
         images: (current.imagenes || []).map(({ dataUri }) => dataUri),
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
         manual: !!current.manual,
-        ...TIPOS_RECOGIDAS[current.projCategoryId] === "recogida" &&
+        ...TIPOS_RECOGIDAS[current.ProjCategoryId] === "recogida" &&
           { "percentage": `${current.kgReal || ""}` },
         ...typeServicio && { delivered: !!current.servicioRealizado }
       }
@@ -40,7 +40,7 @@ export const buildCartaporte = ({
 
   return {
     data: {
-      "order_id": serviceOrderId,
+      "order_id": ServiceOrderId,
       "vehicle_id": vehicleId,
       notes: (observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
       signature,
@@ -55,13 +55,13 @@ export const buildCartaporte = ({
   };
 };
 
-export const addCompletedCartaporte = (serviceOrderId) => {
+export const addCompletedCartaporte = (ServiceOrderId) => {
   const current = JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];
   localStorage.setItem(
     'COMPLETED_CARTAS_DE_PORTE',
     JSON.stringify([
       ...current,
-      { id: serviceOrderId, date: moment() }
+      { id: ServiceOrderId, date: moment() }
     ])
   );
 };

@@ -106,16 +106,16 @@ const RecogidaAdd = ({ history }) => {
     selected.data.push({
       done: true,
       ...waste && {
-        itemName: waste.label,
-        itemId: waste.id,
+        ItemName: waste.label,
+        ItemId: waste.id,
       },
-      packingMaterialName: container.description,
-      res_InventPackingMaterialCode: container.id,
+      PackingMaterialName: container.description,
+      Res_InventPackingMaterialCode: container.id,
       kgReal: kgReal.value,
       unidadesReal,
       observaciones: obs,
       images,
-      projCategoryId: "Res_Peligr",
+      ProjCategoryId: "Res_Peligr",
       manual: true
     });
     setRutasState({
@@ -132,7 +132,7 @@ const RecogidaAdd = ({ history }) => {
   return (
     <React.Fragment>
       <TopBar
-        title={`Carta de porte: ${selected.serviceOrderId}`}
+        title={`Carta de porte: ${selected.ServiceOrderId}`}
         actionIcon={!!waste && !!container && "camara"}
         action={() => setOpenCamera(true)}
         secondaryActionIcon="observaciones"
@@ -179,7 +179,7 @@ const RecogidaAdd = ({ history }) => {
           <BoxedInput
             topLabel={
               <React.Fragment>
-                <strong>{container.weight || 'NULL'}</strong> Kgs./Lts.*
+                <strong>{container.Weight || 'NULL'}</strong> Kgs./Lts.*
                 <br/>
                 por <strong>(1)</strong> unidad
               </React.Fragment>
@@ -266,7 +266,7 @@ const RecogidaAdd = ({ history }) => {
         }
         {getValues().unidadesReal &&
           <PrimaryCenteredText>
-            La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
+            La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.Weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
           </PrimaryCenteredText>
         }
       </List>

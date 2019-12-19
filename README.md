@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.5.5:** Ajustes de keys en mayúsculas (12/19/2019)
+
 **v1.5.4:** Actualizaciones (12/16/2019)
 + Ajuste de campos a snake_case
 + ExpansionPanel abierto por defecto.

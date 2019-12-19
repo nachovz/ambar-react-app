@@ -40,29 +40,29 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                 headers={leyend}
               >
                 {recogidas
-                  .filter( reco => TIPOS_RECOGIDAS[reco.projCategoryId] === type )
+                  .filter( reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type )
                   .map( (reco,index) => {
                     const {
-                      itemId,
-                      itemName,
+                      ItemId,
+                      ItemName,
                       kgReal,
                       unidadesReal,
-                      projCategoryId,
-                      weight,
-                      qty,
+                      ProjCategoryId,
+                      Weight,
+                      Qty,
                       servicioRealizado,
                       done
                     } = reco;
-                    const typeEntrega = TIPOS_RECOGIDAS[projCategoryId] === 'entrega';
-                    const typeServicio = TIPOS_RECOGIDAS[projCategoryId] === "servicio";
+                    const typeEntrega = TIPOS_RECOGIDAS[ProjCategoryId] === 'entrega';
+                    const typeServicio = TIPOS_RECOGIDAS[ProjCategoryId] === "servicio";
                     let qts = ['-'];
                     if(done || typeServicio){
-                      switch(TIPOS_RECOGIDAS[projCategoryId]){
+                      switch(TIPOS_RECOGIDAS[ProjCategoryId]){
                         case 'recogida':
-                          qts = [(esIntlFormatter.format(parseFloat((weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgReal/100)))];
+                          qts = [(esIntlFormatter.format(parseFloat((Weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgReal/100)))];
                           break;
                         case 'entrega':
-                          qts = [typeEntrega ? unidadesReal : "",(esIntlFormatter.format(parseFloat(qty) * parseInt( unidadesReal )))];
+                          qts = [typeEntrega ? unidadesReal : "",(esIntlFormatter.format(parseFloat(Qty) * parseInt( unidadesReal )))];
                           break;
                         case 'servicio':
                           qts = [servicioRealizado ? 'REALIZADO' : 'NO REALIZADO'];
@@ -75,8 +75,8 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                     return(
                       <TableElement
                         key={index}
-                        title={itemName}
-                        subtitle={itemId}
+                        title={ItemName}
+                        subtitle={ItemId}
                         cells={qts}
                         actionIcon={onSelectedRecogida && "editar"}
                         action={onSelectedRecogida && onSelectedRecogida(reco)}

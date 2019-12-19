@@ -24,16 +24,16 @@ const CartaPorteQuickView = ({ history }) => {
 
   const {
     data,
-    clientPhone,
-    serviceAddressName,
-    serviceAddress,
-    clientEmail,
-    clientVat,
-    clientTimeTable,
+    ClientPhone,
+    ServiceAddressName,
+    ServiceAddress,
+    ClientEmail,
+    ClientVat,
+    ClientTimeTable,
     officeNotes
   } = selected;
 
-  const containersDictionary = dictionaryGenerator(data, "res_InventPackingMaterialCode", "res_Qty_Env");
+  const containersDictionary = dictionaryGenerator(data, "Res_InventPackingMaterialCode", "Res_Qty_Env");
   const containerKeys = Object.keys(containersDictionary);
 
   const moveNext = () => {
@@ -47,8 +47,8 @@ const CartaPorteQuickView = ({ history }) => {
   return (
     <React.Fragment>
       <QuickLinks
-        mobile={clientPhone}
-        mobileAction={() => openLink(LINK_TYPE_PHONE, clientPhone)}
+        mobile={ClientPhone}
+        mobileAction={() => openLink(LINK_TYPE_PHONE, ClientPhone)}
         mainAction={moveNext}
       />
       <List>
@@ -56,50 +56,50 @@ const CartaPorteQuickView = ({ history }) => {
           informative
           icon="usuario"
           title="Nombre de la empresa"
-          subtitle={serviceAddressName}
+          subtitle={ServiceAddressName}
         />
         <TextListElement
           informative
           icon="direccion"
           title="Dirección"
-          subtitle={serviceAddress}
+          subtitle={ServiceAddress}
           actionIcon="place"
-          action={() => openLink(LINK_TYPE_MAP,serviceAddress)}
+          action={() => openLink(LINK_TYPE_MAP,ServiceAddress)}
         />
-        {!!clientPhone &&
+        {!!ClientPhone &&
           <TextListElement
             informative
             icon="movil"
             title="Teléfono Móvil"
-            subtitle={clientPhone}
+            subtitle={ClientPhone}
             actionIcon="movil"
-            action={() => openLink(LINK_TYPE_PHONE, clientPhone)}
+            action={() => openLink(LINK_TYPE_PHONE, ClientPhone)}
           />
         }
-        {!!clientEmail &&
+        {!!ClientEmail &&
           <TextListElement
             informative
             icon="mail"
             title="Email"
-            subtitle={clientEmail}
+            subtitle={ClientEmail}
             actionIcon="mail"
-            action={() => openLink(LINK_TYPE_EMAIL, clientEmail)}
+            action={() => openLink(LINK_TYPE_EMAIL, ClientEmail)}
           />
         }
-        {!!clientVat &&
+        {!!ClientVat &&
           <TextListElement
             informative
             icon="cif"
             title="CIF"
-            subtitle={clientVat}
+            subtitle={ClientVat}
           />
         }
-        {!!clientTimeTable &&
+        {!!ClientTimeTable &&
           <TextListElement
             informative
             icon="calendario"
             title="Horario"
-            subtitle={clientTimeTable}
+            subtitle={ClientTimeTable}
           />
         }
         <TextListElement
@@ -116,7 +116,7 @@ const CartaPorteQuickView = ({ history }) => {
             <React.Fragment>
               {containerKeys.map( container => (
                 <Typography key={container} variant="body2" color="textSecondary">
-                  {container} x {containersDictionary[container].qty} Und.
+                  {container} x {containersDictionary[container].Qty} Und.
                 </Typography>
               ))}
             </React.Fragment>

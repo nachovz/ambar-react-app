@@ -46,7 +46,7 @@ const CartaPorte = ({ history }) => {
   const openDCS = async () => {
     setLoadingState(true);
     try {
-      await getPDF(rutas.selected.dcsFilePath);
+      await getPDF(rutas.selected.Filepath);
       setLoadingState(false);
     } catch (error) {
       const message = error.response && error.response.status && error.response.status === 404
@@ -85,15 +85,15 @@ const CartaPorte = ({ history }) => {
             content:(
               <List>
                 {recogidas
-                  .filter( reco => TIPOS_RECOGIDAS[reco.projCategoryId] === type )
+                  .filter( reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type )
                   .map( (reco,index) => (
                     <TextListElement
                       key={index}
                       button
                       iconColor="primary"
-                      icon={TIPOS_RECOGIDAS[reco.projCategoryId]}
-                      title={reco.itemName}
-                      subtitle={reco.itemId}
+                      icon={TIPOS_RECOGIDAS[reco.ProjCategoryId]}
+                      title={reco.ItemName}
+                      subtitle={reco.ItemId}
                       actionIcon={reco.done ? "editar" : "arrow_right"}
                       disabled={reco.done}
                       onClick={onSelectedRecogida(reco)}
@@ -113,8 +113,8 @@ const CartaPorte = ({ history }) => {
   return (
     <Fragment>
       <TopBar
-        title={`Carta de porte: ${selected.serviceOrderId}`}
-        actionIcon={selected.dcsFilePath && "descarga-dcs"}
+        title={`Carta de porte: ${selected.ServiceOrderId}`}
+        actionIcon={selected.Filepath && "descarga-dcs"}
         action={openDCS}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}

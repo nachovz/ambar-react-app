@@ -33,12 +33,12 @@ const CartaPorteSummary = ({ history }) => {
   };
 
   const filtered = selected.data.filter( (r) => 
-    (!!r.done || TIPOS_RECOGIDAS[r.projCategoryId] === "servicio")
+    (!!r.done || TIPOS_RECOGIDAS[r.ProjCategoryId] === "servicio")
   );
 
   return(
     <React.Fragment>
-      <TopBar title={`CARTA DE PORTE No ${selected.serviceOrderId}`} />
+      <TopBar title={`CARTA DE PORTE No ${selected.ServiceOrderId}`} />
       <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
       {!!filtered && filtered.length > 0 ? 
           getRecogidaTypes()

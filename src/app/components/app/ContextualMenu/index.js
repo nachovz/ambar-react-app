@@ -35,7 +35,7 @@ const ContextualMenu = ({ history }) => {
   const openCP = async () => {
     setLoadingState(true);
     try {
-      await getPDF(selected.cpFilePath);
+      await getPDF(selected.CpFilepath);
       setLoadingState(false);
     } catch (error) {
       setLoadingState(false);
@@ -67,7 +67,7 @@ const ContextualMenu = ({ history }) => {
             </ListItemIcon>
             <ListItemText primary="Carta de Porte" />
           </ListItem>
-          {!!selected.cpFilePath &&
+          {!!selected.CpFilepath &&
             <ListItem button onClick={openCP}>
               <ListItemIcon>
                 <Icon icon="alerta" />

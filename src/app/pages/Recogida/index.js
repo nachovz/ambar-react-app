@@ -119,7 +119,7 @@ const Recogida = ({ history }) => {
       selectedRecogida.done =  (unidadesReal !== '0' && !!unidadesReal && true);
     }
     selected.data[selected.data.findIndex(
-      (ele) => ele.itemId === selectedRecogida.itemId
+      (ele) => ele.ItemId === selectedRecogida.ItemId
     )] = {
       ...selectedRecogida,
       ...props
@@ -150,7 +150,7 @@ const Recogida = ({ history }) => {
     watch: watch
   }
   const renderForm = () => {
-    switch(TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]){
+    switch(TIPOS_RECOGIDAS[selectedRecogida.ProjCategoryId]){
       case "recogida":
         return <RecogidaForm {...propsToForm}/>;
       case "entrega":
@@ -175,9 +175,9 @@ const Recogida = ({ history }) => {
         <TextListElement
           noDivider
           iconColor="primary"
-          icon={TIPOS_RECOGIDAS[selectedRecogida.projCategoryId]}
-          title={selectedRecogida.itemName}
-          subtitle={selectedRecogida.itemId}
+          icon={TIPOS_RECOGIDAS[selectedRecogida.ProjCategoryId]}
+          title={selectedRecogida.ItemName}
+          subtitle={selectedRecogida.ItemId}
         />
         {renderForm()}
         {!!selectedRecogida.imagenes && selectedRecogida.imagenes.length > 0 && (

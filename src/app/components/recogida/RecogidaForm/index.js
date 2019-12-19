@@ -22,7 +22,7 @@ const RecogidaForm = ({
     <BoxedInput
       topLabel={
         <React.Fragment>
-          <strong>{selectedRecogida.weight}</strong> Kgs./Lts.*
+          <strong>{selectedRecogida.Weight}</strong> Kgs./Lts.*
           <br/>
           por <strong>(1)</strong> unidad
         </React.Fragment>
@@ -34,14 +34,14 @@ const RecogidaForm = ({
           disableGutters
           noDivider
           noIcon
-          title={selectedRecogida.packingMaterialName}
-          subtitle={selectedRecogida.res_InventPackingMaterialCode}
+          title={selectedRecogida.PackingMaterialName}
+          subtitle={selectedRecogida.Res_InventPackingMaterialCode}
         />
       }
     />
     <BoxedInput
       topLabel="Und."
-      topValue={selectedRecogida.res_Qty_Env}
+      topValue={selectedRecogida.Res_Qty_Env}
       icon="unidades"
       input={
         <TextField
@@ -68,7 +68,7 @@ const RecogidaForm = ({
     />
     {unidadesReal>0 && 
       <BlueCenteredText>
-        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgValue/100))}</strong> Kgs./Lts.*
+        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.Weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgValue/100))}</strong> Kgs./Lts.*
       </BlueCenteredText>
     }
     <TextListElement
