@@ -24,7 +24,8 @@ export const buildCartaporte = ({
       ...result,
       {
         "waste_id": current.itemId || "",
-        "type": current.projCategoryId,
+        "category_id": current.projCategoryId,
+        "line_number": current.serviceOrderLineNum,
         "container_id": current.res_InventPackingMaterialCode || "",
         "container_quantity": current.unidadesReal || "",
         images: (current.imagenes || []).map(({ dataUri }) => dataUri),
@@ -32,7 +33,7 @@ export const buildCartaporte = ({
         manual: !!current.manual,
         ...TIPOS_RECOGIDAS[current.projCategoryId] === "recogida" &&
           { "percentage": `${current.kgReal || ""}` },
-        ...typeServicio && { delivered: !!current.servicioRealizado } 
+        ...typeServicio && { delivered: !!current.servicioRealizado }
       }
     ];
   }, []);
