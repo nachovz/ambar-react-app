@@ -70,7 +70,7 @@ const ResumenDia = ({ history }) => {
 
   const {
     ServiceOrderId,
-    serviceDateTime,
+    ServiceDateTime,
     ServiceAddressName,
     CustAccount,
     ServiceAddress,
@@ -88,7 +88,7 @@ const ResumenDia = ({ history }) => {
       <TopBar
         title={`Carta de porte: ${ServiceOrderId}`}
       />
-      <DateBar title={`FECHA RECOGIDA: ${serviceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${ServiceDateTime}`} />
       {step === 'resumen' && (
         <List>
           <TextListElement
@@ -339,8 +339,14 @@ const ResumenDia = ({ history }) => {
             :
             moveToNextStep
           }
-        moveToPreviousText={step !== 'resumen' && "Menú"}
-        moveToPreviousAction={() => setStep("resumen")}
+        moveToPreviousText={(step !== 'resumen' && "Menú") || "Ruta"}
+        moveToPreviousAction={() => {
+          if(step === 'resumen'){
+            history.push('')
+          }else{
+            setStep('resumen')
+          }
+        }}
       />
     </div>
   );
