@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.6.1:** Ocultar expandibles cuando no hay elementos de ese tipo (12/20/2019)
+
 **v1.6.0:** Revamp vista Entregas (12/20/2019)
 + Tipo Entrega se muestra como Recogida.
 + Ajustes en POST para incorporar campos a elementos tipo Entrega.

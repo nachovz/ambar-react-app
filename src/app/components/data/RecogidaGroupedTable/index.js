@@ -9,6 +9,10 @@ import { esIntlFormatter } from 'app/utils/esIntlFormatter';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
 
 const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
+  const grouped = recogidas.filter( 
+    reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type 
+  );
+  if(grouped.length < 1) return null;
   let leyend = []; 
   switch(type){
     case 'recogida':
@@ -39,8 +43,7 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                 size="small"
                 headers={leyend}
               >
-                {recogidas
-                  .filter( reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type )
+                {grouped
                   .map( (reco,index) => {
                     const {
                       ItemId,

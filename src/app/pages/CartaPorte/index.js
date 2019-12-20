@@ -74,6 +74,11 @@ const CartaPorte = ({ history }) => {
   };
 
   const filterRecogidasByType = (type, recogidas) => {
+    const grouped = recogidas.filter( 
+      reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type 
+    );
+    if(grouped.length < 1) return null;
+
     return(
       <React.Fragment key={type}>
         <ExpansionPanel
@@ -84,22 +89,20 @@ const CartaPorte = ({ history }) => {
             background: getColor(type.toUpperCase()),
             content:(
               <List>
-                {recogidas
-                  .filter( reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type )
-                  .map( (reco,index) => (
-                    <TextListElement
-                      key={index}
-                      button
-                      iconColor="primary"
-                      icon={TIPOS_RECOGIDAS[reco.ProjCategoryId]}
-                      title={reco.ItemName}
-                      subtitle={reco.ItemId}
-                      actionIcon={reco.done ? "editar" : "arrow_right"}
-                      disabled={reco.done}
-                      onClick={onSelectedRecogida(reco)}
-                      action={onSelectedRecogida(reco)}
-                    />
-                  ))
+                {grouped.map( (reco,index) => (
+                  <TextListElement
+                    key={index}
+                    button
+                    iconColor="primary"
+                    icon={TIPOS_RECOGIDAS[reco.ProjCategoryId]}
+                    title={reco.ItemName}
+                    subtitle={reco.ItemId}
+                    actionIcon={reco.done ? "editar" : "arrow_right"}
+                    disabled={reco.done}
+                    onClick={onSelectedRecogida(reco)}
+                    action={onSelectedRecogida(reco)}
+                  />
+                ))
               }
               </List>
             )
