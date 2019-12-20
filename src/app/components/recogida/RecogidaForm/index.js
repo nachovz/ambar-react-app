@@ -13,7 +13,6 @@ const RecogidaForm = ({
   errors,
   handleMultiChange,
   kgValue,
-  getValues,
   watch
 }) => {
   const unidadesReal =  watch('unidadesReal');

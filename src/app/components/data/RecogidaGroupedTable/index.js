@@ -49,20 +49,35 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                       unidadesReal,
                       ProjCategoryId,
                       Weight,
-                      Qty,
                       servicioRealizado,
                       done
                     } = reco;
-                    const typeEntrega = TIPOS_RECOGIDAS[ProjCategoryId] === 'entrega';
                     const typeServicio = TIPOS_RECOGIDAS[ProjCategoryId] === "servicio";
                     let qts = ['-'];
                     if(done || typeServicio){
                       switch(TIPOS_RECOGIDAS[ProjCategoryId]){
                         case 'recogida':
-                          qts = [(esIntlFormatter.format(parseFloat((Weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgReal/100)))];
+                          qts = [
+                            (
+                              esIntlFormatter.format(
+                                parseFloat((Weight || "0").replace(',', '.')) 
+                                * 
+                                parseInt( unidadesReal ) * (kgReal/100)
+                              )
+                            )
+                          ];
                           break;
                         case 'entrega':
-                          qts = [typeEntrega ? unidadesReal : "",(esIntlFormatter.format(parseFloat(Qty) * parseInt( unidadesReal )))];
+                          qts = [
+                            unidadesReal || "",
+                            (
+                              esIntlFormatter.format(
+                                parseFloat((Weight || "0").replace(',', '.')) 
+                                * 
+                                parseInt( unidadesReal ) * (kgReal/100)
+                              )
+                            )
+                          ];
                           break;
                         case 'servicio':
                           qts = [servicioRealizado ? 'REALIZADO' : 'NO REALIZADO'];

@@ -11,7 +11,6 @@ import StepNavigator from 'app/components/app/StepNavigator';
 import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import RecogidaForm from 'app/components/recogida/RecogidaForm';
-import EntregaForm from 'app/components/recogida/EntregaForm';
 import ServicioForm from 'app/components/recogida/ServicioForm';
 import NotesModal from 'app/components/form/NotesModal';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
@@ -114,9 +113,9 @@ const Recogida = ({ history }) => {
     selectedRecogida.kgReal = kgValue;
     selectedRecogida.observaciones = obs;//obs.reduce((tot, ob) => tot+(ob.on ? ', '+ob.label : ''));
     if(selectedRecogida.done){
-      selectedRecogida.done = (!props.servicioRealizado && unidadesReal === '0') && false;
+      selectedRecogida.done = (props.servicioRealizado || (!!unidadesReal && unidadesReal !== '0'));
     }else{
-      selectedRecogida.done =  (unidadesReal !== '0' && !!unidadesReal && true);
+      selectedRecogida.done =  ( (!!unidadesReal && unidadesReal !== '0') || !!props.servicioRealizado);
     }
     selected.data[selected.data.findIndex(
       (ele) => ele.ItemId === selectedRecogida.ItemId
@@ -154,7 +153,7 @@ const Recogida = ({ history }) => {
       case "recogida":
         return <RecogidaForm {...propsToForm}/>;
       case "entrega":
-        return <EntregaForm {...propsToForm}/>;
+        return <RecogidaForm {...propsToForm}/>;
       case "servicio":
         return <ServicioForm {...propsToForm}/>;
       default:
@@ -170,7 +169,7 @@ const Recogida = ({ history }) => {
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
       <List>
         <TextListElement
           noDivider

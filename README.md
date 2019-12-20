@@ -8,14 +8,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.6.0:** Revamp vista Entregas (12/20/2019)
++ Tipo Entrega se muestra como Recogida.
++ Ajustes en POST para incorporar campos a elementos tipo Entrega.
++ Ajustes de validación para edit Recogida.
+
 **v1.5.6:** Detalles pendientes en vista resumen de recogida (12/20/2019)
 
 **v1.5.5:** Ajustes de keys en mayúsculas (12/19/2019)
 
 **v1.5.4:** Actualizaciones (12/16/2019)
-+ Ajuste de campos a snake_case
++ Ajuste de campos a snake_case.
 + ExpansionPanel abierto por defecto.
-+ Actualizadas librerías por vulnerabilidades
++ Actualizadas librerías por vulnerabilidades.
 
 **v1.5.3:** Recogida review menu changes
 - Eliminado el menú contextual para ResumenDia

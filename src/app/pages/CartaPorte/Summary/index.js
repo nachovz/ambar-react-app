@@ -39,7 +39,7 @@ const CartaPorteSummary = ({ history }) => {
   return(
     <React.Fragment>
       <TopBar title={`CARTA DE PORTE No ${selected.ServiceOrderId}`} />
-      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
       {!!filtered && filtered.length > 0 ? 
           getRecogidaTypes()
           .map( type => 

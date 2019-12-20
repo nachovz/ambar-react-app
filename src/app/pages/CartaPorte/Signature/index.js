@@ -80,7 +80,7 @@ const CartaPorteSignature = ({ history }) => {
         actionIcon={!signature && "editar"}
         action={() => sigPad.clear()}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
       
       <PaddedContainer $noVertical>
         <Typography variant="h6" gutterBottom>

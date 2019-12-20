@@ -31,9 +31,8 @@ export const buildCartaporte = ({
         images: (current.imagenes || []).map(({ dataUri }) => dataUri),
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
         manual: !!current.manual,
-        ...TIPOS_RECOGIDAS[current.ProjCategoryId] === "recogida" &&
-          { "percentage": `${current.kgReal || ""}` },
-        ...typeServicio && { delivered: !!current.servicioRealizado }
+        ...!typeServicio && { "percentage": `${current.kgReal || ""}` },
+        ...typeServicio && { "delivered": !!current.servicioRealizado }
       }
     ];
   }, []);

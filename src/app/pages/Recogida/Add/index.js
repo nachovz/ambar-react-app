@@ -138,7 +138,7 @@ const RecogidaAdd = ({ history }) => {
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.serviceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
       <List>
         <TextListElement
           informative
