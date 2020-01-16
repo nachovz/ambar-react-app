@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.7.0:** Previsión de envases futura (01/16/2020)
++ Se hace la llamada a la ruta con fecha día siguiente o futuro.
+
 **v1.6.1:** Ocultar expandibles cuando no hay elementos de ese tipo (12/20/2019)
 
 **v1.6.0:** Revamp vista Entregas (12/20/2019)

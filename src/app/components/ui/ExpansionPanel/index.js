@@ -25,12 +25,13 @@ const useStyles = makeStyles({
 
 const ExpansionPanel = ({ 
   content: { content, title, icon, background, leyend=[] },
-  noPadding=false, 
+  noPadding=false,
+  expanded=true, 
   ...props
 }) => {
   const classes = useStyles({ background });
   return(
-    <ExpansionPanelUI defaultExpanded={true} {...props}>
+    <ExpansionPanelUI defaultExpanded={expanded} {...props}>
       <ExpansionPanelSummary 
         expandIcon={<Icon icon='arrow_less' white={!!background} />}
         classes={{
