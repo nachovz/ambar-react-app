@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import client from 'app/client';
 import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
+import { useSnackbarContext } from 'app/contexts/Snackbar';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
@@ -22,6 +23,7 @@ const PrevisionEnvases = ({ history }) => {
   const [future, setFuture] = useState();
   const [noFuture, setNoFuture] = useState();
   const [, setLoadingState] = useLoadingContext();
+  const [, setSnackbarContext] = useSnackbarContext();
   const { vehicleId } = getVehicleSession();
   let currentDate = new Date();
 
@@ -48,7 +50,14 @@ const PrevisionEnvases = ({ history }) => {
         });
         setLoadingState(false);
       } catch (error) {
-        if(!error.response.data.data.message) break; 
+        if(!error.response.data.data){
+          setSnackbarContext({
+            message: 'Hubo un error en el servidor',
+            variant: 'error',
+            open: true
+          });
+          break;
+        }  
         counter++;
       }
     }
@@ -75,23 +84,28 @@ const PrevisionEnvases = ({ history }) => {
       <TopBar
         title="Prevision de envases:"
       />
-      {!!noFuture &&
-        <PaddedContainer $simpleCentered >
-          <Typography>
-            No hay rutas disponibles para los próximos 3 días.
-          </Typography>
-        </PaddedContainer>
-      }
-      {!future && !noFuture &&
-        <PaddedContainer $simpleCentered $noHorizontal $noVertical>
-          <Button 
-            variant="contained" 
-            color="primary"
-            onClick={loadFuturePrevision}
-          >
-            Cargar Previsión de Envase futura
-          </Button>
-        </PaddedContainer>
+      
+      {!future &&
+        <React.Fragment>
+          <PaddedContainer $simpleCentered $noHorizontal $noVertical>
+            <Button 
+              variant="contained" 
+              color="primary"
+              onClick={loadFuturePrevision}
+            >
+              Cargar Previsión de Envase futura
+            </Button>
+          </PaddedContainer>
+          <React.Fragment>
+            {!!noFuture &&
+              <PaddedContainer $simpleCentered >
+                <Typography>
+                  No hay rutas disponibles para los próximos 3 días.
+                </Typography>
+              </PaddedContainer>
+            }
+          </React.Fragment>
+        </React.Fragment>
       }
       {!!future &&
         <ExpansionPanel

@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.7.1:** Validación de llamada a route en PrevisionEnvase (01/17/2020)
++ Alerta cuando hay error
+
 **v1.7.0:** Previsión de envases futura (01/16/2020)
 + Se hace la llamada a la ruta con fecha día siguiente o futuro.
 
