@@ -7,6 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [DEV](https://visor.dev.ambarplus.com/)
 
 Changelog:
+**v1.7.2:** Ajuste en POST (imagen por waste)
++ Se envía sólo una imagen por waste. Base64 string
 
 **v1.7.1:** Validación de llamada a route en PrevisionEnvase (01/17/2020)
 + Alerta cuando hay error
