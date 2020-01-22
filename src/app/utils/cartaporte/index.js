@@ -28,7 +28,7 @@ export const buildCartaporte = ({
         "line_number": current.ServiceOrderLineNum,
         "container_id": current.Res_InventPackingMaterialCode || "",
         "container_quantity": current.unidadesReal || "",
-        images: (current.imagenes || []).map(({ dataUri }) => dataUri),
+        image: ((current.imagenes && current.imagenes[0].dataUri) || ""),
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
         manual: !!current.manual,
         ...!typeServicio && { "percentage": `${current.kgReal || ""}` },

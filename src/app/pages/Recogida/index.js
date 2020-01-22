@@ -164,7 +164,7 @@ const Recogida = ({ history }) => {
     <React.Fragment>
       <TopBar
         title="RECOGIDA"
-        actionIcon="camara"
+        actionIcon={(!selectedRecogida.imagenes || selectedRecogida.imagenes.length < 1) && "camara"}
         action={() => setOpenCamera(true)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
