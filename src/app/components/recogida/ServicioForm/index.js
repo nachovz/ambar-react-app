@@ -10,8 +10,10 @@ const ServicioForm = ({
   register,
   errors,
   setValue,
-  getValues
+  getValues,
+  watch
 }) => {
+  watch('servicioRealizado');
   React.useEffect( () => {
     if(!!selectedRecogida){
       const {
@@ -33,7 +35,7 @@ const ServicioForm = ({
             value={(getValues().servicioRealizado || "Realizado")}
             label={getValues().servicioRealizado ? "Realizado":"No Realizado"}
             onChange={(e)=>{
-              setValue("servicioRealizado",e.target.checked);
+              setValue("servicioRealizado",e.target.checked, true);
               setValue("servicioExtraInfo",false);
               setValue("unidadesReal", "");
             }}

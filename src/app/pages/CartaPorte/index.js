@@ -43,14 +43,14 @@ const CartaPorte = ({ history }) => {
     return null;
   }
 
-  const openDCS = async () => {
+  const openFile = (filepath) => async () => {
     setLoadingState(true);
     try {
-      await getPDF(rutas.selected.Filepath);
+      await getPDF(filepath);
       setLoadingState(false);
     } catch (error) {
       const message = error.response && error.response.status && error.response.status === 404
-        ? 'No se encontro DCS'
+        ? 'No se encontro el archivo'
         : 'Hubo un error en el servidor';
 
       setLoadingState(false);
@@ -118,7 +118,9 @@ const CartaPorte = ({ history }) => {
       <TopBar
         title={`Carta de porte: ${selected.ServiceOrderId}`}
         actionIcon={selected.Filepath && "descarga-dcs"}
-        action={openDCS}
+        action={openFile(rutas.selected.Filepath)}
+        extraActionIcon={selected.Filepath && "alerta"}
+        extraAction={openFile(rutas.selected.CpFilepath)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />

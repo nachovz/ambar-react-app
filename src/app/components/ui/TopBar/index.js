@@ -19,6 +19,8 @@ const TopBar = ({
   action,
   secondaryActionIcon,
   secondaryAction,
+  extraActionIcon,
+  extraAction,
   ...props
 }) => (
     <DarkContainer>
@@ -43,6 +45,17 @@ const TopBar = ({
                 <IconButton edge="end" aria-label={actionIcon} onClick={action}>
                   <Icon icon={actionIcon} />
                 </IconButton>
+              }
+              {!!extraActionIcon &&
+                <React.Fragment>
+                  <Spacer direction="horizontal"/>
+                  <IconButton
+                    edge="end"
+                    aria-label={extraActionIcon}
+                    onClick={extraAction}>
+                    <Icon icon={extraActionIcon} />
+                  </IconButton>
+                </React.Fragment>
               }
               {!!secondaryActionIcon &&
                 <React.Fragment>

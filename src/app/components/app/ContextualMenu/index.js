@@ -32,15 +32,15 @@ const ContextualMenu = ({ history }) => {
   const closeMenu = () => setMenuState({ ...menuState, contextual: false });
   const goTo = (route) => () => history.push(route);
 
-  const openCP = async () => {
+  const openFile = (filepath) => async () => {
     setLoadingState(true);
     try {
-      await getPDF(selected.CpFilepath);
+      await getPDF(filepath);
       setLoadingState(false);
     } catch (error) {
       setLoadingState(false);
       const message = error.response && error.response.status && error.response.status === 404
-        ? 'No se encontro DCS'
+        ? 'No se encontro el archivo'
         : 'Hubo un error en el servidor';
 
       setSnackbarContext({
@@ -68,11 +68,19 @@ const ContextualMenu = ({ history }) => {
             <ListItemText primary="Carta de Porte" />
           </ListItem>
           {!!selected.CpFilepath &&
-            <ListItem button onClick={openCP}>
+            <ListItem button onClick={openFile(selected.CpFilepath)}>
               <ListItemIcon>
                 <Icon icon="alerta" />
               </ListItemIcon>
               <ListItemText primary="Carta de Porte PDF" />
+            </ListItem>
+          }
+          {!!selected.Filepath &&
+            <ListItem button onClick={openFile(selected.Filepath)}>
+              <ListItemIcon>
+                <Icon icon="descarga-dcs" />
+              </ListItemIcon>
+              <ListItemText primary="DCS PDF" />
             </ListItem>
           }
         </List>
