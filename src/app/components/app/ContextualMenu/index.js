@@ -70,7 +70,7 @@ const ContextualMenu = ({ history }) => {
           {!!selected.CpFilepath &&
             <ListItem button onClick={openFile(selected.CpFilepath)}>
               <ListItemIcon>
-                <Icon icon="alerta" />
+                <Icon icon="descarga-cp" />
               </ListItemIcon>
               <ListItemText primary="Carta de Porte PDF" />
             </ListItem>

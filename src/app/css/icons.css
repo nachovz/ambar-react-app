@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'ambaricon-font';
-  src:  url('../fonts/ambaricon-font.eot?rdbxxw');
-  src:  url('../fonts/ambaricon-font.eot?rdbxxw#iefix') format('embedded-opentype'),
-    url('../fonts/ambaricon-font.ttf?rdbxxw') format('truetype'),
-    url('../fonts/ambaricon-font.woff?rdbxxw') format('woff'),
-    url('../fonts/ambaricon-font.svg?rdbxxw#ambaricon-font') format('svg');
+  src:  url('../fonts/ambaricon-font.eot?dev7ht');
+  src:  url('../fonts/ambaricon-font.eot?dev7ht#iefix') format('embedded-opentype'),
+    url('../fonts/ambaricon-font.ttf?dev7ht') format('truetype'),
+    url('../fonts/ambaricon-font.woff?dev7ht') format('woff'),
+    url('../fonts/ambaricon-font.svg?dev7ht#ambaricon-font') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-descarga-cp:before {
+  content: "\e93d";
+}
 .icon-peso:before {
   content: "\e937";
 }

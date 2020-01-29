@@ -59,5 +59,6 @@ export default [
   "entrega",
   "servicio",
   "descarga-dcs",
-  "observaciones"
+  "observaciones",
+  "descarga-cp"
 ];

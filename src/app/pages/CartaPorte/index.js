@@ -119,7 +119,7 @@ const CartaPorte = ({ history }) => {
         title={`Carta de porte: ${selected.ServiceOrderId}`}
         actionIcon={selected.Filepath && "descarga-dcs"}
         action={openFile(rutas.selected.Filepath)}
-        extraActionIcon={selected.Filepath && "alerta"}
+        extraActionIcon={selected.Filepath && "descarga-cp"}
         extraAction={openFile(rutas.selected.CpFilepath)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
