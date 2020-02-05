@@ -2,11 +2,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Important links
 
-[API](https://apisat.solusat.es/)
+[API https://apisat.solusat.es/](https://apisat.solusat.es/)
 
-[DEV](https://visor.dev.ambarplus.com/)
+[DEV https://visor.dev.ambarplus.com/](https://visor.dev.ambarplus.com/)
 
 Changelog:
+**v1.7.4:** Se pueden agregar comentarios a las observaciones
++ Update de package.json
++ Ajustes a modal estilos
++ TO-DO: optimizar input lag en modal
++ Ajustes a Recogida manual (cambios en backend: wastes y containers)
+
 **v1.7.2:** Ajuste en POST (imagen por waste)
 + Se envía sólo una imagen por waste. Base64 string
 
