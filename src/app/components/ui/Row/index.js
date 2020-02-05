@@ -7,7 +7,8 @@ const styles = {
   root:{
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'left'
   },
   centered:{
     justifyContent: 'center'

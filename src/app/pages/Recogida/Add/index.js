@@ -57,6 +57,8 @@ const RecogidaAdd = ({ history }) => {
     return null;
   }
 
+  console.log(containers);
+
 
   const handleCloseCamera = () => setOpenCamera(false);
 
@@ -150,9 +152,9 @@ const RecogidaAdd = ({ history }) => {
             informative
             iconColor="primary"
             icon="mantenimiento"
-            title={waste.description}
-            subtitle={waste.lerDesc}
-            subtitle2={waste.id}
+            title={waste.ItemName}
+            subtitle={waste.LerDesc}
+            subtitle2={waste.ItemId}
             actionIcon="papelera"
             action={() => setWaste(undefined)}
           />
@@ -167,7 +169,8 @@ const RecogidaAdd = ({ history }) => {
                 fakeAsync
                 suggestions={wastes.data.map((wa) => (
                   {
-                    label: wa.description,
+                    label: wa.ItemName,
+                    id: wa.ItemId,
                     ...wa
                   }
                 ))}
@@ -208,7 +211,8 @@ const RecogidaAdd = ({ history }) => {
                 onChange={handleChange("CONTAINER")}
                 suggestions={containers.data.map((co) => (
                   {
-                    label: co.description,
+                    label: co.ItemName,
+                    id: co.ContainerId,
                     ...co
                   }
                 ))}
@@ -264,7 +268,8 @@ const RecogidaAdd = ({ history }) => {
             )}
           </React.Fragment>
         }
-        {getValues().unidadesReal &&
+        {/*No estamos recibiendo Weight por contenedor*/}
+        {getValues().unidadesReal && container.Weight &&
           <PrimaryCenteredText>
             La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.Weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
           </PrimaryCenteredText>

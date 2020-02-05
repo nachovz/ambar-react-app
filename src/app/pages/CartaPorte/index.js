@@ -159,6 +159,7 @@ const CartaPorte = ({ history }) => {
         title="Observaciones"
         obs={obs}
         setObs={setObs}
+        withComments
       />
       <StepNavigator
         moveToPreviousText="Ruta"

@@ -32,6 +32,7 @@ export const formatCompanyNotes = (notes, type) => (
   .filter((note) => note.type === `${type}`)
   .map((note) => ({
     label: note.description,
-    on: false
+    on: false,
+    comment: ''
   }))
 );

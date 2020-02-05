@@ -41,7 +41,7 @@ export const buildCartaporte = ({
     data: {
       "order_id": ServiceOrderId,
       "vehicle_id": vehicleId,
-      notes: (observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
+      notes: (observaciones || []).filter(({ on }) => on ).map(({ label, comment }) => `${label}${!!comment ? '##'+comment : ''}`),
       signature,
       items,
       latitude_start,
