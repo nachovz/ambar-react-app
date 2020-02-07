@@ -7,6 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [DEV https://visor.dev.ambarplus.com/](https://visor.dev.ambarplus.com/)
 
 Changelog:
+**v1.7.5:** Mejoras de rendimiento en inputs de comentarios
+
 **v1.7.4:** Se pueden agregar comentarios a las observaciones
 + Update de package.json
 + Ajustes a modal estilos
