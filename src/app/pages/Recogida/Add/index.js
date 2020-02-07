@@ -57,9 +57,6 @@ const RecogidaAdd = ({ history }) => {
     return null;
   }
 
-  console.log(containers);
-
-
   const handleCloseCamera = () => setOpenCamera(false);
 
   const onTakePhoto = (dataUri) => {
@@ -129,7 +126,10 @@ const RecogidaAdd = ({ history }) => {
     moveNext();
   };
 
-  const handleCloseModal = () => setModal(false);
+  const handleCloseModal = (newObs) => () => {
+    setObs(newObs);
+    setModal(false);
+  }
 
   return (
     <React.Fragment>
@@ -164,6 +164,7 @@ const RecogidaAdd = ({ history }) => {
             title="Residuo"
             field={
               <Autocomplete
+                id="wastes"
                 value={waste}
                 onChange={handleChange("WASTE")}
                 fakeAsync
@@ -207,6 +208,7 @@ const RecogidaAdd = ({ history }) => {
             title="Envase"
             field={
               <Autocomplete
+                id="containers"
                 value={container}
                 onChange={handleChange("CONTAINER")}
                 suggestions={containers.data.map((co) => (

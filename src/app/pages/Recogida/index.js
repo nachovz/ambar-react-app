@@ -29,9 +29,13 @@ const Recogida = ({ history }) => {
     watch 
   } = useForm();
   let { notes } = getCompanySession();
-  const [obs, setObs] = React.useState(formatCompanyNotes(notes, 0));
-  const [modal, setModal] = React.useState(false);
   const { selected } = rutas;
+  const [obs, setObs] = React.useState(
+    (selected && selected.selectedRecogida && selected.selectedRecogida.observaciones) 
+    || 
+    formatCompanyNotes(notes, 0)
+  );
+  const [modal, setModal] = React.useState(false);
   
   React.useEffect( () => {
     if(!!selected){
@@ -39,15 +43,12 @@ const Recogida = ({ history }) => {
       if(!!selectedRecogida){
         const {
           kgReal,
-          unidadesReal,
-          observaciones
+          unidadesReal
         } = selectedRecogida;
         if(!!kgReal){
           setKgValue(kgReal);
         }
-        unidadesReal && setValue("unidadesReal", unidadesReal);
-        observaciones && setObs(observaciones);
-        
+        unidadesReal && setValue("unidadesReal", unidadesReal); 
       }
     }
   }, [selected, setValue]);
@@ -111,7 +112,7 @@ const Recogida = ({ history }) => {
   const handleSave = ({ unidadesReal, observaciones="", ...props }) => {
     selectedRecogida.unidadesReal = unidadesReal;
     selectedRecogida.kgReal = kgValue;
-    selectedRecogida.observaciones = obs;//obs.reduce((tot, ob) => tot+(ob.on ? ', '+ob.label : ''));
+    selectedRecogida.observaciones = obs;
     if(selectedRecogida.done){
       selectedRecogida.done = (props.servicioRealizado || (!!unidadesReal && unidadesReal !== '0'));
     }else{
@@ -136,7 +137,10 @@ const Recogida = ({ history }) => {
     setKgValue(value);
   }
 
-  const handleCloseModal = () => setModal(false);
+  const handleCloseModal = (newObs) => () => {
+    setObs(newObs);
+    setModal(false);
+  }
   
   const propsToForm = {
     selectedRecogida:selectedRecogida,

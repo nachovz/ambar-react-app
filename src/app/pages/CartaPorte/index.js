@@ -112,7 +112,10 @@ const CartaPorte = ({ history }) => {
     )
   };
 
-  const handleCloseModal = () => setModal(false);
+  const handleCloseModal = (newObs) => () => {
+    setObs(newObs);
+    setModal(false);
+  }
   return (
     <Fragment>
       <TopBar

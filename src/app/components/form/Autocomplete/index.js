@@ -88,7 +88,8 @@ export default function IntegrationReactSelect(
     menuIsOpen,
     components = {},
     readonly,
-    placeholder = "Buscar opciones"
+    placeholder = "Buscar opciones",
+    id
   }) {
   const classes = useStyles();
   const theme = useTheme();
@@ -139,7 +140,7 @@ export default function IntegrationReactSelect(
         components={{ ...defaultComponents, ...components }}
         isSearchable={!readonly}
 
-        inputId="react-select-single"
+        inputId={`react-select-single-${id}`} 
         TextFieldProps={{
           label: 'Country',
           InputLabelProps: {
