@@ -61,12 +61,14 @@ const ContextualMenu = ({ history }) => {
       <div className={classes.list}>
         <MenuHeader />
         <List>
-          <ListItem button onClick={goTo('/cartaporte')}>
-            <ListItemIcon>
-              <Icon icon="mantenimiento" />
-            </ListItemIcon>
-            <ListItemText primary="Carta de Porte" />
-          </ListItem>
+          {!selected.done &&
+            <ListItem button onClick={goTo('/cartaporte')}>
+              <ListItemIcon>
+                <Icon icon="mantenimiento" />
+              </ListItemIcon>
+              <ListItemText primary="Carta de Porte" />
+            </ListItem>
+          }
           {!!selected.CpFilepath &&
             <ListItem button onClick={openFile(selected.CpFilepath)}>
               <ListItemIcon>

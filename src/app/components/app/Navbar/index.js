@@ -25,13 +25,13 @@ const Navbar = ({ history }) => {
           Ruta
         </Typography>
       </Title>
-      {rutas.selected && !rutas.selected.done && (
+      {rutas.selected && (
         <MenuAction onClick={openContextualMenu}>
           <Icon icon="listado" fontSize="small" />
         </MenuAction>
       )}
       <MainMenu />
-      {rutas.selected && !rutas.selected.done && <ContextualMenu />}
+      {rutas.selected && <ContextualMenu />}
     </Nav>
   );
 };
