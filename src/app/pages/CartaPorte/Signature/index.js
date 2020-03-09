@@ -44,19 +44,18 @@ const CartaPorteSignature = ({ history }) => {
     return null;
   }
 
-  const handleSave = async ({ clientDNI, clientName }) => {
+  const handleSave = async ({ clientDNI="", clientName }) => {
     setLoadingState(true);
     selected.done = true;
     selected.signature = signature;
     selected.client_name = clientName;
-    selected.client_dni = clientDNI;
     const { lat, lng } = await getGeoPosition();
     selected.latitude_end = lat;
     selected.longitude_end = lng;
     rutas.data[selected.ServiceOrderId] = selected;
     
     try {
-      const body = buildCartaporte(selected, signature, clientDNI, clientName);
+      const body = buildCartaporte(selected, signature, clientName);
       await client.post(ENDPOINTS.ROUTE, { body });
       addCompletedCartaporte(selected.ServiceOrderId);
       setLoadingState(false);
@@ -89,17 +88,18 @@ const CartaPorteSignature = ({ history }) => {
         <FullWidthForm>
           <TextField
             register={register}
-            name="clientDNI"
-            type="text"
-            placeholder="DNI"
-            error={errors.clientDNI}
-          />
-          <TextField
-            register={register}
             name="clientName"
             type="text"
             placeholder="Nombre"
             error={errors.clientName}
+          />
+          <TextField
+            register={register}
+            required={false}
+            name="clientDNI"
+            type="text"
+            placeholder="DNI (opcional)"
+            error={errors.clientDNI}
           />
         </FullWidthForm>
         <Checkbox

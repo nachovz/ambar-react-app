@@ -136,15 +136,17 @@ export const OBSERVACIONES = [
 const RECOGIDA = 'recogida';
 const SERVICIO = 'servicio';
 const ENTREGA = 'entrega';
+const CONSIGNA = 'consigna';
 
 export const TIPOS_RECOGIDAS = {
   "Res_Peligr": RECOGIDA,
   "Servicios": SERVICIO,
   "Entrega": ENTREGA,
-  "Res_NoPel": RECOGIDA
+  "Res_NoPel": RECOGIDA,
+  "Consigna": CONSIGNA
 };
 
-export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA];
+export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA, CONSIGNA];
 
 export const LINK_TYPE_MAP = "map";
 export const LINK_TYPE_EMAIL = "email";

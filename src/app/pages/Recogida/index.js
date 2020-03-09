@@ -12,6 +12,7 @@ import Camera from 'app/components/app/Camera';
 import Modal from 'app/components/containers/Modal';
 import RecogidaForm from 'app/components/recogida/RecogidaForm';
 import ServicioForm from 'app/components/recogida/ServicioForm';
+import ConsignaForm from 'app/components/recogida/ConsignaForm';
 import NotesModal from 'app/components/form/NotesModal';
 import { TIPOS_RECOGIDAS } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
@@ -160,6 +161,8 @@ const Recogida = ({ history }) => {
         return <RecogidaForm {...propsToForm}/>;
       case "servicio":
         return <ServicioForm {...propsToForm}/>;
+      case "consigna":
+        return <ConsignaForm selectedRecogida={selectedRecogida}/>;
       default:
         break;
     }
@@ -220,7 +223,7 @@ const Recogida = ({ history }) => {
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
-        moveToNextText="Confirmación"
+        moveToNextText={TIPOS_RECOGIDAS[selectedRecogida.ProjCategoryId] !== "consigna" && "Confirmación"}
         moveToNextAction={handleSubmit(handleSave)}
       />
     </React.Fragment>

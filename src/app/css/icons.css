@@ -46,6 +46,9 @@
 .icon-descarga-dcs:before {
   content: "\e939";
 }
+.icon-consigna:before {
+  content: "\e936";
+}
 .icon-entrega:before {
   content: "\e93a";
 }
