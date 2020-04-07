@@ -32,7 +32,7 @@ export const buildCartaporte = ({
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
         manual: !!current.manual,
         ...!typeServicio && { "percentage": `${current.kgReal || ""}` },
-        ...typeServicio && { "delivered": !!current.servicioRealizado }
+        ...typeServicio && { "delivered": !!current.servicioRealizado ? 1 : 0 }
       }
     ];
   }, []);
