@@ -7,6 +7,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [DEV https://visor.dev.ambarplus.com/](https://visor.dev.ambarplus.com/)
 
 Changelog:
+
+**v1.8.1:** Recogida tipo servicio, cambio de valor para delivered: 1 | 0
+
 **v1.8.0:** Agregado tipo Consigna
 + Consulta sólo lectura
 + DNI en firma opcional
