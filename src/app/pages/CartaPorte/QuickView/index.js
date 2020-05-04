@@ -30,7 +30,7 @@ const CartaPorteQuickView = ({ history }) => {
     ClientEmail,
     ClientVat,
     ClientTimeTable,
-    officeNotes
+    OfficeNotes
   } = selected;
 
   const containersDictionary = dictionaryGenerator(data, "Res_InventPackingMaterialCode", "Res_Qty_Env");
@@ -122,13 +122,13 @@ const CartaPorteQuickView = ({ history }) => {
             </React.Fragment>
           }
         />
-        {!!officeNotes &&
+        {!!OfficeNotes &&
           <TextListElement
             noDivider
             informative
             icon="observaciones"
             title="Observaciones Oficina"
-            subtitle={officeNotes}
+            subtitle={OfficeNotes}
           />
         }
       </List>

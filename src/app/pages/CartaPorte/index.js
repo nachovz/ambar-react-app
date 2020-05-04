@@ -128,14 +128,14 @@ const CartaPorte = ({ history }) => {
         secondaryAction={() => setModal(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
-      {!!selected.officeNotes &&
+      {!!selected.OfficeNotes &&
         <ExpansionPanel 
           content={{
             title: 'Observaciones Oficina',
             icon: 'observaciones',
             content:(
               <Typography>
-                {selected.officeNotes}
+                {selected.OfficeNotes}
               </Typography>
             )
           }}
