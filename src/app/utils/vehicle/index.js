@@ -1,21 +1,21 @@
 import moment from 'moment';
 
 export const setVehicleSession = (vehicleId, date) => {
-  sessionStorage.setItem('VEHICLE_ID', vehicleId);
-  sessionStorage.setItem('VEHICLE_STORAGE_DATE', date);
+  localStorage.setItem('VEHICLE_ID', vehicleId);
+  localStorage.setItem('VEHICLE_STORAGE_DATE', date);
 };
 
 export const getVehicleSession = () => ({
-  vehicleId: sessionStorage.getItem('VEHICLE_ID'),
-  date: sessionStorage.getItem('VEHICLE_STORAGE_DATE')
+  vehicleId: localStorage.getItem('VEHICLE_ID'),
+  date: localStorage.getItem('VEHICLE_STORAGE_DATE')
 });
 
 export const deleteVehicleSession = () => {
-  if (sessionStorage.getItem('VEHICLE_ID')) {
-    sessionStorage.removeItem('VEHICLE_ID');
+  if (localStorage.getItem('VEHICLE_ID')) {
+    localStorage.removeItem('VEHICLE_ID');
   }
-  if (sessionStorage.getItem('VEHICLE_STORAGE_DATE')) {
-    sessionStorage.removeItem('VEHICLE_STORAGE_DATE');
+  if (localStorage.getItem('VEHICLE_STORAGE_DATE')) {
+    localStorage.removeItem('VEHICLE_STORAGE_DATE');
   }
 };
 

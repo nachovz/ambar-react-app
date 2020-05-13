@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.8.2:** Sesión persiste después de cerrar la APP
++ Cambio de SessionStorage a LocalStorage
+
 **v1.8.1a:** HotFix officeNotes -> OfficeNotes
 
 **v1.8.1:** Recogida tipo servicio, cambio de valor para delivered: 1 | 0
