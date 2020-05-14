@@ -8,6 +8,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.0:** Offline support.
++ Cacheo de Ruta (SWR)
++ BackgroundSync de POST /company/amb/route para cierre de cartaporte
+
 **v1.8.2:** Sesión persiste después de cerrar la APP
 + Cambio de SessionStorage a LocalStorage
 

@@ -5,6 +5,6 @@ export default () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { coords: { latitude: lat, longitude: lng } } = position;
       resolve({ lat, lng });
-    }, () => resolve({ lat:null, lng:null }));
+    }, () => resolve({ lat:null, lng:null }), {timeout: 5000});
   });
 };

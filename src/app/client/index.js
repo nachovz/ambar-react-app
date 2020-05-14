@@ -59,6 +59,7 @@ const buildHeaders = (headers = {}) => {
 
 const successHandler = (response) => {
   if (!response) return null;
+  if (response.data && response.data === "offline") return null;//no tocar headers. guardado en backgroundSync
   setUserHeaders(response.headers);
   return response.data;
 };

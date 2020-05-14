@@ -68,7 +68,7 @@ export const addCompletedCartaporte = (ServiceOrderId) => {
 export const setCompletedCarteporte = (data) => {
   const completed = JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];
   completed.forEach(({ id }) => {
-    data[id].done = true;
+    if(data[id]) data[id].done = true;
   });
 };
 

@@ -18,7 +18,7 @@ export const getAccessToken = () => {
   return localStorage.getItem('ACCESS_TOKEN');
 };
 
-const SESSION_HEADERS = ['ACCESS_TOKEN', 'TOKEN_TYPE', 'UID', 'EXPIRY', 'CLIENT'];
+const SESSION_HEADERS = ['ACCESS_TOKEN', 'TOKEN_TYPE', 'UID', 'EXPIRY', 'CLIENT', 'COMPLETED_CARTAS_DE_PORTE'];
 
 export const deleteUserSession = () => {
   SESSION_HEADERS.forEach((header) => {
