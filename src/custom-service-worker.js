@@ -24,7 +24,14 @@ if (workbox) {
 
     workbox.routing.registerRoute(
       ({url}) => url.pathname.includes("/company/amb/vehicle/") && url.pathname.includes("/route"),
-      workbox.strategies.staleWhileRevalidate()
+      workbox.strategies.networkFirst({
+        plugins: [
+          new workbox.expiration.CacheExpiration({
+          // Only cache requests for a six hours
+          maxAgeSeconds: 6 * 60 * 60,
+        })
+        ]
+      })
     );
 
     /*workbox.routing.registerRoute(

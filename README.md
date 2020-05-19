@@ -8,6 +8,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.0a:** Hotfix regla de caché para Ruta.
++ Estrategia NetworkFirst.
++ Caché vence en 6h.
+
 **v1.9.0:** Offline support.
 + Cacheo de Ruta (SWR)
 + BackgroundSync de POST /company/amb/route para cierre de cartaporte
