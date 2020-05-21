@@ -42,9 +42,9 @@ const Ruta = ({ history }) => {
         } catch (error) {
           setLoadingState(false);
           setSnackbarContext({
-            message: 'Hubo un error en el servidor',
+            message: error.message,
             variant: 'error',
-            open: true
+            open: true,
           });
         }
       }

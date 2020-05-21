@@ -52,7 +52,7 @@ const PrevisionEnvases = ({ history }) => {
       } catch (error) {
         if(!error.response.data.data){
           setSnackbarContext({
-            message: 'Hubo un error en el servidor',
+            message: error.message,
             variant: 'error',
             open: true
           });

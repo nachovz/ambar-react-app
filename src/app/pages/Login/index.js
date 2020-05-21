@@ -5,6 +5,7 @@ import Typography from 'app/components/ui/Typography';
 import AuthenticationForm from 'app/components/auth/AuthenticationForm';
 import CompanyInformationForm from 'app/components/auth/CompanyInformationForm';
 import { Main, FormWrapper, Logo, Footer } from './elements';
+import { APP_VERSION } from 'app/constants/values';
 
 import ambar from 'app/images/ambar.png';
 
@@ -36,7 +37,7 @@ const Login = () => {
       </FormWrapper>
       <Footer>
         <Typography variant="caption" color="textSecondary">
-          Ambar Plus S.A.
+          Ambar Plus S.A. |  Versión {APP_VERSION}
         </Typography>
       </Footer>
     </Main>

@@ -13,7 +13,7 @@ import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 
-const CompanyInformationForm = ({ onVerified }) => {
+const CompanyInformationForm = ({ onVerified, history }) => {
   const [showQr, setShowQr] = useState(false);
   const [, setCompanies] = useState();
   const [, setLoadingState] = useLoadingContext();
@@ -30,12 +30,21 @@ const CompanyInformationForm = ({ onVerified }) => {
   useEffect(() => {
     async function fetchData() {
       setLoadingState(true);
-      const companies = await client.get(`${ENDPOINTS.COMPANY}`);
-      setCompanies(companies);
-      setLoadingState(false);
+      try {
+        const companies = await client.get(`${ENDPOINTS.COMPANY}`);
+        setCompanies(companies);
+        setLoadingState(false);
+      } catch (error) {
+        setLoadingState(false);
+        setSnackbarContext({
+          message: error.message,
+          variant: 'error',
+          open: true
+        });
+      }
     }
     fetchData();
-  }, [setLoadingState]);
+  }, [setLoadingState,setSnackbarContext]);
 
   const setQrState = (state) => () => setShowQr(state);
 
@@ -60,9 +69,19 @@ const CompanyInformationForm = ({ onVerified }) => {
     } catch (error) {
       setLoadingState(false);
       setSnackbarContext({
-        message: 'Hubo un error en el servidor',
+        message: error.message,
         variant: 'error',
-        open: true
+        open: true,
+        ...error.response.status === 401 && {
+          forever: true,
+          action: [(
+            <React.Fragment key="extra">
+              <Button color="secondary" variant="contained" size="small" onClick={() => window.location.replace("/")}>
+                Iniciar sesión
+              </Button>  
+            </React.Fragment>
+          )]
+        }
       });
     }
   }

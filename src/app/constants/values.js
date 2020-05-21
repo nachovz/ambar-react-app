@@ -157,3 +157,5 @@ export const LINK_VALUES = {
   [LINK_TYPE_EMAIL]: "mailto:",
   [LINK_TYPE_MAP]: "http://maps.google.com/?q="
 };
+
+export const APP_VERSION = 'v1.9.0b'

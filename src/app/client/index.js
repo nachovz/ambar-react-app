@@ -2,7 +2,7 @@ import 'fetch-everywhere';
 import axios from 'axios';
 import https from 'https';
 import omitBy from 'app/utils/omitBy';
-import { setUserHeaders, getUserHeaders } from 'app/utils/auth/userSession';
+import { setUserHeaders, getUserHeaders, deleteUserSession } from 'app/utils/auth/userSession';
 
 const client = {
   get: (url, options) => {
@@ -58,6 +58,7 @@ const buildHeaders = (headers = {}) => {
 };
 
 const successHandler = (response) => {
+  
   if (!response) return null;
   if (response.data && response.data === "offline") return null;//no tocar headers. guardado en backgroundSync
   setUserHeaders(response.headers);
@@ -65,7 +66,21 @@ const successHandler = (response) => {
 };
 
 function errorHandler(error) {
-  console.error(error);
+  error.message = 'Hubo un error en el servidor';
+  if(error.response && error.response.status){
+    switch (error.response.status){
+      case 401:
+        error.message = "Su sesión ha expirado. Por favor iniciar sesión nuevamente.";
+        deleteUserSession();
+        break;
+      case 404:
+        error.message = "No hay datos para esta solicitud. Comuníquese con Oficina."
+        break;
+
+      default:
+        break;
+    }
+  }
   throw error;
 }
 
