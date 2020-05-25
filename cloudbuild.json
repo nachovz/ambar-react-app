@@ -1,0 +1,22 @@
+{
+  "steps": [
+    {
+      "name": "gcr.io/cloud-builders/docker",
+      "args": [
+        "build",
+        "-t",
+        "gcr.io/ambar-db51a/production/visor-frontend:$SHORT_SHA",
+        "-t",
+        "gcr.io/ambar-db51a/production/visor-frontend:latest",
+        "-t",
+        "gcr.io/ambar-db51a/production/visor-frontend",
+        "."
+      ]
+    }
+  ],
+  "images": [
+    "gcr.io/ambar-db51a/production/visor-frontend",
+    "gcr.io/ambar-db51a/production/visor-frontend:$SHORT_SHA",
+    "gcr.io/ambar-db51a/production/visor-frontend:latest"
+  ]
+}
