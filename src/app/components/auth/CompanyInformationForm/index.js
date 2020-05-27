@@ -39,7 +39,17 @@ const CompanyInformationForm = ({ onVerified, history }) => {
         setSnackbarContext({
           message: error.message,
           variant: 'error',
-          open: true
+          open: true,
+          ...error.response.status === 401 && {
+          forever: true,
+          action: [(
+            <React.Fragment key="extra">
+              <Button color="secondary" variant="contained" size="small" onClick={() => window.location.replace("/")}>
+                Iniciar sesión
+              </Button>  
+            </React.Fragment>
+          )]
+        }
         });
       }
     }
