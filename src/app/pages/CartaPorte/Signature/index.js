@@ -49,6 +49,7 @@ const CartaPorteSignature = ({ history }) => {
     selected.done = true;
     selected.signature = signature;
     selected.client_name = clientName;
+    selected.client_dni = clientDNI;
     const { lat, lng } = await getGeoPosition();
     selected.latitude_end = lat;
     selected.longitude_end = lng;

@@ -8,7 +8,7 @@ export const buildCartaporte = ({
     latitude_end,
     longitude_end,
     client_name,
-    client_dni="", 
+    client_dni, 
     signature,
     data,
     ServiceOrderId,
