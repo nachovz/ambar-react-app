@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.2:** Ajustes en filtro para previsión de envases.
+
 **v1.9.1:** Versión 5.0 workbox. Validando offline BackgroundSync.
 
 **v1.9.0c:** Hotfix texto correcto en toaster cuando 403.

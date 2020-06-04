@@ -17,6 +17,7 @@ import getColor from 'app/styles/palette';
 import ENDPOINTS from 'app/constants/endpoints';
 import { getVehicleSession } from 'app/utils/vehicle';
 import Typography from 'app/components/ui/Typography';
+import { TIPOS_RECOGIDAS, SERVICIO, SERVFACT } from 'app/constants/values';
 
 const PrevisionEnvases = ({ history }) => {
   const [rutas] = useRutasContext();
@@ -69,14 +70,14 @@ const PrevisionEnvases = ({ history }) => {
     return dictionaryGenerator(
       Object.keys(data).reduce((result, key) => ([
           ...result,
-          ...data[key].data
+          ...data[key].data.filter((reco) => (TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVICIO && TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVFACT ))
         ]), []), 
-      "PackingMaterialName", 
+      ["PackingMaterialName", "ItemName"], 
       "Res_Qty_Env", 
       "PackingMaterialName"
     );
   }
-
+  console.log(rutas.data);
   const containersDictionary = keyDataGenerator(rutas.data);
 
   return (
