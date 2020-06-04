@@ -39,7 +39,6 @@ const ContextualMenu = ({ history }) => {
       setLoadingState(false);
     } catch (error) {
       setLoadingState(false);
-      console.log(error);
       setSnackbarContext({
         message: error.message,
         variant: 'error',

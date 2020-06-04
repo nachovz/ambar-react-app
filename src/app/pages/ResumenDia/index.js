@@ -59,7 +59,6 @@ const ResumenDia = ({ history }) => {
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
-  //const moveToPreviousStep = () => setStep(STEPS[step].previous);
 
   if(!selected){
     history.push('/');
@@ -287,23 +286,31 @@ const ResumenDia = ({ history }) => {
             title="Observaciones"
           />
           {selected.observaciones ?
-            selected.observaciones.map( ({ label, on }, ind) =>(
-              <FieldListElement
-                key={ind}
-                field={
-                  <Checkbox
-                      color="primary"
-                      disabled
-                      label={label}
-                      input={{
-                        value: on,
-                        onChange:
-                          () => {
-                          }
-                      }}
-                    />
+            selected.observaciones.map( ({ label, on, comment }, ind) =>(
+              <React.Fragment>
+                <FieldListElement
+                  key={ind}
+                  field={
+                    <Checkbox
+                        color="primary"
+                        disabled
+                        label={label}
+                        input={{
+                          value: on,
+                          onChange:
+                            () => {
+                            }
+                        }}
+                      />
+                  }
+                />
+                {!!comment &&
+                  <TextListElement
+                    title="Comentario"
+                    subtitle={comment}
+                  />
                 }
-              />
+              </React.Fragment>
             ))
             :
             (

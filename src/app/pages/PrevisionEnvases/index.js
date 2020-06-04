@@ -77,7 +77,6 @@ const PrevisionEnvases = ({ history }) => {
       "PackingMaterialName"
     );
   }
-  console.log(rutas.data);
   const containersDictionary = keyDataGenerator(rutas.data);
 
   return (

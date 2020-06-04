@@ -160,4 +160,4 @@ export const LINK_VALUES = {
   [LINK_TYPE_MAP]: "http://maps.google.com/?q="
 };
 
-export const APP_VERSION = 'v1.9.2'
+export const APP_VERSION = 'v1.9.3'

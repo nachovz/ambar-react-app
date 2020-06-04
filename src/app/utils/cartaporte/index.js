@@ -54,13 +54,13 @@ export const buildCartaporte = ({
   };
 };
 
-export const addCompletedCartaporte = (ServiceOrderId) => {
+export const addCompletedCartaporte = (ServiceOrderId, data) => {
   const current = JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];
   localStorage.setItem(
     'COMPLETED_CARTAS_DE_PORTE',
     JSON.stringify([
       ...current,
-      { id: ServiceOrderId, date: moment() }
+      { id: ServiceOrderId, date: moment(), data }
     ])
   );
 };
@@ -71,6 +71,10 @@ export const setCompletedCarteporte = (data) => {
     if(data[id]) data[id].done = true;
   });
 };
+
+export const getCompletedCartaporte = () => {
+  return JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];
+}
 
 export const filterCompletedCartaPorteByDate = () => {
   const completed = JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];

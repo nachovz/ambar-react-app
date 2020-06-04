@@ -7,7 +7,7 @@ import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { getVehicleSession, isVehicleIdExpired } from 'app/utils/vehicle';
-import { setCompletedCarteporte } from 'app/utils/cartaporte';
+import { setCompletedCarteporte, getCompletedCartaporte } from 'app/utils/cartaporte';
 import List from 'app/components/ui/List';
 import TopBar from 'app/components/ui/TopBar';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
@@ -75,12 +75,13 @@ const Ruta = ({ history }) => {
 
   const handleCloseAlert = () => setOpenAlert({ open: false });
   const handleOpenCartaPorte = (selected, route, done=false) => () => {
-    
+
+    const current = getCompletedCartaporte().find( (cp) => cp.id === selected.ServiceOrderId);
     if(route === "/quickview" || done){
       setRutasState({
         ...rutas,
         selected:{
-          ...selected
+          ...((current && current.data) || selected)
         }
       });
       history.push(!!done ? '/resumen-dia' : route);
@@ -91,7 +92,6 @@ const Ruta = ({ history }) => {
       open: true,
       selected
     });
-    //showInfo(orders[order], "/quickview",orders[order].done)
   };
 
   const ordersKeys = Object.keys(orders);
