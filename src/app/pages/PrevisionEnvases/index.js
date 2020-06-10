@@ -17,6 +17,7 @@ import getColor from 'app/styles/palette';
 import ENDPOINTS from 'app/constants/endpoints';
 import { getVehicleSession } from 'app/utils/vehicle';
 import Typography from 'app/components/ui/Typography';
+import { TIPOS_RECOGIDAS, SERVICIO, SERVFACT } from 'app/constants/values';
 
 const PrevisionEnvases = ({ history }) => {
   const [rutas] = useRutasContext();
@@ -52,7 +53,7 @@ const PrevisionEnvases = ({ history }) => {
       } catch (error) {
         if(!error.response.data.data){
           setSnackbarContext({
-            message: 'Hubo un error en el servidor',
+            message: error.message,
             variant: 'error',
             open: true
           });
@@ -69,14 +70,13 @@ const PrevisionEnvases = ({ history }) => {
     return dictionaryGenerator(
       Object.keys(data).reduce((result, key) => ([
           ...result,
-          ...data[key].data
+          ...data[key].data.filter((reco) => (TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVICIO && TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVFACT ))
         ]), []), 
-      "PackingMaterialName", 
+      ["PackingMaterialName", "ItemName"], 
       "Res_Qty_Env", 
       "PackingMaterialName"
     );
   }
-
   const containersDictionary = keyDataGenerator(rutas.data);
 
   return (

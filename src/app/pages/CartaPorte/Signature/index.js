@@ -49,15 +49,17 @@ const CartaPorteSignature = ({ history }) => {
     selected.done = true;
     selected.signature = signature;
     selected.client_name = clientName;
+    selected.client_dni = clientDNI;
     const { lat, lng } = await getGeoPosition();
     selected.latitude_end = lat;
     selected.longitude_end = lng;
     rutas.data[selected.ServiceOrderId] = selected;
     
     try {
-      const body = buildCartaporte(selected, signature, clientName);
+      const body = buildCartaporte(selected);
+      //console.log(body);
       await client.post(ENDPOINTS.ROUTE, { body });
-      addCompletedCartaporte(selected.ServiceOrderId);
+      addCompletedCartaporte(selected.ServiceOrderId, selected);
       setLoadingState(false);
       setRutasState({
         ...rutas,
@@ -132,7 +134,7 @@ const CartaPorteSignature = ({ history }) => {
             :
             approvals.conform && (
               <SignatureCanvas
-                penColor='green'
+                penColor='black'
                 ref={(ref) => { sigPad = ref }}
                 canvasProps={{
                   className: 'sigCanvas',

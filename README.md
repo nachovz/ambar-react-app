@@ -8,6 +8,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.3:** ResumenDia ahora muestra los datos raw de la cartaporte enviada.
++ Se agregó cartaporte raw al LocalStorage para uso en ResumenDia.
++ Signature en color negro
++ Limpieza de console.logs
+
+**v1.9.2a:** HotFix DNI en POST.
+
+**v1.9.2:** Ajustes en filtro para previsión de envases.
+
+**v1.9.1:** Versión 5.0 workbox. Validando offline BackgroundSync.
+
+**v1.9.0c:** Hotfix texto correcto en toaster cuando 403.
+
 **v1.9.0a:** Hotfix regla de caché para Ruta.
 + Estrategia NetworkFirst.
 + Caché vence en 6h.

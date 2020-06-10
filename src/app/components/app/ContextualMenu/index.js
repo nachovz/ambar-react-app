@@ -39,12 +39,8 @@ const ContextualMenu = ({ history }) => {
       setLoadingState(false);
     } catch (error) {
       setLoadingState(false);
-      const message = error.response && error.response.status && error.response.status === 404
-        ? 'No se encontro el archivo'
-        : 'Hubo un error en el servidor';
-
       setSnackbarContext({
-        message,
+        message: error.message,
         variant: 'error',
         open: true
       });

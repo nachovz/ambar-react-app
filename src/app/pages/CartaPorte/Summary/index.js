@@ -47,7 +47,7 @@ const CartaPorteSummary = ({ history }) => {
               key={type} 
               type={type} 
               recogidas={filtered} 
-              onSelectedRecogida={onSelectedRecogida} 
+              onSelectedRecogida={onSelectedRecogida}
             />
           )
         :

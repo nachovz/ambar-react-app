@@ -14,6 +14,7 @@ import Icon from 'app/components/ui/Icon';
 import MenuHeader from 'app/components/app/MenuHeader';
 import { useMenuContext } from 'app/contexts/Menu';
 import { MENU_WIDTH } from 'app/styles/constants';
+import { APP_VERSION } from 'app/constants/values';
 
 const useStyles = makeStyles ({
   list: {
@@ -70,6 +71,15 @@ const MainMenu = ({ history }) => {
               <Icon icon="salir" />
             </ListItemIcon>
             <ListItemText primary="Cerrar Sesion" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <Icon icon="estado-aviso" />
+            </ListItemIcon>
+            <ListItemText primary={"Versión "+APP_VERSION} />
           </ListItem>
         </List>
       </div>

@@ -24,7 +24,6 @@
     "react-select": "^3.0.8",
     "react-signature-canvas": "^1.0.3",
     "reactive-qr": "^0.1.7",
-    "serve": "^11.3.0",
     "styletron-engine-atomic": "^1.4.0",
     "styletron-react": "^5.2.0",
     "tinycolor2": "^1.4.1",

@@ -44,10 +44,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ContentWrapper = ({ message, onClose, variant, ...other }) => {
+const ContentWrapper = ({ message, onClose, variant, action=[], ...other }) => {
   const classes = useStyles();
   const Icon = variantIcon[variant];
-
   return (
     <SnackbarContent
       {...other}
@@ -59,6 +58,7 @@ const ContentWrapper = ({ message, onClose, variant, ...other }) => {
         </span>
       }
       action={[
+        ...action,
         <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
           <CloseIcon className={classes.icon} />
         </IconButton>,
@@ -68,7 +68,7 @@ const ContentWrapper = ({ message, onClose, variant, ...other }) => {
 };
 
 const Snackbar = () => {
-  const [{ open, message, variant }, setSnakbarState] = useSnackbarContext();
+  const [{ open, message, variant, action, forever=false }, setSnakbarState] = useSnackbarContext();
 
   const handleClose = (event, reason) => {
     if (reason !== 'clickaway') {
@@ -81,7 +81,7 @@ const Snackbar = () => {
   return (
     <UISnackbar
       open={open}
-      autoHideDuration={6000}
+      autoHideDuration={forever ? null : 6000}
       onClose={handleClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
@@ -89,6 +89,7 @@ const Snackbar = () => {
         onClose={handleClose}
         variant={variant}
         message={message}
+        action={action}
       />
     </UISnackbar>
   );
