@@ -7,6 +7,7 @@ import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { getVehicleSession, isVehicleIdExpired } from 'app/utils/vehicle';
+import { getCompanySession } from 'app/utils/company';
 import { setCompletedCarteporte, getCompletedCartaporte } from 'app/utils/cartaporte';
 import List from 'app/components/ui/List';
 import TopBar from 'app/components/ui/TopBar';
@@ -20,6 +21,7 @@ const Ruta = ({ history }) => {
   const [, setSnackbarContext] = useSnackbarContext();
   const [orders, setOrders] = useState([]);
   const { vehicleId } = getVehicleSession();
+  const { companyId } = getCompanySession();
   const [openAlert, setOpenAlert] = React.useState({ 
     open: false
   });
@@ -36,7 +38,7 @@ const Ruta = ({ history }) => {
       async function fetchData() {
         setLoadingState(true);
         try {
-          const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
+          const rutas = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route`);
           setRutasState({ ...rutas, selected: null });
           setLoadingState(false);
         } catch (error) {
@@ -50,7 +52,7 @@ const Ruta = ({ history }) => {
       }
       fetchData();
     }
-  }, [rutas, setLoadingState, setRutasState, vehicleId, setSnackbarContext]);
+  }, [rutas, setLoadingState, setRutasState, vehicleId, setSnackbarContext, companyId]);
 
   if (!vehicleId || isVehicleIdExpired()) {
     return (

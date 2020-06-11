@@ -76,7 +76,9 @@ function errorHandler(error) {
       case 404:
         error.message = "No hay datos para esta solicitud. Comuníquese con Oficina."
         break;
-
+      case 422:
+        error.message = "No se ha encontrado esta matrícula asignado a esta empresa."
+        break;
       default:
         break;
     }

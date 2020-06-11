@@ -10,6 +10,7 @@ const SelectField = ({
 }) => (
   <FieldError error={error}>
     <UITextField
+      style={{width: '100%'}}
       select
       {...props}
     >

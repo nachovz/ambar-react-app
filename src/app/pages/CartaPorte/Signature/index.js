@@ -78,8 +78,11 @@ const CartaPorteSignature = ({ history }) => {
     <React.Fragment>
        <TopBar
         title={`Carta de porte: ${selected.ServiceOrderId}`}
-        actionIcon={!signature && "editar"}
-        action={() => sigPad.clear()}
+        actionIcon={approvals.conform && "editar"}
+        action={() => {
+          if(approvals.conform && !signature) sigPad.clear();
+          if(signature) setSignature(null);
+        }}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
       

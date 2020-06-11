@@ -4,23 +4,25 @@ import TextField from 'app/components/form/TextField';
 import Button from 'app/components/ui/Button';
 import QRReader from 'app/components/app/QRReader';
 import useForm from 'react-hook-form';
+import SelectField from 'app/components/form/SelectField';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useRutasContext } from 'app/contexts/Rutas';
 import { setVehicleSession } from 'app/utils/vehicle';
 import { setCompanySession } from 'app/utils/company';
 import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
+import { getCompanySession } from 'app/utils/company';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 
 const CompanyInformationForm = ({ onVerified, history }) => {
   const [showQr, setShowQr] = useState(false);
-  const [, setCompanies] = useState();
+  const [companies , setCompanies] = useState([]);
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setRutasState] = useRutasContext();
   const { register, handleSubmit, watch, setValue, errors } = useForm({
-    defaultValues: { companyId: 'AMB' }
+    defaultValues: { companyId: getCompanySession().companyId }
   });
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const CompanyInformationForm = ({ onVerified, history }) => {
       setLoadingState(true);
       try {
         const companies = await client.get(`${ENDPOINTS.COMPANY}`);
-        setCompanies(companies);
+        setCompanies(companies.data);
         setLoadingState(false);
       } catch (error) {
         setLoadingState(false);
@@ -63,13 +65,14 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   };
 
   const vehicleId = watch('vehicleId');
+  const companyId = watch('companyId');
 
   const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE}/${vehicleId}/route`);
-      const containers = await client.get(ENDPOINTS.GET_CONTAINERS_BY_COMPANY);
-      const wastes = await client.get(ENDPOINTS.GET_WASTES_BY_COMPANY);
+      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route`);
+      const containers = await client.get(ENDPOINTS.GET_CONTAINERS_BY_COMPANY(companyId));
+      const wastes = await client.get(ENDPOINTS.GET_WASTES_BY_COMPANY(companyId));
       const notes = await client.get(ENDPOINTS.GET_NOTES);
       setRutasState({ ...rutas, selected: null });
       setCompanySession(companyId, wastes, containers, notes);
@@ -95,17 +98,14 @@ const CompanyInformationForm = ({ onVerified, history }) => {
       });
     }
   }
-
   return (
     <form>
-      <TextField
-        type="text"
-        disabled
-        name="companyId"
-        register={register}
-        label="Seleccionar ID de Empresa"
-        placeholder="Seleccionar ID de Empresa"
-        error={errors.companyId}
+      <SelectField
+        ref={register({ name: 'companyId'})}
+        value={companyId}
+        options={companies.map((comp) => ({ label: comp.name, value: comp.id }))}
+        onChange={({ target: { value } }) => setValue('companyId', value)}
+        helperText="Seleccionar empresa"
       />
       <TextField
         type="text"

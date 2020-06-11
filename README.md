@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.4:** Habilitado selección de empresa
++ Se guarda la empresa seleccionada aún después de cerrar sesión.
+
 **v1.9.3:** ResumenDia ahora muestra los datos raw de la cartaporte enviada.
 + Se agregó cartaporte raw al LocalStorage para uso en ResumenDia.
 + Signature en color negro

@@ -6,16 +6,16 @@ export const setCompanySession = (company, wastes, containers, notes) => {
 };
 
 export const getCompanySession = () => ({
-  company: JSON.parse(localStorage.getItem('COMPANY')),
+  companyId: JSON.parse(localStorage.getItem('COMPANY')),
   wastes: JSON.parse(localStorage.getItem('COMPANY_WASTES')),
   containers: JSON.parse(localStorage.getItem('COMPANY_CONTAINERS')),
   notes: JSON.parse(localStorage.getItem('COMPANY_NOTES'))
 });
 
 export const deleteCompanySession = () => {
-  if (localStorage.getItem('COMPANY')) {
+  /*if (localStorage.getItem('COMPANY')) {
     localStorage.removeItem('COMPANY');
-  }
+  }*/
   if (localStorage.getItem('COMPANY_WASTES')) {
     localStorage.removeItem('COMPANY_WASTES');
   }
