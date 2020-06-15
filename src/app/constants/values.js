@@ -160,4 +160,11 @@ export const LINK_VALUES = {
   [LINK_TYPE_MAP]: "http://maps.google.com/?q="
 };
 
+export const NAMES = {
+  "AMB": "Ambar Plus",
+  "MRE": "Reciclauto"
+}
+
+export const getName = () => NAMES[process.env.REACT_APP_COMPANY_CODE] || "Gestión de residuos";
+
 export const APP_VERSION = 'v1.9.4'

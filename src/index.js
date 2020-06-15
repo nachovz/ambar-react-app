@@ -12,11 +12,13 @@ import * as serviceWorker from './serviceWorker';
 // css
 import 'app/css/reset.css';
 import 'typeface-roboto';
+import { getName } from 'app/constants/values';
 
+document.title = getName();
 const engine = new Styletron();
-Sentry.init({
+/*Sentry.init({
   dsn: "https://9a5b66bb769f4aec8ba0f1aa6d5a27ee@sentry.io/1512574"
-});
+});*/
 
 ReactDOM.render(
   <StyletronProvider value={engine}>
