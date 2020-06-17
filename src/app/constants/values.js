@@ -175,9 +175,9 @@ export const COMPANY_CODE_FILTER = {
 export const COMPANY_CODES = {
   "AMB": [
       //{ "id": "ABI", "name": "Ambar Bio" },
+      { "id": "AMB", "name": "Ambar Plus" },
       { "id": "AEC", "name": "Ambar Eco" },
       { "id": "AHK", "name": "Ambar Hondakin" },
-      { "id": "AMB", "name": "Ambar Plus" }
   ],
   "MRE": [
       { "id": "MRE", "name": "Manufacturas Reciclauto" }
