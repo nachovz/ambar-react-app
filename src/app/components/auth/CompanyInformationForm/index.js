@@ -14,10 +14,10 @@ import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
 import { getCompanySession } from 'app/utils/company';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
+import { COMPANIES } from 'app/constants/values';
 
 const CompanyInformationForm = ({ onVerified, history }) => {
   const [showQr, setShowQr] = useState(false);
-  const [companies , setCompanies] = useState([]);
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setRutasState] = useRutasContext();
@@ -28,35 +28,6 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   useEffect(() => {
     filterCompletedCartaPorteByDate();
   }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      setLoadingState(true);
-      try {
-        const companies = await client.get(`${ENDPOINTS.COMPANY}`);
-        setCompanies(companies.data);
-        setLoadingState(false);
-      } catch (error) {
-        setLoadingState(false);
-        setSnackbarContext({
-          message: error.message,
-          variant: 'error',
-          open: true,
-          ...error.response.status === 401 && {
-          forever: true,
-          action: [(
-            <React.Fragment key="extra">
-              <Button color="secondary" variant="contained" size="small" onClick={() => window.location.replace("/")}>
-                Iniciar sesión
-              </Button>  
-            </React.Fragment>
-          )]
-        }
-        });
-      }
-    }
-    fetchData();
-  }, [setLoadingState,setSnackbarContext]);
 
   const setQrState = (state) => () => setShowQr(state);
 
@@ -103,7 +74,10 @@ const CompanyInformationForm = ({ onVerified, history }) => {
       <SelectField
         ref={register({ name: 'companyId'})}
         value={companyId}
-        options={companies.map((comp) => ({ label: comp.name, value: comp.id }))}
+        options={
+          COMPANIES
+          .map((comp) => ({ label: comp.name, value: comp.id }))
+        }
         onChange={({ target: { value } }) => setValue('companyId', value)}
         helperText="Seleccionar empresa"
       />

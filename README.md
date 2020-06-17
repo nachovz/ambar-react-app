@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.5** Companies estático (no requiere fetch)
+
 **v1.9.4:** Habilitado selección de empresa
 + Se guarda la empresa seleccionada aún después de cerrar sesión.
 

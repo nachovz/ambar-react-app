@@ -167,4 +167,28 @@ export const NAMES = {
 
 export const getName = () => NAMES[process.env.REACT_APP_COMPANY_CODE] || "Gestión de residuos";
 
-export const APP_VERSION = 'v1.9.4'
+export const COMPANY_CODE_FILTER = {
+  "AMB": ["AMB", "AEC", "AHK"],
+  "MRE": ["MRE"]
+}
+
+export const COMPANY_CODES = {
+  "AMB": [
+      //{ "id": "ABI", "name": "Ambar Bio" },
+      { "id": "AEC", "name": "Ambar Eco" },
+      { "id": "AHK", "name": "Ambar Hondakin" },
+      { "id": "AMB", "name": "Ambar Plus" }
+  ],
+  "MRE": [
+      { "id": "MRE", "name": "Manufacturas Reciclauto" }
+  ],
+  "RMS" : [
+      { "id": "RMS", "name": "Remasur" }
+  ]
+}
+
+export const getCompanyFilter = () => COMPANY_CODE_FILTER[process.env.REACT_APP_COMPANY_CODE || "AMB"]
+
+export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AMB"]; 
+
+export const APP_VERSION = 'v1.9.5'
