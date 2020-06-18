@@ -5,18 +5,35 @@
       "args": [
         "build",
         "-t",
-        "gcr.io/ambar-db51a/production/visor-frontend:$SHORT_SHA",
+        "gcr.io/ambar-db51a/production/ambar-frontend:$SHORT_SHA",
         "-t",
-        "gcr.io/ambar-db51a/production/visor-frontend:latest",
+        "gcr.io/ambar-db51a/production/ambar-frontend:latest",
         "-t",
-        "gcr.io/ambar-db51a/production/visor-frontend",
+        "gcr.io/ambar-db51a/production/ambar-frontend",
+        "."
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/docker",
+      "args": [
+        "build",
+        "--build-arg", "COMPANY_TAG=MRE",
+        "-t",
+        "gcr.io/ambar-db51a/production/reciclauto-frontend:$SHORT_SHA",
+        "-t",
+        "gcr.io/ambar-db51a/production/reciclauto-frontend:latest",
+        "-t",
+        "gcr.io/ambar-db51a/production/reciclauto-frontend",
         "."
       ]
     }
   ],
   "images": [
-    "gcr.io/ambar-db51a/production/visor-frontend",
-    "gcr.io/ambar-db51a/production/visor-frontend:$SHORT_SHA",
-    "gcr.io/ambar-db51a/production/visor-frontend:latest"
+    "gcr.io/ambar-db51a/production/reciclauto-frontend",
+    "gcr.io/ambar-db51a/production/reciclauto-frontend:$SHORT_SHA",
+    "gcr.io/ambar-db51a/production/reciclauto-frontend:latest",
+    "gcr.io/ambar-db51a/production/ambar-frontend",
+    "gcr.io/ambar-db51a/production/ambar-frontend:$SHORT_SHA",
+    "gcr.io/ambar-db51a/production/ambar-frontend:latest"
   ]
 }
