@@ -12,6 +12,17 @@ export const getCompanySession = () => ({
   notes: JSON.parse(localStorage.getItem('COMPANY_NOTES'))
 });
 
+export const getCompanyId = () => {
+  let companyId = '';
+  try{
+    companyId = JSON.parse(localStorage.getItem('COMPANY'));
+  }catch(e){
+    console.log(e);
+    companyId = "ERROR";
+  }
+  return companyId;
+}
+
 export const deleteCompanySession = () => {
   /*if (localStorage.getItem('COMPANY')) {
     localStorage.removeItem('COMPANY');

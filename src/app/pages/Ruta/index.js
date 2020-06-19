@@ -38,7 +38,7 @@ const Ruta = ({ history }) => {
       async function fetchData() {
         setLoadingState(true);
         try {
-          const rutas = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route`);
+          const rutas = await client.get(`${ENDPOINTS.ROUTE}/${vehicleId}/route`);
           setRutasState({ ...rutas, selected: null });
           setLoadingState(false);
         } catch (error) {

@@ -15,6 +15,9 @@ import { getCompanySession } from 'app/utils/company';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import { COMPANIES } from 'app/constants/values';
+import { deleteCompanySession } from 'app/utils/company';
+import { deleteVehicleSession } from 'app/utils/vehicle';
+import { deleteUserSession } from 'app/utils/auth/userSession';
 
 const CompanyInformationForm = ({ onVerified, history }) => {
   const [showQr, setShowQr] = useState(false);
@@ -41,9 +44,9 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route`);
-      const containers = await client.get(ENDPOINTS.GET_CONTAINERS_BY_COMPANY(companyId));
-      const wastes = await client.get(ENDPOINTS.GET_WASTES_BY_COMPANY(companyId));
+      const rutas = await client.get(`${ENDPOINTS.ROUTE}/${vehicleId}/route`);
+      const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY);
+      const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY);
       const notes = await client.get(ENDPOINTS.GET_NOTES);
       setRutasState({ ...rutas, selected: null });
       setCompanySession(companyId, wastes, containers, notes);
@@ -78,7 +81,10 @@ const CompanyInformationForm = ({ onVerified, history }) => {
           COMPANIES
           .map((comp) => ({ label: comp.name, value: comp.id }))
         }
-        onChange={({ target: { value } }) => setValue('companyId', value)}
+        onChange={({ target: { value } }) => {
+          setValue('companyId', value);
+          setCompanySession(value, [], [], []);
+        }}
         helperText="Seleccionar empresa"
       />
       <TextField
@@ -118,7 +124,21 @@ const CompanyInformationForm = ({ onVerified, history }) => {
         fullWidth
         onClick={handleSubmit(verifyInformation)}
       >
-        Continue
+        Continuar
+      </Button>
+      
+      <Button
+        color="default"
+        variant="contained"
+        fullWidth
+        onClick={() =>{
+          deleteCompanySession();
+          deleteVehicleSession();
+          deleteUserSession();
+          window.location.reload();
+        }}
+      >
+        Cerrar sesión
       </Button>
     </form>
   );

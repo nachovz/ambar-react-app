@@ -8,6 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.6** Ajustes en generador de ENDPOINTS
++ Limpieza de "Ambar", dinamizado.
++ Opción para logout en selección de empresa.
++ Ajuste en endpoint de POST, llama a company correcto.
+
 **v1.9.5** Companies estático (no requiere fetch)
 
 **v1.9.4:** Habilitado selección de empresa

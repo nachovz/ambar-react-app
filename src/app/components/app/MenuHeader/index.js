@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from 'app/components/ui/Typography';
 import { Container, Picture, TextBox } from './elements';
+import { getName } from 'app/constants/values';
 
 const MenuHeader = () => {
   return (
@@ -8,7 +9,7 @@ const MenuHeader = () => {
       <Picture />
       <TextBox>
       <Typography variant="body2">
-        Ambar Plus
+        {getName()}
       </Typography>
       </TextBox>
     </Container>
