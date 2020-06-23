@@ -25,6 +25,7 @@ const AuthenticationForm = ({ onAuthorized }) => {
       onAuthorized();
     } catch (error) {
       setLoadingState(false);
+      if(error.response.status === 401) error.message = "Nombre de usuario o contraseña inválido";
       setSnackbarContext({
         message: error.message,
         variant: 'error',
