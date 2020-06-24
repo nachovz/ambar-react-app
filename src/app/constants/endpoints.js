@@ -1,16 +1,14 @@
-import { getCompanyId } from "app/utils/company";
-
 const BASE_URL = 'https://api.dev.ambarplus.com';
-const COMPANY_BASE = `${BASE_URL}/company/${getCompanyId()}`;
+const COMPANY_BASE = (companyId) => `${BASE_URL}/company/${companyId}`;
 
 const ENDPOINTS = {
   LOGIN: `${BASE_URL}/auth/sign_in`,
   REFRESH_TOKEN: `${BASE_URL}/auth/token`,
   COMPANY: `${BASE_URL}/company`,
-  ROUTE: `${COMPANY_BASE}/vehicle`,
-  CONTAINERS_BY_COMPANY: `${COMPANY_BASE}/container`,
-  WASTES_BY_COMPANY: `${COMPANY_BASE}/waste`,
-  ROUTE_POST: `${COMPANY_BASE}/route`,
+  ROUTE: (companyId) => `${COMPANY_BASE(companyId)}/vehicle`,
+  CONTAINERS_BY_COMPANY:  (companyId) => `${COMPANY_BASE(companyId)}/container`,
+  WASTES_BY_COMPANY:  (companyId) => `${COMPANY_BASE(companyId)}/waste`,
+  ROUTE_POST:  (companyId) => `${COMPANY_BASE(companyId)}/route`,
   DCS: `${BASE_URL}/dcs`,
   GET_NOTES: `${BASE_URL}/notes`,
   

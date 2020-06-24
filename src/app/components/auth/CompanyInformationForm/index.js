@@ -11,11 +11,10 @@ import { useRutasContext } from 'app/contexts/Rutas';
 import { setVehicleSession } from 'app/utils/vehicle';
 import { setCompanySession } from 'app/utils/company';
 import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
-import { getCompanySession } from 'app/utils/company';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import { COMPANIES } from 'app/constants/values';
-import { deleteCompanySession } from 'app/utils/company';
+import { deleteCompanySession, getCompanyId } from 'app/utils/company';
 import { deleteVehicleSession } from 'app/utils/vehicle';
 import { deleteUserSession } from 'app/utils/auth/userSession';
 
@@ -25,7 +24,7 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setRutasState] = useRutasContext();
   const { register, handleSubmit, watch, setValue, errors } = useForm({
-    defaultValues: { companyId: getCompanySession().companyId }
+    defaultValues: { companyId: getCompanyId() }
   });
 
   useEffect(() => {
@@ -44,9 +43,9 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE}/${vehicleId}/route`);
-      const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY);
-      const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY);
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(companyId)}/${vehicleId}/route`);
+      const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY(companyId));
+      const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY(companyId));
       const notes = await client.get(ENDPOINTS.GET_NOTES);
       setRutasState({ ...rutas, selected: null });
       setCompanySession(companyId, wastes, containers, notes);

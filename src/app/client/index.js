@@ -82,6 +82,9 @@ function errorHandler(error) {
       default:
         break;
     }
+  }else{
+    error.response = { status: 400 };
+    error.message = "No hay conexión."
   }
   throw error;
 }
