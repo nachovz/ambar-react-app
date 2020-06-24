@@ -37,9 +37,15 @@
       "sizes": "192x192",
       "type": "image\/png",
       "density": "4.0"
+    },
+    {
+      "src": "\/MRE\/android-icon-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image\/png",
+      "density": "4.0"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#042F4C",

@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.7a**hotFix start_url en manifest
++ Agregadas imágenes para 100% PWA en LH
+
 **v1.9.7**Fix en url de ruta & manifest
 + Ajuste de mensaje cuando user o passw no es correcto
 + Variables de entorno en SW
