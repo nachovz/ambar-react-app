@@ -8,6 +8,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.7**Fix en url de ruta & manifest
++ Ajuste de mensaje cuando user o passw no es correcto
++ Variables de entorno en SW
++ Fixed offline cache
++ Limpieza de comments
++ Cacheo de imágenes
+
 **v1.9.6** Ajustes en generador de ENDPOINTS
 + Limpieza de "Ambar", dinamizado.
 + Opción para logout en selección de empresa.
