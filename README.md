@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [DEV https://visor.dev.ambarplus.com/](https://visor.dev.ambarplus.com/)
 
+## Themification
+
+*.env*
+
+REACT_APP_COMPANY_CODE=AMB
+
+Códigos de empresas: AMB = Ambar Plus (Default), MRE = Reciclauto
+
 Changelog:
 
 **v1.9.8**Reforzar validación de CompayId en login
