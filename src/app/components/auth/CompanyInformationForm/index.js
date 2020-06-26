@@ -47,8 +47,9 @@ const CompanyInformationForm = ({ onVerified, history }) => {
       const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY(companyId));
       const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY(companyId));
       const notes = await client.get(ENDPOINTS.GET_NOTES);
+      const info = await client.get(ENDPOINTS.COMPANY_INFO(companyId));
       setRutasState({ ...rutas, selected: null });
-      setCompanySession(companyId, wastes, containers, notes);
+      setCompanySession(companyId, wastes, containers, notes, info);
       setVehicleSession(vehicleId, moment());
       setLoadingState(false);
       onVerified();
@@ -70,11 +71,15 @@ const CompanyInformationForm = ({ onVerified, history }) => {
         }
       });
     }
-  }
+  };
+
   return (
     <form>
       <SelectField
-        ref={register({ name: 'companyId'})}
+        ref={register({  name: 'companyId' },{
+          required: 'Este campo es requerido',
+          validate: value => value !== null,
+        })}
         value={companyId}
         options={
           COMPANIES
@@ -82,9 +87,10 @@ const CompanyInformationForm = ({ onVerified, history }) => {
         }
         onChange={({ target: { value } }) => {
           setValue('companyId', value);
-          setCompanySession(value, [], [], []);
+          setCompanySession(value);
         }}
         helperText="Seleccionar empresa"
+        error={errors.companyId}
       />
       <TextField
         type="text"

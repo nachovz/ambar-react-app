@@ -178,6 +178,7 @@ export const COMPANY_CODES = {
       { "id": "AMB", "name": "Ambar Plus" },
       { "id": "AEC", "name": "Ambar Eco" },
       { "id": "AHK", "name": "Ambar Hondakin" },
+      { "id": "RMS", "name": "Remasur" }
   ],
   "MRE": [
       { "id": "MRE", "name": "Manufacturas Reciclauto" }
@@ -187,8 +188,6 @@ export const COMPANY_CODES = {
   ]
 }
 
-export const getCompanyFilter = () => COMPANY_CODE_FILTER[process.env.REACT_APP_COMPANY_CODE || "AMB"]
-
 export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AMB"]; 
 
-export const APP_VERSION = 'v1.9.7a'
+export const APP_VERSION = 'v1.9.8';

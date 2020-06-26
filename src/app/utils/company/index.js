@@ -1,8 +1,9 @@
-export const setCompanySession = (company, wastes, containers, notes) => {
+export const setCompanySession = (company, wastes=[], containers=[], notes=[], info={}) => {
   localStorage.setItem('COMPANY', JSON.stringify(company));
   localStorage.setItem('COMPANY_WASTES', JSON.stringify(wastes));
   localStorage.setItem('COMPANY_CONTAINERS', JSON.stringify(containers));
   localStorage.setItem('COMPANY_NOTES', JSON.stringify(notes));
+  localStorage.setItem('COMPANY_INFO', JSON.stringify(info));
 };
 
 export const getCompanySession = () => ({
@@ -17,11 +18,20 @@ export const getCompanyId = () => {
   try{
     companyId = JSON.parse(localStorage.getItem('COMPANY'));
   }catch(e){
-    console.log(e);
     companyId = "ERROR";
   }
   return companyId;
-}
+};
+
+export const getCompanyInfo = () => {
+  let companyInfo = '';
+  try{
+    companyInfo = JSON.parse(localStorage.getItem('COMPANY_INFO')).data[0];
+  }catch(e){
+    companyInfo = false;
+  }
+  return companyInfo;
+};
 
 export const deleteCompanySession = () => {
   /*if (localStorage.getItem('COMPANY')) {

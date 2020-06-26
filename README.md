@@ -8,6 +8,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Changelog:
 
+**v1.9.8**Reforzar validación de CompayId en login
++ Activo endpoint de información de Company
++ Agregado campo de COMPANY_INFO a localStorage
++ Validación de COMPANY_INFO en ResumenDía
++ Limpieza de json estáticos
++ Ajuste de estado de error para SelectField
+
 **v1.9.7a**hotFix start_url en manifest
 + Agregadas imágenes para 100% PWA en LH
 

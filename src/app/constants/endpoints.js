@@ -4,7 +4,7 @@ const COMPANY_BASE = (companyId) => `${BASE_URL}/company/${companyId}`;
 const ENDPOINTS = {
   LOGIN: `${BASE_URL}/auth/sign_in`,
   REFRESH_TOKEN: `${BASE_URL}/auth/token`,
-  COMPANY: `${BASE_URL}/company`,
+  COMPANY_INFO: (companyId) => `${COMPANY_BASE(companyId)}`,
   ROUTE: (companyId) => `${COMPANY_BASE(companyId)}/vehicle`,
   CONTAINERS_BY_COMPANY:  (companyId) => `${COMPANY_BASE(companyId)}/container`,
   WASTES_BY_COMPANY:  (companyId) => `${COMPANY_BASE(companyId)}/waste`,
