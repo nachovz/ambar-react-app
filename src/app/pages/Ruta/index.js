@@ -36,22 +36,7 @@ const Ruta = ({ history }) => {
 
   useEffect(() => {
     if (!rutas || !rutas.data) {
-      async function fetchData() {
-        setLoadingState(true);
-        try {
-          const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`);
-          setRutasState({ ...rutas, selected: null });
-          setLoadingState(false);
-        } catch (error) {
-          setLoadingState(false);
-          setSnackbarContext({
-            message: error.message,
-            variant: 'error',
-            open: true,
-          });
-        }
-      }
-      fetchData();
+      refreshRuta();
     }
   }, [rutas, setLoadingState, setRutasState, vehicleId, setSnackbarContext, companyId]);
 
@@ -97,6 +82,22 @@ const Ruta = ({ history }) => {
     });
   };
 
+  const refreshRuta = async function fetchData() {
+    setLoadingState(true);
+    try {
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`);
+      setRutasState({ ...rutas, selected: null });
+      setLoadingState(false);
+    } catch (error) {
+      setLoadingState(false);
+      setSnackbarContext({
+        message: error.message,
+        variant: 'error',
+        open: true,
+      });
+    }
+  }
+
   const ordersKeys = Object.keys(orders);
 
   return (
@@ -104,6 +105,8 @@ const Ruta = ({ history }) => {
       <TopBar
         title={`Total avisos: ${ordersKeys.length}`}
         now
+        actionIcon={"refresh"}
+        action={refreshRuta}
       />
       <List>
         {ordersKeys.map((order, index) => (

@@ -214,3 +214,7 @@
 .icon-ver:before {
   content: "\e935";
 }
+.icon-refresh:before{
+  content: "↻";
+  font-weight: bold;
+}
