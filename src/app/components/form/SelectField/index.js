@@ -10,7 +10,9 @@ const SelectField = ({
 }) => (
   <FieldError error={error}>
     <UITextField
+      style={{width: '100%'}}
       select
+      error={!!error}
       {...props}
     >
       {options.map(option => (

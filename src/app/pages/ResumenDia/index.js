@@ -13,7 +13,8 @@ import FieldListElement from 'app/components/ui/ListElement/FieldListElement';
 import { getVehicleSession } from 'app/utils/vehicle';
 import { getRecogidaTypes } from 'app/constants/values';
 import RecogidaGroupedTable from 'app/components/data/RecogidaGroupedTable';
-import COMPANY from 'app/constants/company_info.json';
+import { getCompanyInfo } from 'app/utils/company';
+import { useSnackbarContext } from 'app/contexts/Snackbar';
 
 const STEPS = {
   resumen: {
@@ -52,10 +53,21 @@ const STEPS = {
 const ResumenDia = ({ history }) => {
   const [step, setStep] = useState('resumen');
   const [{ selected }] = useRutasContext();
-
+  const [, setSnackbarContext] = useSnackbarContext();
+  const COMPANY = getCompanyInfo();
+  
   React.useEffect( () => {
     window.scrollTo(0, 0);
   })
+  React.useEffect( () =>{
+    if(!COMPANY){
+      setSnackbarContext({
+        message: "No se pudo cargar la información de la empresa, comunicarse con Oficina.",
+        variant: 'error',
+        open: true
+      });
+    }
+  },[setSnackbarContext, COMPANY])
 
   const moveToStep = (step) => () => setStep(step);
   const moveToNextStep = () => setStep(STEPS[step].next);
@@ -81,6 +93,8 @@ const ResumenDia = ({ history }) => {
     ClientAccessible,
     Responsible
   } = selected;
+
+  
 
   return (
     <div>
@@ -287,9 +301,8 @@ const ResumenDia = ({ history }) => {
           />
           {selected.observaciones ?
             selected.observaciones.map( ({ label, on, comment }, ind) =>(
-              <React.Fragment>
+              <React.Fragment key={ind}>
                 <FieldListElement
-                  key={ind}
                   field={
                     <Checkbox
                         color="primary"

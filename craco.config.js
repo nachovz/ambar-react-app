@@ -1,6 +1,9 @@
 const rewireTypescript = require('react-app-rewire-typescript');
 const workboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
+const fs = require('fs');
+const DumpVueEnvVarsWebpackPlugin = require('./DumpVueEnvVarsWebpackPlugin.js')
+
 module.exports = {
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
@@ -16,6 +19,7 @@ module.exports = {
           webpackConfig = removePreWorkboxWebpackPluginConfig(webpackConfig);
 
           webpackConfig.plugins.push(new  workboxPlugin.InjectManifest(workboxConfigProd));
+          webpackConfig.plugins.push(new DumpVueEnvVarsWebpackPlugin({ filename: 'my-env-vars.js' }))
       }
       return webpackConfig;
     }

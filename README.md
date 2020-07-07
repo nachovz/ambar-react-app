@@ -6,7 +6,42 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [DEV https://visor.dev.ambarplus.com/](https://visor.dev.ambarplus.com/)
 
+## Themification
+
+*.env*
+
+REACT_APP_COMPANY_CODE=AMB
+
+Códigos de empresas: AMB = Ambar Plus (Default), MRE = Reciclauto
+
 Changelog:
+
+**v1.9.8**Reforzar validación de CompayId en login
++ Activo endpoint de información de Company
++ Agregado campo de COMPANY_INFO a localStorage
++ Validación de COMPANY_INFO en ResumenDía
++ Limpieza de json estáticos
++ Ajuste de estado de error para SelectField
+
+**v1.9.7a**hotFix start_url en manifest
++ Agregadas imágenes para 100% PWA en LH
+
+**v1.9.7**Fix en url de ruta & manifest
++ Ajuste de mensaje cuando user o passw no es correcto
++ Variables de entorno en SW
++ Fixed offline cache
++ Limpieza de comments
++ Cacheo de imágenes
+
+**v1.9.6** Ajustes en generador de ENDPOINTS
++ Limpieza de "Ambar", dinamizado.
++ Opción para logout en selección de empresa.
++ Ajuste en endpoint de POST, llama a company correcto.
+
+**v1.9.5** Companies estático (no requiere fetch)
+
+**v1.9.4:** Habilitado selección de empresa
++ Se guarda la empresa seleccionada aún después de cerrar sesión.
 
 **v1.9.3:** ResumenDia ahora muestra los datos raw de la cartaporte enviada.
 + Se agregó cartaporte raw al LocalStorage para uso en ResumenDia.
