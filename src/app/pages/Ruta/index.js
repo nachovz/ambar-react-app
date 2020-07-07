@@ -14,6 +14,7 @@ import TopBar from 'app/components/ui/TopBar';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import getGeoPosition from 'app/utils/getGeoPosition';
+import { getCompanyId } from 'app/utils/company';
 
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -38,7 +39,7 @@ const Ruta = ({ history }) => {
       async function fetchData() {
         setLoadingState(true);
         try {
-          const rutas = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route`);
+          const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`);
           setRutasState({ ...rutas, selected: null });
           setLoadingState(false);
         } catch (error) {

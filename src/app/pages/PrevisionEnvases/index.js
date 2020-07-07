@@ -16,9 +16,9 @@ import { esIntlDate } from 'app/utils/esIntlFormatter';
 import getColor from 'app/styles/palette';
 import ENDPOINTS from 'app/constants/endpoints';
 import { getVehicleSession } from 'app/utils/vehicle';
-import { getCompanySession } from 'app/utils/company';
 import Typography from 'app/components/ui/Typography';
 import { TIPOS_RECOGIDAS, SERVICIO, SERVFACT } from 'app/constants/values';
+import { getCompanyId } from 'app/utils/company';
 
 const PrevisionEnvases = ({ history }) => {
   const [rutas] = useRutasContext();
@@ -27,7 +27,6 @@ const PrevisionEnvases = ({ history }) => {
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const { vehicleId } = getVehicleSession();
-  const { companyId } = getCompanySession();
   let currentDate = new Date();
 
   if (!rutas || ! rutas.data) {
@@ -46,7 +45,7 @@ const PrevisionEnvases = ({ history }) => {
     while(!rutaFuture && counter < 4 ){
       try {
         let queryDate = esIntlDate.format(currentDate.getTime() + ( 86400000 * counter));
-        rutaFuture = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route?date=${queryDate}`);
+        rutaFuture = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=${queryDate}`);
         setFuture({
           data: keyDataGenerator(rutaFuture.data),
           date: queryDate

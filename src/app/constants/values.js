@@ -160,4 +160,34 @@ export const LINK_VALUES = {
   [LINK_TYPE_MAP]: "http://maps.google.com/?q="
 };
 
-export const APP_VERSION = 'v1.9.4'
+export const NAMES = {
+  "AMB": "Ambar Plus",
+  "MRE": "Reciclauto"
+}
+
+export const getName = () => NAMES[process.env.REACT_APP_COMPANY_CODE] || "Gestión de residuos";
+
+export const COMPANY_CODE_FILTER = {
+  "AMB": ["AMB", "AEC", "AHK"],
+  "MRE": ["MRE"]
+}
+
+export const COMPANY_CODES = {
+  "AMB": [
+      //{ "id": "ABI", "name": "Ambar Bio" },
+      { "id": "AMB", "name": "Ambar Plus" },
+      { "id": "AEC", "name": "Ambar Eco" },
+      { "id": "AHK", "name": "Ambar Hondakin" },
+      { "id": "RMS", "name": "Remasur" }
+  ],
+  "MRE": [
+      { "id": "MRE", "name": "Manufacturas Reciclauto" }
+  ],
+  "RMS" : [
+      { "id": "RMS", "name": "Remasur" }
+  ]
+}
+
+export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AMB"]; 
+
+export const APP_VERSION = 'v1.9.8';

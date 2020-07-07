@@ -6,8 +6,8 @@ import AuthenticationForm from 'app/components/auth/AuthenticationForm';
 import CompanyInformationForm from 'app/components/auth/CompanyInformationForm';
 import { Main, FormWrapper, Logo, Footer } from './elements';
 import { APP_VERSION } from 'app/constants/values';
-
-import ambar from 'app/images/ambar.png';
+import { getLogo } from 'app/styles/constants';
+import { getName } from 'app/constants/values';
 
 const Login = () => {
   const [step, setStep] = useState(0);
@@ -26,7 +26,7 @@ const Login = () => {
 
   return (
     <Main>
-      <Logo src={ambar} alt="ambar" />
+      <Logo src={getLogo()} alt="ambar" />
       <FormWrapper>
         {step === 0 && (
           <AuthenticationForm onAuthorized={changeStep} />
@@ -37,7 +37,7 @@ const Login = () => {
       </FormWrapper>
       <Footer>
         <Typography variant="caption" color="textSecondary">
-          Ambar Plus S.A. |  Versión {APP_VERSION}
+          {getName()} |  Versión {APP_VERSION}
         </Typography>
       </Footer>
     </Main>

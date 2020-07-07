@@ -17,6 +17,7 @@ import BorderedContainer from 'app/components/ui/BorderedContainer';
 import ImageComponent from 'app/components/ui/ImageComponent';
 import TextField from 'app/components/form/TextField';
 import { buildCartaporte, addCompletedCartaporte } from 'app/utils/cartaporte';
+import { getCompanyId } from 'app/utils/company';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
 import {
@@ -58,7 +59,7 @@ const CartaPorteSignature = ({ history }) => {
     try {
       const body = buildCartaporte(selected);
       //console.log(body);
-      await client.post(ENDPOINTS.ROUTE, { body });
+      await client.post(ENDPOINTS.ROUTE_POST(getCompanyId()), { body });
       addCompletedCartaporte(selected.ServiceOrderId, selected);
       setLoadingState(false);
       setRutasState({

@@ -6,7 +6,7 @@ export const Main = styled('main', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '80px 40px'
+  padding: '20px 40px'
 });
 
 export const Logo = styled('img', {

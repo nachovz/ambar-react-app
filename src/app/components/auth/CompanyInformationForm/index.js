@@ -11,52 +11,25 @@ import { useRutasContext } from 'app/contexts/Rutas';
 import { setVehicleSession } from 'app/utils/vehicle';
 import { setCompanySession } from 'app/utils/company';
 import { filterCompletedCartaPorteByDate } from 'app/utils/cartaporte';
-import { getCompanySession } from 'app/utils/company';
 import client from 'app/client';
 import ENDPOINTS from 'app/constants/endpoints';
+import { COMPANIES } from 'app/constants/values';
+import { deleteCompanySession, getCompanyId } from 'app/utils/company';
+import { deleteVehicleSession } from 'app/utils/vehicle';
+import { deleteUserSession } from 'app/utils/auth/userSession';
 
 const CompanyInformationForm = ({ onVerified, history }) => {
   const [showQr, setShowQr] = useState(false);
-  const [companies , setCompanies] = useState([]);
   const [, setLoadingState] = useLoadingContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setRutasState] = useRutasContext();
   const { register, handleSubmit, watch, setValue, errors } = useForm({
-    defaultValues: { companyId: getCompanySession().companyId }
+    defaultValues: { companyId: getCompanyId() }
   });
 
   useEffect(() => {
     filterCompletedCartaPorteByDate();
   }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      setLoadingState(true);
-      try {
-        const companies = await client.get(`${ENDPOINTS.COMPANY}`);
-        setCompanies(companies.data);
-        setLoadingState(false);
-      } catch (error) {
-        setLoadingState(false);
-        setSnackbarContext({
-          message: error.message,
-          variant: 'error',
-          open: true,
-          ...error.response.status === 401 && {
-          forever: true,
-          action: [(
-            <React.Fragment key="extra">
-              <Button color="secondary" variant="contained" size="small" onClick={() => window.location.replace("/")}>
-                Iniciar sesión
-              </Button>  
-            </React.Fragment>
-          )]
-        }
-        });
-      }
-    }
-    fetchData();
-  }, [setLoadingState,setSnackbarContext]);
 
   const setQrState = (state) => () => setShowQr(state);
 
@@ -70,12 +43,13 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.GET_ROUTE(companyId)}/${vehicleId}/route`);
-      const containers = await client.get(ENDPOINTS.GET_CONTAINERS_BY_COMPANY(companyId));
-      const wastes = await client.get(ENDPOINTS.GET_WASTES_BY_COMPANY(companyId));
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(companyId)}/${vehicleId}/route`);
+      const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY(companyId));
+      const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY(companyId));
       const notes = await client.get(ENDPOINTS.GET_NOTES);
+      const info = await client.get(ENDPOINTS.COMPANY_INFO(companyId));
       setRutasState({ ...rutas, selected: null });
-      setCompanySession(companyId, wastes, containers, notes);
+      setCompanySession(companyId, wastes, containers, notes, info);
       setVehicleSession(vehicleId, moment());
       setLoadingState(false);
       onVerified();
@@ -97,15 +71,26 @@ const CompanyInformationForm = ({ onVerified, history }) => {
         }
       });
     }
-  }
+  };
+
   return (
     <form>
       <SelectField
-        ref={register({ name: 'companyId'})}
+        ref={register({  name: 'companyId' },{
+          required: 'Este campo es requerido',
+          validate: value => value !== null,
+        })}
         value={companyId}
-        options={companies.map((comp) => ({ label: comp.name, value: comp.id }))}
-        onChange={({ target: { value } }) => setValue('companyId', value)}
+        options={
+          COMPANIES
+          .map((comp) => ({ label: comp.name, value: comp.id }))
+        }
+        onChange={({ target: { value } }) => {
+          setValue('companyId', value);
+          setCompanySession(value);
+        }}
         helperText="Seleccionar empresa"
+        error={errors.companyId}
       />
       <TextField
         type="text"
@@ -144,7 +129,21 @@ const CompanyInformationForm = ({ onVerified, history }) => {
         fullWidth
         onClick={handleSubmit(verifyInformation)}
       >
-        Continue
+        Continuar
+      </Button>
+      
+      <Button
+        color="default"
+        variant="contained"
+        fullWidth
+        onClick={() =>{
+          deleteCompanySession();
+          deleteVehicleSession();
+          deleteUserSession();
+          window.location.reload();
+        }}
+      >
+        Cerrar sesión
       </Button>
     </form>
   );
