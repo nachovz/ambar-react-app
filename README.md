@@ -16,6 +16,8 @@ Códigos de empresas: AMB = Ambar Plus (Default), MRE = Reciclauto
 
 Changelog:
 
+**v1.9.9** Previsión de envases agrupar por Cliente
+
 **v1.9.8a** Botón de refresh en Ruta
 
 **v1.9.8** Reforzar validación de CompayId en login

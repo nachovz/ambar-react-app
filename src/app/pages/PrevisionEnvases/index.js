@@ -7,6 +7,7 @@ import { useSnackbarContext } from 'app/contexts/Snackbar';
 import TopBar from 'app/components/ui/TopBar';
 import List from 'app/components/ui/List';
 import DataListElement from 'app/components/ui/ListElement/DataListElement';
+import TextListElement from 'app/components/ui/ListElement/TextListElement';
 import StepNavigator from 'app/components/app/StepNavigator';
 import dictionaryGenerator from 'app/utils/dictionaryGenerator';
 import ExpansionPanel from 'app/components/ui/ExpansionPanel';
@@ -47,7 +48,7 @@ const PrevisionEnvases = ({ history }) => {
         let queryDate = esIntlDate.format(currentDate.getTime() + ( 86400000 * counter));
         rutaFuture = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=${queryDate}`);
         setFuture({
-          data: keyDataGenerator(rutaFuture.data),
+          data: rutaFuture.data,
           date: queryDate
         });
         setLoadingState(false);
@@ -68,17 +69,25 @@ const PrevisionEnvases = ({ history }) => {
   }
 
   const keyDataGenerator = (data) => {
-    return dictionaryGenerator(
-      Object.keys(data).reduce((result, key) => ([
-          ...result,
-          ...data[key].data.filter((reco) => (TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVICIO && TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVFACT ))
-        ]), []), 
-      ["PackingMaterialName", "ItemName"], 
-      "Res_Qty_Env", 
-      "PackingMaterialName"
-    );
+    const clientArray = Object.keys(data).reduce((result, key) => ([
+      ...result,
+      ...[{ 
+        "client": data[key].ServiceAddressName, 
+        "data": data[key].data.filter((reco) => 
+          (TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVICIO && TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVFACT ))
+      }]
+    ]), []);
+    return clientArray.map(({client, data}, ind) =>{
+      return {
+      client,
+      data: dictionaryGenerator(
+        data, 
+        ["PackingMaterialName", "ItemName"], 
+        "Res_Qty_Env"
+      )
+      }
+    });
   }
-  const containersDictionary = keyDataGenerator(rutas.data);
 
   return (
     <Fragment>
@@ -117,16 +126,24 @@ const PrevisionEnvases = ({ history }) => {
             background: getColor("PRIMARY"),
             content:(
               <List>
-                {Object.keys(future.data).map((container, index) =>(
+              {keyDataGenerator(future.data).map(({client, data}, index) =>(
+                <React.Fragment key={index}>
+                <TextListElement
+                  icon="usuario"
+                  title={client}
+                />
+                {data.map((container, ind) =>(
                   <DataListElement
-                    key={index}
+                    key={`${index}-${ind}`}
                     icon="envase"
-                    title={future.data[container].name}
-                    subtitle={container}
-                    quantities={[future.data[container].Qty]}
+                    title={container.name}
+                    quantities={[container.Qty]}
                   />
                 ))}
-              </List>
+                
+                </React.Fragment>
+              ))}
+            </List>
             )
           }}
         />
@@ -138,14 +155,22 @@ const PrevisionEnvases = ({ history }) => {
           background: getColor("PRIMARY"),
           content:(
             <List>
-              {Object.keys(containersDictionary).map((container, index) =>(
-                <DataListElement
-                  key={index}
-                  icon="envase"
-                  title={containersDictionary[container].name}
-                  subtitle={container}
-                  quantities={[containersDictionary[container].Qty]}
+              {keyDataGenerator(rutas.data).map(({client, data}, index) =>(
+                <React.Fragment key={index}>
+                <TextListElement
+                  icon="usuario"
+                  title={client}
                 />
+                {data.map((container, ind) =>(
+                  <DataListElement
+                    key={`${index}-${ind}`}
+                    icon="envase"
+                    title={container.name}
+                    quantities={[container.Qty]}
+                  />
+                ))}
+                
+                </React.Fragment>
               ))}
             </List>
           )

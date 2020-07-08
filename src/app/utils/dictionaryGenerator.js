@@ -1,12 +1,11 @@
 const dictionaryGenerator = ( data, key, value, name) => {
 
   var dictionary = {};
-
   data.forEach(element => {
     if(!!element[key[0]]){
       if(!dictionary[element[key[0]]]){
         dictionary[element[key[0]]] = {
-          name: element[name],
+          name: element[key[0]],
           Qty: parseInt(element[value])
         }
       }else{
@@ -15,7 +14,7 @@ const dictionaryGenerator = ( data, key, value, name) => {
     }else{
       if(!dictionary[element[key[1]]]){
         dictionary[element[key[1]]] = {
-          name: element[name],
+          name: element[key[1]],
           Qty: parseInt(element[value])
         }
       }else{
@@ -24,7 +23,7 @@ const dictionaryGenerator = ( data, key, value, name) => {
     }
   });
 
-  return dictionary;
+  return Object.values(dictionary);
 }
 
 export default dictionaryGenerator;
