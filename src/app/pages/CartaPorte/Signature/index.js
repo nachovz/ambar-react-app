@@ -123,7 +123,7 @@ const CartaPorteSignature = ({ history }) => {
             color="secondary"
             fullWidth
             onClick={
-              () => setSignature(sigPad.getTrimmedCanvas().toDataURL('image/png'))
+              () => setSignature(sigPad.getTrimmedCanvas().toDataURL('image/jpeg'))
             }
           >
             Guardar firma
@@ -139,6 +139,7 @@ const CartaPorteSignature = ({ history }) => {
             approvals.conform && (
               <SignatureCanvas
                 penColor='black'
+                backgroundColor="rgb(255,255,255)"
                 ref={(ref) => { sigPad = ref }}
                 canvasProps={{
                   className: 'sigCanvas',
@@ -162,7 +163,7 @@ const CartaPorteSignature = ({ history }) => {
             color="secondary"
             fullWidth
             onClick={
-              () => setSignature(sigPad.getTrimmedCanvas().toDataURL('image/png'))
+              () => setSignature(sigPad.getTrimmedCanvas().toDataURL('image/jpeg'))
             }
           >
             Guardar firma

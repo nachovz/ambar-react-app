@@ -16,17 +16,23 @@ Códigos de empresas: AMB = Ambar Plus (Default), MRE = Reciclauto
 
 Changelog:
 
-**v1.9.8**Reforzar validación de CompayId en login
+**v1.9.10** Fixes en manifest & Cambio de formato de imagen a jpeg
+
+**v1.9.9** Previsión de envases agrupar por Cliente
+
+**v1.9.8a** Botón de refresh en Ruta
+
+**v1.9.8** Reforzar validación de CompayId en login
 + Activo endpoint de información de Company
 + Agregado campo de COMPANY_INFO a localStorage
 + Validación de COMPANY_INFO en ResumenDía
 + Limpieza de json estáticos
 + Ajuste de estado de error para SelectField
 
-**v1.9.7a**hotFix start_url en manifest
+**v1.9.7a** hotFix start_url en manifest
 + Agregadas imágenes para 100% PWA en LH
 
-**v1.9.7**Fix en url de ruta & manifest
+**v1.9.7** Fix en url de ruta & manifest
 + Ajuste de mensaje cuando user o passw no es correcto
 + Variables de entorno en SW
 + Fixed offline cache
