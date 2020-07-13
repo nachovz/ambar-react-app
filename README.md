@@ -16,6 +16,8 @@ Códigos de empresas: AMB = Ambar Plus (Default), MRE = Reciclauto
 
 Changelog:
 
+**v1.9.10a** hotfix manifest url correcto & fix de llamado refreshRuta
+
 **v1.9.10** Fixes en manifest & Cambio de formato de imagen a jpeg
 
 **v1.9.9** Previsión de envases agrupar por Cliente
