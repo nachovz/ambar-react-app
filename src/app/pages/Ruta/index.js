@@ -98,6 +98,22 @@ const Ruta = ({ history }) => {
     });
   };
 
+  const refreshRuta = async function fetchData() {
+    setLoadingState(true);
+    try {
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`);
+      setRutasState({ ...rutas, selected: null });
+      setLoadingState(false);
+    } catch (error) {
+      setLoadingState(false);
+      setSnackbarContext({
+        message: error.message,
+        variant: 'error',
+        open: true,
+      });
+    }
+  }
+
   const ordersKeys = Object.keys(orders);
 
   return (
