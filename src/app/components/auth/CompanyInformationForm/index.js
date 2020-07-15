@@ -43,7 +43,7 @@ const CompanyInformationForm = ({ onVerified, history }) => {
   const verifyInformation = async ({ companyId, vehicleId }) => {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE(companyId)}/${vehicleId}/route`);
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(companyId)}/${vehicleId}/route`,{ ignoreThrow: true });
       const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY(companyId));
       const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY(companyId));
       const notes = await client.get(ENDPOINTS.GET_NOTES);
