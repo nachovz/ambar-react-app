@@ -37,7 +37,7 @@ const ServicioForm = ({
             onChange={(e)=>{
               setValue("servicioRealizado",e.target.checked, true);
               setValue("servicioExtraInfo",false);
-              setValue("unidadesReal", "");
+              setValue("unidadesreal", "");
             }}
           />
         }
@@ -54,7 +54,7 @@ const ServicioForm = ({
               value: (getValues().servicioExtraInfo || false),
               onChange: (e) => {
                 setValue("servicioExtraInfo",e);
-                setValue("unidadesReal", "");
+                setValue("unidadesreal", "");
               }
             }}
           />
@@ -71,10 +71,10 @@ const ServicioForm = ({
             register={register}
             required={false}
             noMargin
-            name="unidadesReal"
+            name="unidadesreal"
             type="number"
             placeholder="UNIDADES"
-            error={errors.unidadesReal}
+            error={errors.unidadesreal}
           />
         }
       />

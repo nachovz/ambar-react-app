@@ -14,10 +14,10 @@ const EntregaForm = ({
         <TextField
           noMargin
           register={register}
-          name="unidadesReal"
+          name="unidadesreal"
           type="number"
           placeholder="UNIDADES"
-          error={errors.unidadesReal}
+          error={errors.unidadesreal}
         />
       }
     />

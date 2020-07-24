@@ -24,11 +24,12 @@ const Ruta = ({ history }) => {
   const [openAlert, setOpenAlert] = React.useState({ 
     open: false
   });
+  console.log(rutas);
 
   const refreshRuta = async function() {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`, { ignoreThrow: true });
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=17/07/2020`, { ignoreThrow: true });
       setRutasState({ ...rutas, selected: null });
       setLoadingState(false);
     } catch (error) {
@@ -78,7 +79,7 @@ const Ruta = ({ history }) => {
   const handleCloseAlert = () => setOpenAlert({ open: false });
   const handleOpenCartaPorte = (selected, route, done=false) => () => {
 
-  const current = getCompletedCartaporte().find( (cp) => cp.id === selected.ServiceOrderId);
+  const current = getCompletedCartaporte().find( (cp) => cp.id === selected.serviceorderid);
     if(route === "/quickview" || done){
       setRutasState({
         ...rutas,
@@ -113,8 +114,8 @@ const Ruta = ({ history }) => {
             button
             disabled={orders[order].done}
             icon="mantenimiento"
-            title={orders[order].ServiceAddressName}
-            subtitle={orders[order].ServiceAddress}
+            title={orders[order].serviceaddressname}
+            subtitle={orders[order].serviceaddress}
             subtitle2=""
             actionIcon={orders[order].done ? "ver" : "estado-aviso"}
             action={

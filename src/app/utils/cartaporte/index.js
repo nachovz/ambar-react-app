@@ -11,7 +11,7 @@ export const buildCartaporte = ({
     client_dni = "", 
     signature = "",
     data,
-    ServiceOrderId,
+    serviceorderid,
     observaciones,
     notes = [],
     noitems = false
@@ -19,21 +19,21 @@ export const buildCartaporte = ({
   const { vehicleId } = getVehicleSession();
 
   const items = data.reduce((result, current) => {
-    const typeServicio = TIPOS_RECOGIDAS[current.ProjCategoryId] === "servicio";
+    const typeServicio = TIPOS_RECOGIDAS[current.projcategoryid] === "servicio";
     if (!current.done && !typeServicio) return result;
 
     return [
       ...result,
       {
-        "waste_id": current.ItemId || "",
-        "category_id": current.ProjCategoryId,
-        "line_number": current.ServiceOrderLineNum,
-        "container_id": current.Res_InventPackingMaterialCode || "",
-        "container_quantity": current.unidadesReal || "",
+        "waste_id": current.itemid || "",
+        "category_id": current.projcategoryid,
+        "line_number": current.serviceorderlinenum,
+        "container_id": current.res_inventpackingmaterialcode || "",
+        "container_quantity": current.unidadesreal || "",
         image: ((current.imagenes && current.imagenes[0].dataUri) || ""),
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),
         manual: !!current.manual,
-        ...!typeServicio && { "percentage": `${current.kgReal || ""}` },
+        ...!typeServicio && { "percentage": `${current.kgreal || ""}` },
         ...typeServicio && { "delivered": !!current.servicioRealizado ? 1 : 0 }
       }
     ];
@@ -41,7 +41,7 @@ export const buildCartaporte = ({
 
   return {
     data: {
-      "order_id": ServiceOrderId,
+      "order_id": serviceorderid,
       "vehicle_id": vehicleId,
       notes: (observaciones || [])
         .filter(({ on }) => on )
@@ -61,13 +61,13 @@ export const buildCartaporte = ({
   };
 };
 
-export const addCompletedCartaporte = (ServiceOrderId, data) => {
+export const addCompletedCartaporte = (serviceorderid, data) => {
   const current = JSON.parse(localStorage.getItem('COMPLETED_CARTAS_DE_PORTE')) || [];
   localStorage.setItem(
     'COMPLETED_CARTAS_DE_PORTE',
     JSON.stringify([
       ...current,
-      { id: ServiceOrderId, date: moment(), data }
+      { id: serviceorderid, date: moment(), data }
     ])
   );
 };

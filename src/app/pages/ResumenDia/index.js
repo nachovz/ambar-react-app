@@ -80,17 +80,17 @@ const ResumenDia = ({ history }) => {
   const { vehicleId } = getVehicleSession();
 
   const {
-    ServiceOrderId,
-    ServiceDateTime,
-    ServiceAddressName,
-    CustAccount,
-    ServiceAddress,
-    ClientPhone,
-    ClientEmail,
-    ClientVat,
-    ClientContactPersonName,
-    ClientTimeTable,
-    ClientAccessible,
+    serviceorderid,
+    servicedatetime,
+    serviceaddressname,
+    custaccount,
+    serviceaddress,
+    clientphone,
+    clientemail,
+    clientvat,
+    Clientcontactpersonname,
+    clienttimetable,
+    clientaccessible,
     Responsible
   } = selected;
 
@@ -99,9 +99,9 @@ const ResumenDia = ({ history }) => {
   return (
     <div>
       <TopBar
-        title={`Carta de porte: ${ServiceOrderId}`}
+        title={`Carta de porte: ${serviceorderid}`}
       />
-      <DateBar title={`FECHA RECOGIDA: ${ServiceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${servicedatetime}`} />
       {step === 'resumen' && (
         <List>
           <TextListElement
@@ -171,43 +171,43 @@ const ResumenDia = ({ history }) => {
           <TextListElement
             noDivider
             title="Cargador/Expedidor"
-            subtitle={ServiceAddressName}
+            subtitle={serviceaddressname}
           />
           <TextListElement
             noDivider
             title="Código"
-            subtitle={CustAccount}
+            subtitle={custaccount}
           />
           <TextListElement
             noDivider
             informative
             title="Dirección"
-            subtitle={ServiceAddress}
+            subtitle={serviceaddress}
           />
           <TextListElement
             noDivider
             title="Teléfono"
-            subtitle={ClientPhone}
+            subtitle={clientphone}
           />
           <TextListElement
             noDivider
             title="Email"
-            subtitle={ClientEmail}
+            subtitle={clientemail}
           />
           <TextListElement
             noDivider
             title="CIF"
-            subtitle={ClientVat}
+            subtitle={clientvat}
           />
           <TextListElement
             noDivider
             title="Contacto"
-            subtitle={ClientContactPersonName}
+            subtitle={Clientcontactpersonname}
           />
           <TextListElement
             noDivider
             title="Horario"
-            subtitle={ClientTimeTable}
+            subtitle={clienttimetable}
           />
         </List>
       )}
@@ -230,7 +230,7 @@ const ResumenDia = ({ history }) => {
           <TextListElement
             noDivider
             title="Accesible"
-            subtitle={ClientAccessible}
+            subtitle={clientaccessible}
           />
           <TextListElement
             noDivider

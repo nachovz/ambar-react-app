@@ -62,7 +62,7 @@ Changelog:
 **v1.8.2:** Sesión persiste después de cerrar la APP
 + Cambio de SessionStorage a LocalStorage
 
-**v1.8.1a:** HotFix officeNotes -> OfficeNotes
+**v1.8.1a:** HotFix officenotes -> officenotes
 
 **v1.8.1:** Recogida tipo servicio, cambio de valor para delivered: 1 | 0
 
@@ -108,7 +108,7 @@ Changelog:
 **v1.5.3:** Recogida review menu changes
 - Eliminado el menú contextual para ResumenDia
 
-**v1.5.2:** usa `OfficeNotes` para mostrar Observaciones oficina (12/11/2019)
+**v1.5.2:** usa `officenotes` para mostrar Observaciones oficina (12/11/2019)
 
 **v1.5.1:** implementado descarga DCS/CP pdf (12/11/2019)
 + Renombrado getDCS a getPDF

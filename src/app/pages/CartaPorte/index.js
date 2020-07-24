@@ -71,7 +71,7 @@ const CartaPorte = ({ history }) => {
 
   const filterRecogidasByType = (type, recogidas) => {
     const grouped = recogidas.filter( 
-      reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type 
+      reco => TIPOS_RECOGIDAS[reco.projcategoryid] === type 
     );
     if(grouped.length < 1) return null;
 
@@ -90,9 +90,9 @@ const CartaPorte = ({ history }) => {
                     key={index}
                     button
                     iconColor="primary"
-                    icon={TIPOS_RECOGIDAS[reco.ProjCategoryId]}
-                    title={reco.ItemName}
-                    subtitle={reco.ItemId}
+                    icon={TIPOS_RECOGIDAS[reco.projcategoryid]}
+                    title={reco.itemname}
+                    subtitle={reco.itemid}
                     actionIcon={reco.done ? "editar" : "arrow_right"}
                     disabled={reco.done}
                     onClick={onSelectedRecogida(reco)}
@@ -115,23 +115,23 @@ const CartaPorte = ({ history }) => {
   return (
     <Fragment>
       <TopBar
-        title={`Carta de porte: ${selected.ServiceOrderId}`}
+        title={`Carta de porte: ${selected.serviceorderid}`}
         actionIcon={selected.Filepath && "descarga-dcs"}
         action={openFile(rutas.selected.Filepath)}
         extraActionIcon={selected.Filepath && "descarga-cp"}
-        extraAction={openFile(rutas.selected.CpFilepath)}
+        extraAction={openFile(rutas.selected.cpfilepath)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
-      {!!selected.OfficeNotes &&
+      <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
+      {!!selected.officenotes &&
         <ExpansionPanel 
           content={{
             title: 'Observaciones Oficina',
             icon: 'observaciones',
             content:(
               <Typography>
-                {selected.OfficeNotes}
+                {selected.officenotes}
               </Typography>
             )
           }}

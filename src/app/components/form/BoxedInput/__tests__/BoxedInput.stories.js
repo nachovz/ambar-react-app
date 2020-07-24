@@ -18,7 +18,7 @@ storiesOf('BoxedInput', module)
 
   const BoxedInputContainer = () => {
     const [values, setValues] = React.useState({
-      unidadesReal: 0,
+      unidadesreal: 0,
       pesoReal: 1
     });
 
@@ -35,11 +35,11 @@ storiesOf('BoxedInput', module)
           icon="unidades"
           input={
             <TextField
-              name="unidadesReal"
+              name="unidadesreal"
               type="number"
               placeholder="22"
-              value={values.unidadesReal}
-              onChange={handleChange('unidadesReal')}
+              value={values.unidadesreal}
+              onChange={handleChange('unidadesreal')}
             />
           }
         />

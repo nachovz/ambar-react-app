@@ -72,9 +72,9 @@ const PrevisionEnvases = ({ history }) => {
     const clientArray = Object.keys(data).reduce((result, key) => ([
       ...result,
       ...[{ 
-        "client": data[key].ServiceAddressName, 
+        "client": data[key].serviceaddressname, 
         "data": data[key].data.filter((reco) => 
-          (TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVICIO && TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVFACT ))
+          (TIPOS_RECOGIDAS[reco.projcategoryid] !== SERVICIO && TIPOS_RECOGIDAS[reco.projcategoryid] !== SERVFACT ))
       }]
     ]), []);
     return clientArray.map(({client, data}, ind) =>{
@@ -82,8 +82,8 @@ const PrevisionEnvases = ({ history }) => {
       client,
       data: dictionaryGenerator(
         data, 
-        ["PackingMaterialName", "ItemName"], 
-        "Res_Qty_Env"
+        ["packingmaterialname", "itemname"], 
+        "res_qty_env"
       )
       }
     });
