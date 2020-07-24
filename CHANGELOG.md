@@ -1,4 +1,6 @@
 Changelog:
+**v1.11.0** Cerrar cartaporte sin cambios
+
 **v1.10.0** Permite entrar a Ruta aunque no haya datos
 + Ajustes a client para incluir flag que ignora error
 - Limpieza de código 
