@@ -1,4 +1,4 @@
-const BASE_URL = 'https://ambar-api.eu.ngrok.io';//'https://api.dev.ambarplus.com';
+const BASE_URL = process.env.REACT_APP_API_URL;//'https://ambar-api.eu.ngrok.io';//'https://api.dev.ambarplus.com';
 const COMPANY_BASE = (companyId) => `${BASE_URL}/company/${companyId}`;
 
 const ENDPOINTS = {
