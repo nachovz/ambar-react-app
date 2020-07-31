@@ -24,12 +24,11 @@ const Ruta = ({ history }) => {
   const [openAlert, setOpenAlert] = React.useState({ 
     open: false
   });
-  console.log(rutas);
 
   const refreshRuta = async function() {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=17/07/2020`, { ignoreThrow: true });
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`, { ignoreThrow: true });
       setRutasState({ ...rutas, selected: null });
       setLoadingState(false);
     } catch (error) {

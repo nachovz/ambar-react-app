@@ -1,4 +1,8 @@
 Changelog:
+
+**v1.12.0** Ajuste de URL del API por env
++ Cambio en formato de variables (all lowercase)
+
 **v1.11.0** Cerrar cartaporte sin cambios
 
 **v1.10.0** Permite entrar a Ruta aunque no haya datos

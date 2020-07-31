@@ -153,7 +153,7 @@ const RecogidaAdd = ({ history }) => {
             iconColor="primary"
             icon="mantenimiento"
             title={waste.itemname}
-            subtitle={waste.LerDesc}
+            subtitle={waste.lerdesc}
             subtitle2={waste.itemid}
             actionIcon="papelera"
             action={() => setWaste(undefined)}
