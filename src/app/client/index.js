@@ -31,7 +31,7 @@ const client = {
   },
 };
 
-const makeRequest = async (url, { body, headers, method, responseType }) => {
+const makeRequest = async (url, { body, headers, method, responseType, ignoreThrow=false }) => {
   try {
     const response = await axios({
       url,
@@ -45,7 +45,7 @@ const makeRequest = async (url, { body, headers, method, responseType }) => {
     });
     return successHandler(response);
   } catch (error) {
-    errorHandler(error);
+    return errorHandler(error, ignoreThrow);
   }
 };
 
@@ -65,7 +65,7 @@ const successHandler = (response) => {
   return response.data;
 };
 
-function errorHandler(error) {
+function errorHandler(error, ignoreThrow) {
   error.message = 'Hubo un error en el servidor';
   if(error.response && error.response.status){
     switch (error.response.status){
@@ -75,9 +75,10 @@ function errorHandler(error) {
         break;
       case 404:
         error.message = "No hay datos para esta solicitud. Comuníquese con Oficina."
+        if(ignoreThrow) return { data: [] };
         break;
       case 422:
-        error.message = "No se ha encontrado esta matrícula asignado a esta empresa."
+        error.message = "No se ha encontrado esta matrícula en a esta empresa."
         break;
       default:
         break;

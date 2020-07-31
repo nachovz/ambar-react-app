@@ -7,12 +7,14 @@ export const buildCartaporte = ({
     longitude_start,
     latitude_end,
     longitude_end,
-    client_name,
-    client_dni, 
-    signature,
+    client_name = "",
+    client_dni = "", 
+    signature = "",
     data,
     ServiceOrderId,
-    observaciones
+    observaciones,
+    notes = [],
+    noitems = false
   }) => {
   const { vehicleId } = getVehicleSession();
 
@@ -41,7 +43,11 @@ export const buildCartaporte = ({
     data: {
       "order_id": ServiceOrderId,
       "vehicle_id": vehicleId,
-      notes: (observaciones || []).filter(({ on }) => on ).map(({ label, comment }) => `${label}${!!comment ? '##'+comment : ''}`),
+      notes: (observaciones || [])
+        .filter(({ on }) => on )
+        .map(({ label, comment }) => `${label}${!!comment ? 
+        '##'+comment : ''}`)
+        .concat(notes),
       signature,
       items,
       latitude_start,
@@ -49,7 +55,8 @@ export const buildCartaporte = ({
       latitude_end,
       longitude_end,
       client_name,
-      client_dni
+      client_dni,
+      noitems
     }
   };
 };

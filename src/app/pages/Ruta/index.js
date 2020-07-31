@@ -7,7 +7,6 @@ import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { getVehicleSession, isVehicleIdExpired } from 'app/utils/vehicle';
-import { getCompanySession } from 'app/utils/company';
 import { setCompletedCarteporte, getCompletedCartaporte } from 'app/utils/cartaporte';
 import List from 'app/components/ui/List';
 import TopBar from 'app/components/ui/TopBar';
@@ -22,15 +21,14 @@ const Ruta = ({ history }) => {
   const [, setSnackbarContext] = useSnackbarContext();
   const [orders, setOrders] = useState([]);
   const { vehicleId } = getVehicleSession();
-  const { companyId } = getCompanySession();
   const [openAlert, setOpenAlert] = React.useState({ 
     open: false
   });
 
-  const refreshRuta = async function fetchData() {
+  const refreshRuta = async function() {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`);
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`, { ignoreThrow: true });
       setRutasState({ ...rutas, selected: null });
       setLoadingState(false);
     } catch (error) {
@@ -54,7 +52,7 @@ const Ruta = ({ history }) => {
     if (!rutas || !rutas.data) {
       refreshRuta();
     }
-  }, [rutas, setLoadingState, setRutasState, vehicleId, setSnackbarContext, companyId]);
+  }, [rutas]);// eslint-disable-line react-hooks/exhaustive-deps
 
   if (!vehicleId || isVehicleIdExpired()) {
     return (
@@ -80,7 +78,7 @@ const Ruta = ({ history }) => {
   const handleCloseAlert = () => setOpenAlert({ open: false });
   const handleOpenCartaPorte = (selected, route, done=false) => () => {
 
-    const current = getCompletedCartaporte().find( (cp) => cp.id === selected.ServiceOrderId);
+  const current = getCompletedCartaporte().find( (cp) => cp.id === selected.ServiceOrderId);
     if(route === "/quickview" || done){
       setRutasState({
         ...rutas,
@@ -97,22 +95,6 @@ const Ruta = ({ history }) => {
       selected
     });
   };
-
-  const refreshRuta = async function fetchData() {
-    setLoadingState(true);
-    try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`);
-      setRutasState({ ...rutas, selected: null });
-      setLoadingState(false);
-    } catch (error) {
-      setLoadingState(false);
-      setSnackbarContext({
-        message: error.message,
-        variant: 'error',
-        open: true,
-      });
-    }
-  }
 
   const ordersKeys = Object.keys(orders);
 

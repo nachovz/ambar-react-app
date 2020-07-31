@@ -15,6 +15,12 @@ import Icon from 'app/components/ui/Icon';
 import MenuHeader from 'app/components/app/MenuHeader';
 import { getPDF } from 'app/utils/dcs';
 import { MENU_WIDTH } from 'app/styles/constants';
+import { buildCartaporte, addCompletedCartaporte } from 'app/utils/cartaporte';
+import { getCompanyId } from 'app/utils/company';
+import getGeoPosition from 'app/utils/getGeoPosition';
+import AlertDialog from 'app/components/ui/AlertDialog';
+import client from 'app/client';
+import ENDPOINTS from 'app/constants/endpoints';
 
 const useStyles = makeStyles({
   list: {
@@ -23,10 +29,12 @@ const useStyles = makeStyles({
 });
 
 const ContextualMenu = ({ history }) => {
+  const [rutas, setRutasState] = useRutasContext();
   const [menuState, setMenuState] = useMenuContext();
   const [{ selected }] = useRutasContext();
   const [, setSnackbarContext] = useSnackbarContext();
   const [, setLoadingState] = useLoadingContext();
+  const [openAlert, setOpenAlert] = React.useState(false);
   const classes = useStyles();
 
   const closeMenu = () => setMenuState({ ...menuState, contextual: false });
@@ -47,6 +55,33 @@ const ContextualMenu = ({ history }) => {
     }
   }
 
+  const closeCartaPorte = async () => {
+    setLoadingState(true);
+    try {
+      const { lat, lng } = await getGeoPosition();
+      selected.latitude_end = lat;
+      selected.longitude_end = lng;
+      selected.notes = ["Cerrado", "No se recolectó"];
+      selected.noitems = "true";
+      rutas.data[selected.ServiceOrderId] = selected;
+      const body = buildCartaporte(selected);
+      //console.log(body);
+      await client.post(ENDPOINTS.ROUTE_POST(getCompanyId()), { body });
+      addCompletedCartaporte(selected.ServiceOrderId);
+      setLoadingState(false);
+      setRutasState({
+        ...rutas,
+        selected: null
+      });
+    } catch (error) {
+      setLoadingState(false);
+    }
+  }
+
+  const handleCloseAlert = () => {
+    setOpenAlert(false);
+  };
+
   return (
     <Drawer
       open={menuState.contextual}
@@ -58,12 +93,20 @@ const ContextualMenu = ({ history }) => {
         <MenuHeader />
         <List>
           {!selected.done &&
-            <ListItem button onClick={goTo('/cartaporte')}>
-              <ListItemIcon>
-                <Icon icon="mantenimiento" />
-              </ListItemIcon>
-              <ListItemText primary="Carta de Porte" />
-            </ListItem>
+            <>
+              <ListItem button onClick={goTo('/cartaporte')}>
+                <ListItemIcon>
+                  <Icon icon="mantenimiento" />
+                </ListItemIcon>
+                <ListItemText primary="Carta de Porte" />
+              </ListItem>
+              <ListItem button onClick={() => setOpenAlert(true)}>
+                <ListItemIcon>
+                  <Icon icon="cerrar" />
+                </ListItemIcon>
+                <ListItemText primary="Cerrar esta carta de porte" />
+              </ListItem>
+            </>
           }
           {!!selected.CpFilepath &&
             <ListItem button onClick={openFile(selected.CpFilepath)}>
@@ -84,6 +127,15 @@ const ContextualMenu = ({ history }) => {
         </List>
         <Divider />
       </div>
+      <AlertDialog
+        open={openAlert}
+        title="¿Desea cerrar la carta de porte?"
+        content="La información será enviada a la oficina. Se registrará la ubicación actual."
+        handleClose={handleCloseAlert}
+        agreedText="Si, guardar"
+        handleAgree={closeCartaPorte}
+        cancelText="No, seguir editando"
+      />
     </Drawer>
   );
 };

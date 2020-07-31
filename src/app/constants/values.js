@@ -190,4 +190,4 @@ export const COMPANY_CODES = {
 
 export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AMB"]; 
 
-export const APP_VERSION = 'v1.9.10a';
+export const APP_VERSION = 'v1.11.0';
