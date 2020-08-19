@@ -4,6 +4,7 @@
 # label our stage as ‘builder’
 FROM node:10-alpine as builder
 ARG COMPANY_TAG=AMB
+ARG API_URL=https://api.dev.ambarplus.com
 COPY package.json package-lock.json ./
 # Store node_modules on a different layer to prevent unnecesary npm installs
 RUN npm ci && mkdir /react-app && mv ./node_modules ./react-app
@@ -11,7 +12,8 @@ WORKDIR /react-app
 COPY . .
 # Build the application and store artifacts in /react-app/dist
 ENV NODE_PATH src
-RUN echo "REACT_APP_COMPANY_CODE=$COMPANY_TAG" > .env
+RUN echo "REACT_APP_COMPANY_CODE=$COMPANY_TAG" >> .env && \
+    echo "REACT_APP_API_URL=$API_URL" >> .env
 RUN npm run build
 
 # STAGE 2: Webserver
