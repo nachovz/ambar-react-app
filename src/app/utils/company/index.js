@@ -50,7 +50,7 @@ export const deleteCompanySession = () => {
 
 export const formatCompanyNotes = (notes, type) => (
   notes.data
-  .filter((note) => note.type === `${type}`)
+  .filter((note) => note.type === type)
   .map((note) => ({
     label: note.description,
     on: false,

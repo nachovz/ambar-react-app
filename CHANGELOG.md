@@ -1,5 +1,7 @@
 Changelog:
 
+**v1.12.0a** Ajustes de refactor: Observaciones y documentos
+
 **v1.12.0** Ajuste de URL del API por env
 + Cambio en formato de variables (all lowercase)
 

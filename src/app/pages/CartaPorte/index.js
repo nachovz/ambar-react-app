@@ -24,7 +24,7 @@ const CartaPorte = ({ history }) => {
   const [, setLoadingState] = useLoadingContext();
   let { notes } = getCompanySession();
   const { selected } = rutas;
-  const [obs, setObs] = React.useState((selected && selected.observaciones) ||formatCompanyNotes(notes, 1));
+  const [obs, setObs] = React.useState((selected && selected.observaciones) || formatCompanyNotes(notes, 1));
   const [modal, setModal] = React.useState(false);
   const moveTo = (route) => () => history.push(route);
 
@@ -112,13 +112,14 @@ const CartaPorte = ({ history }) => {
     setObs(newObs);
     setModal(false);
   }
+	console.log(obs, selected, notes)
   return (
     <Fragment>
       <TopBar
         title={`Carta de porte: ${selected.serviceorderid}`}
-        actionIcon={selected.Filepath && "descarga-dcs"}
-        action={openFile(rutas.selected.Filepath)}
-        extraActionIcon={selected.Filepath && "descarga-cp"}
+        actionIcon={selected.filepath && "descarga-dcs"}
+        action={openFile(rutas.selected.filepath)}
+        extraActionIcon={selected.cpfilepath && "descarga-cp"}
         extraAction={openFile(rutas.selected.cpfilepath)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
