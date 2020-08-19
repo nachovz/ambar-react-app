@@ -7,8 +7,8 @@ steps:
     - |
       docker pull gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend || true
       docker pull gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/mreciclauto-frontend || true
-      docker build --build-arg=API_URL=https://api-v1.ambarplus.com --cache-from=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend:build-$SHORT_SHA --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/backend-api -f ci/Dockerfile .
-      docker build --build-arg=API_URL=https://api-v1.ambarplus.com --build-arg=COMPANY_TAG=MRE --cache-from=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/mreciclauto-frontend --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend:build-$SHORT_SHA --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/backend-api -f ci/Dockerfile .
+      docker build --build-arg=API_URL=${_API_URL} --cache-from=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend:build-$SHORT_SHA --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend -f ci/Dockerfile .
+      docker build --build-arg=API_URL=${_API_URL} --build-arg=COMPANY_TAG=MRE --cache-from=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/mreciclauto-frontend --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/mreciclauto-frontend:build-$SHORT_SHA --tag=gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/mreciclauto-frontend -f ci/Dockerfile .
       docker push gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend:build-$SHORT_SHA
       docker push gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/ambar-frontend
       docker push gcr.io/$PROJECT_ID/${REPO_NAME}/${BRANCH_NAME}/mreciclauto-frontend:build-$SHORT_SHA
