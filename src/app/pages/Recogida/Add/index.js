@@ -115,7 +115,8 @@ const RecogidaAdd = ({ history }) => {
       observaciones: obs,
       images,
       projcategoryid: "Res_Peligr",
-      manual: true
+      manual: true,
+			res_qty_env: unidadesreal
     });
     setRutasState({
       ...rutas,
