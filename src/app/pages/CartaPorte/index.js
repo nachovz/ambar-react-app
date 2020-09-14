@@ -112,7 +112,6 @@ const CartaPorte = ({ history }) => {
     setObs(newObs);
     setModal(false);
   }
-	console.log(obs, selected, notes)
   return (
     <Fragment>
       <TopBar

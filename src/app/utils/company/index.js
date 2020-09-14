@@ -26,7 +26,7 @@ export const getCompanyId = () => {
 export const getCompanyInfo = () => {
   let companyInfo = '';
   try{
-    companyInfo = JSON.parse(localStorage.getItem('COMPANY_INFO')).data[0];
+    companyInfo = JSON.parse(localStorage.getItem('COMPANY_INFO')).data;
   }catch(e){
     companyInfo = false;
   }
