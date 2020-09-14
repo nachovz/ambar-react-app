@@ -63,7 +63,7 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                           qts = [
                             (
                               esIntlFormatter.format(
-                                parseFloat((weight || "0").replace(',', '.')) 
+                                parseFloat((weight || "1").replace(',', '.')) 
                                 * 
                                 parseInt( unidadesreal ) * (kgreal/100)
                               )
