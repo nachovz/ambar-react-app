@@ -14,7 +14,7 @@ import RecogidaForm from 'app/components/recogida/RecogidaForm';
 import ServicioForm from 'app/components/recogida/ServicioForm';
 import ConsignaForm from 'app/components/recogida/ConsignaForm';
 import NotesModal from 'app/components/form/NotesModal';
-import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { findRecogidaType } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 
 const Recogida = ({ history }) => {
@@ -154,7 +154,7 @@ const Recogida = ({ history }) => {
     watch: watch
   }
   const renderForm = () => {
-    switch(TIPOS_RECOGIDAS[selectedRecogida.projcategoryid]){
+    switch(findRecogidaType(selectedRecogida.projcategoryid)){
       case "recogida":
         return <RecogidaForm {...propsToForm}/>;
       case "entrega":
@@ -181,7 +181,7 @@ const Recogida = ({ history }) => {
         <TextListElement
           noDivider
           iconColor="primary"
-          icon={TIPOS_RECOGIDAS[selectedRecogida.projcategoryid]}
+          icon={findRecogidaType(selectedRecogida.projcategoryid)}
           title={selectedRecogida.itemname}
           subtitle={selectedRecogida.itemid}
         />
@@ -223,7 +223,7 @@ const Recogida = ({ history }) => {
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
-        moveToNextText={TIPOS_RECOGIDAS[selectedRecogida.projcategoryid] !== "consigna" && "Confirmación"}
+        moveToNextText={findRecogidaType(selectedRecogida.projcategoryid) !== "consigna" && "Confirmación"}
         moveToNextAction={handleSubmit(handleSave)}
       />
     </React.Fragment>

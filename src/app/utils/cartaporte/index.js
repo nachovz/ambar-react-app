@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { getVehicleSession } from 'app/utils/vehicle';
-import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { findRecogidaType } from 'app/constants/values';
 
 export const buildCartaporte = ({ 
     latitude_start,
@@ -19,7 +19,7 @@ export const buildCartaporte = ({
   const { vehicleId } = getVehicleSession();
 
   const items = data.reduce((result, current) => {
-    const typeServicio = TIPOS_RECOGIDAS[current.projcategoryid] === "servicio";
+    const typeServicio = findRecogidaType(current.projcategoryid) === "servicio";
     if (!current.done && !typeServicio) return result;
 
     return [

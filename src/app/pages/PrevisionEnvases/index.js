@@ -18,7 +18,7 @@ import getColor from 'app/styles/palette';
 import ENDPOINTS from 'app/constants/endpoints';
 import { getVehicleSession } from 'app/utils/vehicle';
 import Typography from 'app/components/ui/Typography';
-import { TIPOS_RECOGIDAS, SERVICIO, SERVFACT } from 'app/constants/values';
+import { findRecogidaType, SERVICIO, SERVFACT } from 'app/constants/values';
 import { getCompanyId } from 'app/utils/company';
 
 const PrevisionEnvases = ({ history }) => {
@@ -74,7 +74,7 @@ const PrevisionEnvases = ({ history }) => {
       ...[{ 
         "client": data[key].serviceaddressname, 
         "data": data[key].data.filter((reco) => 
-          (TIPOS_RECOGIDAS[reco.projcategoryid] !== SERVICIO && TIPOS_RECOGIDAS[reco.projcategoryid] !== SERVFACT ))
+          (findRecogidaType(reco.projcategoryid) !== SERVICIO && findRecogidaType(reco.projcategoryid) !== SERVFACT ))
       }]
     ]), []);
     return clientArray.map(({client, data}, ind) =>{

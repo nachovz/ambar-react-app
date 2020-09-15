@@ -12,7 +12,7 @@ import NotesModal from 'app/components/form/NotesModal';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { getPDF } from 'app/utils/dcs';
-import { TIPOS_RECOGIDAS, getRecogidaTypes } from 'app/constants/values';
+import { findRecogidaType, getRecogidaTypes } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 import ExpansionPanel from 'app/components/ui/ExpansionPanel';
 import getColor from 'app/styles/palette';
@@ -71,7 +71,7 @@ const CartaPorte = ({ history }) => {
 
   const filterRecogidasByType = (type, recogidas) => {
     const grouped = recogidas.filter( 
-      reco => TIPOS_RECOGIDAS[reco.projcategoryid] === type 
+      reco => findRecogidaType(reco.projcategoryid) === type 
     );
     if(grouped.length < 1) return null;
 
@@ -90,7 +90,7 @@ const CartaPorte = ({ history }) => {
                     key={index}
                     button
                     iconColor="primary"
-                    icon={TIPOS_RECOGIDAS[reco.projcategoryid]}
+                    icon={findRecogidaType(reco.projcategoryid)}
                     title={reco.itemname}
                     subtitle={reco.itemid}
                     actionIcon={reco.done ? "editar" : "arrow_right"}
@@ -112,6 +112,7 @@ const CartaPorte = ({ history }) => {
     setObs(newObs);
     setModal(false);
   }
+	console.log(selected)
   return (
     <Fragment>
       <TopBar

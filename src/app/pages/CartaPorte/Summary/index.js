@@ -7,7 +7,7 @@ import Fab from 'app/components/ui/Fab';
 import Icon from 'app/components/ui/Icon';
 import StepNavigator from 'app/components/app/StepNavigator';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
-import { TIPOS_RECOGIDAS, getRecogidaTypes } from 'app/constants/values';
+import { findRecogidaType, getRecogidaTypes } from 'app/constants/values';
 import RecogidaGroupedTable from 'app/components/data/RecogidaGroupedTable';
 
 const CartaPorteSummary = ({ history }) => {
@@ -33,7 +33,7 @@ const CartaPorteSummary = ({ history }) => {
   };
 
   const filtered = selected.data.filter( (r) => 
-    (!!r.done || TIPOS_RECOGIDAS[r.projcategoryid] === "servicio")
+    (!!r.done || findRecogidaType(r.projcategoryid) === "servicio")
   );
 
   return(
