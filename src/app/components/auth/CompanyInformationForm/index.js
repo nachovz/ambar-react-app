@@ -46,7 +46,7 @@ const CompanyInformationForm = ({ onVerified, history }) => {
       const rutas = await client.get(`${ENDPOINTS.ROUTE(companyId)}/${vehicleId}/route`,{ ignoreThrow: true });
       const containers = await client.get(ENDPOINTS.CONTAINERS_BY_COMPANY(companyId));
       const wastes = await client.get(ENDPOINTS.WASTES_BY_COMPANY(companyId));
-      const notes = await client.get(ENDPOINTS.GET_NOTES);
+      const notes = await client.get(ENDPOINTS.GET_NOTES(companyId));
       const info = await client.get(ENDPOINTS.COMPANY_INFO(companyId));
       setRutasState({ ...rutas, selected: null });
       setCompanySession(companyId, wastes, containers, notes, info);

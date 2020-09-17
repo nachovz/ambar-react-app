@@ -43,12 +43,12 @@ const RecogidaAdd = ({ history }) => {
   React.useEffect(() => {
     register({ name: "waste" });
     register({ name: "container" });
-    register({ name: "kgReal" });
+    register({ name: "kgreal" });
   }, [register]);
 
   React.useEffect(() => {
     if (!!selected) {
-      setValue("kgReal", kgValue);
+      setValue("kgreal", kgValue);
     }
   }, [selected, setValue, kgValue]);
 
@@ -86,7 +86,7 @@ const RecogidaAdd = ({ history }) => {
         break;
       case 'WEIGHT':
         setKgValue(value);
-        setValue("kgReal", value);
+        setValue("kgreal", value);
         break;
       default: break;
     }
@@ -99,23 +99,24 @@ const RecogidaAdd = ({ history }) => {
   const handleSave = ({
     waste,
     container,
-    kgReal,
-    unidadesReal
+    kgreal,
+    unidadesreal
   }) => {
     selected.data.push({
       done: true,
       ...waste && {
-        ItemName: waste.label,
-        ItemId: waste.id,
+        itemname: waste.label,
+        itemid: waste.id,
       },
-      PackingMaterialName: container.description,
-      Res_InventPackingMaterialCode: container.id,
-      kgReal: kgReal.value,
-      unidadesReal,
+      packingmaterialname: container.description,
+      res_inventpackingmaterialcode: container.id,
+      kgreal: kgreal.value,
+      unidadesreal,
       observaciones: obs,
       images,
-      ProjCategoryId: "Res_Peligr",
-      manual: true
+      projcategoryid: "Res_Peligr",
+      manual: true,
+			res_qty_env: unidadesreal
     });
     setRutasState({
       ...rutas,
@@ -134,13 +135,13 @@ const RecogidaAdd = ({ history }) => {
   return (
     <React.Fragment>
       <TopBar
-        title={`Carta de porte: ${selected.ServiceOrderId}`}
+        title={`Carta de porte: ${selected.serviceorderid}`}
         actionIcon={!!waste && !!container && "camara"}
         action={() => setOpenCamera(true)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
       <List>
         <TextListElement
           informative
@@ -152,9 +153,9 @@ const RecogidaAdd = ({ history }) => {
             informative
             iconColor="primary"
             icon="mantenimiento"
-            title={waste.ItemName}
-            subtitle={waste.LerDesc}
-            subtitle2={waste.ItemId}
+            title={waste.itemname}
+            subtitle={waste.lerdesc}
+            subtitle2={waste.itemid}
             actionIcon="papelera"
             action={() => setWaste(undefined)}
           />
@@ -170,8 +171,8 @@ const RecogidaAdd = ({ history }) => {
                 fakeAsync
                 suggestions={wastes.data.map((wa) => (
                   {
-                    label: wa.ItemName,
-                    id: wa.ItemId,
+                    label: wa.itemname,
+                    id: wa.itemid,
                     ...wa
                   }
                 ))}
@@ -183,7 +184,7 @@ const RecogidaAdd = ({ history }) => {
           <BoxedInput
             topLabel={
               <React.Fragment>
-                <strong>{container.Weight || 'NULL'}</strong> Kgs./Lts.*
+                <strong>{container.weight || 'NULL'}</strong> Kgs./Lts.*
                 <br/>
                 por <strong>(1)</strong> unidad
               </React.Fragment>
@@ -213,7 +214,7 @@ const RecogidaAdd = ({ history }) => {
                 onChange={handleChange("CONTAINER")}
                 suggestions={containers.data.map((co) => (
                   {
-                    label: co.ItemName,
+                    label: co.itemname,
                     id: co.ContainerId,
                     ...co
                   }
@@ -231,10 +232,10 @@ const RecogidaAdd = ({ history }) => {
                 <TextField
                   register={register}
                   noMargin
-                  name="unidadesReal"
+                  name="unidadesreal"
                   type="number"
                   placeholder="CANTIDAD"
-                  error={errors.unidadesReal}
+                  error={errors.unidadesreal}
                 />
               }
             />
@@ -271,9 +272,9 @@ const RecogidaAdd = ({ history }) => {
           </React.Fragment>
         }
         {/*No estamos recibiendo Weight por contenedor*/}
-        {getValues().unidadesReal && container.Weight &&
+        {getValues().unidadesreal && container.weight &&
           <PrimaryCenteredText>
-            La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.Weight || "0").replace(',', '.')) * parseInt( getValues().unidadesReal) * (kgValue/100))}</strong> Kgs./Lts.*
+            La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((container.weight || "0").replace(',', '.')) * parseInt( getValues().unidadesreal) * (kgValue/100))}</strong> Kgs./Lts.*
           </PrimaryCenteredText>
         }
       </List>

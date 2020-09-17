@@ -63,11 +63,11 @@ const ContextualMenu = ({ history }) => {
       selected.longitude_end = lng;
       selected.notes = ["Cerrado", "No se recolectó"];
       selected.noitems = "true";
-      rutas.data[selected.ServiceOrderId] = selected;
+      rutas.data[selected.serviceorderid] = selected;
       const body = buildCartaporte(selected);
       //console.log(body);
       await client.post(ENDPOINTS.ROUTE_POST(getCompanyId()), { body });
-      addCompletedCartaporte(selected.ServiceOrderId);
+      addCompletedCartaporte(selected.serviceorderid);
       setLoadingState(false);
       setRutasState({
         ...rutas,
@@ -108,8 +108,8 @@ const ContextualMenu = ({ history }) => {
               </ListItem>
             </>
           }
-          {!!selected.CpFilepath &&
-            <ListItem button onClick={openFile(selected.CpFilepath)}>
+          {!!selected.cpfilepath &&
+            <ListItem button onClick={openFile(selected.cpfilepath)}>
               <ListItemIcon>
                 <Icon icon="descarga-cp" />
               </ListItemIcon>

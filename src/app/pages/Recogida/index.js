@@ -14,7 +14,7 @@ import RecogidaForm from 'app/components/recogida/RecogidaForm';
 import ServicioForm from 'app/components/recogida/ServicioForm';
 import ConsignaForm from 'app/components/recogida/ConsignaForm';
 import NotesModal from 'app/components/form/NotesModal';
-import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { findRecogidaType } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 
 const Recogida = ({ history }) => {
@@ -43,13 +43,13 @@ const Recogida = ({ history }) => {
       const { selectedRecogida } = selected;
       if(!!selectedRecogida){
         const {
-          kgReal,
-          unidadesReal
+          kgreal,
+          unidadesreal
         } = selectedRecogida;
-        if(!!kgReal){
-          setKgValue(kgReal);
+        if(!!kgreal){
+          setKgValue(kgreal);
         }
-        unidadesReal && setValue("unidadesReal", unidadesReal); 
+        unidadesreal && setValue("unidadesreal", unidadesreal); 
       }
     }
   }, [selected, setValue]);
@@ -110,17 +110,17 @@ const Recogida = ({ history }) => {
     });
   }
 
-  const handleSave = ({ unidadesReal, observaciones="", ...props }) => {
-    selectedRecogida.unidadesReal = unidadesReal;
-    selectedRecogida.kgReal = kgValue;
+  const handleSave = ({ unidadesreal, observaciones="", ...props }) => {
+    selectedRecogida.unidadesreal = unidadesreal;
+    selectedRecogida.kgreal = kgValue;
     selectedRecogida.observaciones = obs;
     if(selectedRecogida.done){
-      selectedRecogida.done = (props.servicioRealizado || (!!unidadesReal && unidadesReal !== '0'));
+      selectedRecogida.done = (props.servicioRealizado || (!!unidadesreal && unidadesreal !== '0'));
     }else{
-      selectedRecogida.done =  ( (!!unidadesReal && unidadesReal !== '0') || !!props.servicioRealizado);
+      selectedRecogida.done =  ( (!!unidadesreal && unidadesreal !== '0') || !!props.servicioRealizado);
     }
     selected.data[selected.data.findIndex(
-      (ele) => ele.ItemId === selectedRecogida.ItemId
+      (ele) => ele.itemid === selectedRecogida.itemid
     )] = {
       ...selectedRecogida,
       ...props
@@ -154,7 +154,7 @@ const Recogida = ({ history }) => {
     watch: watch
   }
   const renderForm = () => {
-    switch(TIPOS_RECOGIDAS[selectedRecogida.ProjCategoryId]){
+    switch(findRecogidaType(selectedRecogida.projcategoryid)){
       case "recogida":
         return <RecogidaForm {...propsToForm}/>;
       case "entrega":
@@ -176,14 +176,14 @@ const Recogida = ({ history }) => {
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
       <List>
         <TextListElement
           noDivider
           iconColor="primary"
-          icon={TIPOS_RECOGIDAS[selectedRecogida.ProjCategoryId]}
-          title={selectedRecogida.ItemName}
-          subtitle={selectedRecogida.ItemId}
+          icon={findRecogidaType(selectedRecogida.projcategoryid)}
+          title={selectedRecogida.itemname}
+          subtitle={selectedRecogida.itemid}
         />
         {renderForm()}
         {!!selectedRecogida.imagenes && selectedRecogida.imagenes.length > 0 && (
@@ -223,7 +223,7 @@ const Recogida = ({ history }) => {
       <StepNavigator
         moveToPreviousText="Atrás"
         moveToPreviousAction={moveBack}
-        moveToNextText={TIPOS_RECOGIDAS[selectedRecogida.ProjCategoryId] !== "consigna" && "Confirmación"}
+        moveToNextText={findRecogidaType(selectedRecogida.projcategoryid) !== "consigna" && "Confirmación"}
         moveToNextAction={handleSubmit(handleSave)}
       />
     </React.Fragment>
