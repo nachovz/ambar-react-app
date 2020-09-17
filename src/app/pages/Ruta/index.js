@@ -78,7 +78,7 @@ const Ruta = ({ history }) => {
   const handleCloseAlert = () => setOpenAlert({ open: false });
   const handleOpenCartaPorte = (selected, route, done=false) => () => {
 
-  const current = getCompletedCartaporte().find( (cp) => cp.id === selected.ServiceOrderId);
+  const current = getCompletedCartaporte().find( (cp) => cp.id === selected.serviceorderid);
     if(route === "/quickview" || done){
       setRutasState({
         ...rutas,
@@ -113,8 +113,8 @@ const Ruta = ({ history }) => {
             button
             disabled={orders[order].done}
             icon="mantenimiento"
-            title={orders[order].ServiceAddressName}
-            subtitle={orders[order].ServiceAddress}
+            title={orders[order].serviceaddressname}
+            subtitle={orders[order].serviceaddress}
             subtitle2=""
             actionIcon={orders[order].done ? "ver" : "estado-aviso"}
             action={

@@ -26,7 +26,7 @@ export const getCompanyId = () => {
 export const getCompanyInfo = () => {
   let companyInfo = '';
   try{
-    companyInfo = JSON.parse(localStorage.getItem('COMPANY_INFO')).data[0];
+    companyInfo = JSON.parse(localStorage.getItem('COMPANY_INFO')).data;
   }catch(e){
     companyInfo = false;
   }
@@ -50,7 +50,7 @@ export const deleteCompanySession = () => {
 
 export const formatCompanyNotes = (notes, type) => (
   notes.data
-  .filter((note) => note.type === `${type}`)
+  .filter((note) => note.type === type)
   .map((note) => ({
     label: note.description,
     on: false,

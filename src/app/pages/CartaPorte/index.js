@@ -12,7 +12,7 @@ import NotesModal from 'app/components/form/NotesModal';
 import { useSnackbarContext } from 'app/contexts/Snackbar';
 import { useLoadingContext } from 'app/contexts/Loading';
 import { getPDF } from 'app/utils/dcs';
-import { TIPOS_RECOGIDAS, getRecogidaTypes } from 'app/constants/values';
+import { findRecogidaType, getRecogidaTypes } from 'app/constants/values';
 import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 import ExpansionPanel from 'app/components/ui/ExpansionPanel';
 import getColor from 'app/styles/palette';
@@ -24,7 +24,7 @@ const CartaPorte = ({ history }) => {
   const [, setLoadingState] = useLoadingContext();
   let { notes } = getCompanySession();
   const { selected } = rutas;
-  const [obs, setObs] = React.useState((selected && selected.observaciones) ||formatCompanyNotes(notes, 1));
+  const [obs, setObs] = React.useState((selected && selected.observaciones) || formatCompanyNotes(notes, 1));
   const [modal, setModal] = React.useState(false);
   const moveTo = (route) => () => history.push(route);
 
@@ -71,7 +71,7 @@ const CartaPorte = ({ history }) => {
 
   const filterRecogidasByType = (type, recogidas) => {
     const grouped = recogidas.filter( 
-      reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type 
+      reco => findRecogidaType(reco.projcategoryid) === type 
     );
     if(grouped.length < 1) return null;
 
@@ -90,9 +90,9 @@ const CartaPorte = ({ history }) => {
                     key={index}
                     button
                     iconColor="primary"
-                    icon={TIPOS_RECOGIDAS[reco.ProjCategoryId]}
-                    title={reco.ItemName}
-                    subtitle={reco.ItemId}
+                    icon={findRecogidaType(reco.projcategoryid)}
+                    title={reco.itemname}
+                    subtitle={reco.itemid}
                     actionIcon={reco.done ? "editar" : "arrow_right"}
                     disabled={reco.done}
                     onClick={onSelectedRecogida(reco)}
@@ -112,26 +112,27 @@ const CartaPorte = ({ history }) => {
     setObs(newObs);
     setModal(false);
   }
+	console.log(selected)
   return (
     <Fragment>
       <TopBar
-        title={`Carta de porte: ${selected.ServiceOrderId}`}
-        actionIcon={selected.Filepath && "descarga-dcs"}
-        action={openFile(rutas.selected.Filepath)}
-        extraActionIcon={selected.Filepath && "descarga-cp"}
-        extraAction={openFile(rutas.selected.CpFilepath)}
+        title={`Carta de porte: ${selected.serviceorderid}`}
+        actionIcon={selected.filepath && "descarga-dcs"}
+        action={openFile(rutas.selected.filepath)}
+        extraActionIcon={selected.cpfilepath && "descarga-cp"}
+        extraAction={openFile(rutas.selected.cpfilepath)}
         secondaryActionIcon="observaciones"
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.ServiceDateTime}`} />
-      {!!selected.OfficeNotes &&
+      <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
+      {!!selected.officenotes &&
         <ExpansionPanel 
           content={{
             title: 'Observaciones Oficina',
             icon: 'observaciones',
             content:(
               <Typography>
-                {selected.OfficeNotes}
+                {selected.officenotes}
               </Typography>
             )
           }}

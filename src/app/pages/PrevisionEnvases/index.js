@@ -18,7 +18,7 @@ import getColor from 'app/styles/palette';
 import ENDPOINTS from 'app/constants/endpoints';
 import { getVehicleSession } from 'app/utils/vehicle';
 import Typography from 'app/components/ui/Typography';
-import { TIPOS_RECOGIDAS, SERVICIO, SERVFACT } from 'app/constants/values';
+import { findRecogidaType, SERVICIO, SERVFACT } from 'app/constants/values';
 import { getCompanyId } from 'app/utils/company';
 
 const PrevisionEnvases = ({ history }) => {
@@ -72,9 +72,9 @@ const PrevisionEnvases = ({ history }) => {
     const clientArray = Object.keys(data).reduce((result, key) => ([
       ...result,
       ...[{ 
-        "client": data[key].ServiceAddressName, 
+        "client": data[key].serviceaddressname, 
         "data": data[key].data.filter((reco) => 
-          (TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVICIO && TIPOS_RECOGIDAS[reco.ProjCategoryId] !== SERVFACT ))
+          (findRecogidaType(reco.projcategoryid) !== SERVICIO && findRecogidaType(reco.projcategoryid) !== SERVFACT ))
       }]
     ]), []);
     return clientArray.map(({client, data}, ind) =>{
@@ -82,8 +82,8 @@ const PrevisionEnvases = ({ history }) => {
       client,
       data: dictionaryGenerator(
         data, 
-        ["PackingMaterialName", "ItemName"], 
-        "Res_Qty_Env"
+        ["packingmaterialname", "itemname"], 
+        "res_qty_env"
       )
       }
     });

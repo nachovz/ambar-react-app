@@ -15,13 +15,13 @@ const RecogidaForm = ({
   kgValue,
   watch
 }) => {
-  const unidadesReal =  watch('unidadesReal');
+  const unidadesreal =  watch('unidadesreal');
   return(
   <React.Fragment>
     <BoxedInput
       topLabel={
         <React.Fragment>
-          <strong>{selectedRecogida.Weight}</strong> Kgs./Lts.*
+          <strong>{selectedRecogida.weight}</strong> Kgs./Lts.*
           <br/>
           por <strong>(1)</strong> unidad
         </React.Fragment>
@@ -33,23 +33,23 @@ const RecogidaForm = ({
           disableGutters
           noDivider
           noIcon
-          title={selectedRecogida.PackingMaterialName}
-          subtitle={selectedRecogida.Res_InventPackingMaterialCode}
+          title={selectedRecogida.packingmaterialname}
+          subtitle={selectedRecogida.res_inventpackingmaterialcode}
         />
       }
     />
     <BoxedInput
       topLabel="Und."
-      topValue={selectedRecogida.Res_Qty_Env}
+      topValue={selectedRecogida.res_qty_env}
       icon="unidades"
       input={
         <TextField
           register={register}
           noMargin
-          name="unidadesReal"
+          name="unidadesreal"
           type="number"
           placeholder="UNIDADES REAL"
-          error={errors.unidadesReal}
+          error={errors.unidadesreal}
         />
       }
     />
@@ -57,7 +57,7 @@ const RecogidaForm = ({
       icon="peso"
       input={
         <SelectField
-          name="kgReal"
+          name="kgreal"
           value={kgValue}
           options={PESO_OPTIONS}
           onChange={handleMultiChange}
@@ -65,9 +65,9 @@ const RecogidaForm = ({
         />
       }
     />
-    {unidadesReal>0 && 
+    {unidadesreal>0 && 
       <BlueCenteredText>
-        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.Weight || "0").replace(',', '.')) * parseInt( unidadesReal ) * (kgValue/100))}</strong> Kgs./Lts.*
+        La <strong>MEDIDA TOTAL</strong> sería de: <strong>{esIntlFormatter.format(parseFloat((selectedRecogida.weight || "0").replace(',', '.')) * parseInt( unidadesreal ) * (kgValue/100))}</strong> Kgs./Lts.*
       </BlueCenteredText>
     }
     <TextListElement

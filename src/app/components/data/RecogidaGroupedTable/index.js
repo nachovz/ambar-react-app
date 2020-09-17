@@ -6,11 +6,11 @@ import TableElement from 'app/components/ui/Table/TableElement';
 import getColor from 'app/styles/palette';
 import Icon from 'app/components/ui/Icon';
 import { esIntlFormatter } from 'app/utils/esIntlFormatter';
-import { TIPOS_RECOGIDAS } from 'app/constants/values';
+import { findRecogidaType } from 'app/constants/values';
 
 const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
   const grouped = recogidas.filter( 
-    reco => TIPOS_RECOGIDAS[reco.ProjCategoryId] === type 
+    reco => findRecogidaType(reco.projcategoryid) === type 
   );
   if(grouped.length < 1) return null;
   let leyend = []; 
@@ -46,38 +46,38 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                 {grouped
                   .map( (reco,index) => {
                     const {
-                      ItemId,
-                      ItemName,
-                      kgReal,
-                      unidadesReal,
-                      ProjCategoryId,
-                      Weight,
+                      itemid,
+                      itemname,
+                      kgreal,
+                      unidadesreal,
+                      projcategoryid,
+                      weight,
                       servicioRealizado,
                       done
                     } = reco;
-                    const typeServicio = TIPOS_RECOGIDAS[ProjCategoryId] === "servicio";
+                    const typeServicio = findRecogidaType(projcategoryid) === "servicio";
                     let qts = ['-'];
                     if(done || typeServicio){
-                      switch(TIPOS_RECOGIDAS[ProjCategoryId]){
+                      switch(findRecogidaType(projcategoryid)){
                         case 'recogida':
                           qts = [
                             (
                               esIntlFormatter.format(
-                                parseFloat((Weight || "0").replace(',', '.')) 
+                                parseFloat((weight || "1").replace(',', '.')) 
                                 * 
-                                parseInt( unidadesReal ) * (kgReal/100)
+                                parseInt( unidadesreal ) * (kgreal/100)
                               )
                             )
                           ];
                           break;
                         case 'entrega':
                           qts = [
-                            unidadesReal || "",
+                            unidadesreal || "",
                             (
                               esIntlFormatter.format(
-                                parseFloat((Weight || "0").replace(',', '.')) 
+                                parseFloat((weight || "0").replace(',', '.')) 
                                 * 
-                                parseInt( unidadesReal ) * (kgReal/100)
+                                parseInt( unidadesreal ) * (kgreal/100)
                               )
                             )
                           ];
@@ -93,8 +93,8 @@ const RecogidaGroupedTable = ({type, recogidas, onSelectedRecogida}) =>{
                     return(
                       <TableElement
                         key={index}
-                        title={ItemName}
-                        subtitle={ItemId}
+                        title={itemname}
+                        subtitle={itemid}
                         cells={qts}
                         actionIcon={onSelectedRecogida && "editar"}
                         action={onSelectedRecogida && onSelectedRecogida(reco)}

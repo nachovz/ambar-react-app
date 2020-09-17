@@ -140,13 +140,20 @@ export const CONSIGNA = 'consigna';
 export const SERVFACT = 'servfact';
 
 export const TIPOS_RECOGIDAS = {
-  "Res_Peligr": RECOGIDA,
-  "Servicios": SERVICIO,
-  "Entrega": ENTREGA,
-  "Res_NoPel": RECOGIDA,
-  "Consigna": CONSIGNA,
-  "Serv Fact": SERVFACT
+  "res_peligr": RECOGIDA,
+	"servicios": SERVICIO,
+  "entrega": ENTREGA,
+  "res_nopel": RECOGIDA,
+  "consigna": CONSIGNA,
+  "serv fact": SERVFACT
+	//"Res_Peligr": RECOGIDA,
+	//"Servicios": SERVICIO,
+  //"Entrega": ENTREGA,
+  //"Res_Nopel": RECOGIDA,
+  //"Consigna": CONSIGNA,
+  //"Serv Fact": SERVFACT
 };
+export const findRecogidaType = (type) => TIPOS_RECOGIDAS[type.toLowerCase()];
 
 export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA, CONSIGNA];
 
@@ -190,4 +197,4 @@ export const COMPANY_CODES = {
 
 export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AMB"]; 
 
-export const APP_VERSION = 'v1.11.0';
+export const APP_VERSION = 'v1.12.0';
