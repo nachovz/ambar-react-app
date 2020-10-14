@@ -2,4 +2,5 @@ ports:
 - port: 3000
 - port: 9009
 tasks:
-- command: npm install
+- init: printf '%s\n' 'REACT_APP_COMPANY_CODE=AMB' 'REACT_APP_API_URL=https://api.dev.ambarplus.com/v1' >.env && npm install
+  command: npm run start

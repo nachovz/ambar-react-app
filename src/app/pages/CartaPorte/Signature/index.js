@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from "react-router";
 import { useRutasContext } from 'app/contexts/Rutas';
 import { useLoadingContext } from 'app/contexts/Loading';
+import { useSnackbarContext } from 'app/contexts/Snackbar';
 import useForm from 'react-hook-form';
 import DateBar from 'app/components/ui/DateBar';
 import TopBar from 'app/components/ui/TopBar';
@@ -29,6 +30,7 @@ import getGeoPosition from 'app/utils/getGeoPosition';
 const CartaPorteSignature = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
   const [, setLoadingState] = useLoadingContext();
+  const [, setSnackbarContext] = useSnackbarContext();
   const [signature, setSignature] = useState();
   const [approvals, setApprovals] = useState({
     conform: false
@@ -68,7 +70,12 @@ const CartaPorteSignature = ({ history }) => {
       });
     } catch (error) {
       setLoadingState(false);
-    }
+			setSnackbarContext({
+				message: error.message,
+				variant: 'error',
+				open: true
+			});
+		}
   };
 
   const handleCloseAlert = () => {

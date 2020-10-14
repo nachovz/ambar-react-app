@@ -1,5 +1,7 @@
 Changelog:
 
+**v1.12.1** Snackbar cuando ocurre response 500 en POST cartaporte
+
 **v1.12.0a** Ajustes de refactor: Observaciones y documentos
 
 **v1.12.0** Ajuste de URL del API por env

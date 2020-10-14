@@ -74,12 +74,15 @@ function errorHandler(error, ignoreThrow) {
         deleteUserSession();
         break;
       case 404:
-        error.message = "No hay datos para esta solicitud. Comuníquese con Oficina."
+        error.message = "No hay datos para esta solicitud. Comuníquese con Oficina.";
         if(ignoreThrow) return { data: [] };
         break;
       case 422:
-        error.message = "No se ha encontrado esta matrícula en a esta empresa."
+        error.message = "No se ha encontrado esta matrícula en a esta empresa.";
         break;
+			case 500:
+				error.message = "Hubo un error en el servidor, por favor espere unos segundos e intente de nuevo.";
+				break;
       default:
         break;
     }
