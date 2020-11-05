@@ -60,14 +60,16 @@ const CartaPorte = ({ history }) => {
   }
 
   const onSelectedRecogida = (selectedRecogida) => () => {
-    setRutasState({
-      ...rutas,
-      selected:{
-        ...selected,
-        selectedRecogida
-      }
-    });
-    history.push("/recogida");
+    if(!rutas.selected.notCurrent) {
+			setRutasState({
+				...rutas,
+				selected:{
+					...selected,
+					selectedRecogida
+				}
+			});
+			history.push("/recogida");
+		}
   };
 
   const filterRecogidasByType = (type, recogidas) => {
@@ -95,7 +97,7 @@ const CartaPorte = ({ history }) => {
                     title={reco.itemname}
                     subtitle={reco.itemid}
                     actionIcon={reco.done ? "editar" : "arrow_right"}
-                    disabled={reco.done}
+                    disabled={reco.done || rutas.selected.notCurrent}
                     onClick={onSelectedRecogida(reco)}
                     action={onSelectedRecogida(reco)}
                   />
@@ -122,7 +124,7 @@ const CartaPorte = ({ history }) => {
         action={openFile(rutas.selected.filepath)}
         extraActionIcon={selected.cpfilepath && "descarga-cp"}
         extraAction={openFile(rutas.selected.cpfilepath)}
-        secondaryActionIcon="observaciones"
+        secondaryActionIcon={!rutas.selected.notCurrent && "observaciones"}
         secondaryAction={() => setModal(true)}
       />
       <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
@@ -147,13 +149,15 @@ const CartaPorte = ({ history }) => {
             subtitle="Error al cargar las recogidas. Contactar oficina."
           />
       }
-      <Fab
-        color="primary"
-        aria-label="Nuevo"
-        onClick={() => history.push("/recogida-add")}
-      >
-        <Icon />
-      </Fab>
+			{ !rutas.selected.notCurrent && (
+				<Fab
+					color="primary"
+					aria-label="Nuevo"
+					onClick={() => history.push("/recogida-add")}
+				>	
+					<Icon />
+				</Fab>
+			)}
       <NotesModal
         modal={modal}
         handleCloseModal={handleCloseModal}
@@ -165,7 +169,7 @@ const CartaPorte = ({ history }) => {
       <StepNavigator
         moveToPreviousText="Ruta"
         moveToPreviousAction={moveTo('')}
-        moveToNextText="Resumen"
+        moveToNextText={!rutas.selected.notCurrent && "Resumen"}
         moveToNextAction={moveTo('cartaporte-summary')}
       />
     </Fragment>

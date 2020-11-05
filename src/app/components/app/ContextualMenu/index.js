@@ -100,12 +100,14 @@ const ContextualMenu = ({ history }) => {
                 </ListItemIcon>
                 <ListItemText primary="Carta de Porte" />
               </ListItem>
-              <ListItem button onClick={() => setOpenAlert(true)}>
-                <ListItemIcon>
-                  <Icon icon="cerrar" />
-                </ListItemIcon>
-                <ListItemText primary="Cerrar esta carta de porte" />
-              </ListItem>
+							{!rutas.selected.notCurrent &&
+								<ListItem button onClick={() => setOpenAlert(true)}>
+									<ListItemIcon>
+										<Icon icon="cerrar" />
+									</ListItemIcon>
+									<ListItemText primary="Cerrar esta carta de porte" />
+								</ListItem>
+							}
             </>
           }
           {!!selected.cpfilepath &&

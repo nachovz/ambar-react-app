@@ -199,4 +199,4 @@ export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AM
 
 export const debbug = () => process.env.REACT_APP_ENVIRONMENT === 'DEV';
 
-export const APP_VERSION = 'v1.12.1a';
+export const APP_VERSION = 'v1.13.0';
