@@ -11,9 +11,13 @@ import { setCompletedCarteporte, getCompletedCartaporte } from 'app/utils/cartap
 import List from 'app/components/ui/List';
 import TopBar from 'app/components/ui/TopBar';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
+import Row from 'app/components/ui/Row';
+import Icon from 'app/components/ui/Icon';
 import AlertDialog from 'app/components/ui/AlertDialog';
 import getGeoPosition from 'app/utils/getGeoPosition';
 import { getCompanyId } from 'app/utils/company';
+import Button from 'app/components/ui/Button';
+import { formatDate } from 'app/utils/esIntlFormatter';
 
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -24,11 +28,11 @@ const Ruta = ({ history }) => {
   const [openAlert, setOpenAlert] = React.useState({ 
     open: false
   });
-
+	const [currentDate, setCurrentDate] = useState(new Date().getTime());
   const refreshRuta = async function() {
     setLoadingState(true);
     try {
-      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route`, { ignoreThrow: true });
+      const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=${formatDate(currentDate)}`, { ignoreThrow: true });
       setRutasState({ ...rutas, selected: null });
       setLoadingState(false);
     } catch (error) {
@@ -54,21 +58,26 @@ const Ruta = ({ history }) => {
     }
   }, [rutas]);// eslint-disable-line react-hooks/exhaustive-deps
 
+	useEffect(() => {
+    refreshRuta();
+  }, [currentDate]);
+
   if (!vehicleId || isVehicleIdExpired()) {
     return (
       <Redirect to="/login" />
     );
   }
-    
-  const showInfo = async () => {
+
+  const showInfo = async (selectedCartaPorte) => {
     setLoadingState(true);
     const { lat, lng } = await getGeoPosition();
     setRutasState({
       ...rutas,
       selected:{
-        ...openAlert.selected,
+        ...openAlert.selected || selectedCartaPorte,
         latitude_start: parseFloat(lat),
-        longitude_start: parseFloat(lng)
+        longitude_start: parseFloat(lng),
+				...(formatDate(currentDate) !== formatDate(new Date().getTime())) && {notCurrent: true}
       }
     });
     setLoadingState(false);
@@ -77,35 +86,52 @@ const Ruta = ({ history }) => {
 
   const handleCloseAlert = () => setOpenAlert({ open: false });
   const handleOpenCartaPorte = (selected, route, done=false) => () => {
-
-  const current = getCompletedCartaporte().find( (cp) => cp.id === selected.serviceorderid);
-    if(route === "/quickview" || done){
-      setRutasState({
-        ...rutas,
-        selected:{
-          ...((current && current.data) || selected)
-        }
-      });
-      history.push(!!done ? '/resumen-dia' : route);
-      return;
-    }
-
-    setOpenAlert({
-      open: true,
-      selected
-    });
+		const current = getCompletedCartaporte().find( (cp) => cp.id === selected.serviceorderid);
+		if(route === "/quickview" || done){
+			setRutasState({
+				...rutas,
+				selected:{
+					...((current && current.data) || selected),
+					...(formatDate(currentDate) !== formatDate(new Date().getTime())) && {notCurrent: true}
+				}
+			});
+			history.push(!!done ? '/resumen-dia' : route);
+			return;
+		}
+		if(formatDate(currentDate) !== formatDate(new Date().getTime())){
+			showInfo(selected);
+		}else{
+			setOpenAlert({
+				open: true,
+				selected
+			});
+		}
   };
 
   const ordersKeys = Object.keys(orders);
-
   return (
     <React.Fragment>
       <TopBar
         title={`Total avisos: ${ordersKeys.length}`}
-        now
         actionIcon={"refresh"}
         action={refreshRuta}
-      />
+      >
+				<Row>
+					<Button 
+						style={{margin: 0, padding: 0, minWidth: 30, lineHeight: '30px'}}
+						onClick={() => setCurrentDate(currentDate - ( 86400000 ))}	
+					>
+						<Icon fontSize="tiny" icon="arrow_left"/>
+					</Button>
+					{formatDate(currentDate)}
+					<Button 
+						style={{margin: 0, padding: 0, minWidth: 30, lineHeight: '30px'}}
+						onClick={() => setCurrentDate(currentDate + ( 86400000 ))}
+					>
+						<Icon fontSize="tiny" icon="arrow_right"/>
+					</Button>
+				</Row>
+			</TopBar>
       <List>
         {ordersKeys.map((order, index) => (
           <TextListElement
