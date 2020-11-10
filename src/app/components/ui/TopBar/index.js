@@ -9,18 +9,17 @@ import Row from 'app/components/ui/Row';
 import Box from '@material-ui/core/Box';
 import { DarkContainer } from './elements';
 import Spacer from 'app/components/ui/Spacer';
-import getNow from 'app/utils/getNow';
 
 const TopBar = ({
   title,
   rightText,
-  now=false,
   actionIcon,
   action,
   secondaryActionIcon,
   secondaryAction,
   extraActionIcon,
   extraAction,
+	children,
   ...props
 }) => (
     <DarkContainer>
@@ -32,44 +31,46 @@ const TopBar = ({
               <Box fontWeight={500}>
                 {title}
               </Box>
-              <Typography noWrap variant="caption" display="block">
-                {now ? getNow() : rightText}
-              </Typography>
+							{children ? <></> :
+								<Typography noWrap variant="caption" display="block">
+									{rightText}
+								</Typography>
+							}
             </Row>
           }
         />
-        
-          <ListItemSecondaryAction>
-            <Row>
-              {!!actionIcon &&
-                <IconButton edge="end" aria-label={actionIcon} onClick={action}>
-                  <Icon icon={actionIcon} />
-                </IconButton>
-              }
-              {!!extraActionIcon &&
-                <React.Fragment>
-                  <Spacer direction="horizontal"/>
-                  <IconButton
-                    edge="end"
-                    aria-label={extraActionIcon}
-                    onClick={extraAction}>
-                    <Icon icon={extraActionIcon} />
-                  </IconButton>
-                </React.Fragment>
-              }
-              {!!secondaryActionIcon &&
-                <React.Fragment>
-                  <Spacer direction="horizontal"/>
-                  <IconButton
-                    edge="end"
-                    aria-label={secondaryActionIcon}
-                    onClick={secondaryAction}>
-                    <Icon icon={secondaryActionIcon} />
-                  </IconButton>
-                </React.Fragment>
-              }
-            </Row>
-          </ListItemSecondaryAction>
+					{children} 
+					<ListItemSecondaryAction>
+						<Row>
+							{!!actionIcon &&
+								<IconButton edge="end" aria-label={actionIcon} onClick={action}>
+									<Icon icon={actionIcon} />
+								</IconButton>
+							}
+							{!!extraActionIcon &&
+								<React.Fragment>
+									<Spacer direction="horizontal"/>
+									<IconButton
+										edge="end"
+										aria-label={extraActionIcon}
+										onClick={extraAction}>
+										<Icon icon={extraActionIcon} />
+									</IconButton>
+								</React.Fragment>
+							}
+							{!!secondaryActionIcon &&
+								<React.Fragment>
+									<Spacer direction="horizontal"/>
+									<IconButton
+										edge="end"
+										aria-label={secondaryActionIcon}
+										onClick={secondaryAction}>
+										<Icon icon={secondaryActionIcon} />
+									</IconButton>
+								</React.Fragment>
+							}
+						</Row>
+					</ListItemSecondaryAction>
       </ListItem>
     </DarkContainer>
   );

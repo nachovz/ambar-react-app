@@ -12,6 +12,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [PROD https://tecnicos.mreciclauto.com/](https://tecnicos.mreciclauto.com/)
 
+### Backend endpoints
+
+#### DEV
+
+https://api.dev.ambarplus.com/v1
+
+#### PROD
+
+https://api-v1.ambarplus.com/v1
+
 ## Themification
 
 *.env*
@@ -20,6 +30,6 @@ REACT_APP_COMPANY_CODE=AMB
 
     Códigos de empresas: AMB = Ambar Plus (Default), MRE = Reciclauto
 
-REACT_APP_API_URL=https://api-v1.ambarplus.com
+REACT_APP_API_URL=https://api.dev.ambarplus.com/v1
 
     URL de API

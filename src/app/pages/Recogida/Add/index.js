@@ -110,6 +110,7 @@ const RecogidaAdd = ({ history }) => {
       },
       packingmaterialname: container.description,
       res_inventpackingmaterialcode: container.id,
+			container_id: container.id,
       kgreal: kgreal.value,
       unidadesreal,
       observaciones: obs,

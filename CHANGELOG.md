@@ -1,5 +1,11 @@
 Changelog:
 
+**v1.13.0** Feature: cargar ruta y cartaportes futuras y pasadas (no editables)
+
+**v1.12.1a** Fix recogida manual container_id
+
+**v1.12.1** Snackbar cuando ocurre response 500 en POST cartaporte
+
 **v1.12.0a** Ajustes de refactor: Observaciones y documentos
 
 **v1.12.0** Ajuste de URL del API por env
