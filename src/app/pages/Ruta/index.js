@@ -64,10 +64,6 @@ const Ruta = ({ history }) => {
     refreshRuta();
   }, [currentDate]);// eslint-disable-line react-hooks/exhaustive-deps
 
-	useEffect(() => {
-    refreshRuta();
-  }, [currentDate]);
-
   if (!vehicleId || isVehicleIdExpired()) {
     return (
       <Redirect to="/login" />
