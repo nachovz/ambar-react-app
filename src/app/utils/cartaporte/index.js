@@ -28,7 +28,7 @@ export const buildCartaporte = ({
         "waste_id": current.itemid || "",
         "category_id": current.projcategoryid,
         "line_number": current.serviceorderlinenum,
-        "container_id": current.res_inventpackingmaterialcode || "",
+        "container_id": current.res_inventpackingmaterialcode || current.container_id || "",
         "container_quantity": current.unidadesreal || "",
         image: ((current.imagenes && current.imagenes[0].dataUri) || ""),
         notes: (current.observaciones || []).filter(({ on }) => on ).map(({ label }) => label),

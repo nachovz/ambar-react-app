@@ -1,5 +1,9 @@
 Changelog:
 
+**v1.13.1** Envío de container_id en recogidas manuales
++ Ajuste en Ruta para evitar llamado doble
++ Más valores debug en dev
+
 **v1.13.0** Feature: cargar ruta y cartaportes futuras y pasadas (no editables)
 
 **v1.12.1a** Fix recogida manual container_id
