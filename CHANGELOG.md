@@ -1,5 +1,8 @@
 Changelog:
 
+**v1.13.2** Ajuste de sesión expirada luego de cierre
++ Ajustes de legibilidad
+
 **v1.13.1** Envío de container_id en recogidas manuales
 + Ajuste en Ruta para evitar llamado doble
 + Más valores debug en dev

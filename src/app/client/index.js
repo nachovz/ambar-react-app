@@ -31,7 +31,16 @@ const client = {
   },
 };
 
-const makeRequest = async (url, { body, headers, method, responseType, ignoreThrow=false }) => {
+const makeRequest = async (
+	url, 
+	{ 
+		body, 
+		headers, 
+		method, 
+		responseType, 
+		ignoreThrow=false 
+	}
+) => {
   try {
     const response = await axios({
       url,

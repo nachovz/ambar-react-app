@@ -19,6 +19,7 @@ import { getCompanyId } from 'app/utils/company';
 import Button from 'app/components/ui/Button';
 import { formatDate } from 'app/utils/esIntlFormatter';
 import Typography from 'app/components/ui/Typography';
+import PaddedContainer from 'app/components/ui/PaddedContainer';
 
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -136,7 +137,11 @@ const Ruta = ({ history }) => {
 			</TopBar>
       <List>
         {ordersKeys.length === 0 ?
-					(<Typography>No hay Cartas de porte para esta fecha</Typography>)
+					(
+						<PaddedContainer>
+							<Typography>No hay Cartas de porte para esta fecha</Typography>
+						</PaddedContainer>
+					)
 					:
 					ordersKeys.map((order, index) => (
 						<TextListElement
