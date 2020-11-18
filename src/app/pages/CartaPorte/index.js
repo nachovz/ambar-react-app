@@ -17,7 +17,7 @@ import { getCompanySession, formatCompanyNotes } from 'app/utils/company';
 import ExpansionPanel from 'app/components/ui/ExpansionPanel';
 import getColor from 'app/styles/palette';
 import Typography from 'app/components/ui/Typography';
-import { debbug } from 'app/constants/values';
+import { is_debug } from 'app/constants/values';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -115,7 +115,7 @@ const CartaPorte = ({ history }) => {
     setObs(newObs);
     setModal(false);
   }
-	debbug() && console.log(selected)
+	is_debug() && console.log(selected)
   return (
     <Fragment>
       <TopBar

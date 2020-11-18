@@ -18,6 +18,8 @@ import getGeoPosition from 'app/utils/getGeoPosition';
 import { getCompanyId } from 'app/utils/company';
 import Button from 'app/components/ui/Button';
 import { formatDate } from 'app/utils/esIntlFormatter';
+import Typography from 'app/components/ui/Typography';
+import PaddedContainer from 'app/components/ui/PaddedContainer';
 
 const Ruta = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -29,7 +31,8 @@ const Ruta = ({ history }) => {
     open: false
   });
 	const [currentDate, setCurrentDate] = useState(new Date().getTime());
-  const refreshRuta = async function() {
+  
+	const refreshRuta = async function() {
     setLoadingState(true);
     try {
       const rutas = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=${formatDate(currentDate)}`, { ignoreThrow: true });
@@ -52,15 +55,15 @@ const Ruta = ({ history }) => {
     setOrders(rutas.data || []);
   }, [rutas, setOrders]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (!rutas || !rutas.data) {
       refreshRuta();
     }
   }, [rutas]);// eslint-disable-line react-hooks/exhaustive-deps
-
+*/
 	useEffect(() => {
     refreshRuta();
-  }, [currentDate]);
+  }, [currentDate]);// eslint-disable-line react-hooks/exhaustive-deps
 
   if (!vehicleId || isVehicleIdExpired()) {
     return (
@@ -133,32 +136,39 @@ const Ruta = ({ history }) => {
 				</Row>
 			</TopBar>
       <List>
-        {ordersKeys.map((order, index) => (
-          <TextListElement
-            key={index}
-            button
-            disabled={orders[order].done}
-            icon="mantenimiento"
-            title={orders[order].serviceaddressname}
-            subtitle={orders[order].serviceaddress}
-            subtitle2=""
-            actionIcon={orders[order].done ? "ver" : "estado-aviso"}
-            action={
-              handleOpenCartaPorte(
-                orders[order], 
-                "/quickview",
-                orders[order].done
-              )
-            }
-            onClick={
-              handleOpenCartaPorte(
-                orders[order],
-                "/cartaporte",
-                orders[order].done
-              )
-            }
-          />
-        ))}
+        {ordersKeys.length === 0 ?
+					(
+						<PaddedContainer>
+							<Typography>No hay Cartas de porte para esta fecha</Typography>
+						</PaddedContainer>
+					)
+					:
+					ordersKeys.map((order, index) => (
+						<TextListElement
+							key={index}
+							button
+							disabled={orders[order].done}
+							icon="mantenimiento"
+							title={orders[order].serviceaddressname}
+							subtitle={orders[order].serviceaddress}
+							subtitle2=""
+							actionIcon={orders[order].done ? "ver" : "estado-aviso"}
+							action={
+								handleOpenCartaPorte(
+									orders[order], 
+									"/quickview",
+									orders[order].done
+								)
+							}
+							onClick={
+								handleOpenCartaPorte(
+									orders[order],
+									"/cartaporte",
+									orders[order].done
+								)
+							}
+						/>))
+				}
       </List>
       <AlertDialog
         open={openAlert.open}

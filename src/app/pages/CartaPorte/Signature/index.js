@@ -26,6 +26,7 @@ import {
   FullWidthForm
 } from './elements';
 import getGeoPosition from 'app/utils/getGeoPosition';
+import { is_debug } from 'app/constants/values';
 
 const CartaPorteSignature = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -60,8 +61,14 @@ const CartaPorteSignature = ({ history }) => {
     
     try {
       const body = buildCartaporte(selected);
-      //console.log(body);
-      await client.post(ENDPOINTS.ROUTE_POST(getCompanyId()), { body });
+      
+			if(is_debug()){
+				console.log(body);
+				debugger;
+			}
+				
+			await client.post(ENDPOINTS.ROUTE_POST(getCompanyId()), { body });
+			
       addCompletedCartaporte(selected.serviceorderid, selected);
       setLoadingState(false);
       setRutasState({
@@ -150,7 +157,7 @@ const CartaPorteSignature = ({ history }) => {
                 ref={(ref) => { sigPad = ref }}
                 canvasProps={{
                   className: 'sigCanvas',
-                  width: 350,
+                  width: 300,
                   height: 250
                 }}
               />

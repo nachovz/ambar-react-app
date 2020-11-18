@@ -1,4 +1,10 @@
+const watchedHeaders = ['access-token', 'token-type', 'uid', 'expiry', 'client'];
+
 export const setUserHeaders = (headers) => {
+	for(let i=0; i < watchedHeaders.length; i++){
+			if(headers[watchedHeaders[i]] === undefined) return null;
+	}
+
   localStorage.setItem('ACCESS_TOKEN', headers['access-token']);
   localStorage.setItem('TOKEN_TYPE', headers['token-type']);
   localStorage.setItem('UID', headers.uid);
