@@ -12,7 +12,7 @@ import theme from 'app/styles/material';
 const styles = {
   container: {
     overflow: 'scroll',
-    maxHeight: '70vh'
+    maxHeight: '60vh'
   },
   paddedInput:{
     paddingLeft: theme.spacing(4)

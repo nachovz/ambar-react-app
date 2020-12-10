@@ -43,7 +43,7 @@ const PrevisionEnvases = ({ history }) => {
     setLoadingState(true);
     let counter = 1;
     let rutaFuture = null;
-    while(!rutaFuture && counter < 4 ){
+    while(!rutaFuture && counter < 5 ){
       try {
         let queryDate = esIntlDate.format(currentDate.getTime() + ( 86400000 * counter));
         rutaFuture = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=${queryDate}`);
@@ -110,7 +110,7 @@ const PrevisionEnvases = ({ history }) => {
             {!!noFuture &&
               <PaddedContainer $simpleCentered >
                 <Typography>
-                  No hay rutas disponibles para los próximos 3 días.
+                  No hay rutas disponibles para los próximos 4 días.
                 </Typography>
               </PaddedContainer>
             }
