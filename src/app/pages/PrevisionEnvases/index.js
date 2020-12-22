@@ -79,12 +79,8 @@ const PrevisionEnvases = ({ history }) => {
     ]), []);
     return clientArray.map(({client, data}, ind) =>{
       return {
-      client,
-      data: dictionaryGenerator(
-        data, 
-        ["packingmaterialname", "itemname"], 
-        "res_qty_env"
-      )
+				client,
+				data: dictionaryGenerator(data)
       }
     });
   }
@@ -137,7 +133,8 @@ const PrevisionEnvases = ({ history }) => {
                     key={`${index}-${ind}`}
                     icon="envase"
                     title={container.name}
-                    quantities={[container.Qty]}
+										subtitle={container.type}
+                    quantities={[container.qty]}
                   />
                 ))}
                 
@@ -166,7 +163,8 @@ const PrevisionEnvases = ({ history }) => {
                     key={`${index}-${ind}`}
                     icon="envase"
                     title={container.name}
-                    quantities={[container.Qty]}
+										subtitle={container.type}
+                    quantities={[container.qty]}
                   />
                 ))}
                 
