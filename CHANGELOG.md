@@ -1,4 +1,5 @@
 Changelog:
+**v1.13.3** Revamp lógica previsión envases por tipo de recogida
 
 **v1.13.2** Ajuste de sesión expirada luego de cierre
 + Ajustes de legibilidad

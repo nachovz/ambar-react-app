@@ -43,7 +43,7 @@ const PrevisionEnvases = ({ history }) => {
     setLoadingState(true);
     let counter = 1;
     let rutaFuture = null;
-    while(!rutaFuture && counter < 4 ){
+    while(!rutaFuture && counter < 5 ){
       try {
         let queryDate = esIntlDate.format(currentDate.getTime() + ( 86400000 * counter));
         rutaFuture = await client.get(`${ENDPOINTS.ROUTE(getCompanyId())}/${vehicleId}/route?date=${queryDate}`);
@@ -79,12 +79,8 @@ const PrevisionEnvases = ({ history }) => {
     ]), []);
     return clientArray.map(({client, data}, ind) =>{
       return {
-      client,
-      data: dictionaryGenerator(
-        data, 
-        ["packingmaterialname", "itemname"], 
-        "res_qty_env"
-      )
+				client,
+				data: dictionaryGenerator(data)
       }
     });
   }
@@ -110,7 +106,7 @@ const PrevisionEnvases = ({ history }) => {
             {!!noFuture &&
               <PaddedContainer $simpleCentered >
                 <Typography>
-                  No hay rutas disponibles para los próximos 3 días.
+                  No hay rutas disponibles para los próximos 4 días.
                 </Typography>
               </PaddedContainer>
             }
@@ -137,7 +133,8 @@ const PrevisionEnvases = ({ history }) => {
                     key={`${index}-${ind}`}
                     icon="envase"
                     title={container.name}
-                    quantities={[container.Qty]}
+										subtitle={container.type}
+                    quantities={[container.qty]}
                   />
                 ))}
                 
@@ -166,7 +163,8 @@ const PrevisionEnvases = ({ history }) => {
                     key={`${index}-${ind}`}
                     icon="envase"
                     title={container.name}
-                    quantities={[container.Qty]}
+										subtitle={container.type}
+                    quantities={[container.qty]}
                   />
                 ))}
                 
