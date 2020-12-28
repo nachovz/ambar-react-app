@@ -13,27 +13,32 @@ const dictionaryGenerator = ( data ) => {
 		
 		let filtered = {
 			name: "",
-			value: ""
+			value: "",
+			alter: ""
 		};
 
     switch (TIPOS_RECOGIDAS[element.projcategoryid.toLowerCase()]) {
 			case RECOGIDA:
 				filtered.name = "packingmaterialname";
+				filtered.alter = "itemname";
 				filtered.value = "res_qty_env";
 				break;
 			
 			case SERVICIO:
 				filtered.name = "packingmaterialname";
+				filtered.alter = "itemname";
 				filtered.value = "res_qty_env";
 				break;
 		
 			case CONSIGNA:
 				filtered.name = "packingmaterialname";
+				filtered.alter = "itemname";
 				filtered.value = "res_qty_env";
 				break;
 			
 			case ENTREGA:
 				filtered.name = "itemname";
+				filtered.alter = "packingmaterialname";
 				filtered.value = "weight";
 				break;
 			
@@ -41,11 +46,13 @@ const dictionaryGenerator = ( data ) => {
 				break;
 		}
 
-		if(element[filtered.name] in dictionary){
-				dictionary[element[filtered.name]].qty += parseFloat(element[filtered.value]);
+		let validKey = element[filtered.name] || element[filtered.alter];
+
+		if(validKey in dictionary){
+				dictionary[validKey].qty += parseFloat(element[filtered.value]);
 			}else{
-				dictionary[element[filtered.name]] = {
-					name: element[filtered.name],
+				dictionary[validKey] = {
+					name: validKey,
 					qty: parseFloat(element[filtered.value]),
 					type: TIPOS_RECOGIDAS[element.projcategoryid.toLowerCase()]
 				}
