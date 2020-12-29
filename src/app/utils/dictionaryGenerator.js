@@ -39,7 +39,7 @@ const dictionaryGenerator = ( data ) => {
 			case ENTREGA:
 				filtered.name = "itemname";
 				filtered.alter = "packingmaterialname";
-				filtered.value = "weight";
+				filtered.value = "qty";
 				break;
 			
 			default:
