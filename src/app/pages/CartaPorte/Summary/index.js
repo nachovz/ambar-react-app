@@ -7,7 +7,9 @@ import Fab from 'app/components/ui/Fab';
 import Icon from 'app/components/ui/Icon';
 import StepNavigator from 'app/components/app/StepNavigator';
 import TextListElement from 'app/components/ui/ListElement/TextListElement';
-import { findRecogidaType, getRecogidaTypes } from 'app/constants/values';
+import List from 'app/components/ui/List';
+import { formatDate } from 'app/utils/esIntlFormatter';
+import { findRecogidaType, getRecogidaTypes, SERVICIO, CONSIGNA } from 'app/constants/values';
 import RecogidaGroupedTable from 'app/components/data/RecogidaGroupedTable';
 
 const CartaPorteSummary = ({ history }) => {
@@ -33,28 +35,35 @@ const CartaPorteSummary = ({ history }) => {
   };
 
   const filtered = selected.data.filter( (r) => 
-    (!!r.done || findRecogidaType(r.projcategoryid) === "servicio")
+    (!!r.done || 
+		findRecogidaType(r.projcategoryid) === SERVICIO ||
+		findRecogidaType(r.projcategoryid) === CONSIGNA
+		)
   );
-
+	console.log(new Date(selected.servicedatetime))
+	console.log(selected)
   return(
     <React.Fragment>
-      <TopBar title={`CARTA DE PORTE No ${selected.serviceorderid}`} />
-      <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
-      {!!filtered && filtered.length > 0 ? 
-          getRecogidaTypes()
-          .map( type => 
-            <RecogidaGroupedTable 
-              key={type} 
-              type={type} 
-              recogidas={filtered} 
-              onSelectedRecogida={onSelectedRecogida}
-            />
-          )
-        :
-          <TextListElement
-            subtitle="Error al cargar las recogidas. Contactar oficina."
-          />
-      }
+			<List>
+				<TopBar title={`CARTA DE PORTE No ${selected.serviceorderid}`} />
+				<DateBar title={`FECHA RECOGIDA: ${formatDate(new Date(selected.servicedatetime))}`} />
+				{!!filtered && filtered.length > 0 ? 
+						getRecogidaTypes()
+						.map( type => 
+							<RecogidaGroupedTable 
+								key={type} 
+								type={type} 
+								recogidas={filtered} 
+								onSelectedRecogida={onSelectedRecogida}
+							/>
+						)
+					:
+						<TextListElement
+							noIcon
+							subtitle="Información inválida, faltan datos de recogida"
+						/>
+				}
+			</List>
       <Fab
         color="primary"
         aria-label="Nuevo"
