@@ -40,8 +40,6 @@ const CartaPorteSummary = ({ history }) => {
 		findRecogidaType(r.projcategoryid) === CONSIGNA
 		)
   );
-	console.log(new Date(selected.servicedatetime))
-	console.log(selected)
   return(
     <React.Fragment>
 			<List>
