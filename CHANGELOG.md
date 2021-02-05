@@ -1,4 +1,8 @@
 Changelog:
+**v1.13.4** Fix de lógica de validación de cartaporte lista
++ Agregado tipo consigna a validación de cierre sin cambios
++ Ajuste de formato de datetime en Cartaporte y Summary
+
 **v1.13.3** Revamp lógica previsión envases por tipo de recogida
 
 **v1.13.2** Ajuste de sesión expirada luego de cierre

@@ -18,6 +18,7 @@ import ExpansionPanel from 'app/components/ui/ExpansionPanel';
 import getColor from 'app/styles/palette';
 import Typography from 'app/components/ui/Typography';
 import { is_debug } from 'app/constants/values';
+import { formatDate } from 'app/utils/esIntlFormatter';
 
 const CartaPorte = ({ history }) => {
   const [rutas, setRutasState] = useRutasContext();
@@ -127,7 +128,7 @@ const CartaPorte = ({ history }) => {
         secondaryActionIcon={!rutas.selected.notCurrent && "observaciones"}
         secondaryAction={() => setModal(true)}
       />
-      <DateBar title={`FECHA RECOGIDA: ${selected.servicedatetime}`} />
+      <DateBar title={`FECHA RECOGIDA: ${formatDate(new Date(selected.servicedatetime))}`} />
       {!!selected.officenotes &&
         <ExpansionPanel 
           content={{
