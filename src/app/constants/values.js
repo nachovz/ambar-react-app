@@ -160,11 +160,13 @@ export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA, CONSIGNA];
 export const LINK_TYPE_MAP = "map";
 export const LINK_TYPE_EMAIL = "email";
 export const LINK_TYPE_PHONE = "phone";
+export const LINK_TYPE_GEO = "geo";
 
 export const LINK_VALUES = {
   [LINK_TYPE_PHONE]: "tel:",
   [LINK_TYPE_EMAIL]: "mailto:",
-  [LINK_TYPE_MAP]: "http://maps.google.com/?q="
+  [LINK_TYPE_MAP]: "http://maps.google.com/?q=",
+	[LINK_TYPE_GEO]: "geo:0,0?q="
 };
 
 export const NAMES = {
@@ -199,4 +201,4 @@ export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AM
 
 export const is_debug = () => process.env.REACT_APP_ENVIRONMENT === 'DEV';
 
-export const APP_VERSION = 'v1.13.4';
+export const APP_VERSION = 'v1.13.6';

@@ -1,4 +1,7 @@
 Changelog:
+**v1.13.6** Mejoras en link de mapa & notificación de notas de oficina en ruta
+- Rollback de error de cierre de carta cuando hay CONSIGNA
+
 **v1.13.4** Fix de lógica de validación de cartaporte lista
 + Agregado tipo consigna a validación de cierre sin cambios
 + Ajuste de formato de datetime en Cartaporte y Summary
