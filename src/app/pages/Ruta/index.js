@@ -148,8 +148,8 @@ const Ruta = ({ history }) => {
 							key={index}
 							button
 							disabled={orders[order].done}
-							icon="mantenimiento"
-							title={orders[order].serviceaddressname}
+							noIcon
+							title={`${orders[order].serviceaddressname} ${orders[order].officenotes !== ' ' ? '*':''}`}
 							subtitle={orders[order].serviceaddress}
 							subtitle2=""
 							actionIcon={orders[order].done ? "ver" : "estado-aviso"}

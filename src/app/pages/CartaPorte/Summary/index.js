@@ -36,8 +36,7 @@ const CartaPorteSummary = ({ history }) => {
 
   const filtered = selected.data.filter( (r) => 
     (!!r.done || 
-		findRecogidaType(r.projcategoryid) === SERVICIO ||
-		findRecogidaType(r.projcategoryid) === CONSIGNA
+		findRecogidaType(r.projcategoryid) === SERVICIO // || findRecogidaType(r.projcategoryid) === CONSIGNA ACA ESTA EL PROBLEMA
 		)
   );
   return(

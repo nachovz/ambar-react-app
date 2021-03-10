@@ -11,7 +11,8 @@ import { openLink } from 'app/utils/openLink';
 import {
   LINK_TYPE_MAP,
   LINK_TYPE_PHONE,
-  LINK_TYPE_EMAIL
+  LINK_TYPE_EMAIL,
+	LINK_TYPE_GEO
 } from 'app/constants/values';
 
 const CartaPorteQuickView = ({ history }) => {
@@ -30,7 +31,9 @@ const CartaPorteQuickView = ({ history }) => {
     clientemail,
     clientvat,
     clienttimetable,
-    officenotes
+    officenotes,
+		latitudestart,
+		longitudestart
   } = selected;
 
   const containersDictionary = dictionaryGenerator(data, "res_inventpackingmaterialcode", "res_qty_env");
@@ -43,6 +46,18 @@ const CartaPorteQuickView = ({ history }) => {
   const moveBack = () => {
     history.push("/");
   }
+
+	const getMapAction = function () {
+		if (isValidGeo()) {
+			return openLink(LINK_TYPE_GEO, `${latitudestart},${longitudestart}`)
+		} else {
+			return openLink(LINK_TYPE_MAP, serviceaddress.replace(/\r?\n|\r/g, ' '))
+		}
+	}
+
+	const isValidGeo = function () {
+		return (latitudestart && longitudestart)
+	}
 
   return (
     <React.Fragment>
@@ -61,10 +76,10 @@ const CartaPorteQuickView = ({ history }) => {
         <TextListElement
           informative
           icon="direccion"
-          title="Dirección"
+          title={`Dirección ${!isValidGeo() ? '(aproximada)' : ''}`}
           subtitle={serviceaddress}
           actionIcon="place"
-          action={() => openLink(LINK_TYPE_MAP,serviceaddress)}
+          action={getMapAction}
         />
         {!!clientphone &&
           <TextListElement
