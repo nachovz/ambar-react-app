@@ -163,6 +163,8 @@ const Recogida = ({ history }) => {
         return <ServicioForm {...propsToForm}/>;
       case "consigna":
         return <ConsignaForm selectedRecogida={selectedRecogida}/>;
+			case "devconsig":
+        return <ConsignaForm selectedRecogida={selectedRecogida}/>;
       default:
         break;
     }

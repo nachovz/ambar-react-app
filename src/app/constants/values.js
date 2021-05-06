@@ -138,6 +138,7 @@ export const SERVICIO = 'servicio';
 export const ENTREGA = 'entrega';
 export const CONSIGNA = 'consigna';
 export const SERVFACT = 'servfact';
+export const DEVCONSIG = 'devconsig';
 
 export const TIPOS_RECOGIDAS = {
   "res_peligr": RECOGIDA,
@@ -145,7 +146,8 @@ export const TIPOS_RECOGIDAS = {
   "entrega": ENTREGA,
   "res_nopel": RECOGIDA,
   "consigna": CONSIGNA,
-  "serv fact": SERVFACT
+  "serv fact": SERVFACT,
+	"dev_consig": DEVCONSIG
 	//"Res_Peligr": RECOGIDA,
 	//"Servicios": SERVICIO,
   //"Entrega": ENTREGA,
@@ -155,7 +157,7 @@ export const TIPOS_RECOGIDAS = {
 };
 export const findRecogidaType = (type) => TIPOS_RECOGIDAS[type.toLowerCase()];
 
-export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA, CONSIGNA];
+export const getRecogidaTypes = () => [RECOGIDA, SERVICIO, ENTREGA, CONSIGNA, DEVCONSIG];
 
 export const LINK_TYPE_MAP = "map";
 export const LINK_TYPE_EMAIL = "email";
@@ -201,4 +203,4 @@ export const COMPANIES = COMPANY_CODES[process.env.REACT_APP_COMPANY_CODE || "AM
 
 export const is_debug = () => process.env.REACT_APP_ENVIRONMENT === 'DEV';
 
-export const APP_VERSION = 'v1.13.6';
+export const APP_VERSION = 'v1.14.0';

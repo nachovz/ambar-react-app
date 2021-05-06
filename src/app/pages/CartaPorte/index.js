@@ -97,7 +97,7 @@ const CartaPorte = ({ history }) => {
                     icon={findRecogidaType(reco.projcategoryid)}
                     title={reco.itemname}
                     subtitle={reco.itemid}
-                    actionIcon={reco.done ? "editar" : "arrow_right"}
+                    actionIcon={!rutas.selected.notCurrent && (reco.done ? "editar" : "arrow_right")}
                     disabled={reco.done || rutas.selected.notCurrent}
                     onClick={onSelectedRecogida(reco)}
                     action={onSelectedRecogida(reco)}
